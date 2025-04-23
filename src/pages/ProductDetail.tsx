@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -67,6 +66,10 @@ const ProductDetail = () => {
                 </div>
                 <div className="mt-4 text-2xl font-semibold text-gray-900">
                   {product.price}
+                </div>
+                <div className="mt-1 text-sm text-gray-600">
+                  <span className="block mb-1">Plus applicable taxes</span>
+                  <span className="block">Flat-rate shipping: $9.99 (US) / $19.99 (International)</span>
                 </div>
               </div>
               

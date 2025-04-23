@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
@@ -15,9 +14,21 @@ const Index = () => {
       <div className="py-20 container mx-auto px-4 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Premium Research Peptides</h2>
-          <p className="text-gray-700">
+          <p className="text-gray-700 mb-4">
             Browse our selection of high-purity peptides specifically formulated for advanced laboratory research.
             All products undergo rigorous quality control testing.
+          </p>
+          <div className="inline-block bg-red-50 p-2 rounded-md border border-red-100">
+            <p className="text-sm text-red-600 font-medium">For Research Use Only - Not for Human Use</p>
+          </div>
+        </div>
+        
+        <div className="mb-8 max-w-4xl mx-auto bg-amber-50 p-4 border border-amber-200 rounded-md">
+          <h3 className="text-lg font-semibold text-amber-800 mb-2">Product Listings Information</h3>
+          <p className="text-sm text-amber-700">
+            All products are accurately listed with their complete names, clear descriptions, and current pricing in USD.
+            Each product page includes the "Research Use Only" disclaimer and detailed specifications to avoid any ambiguity.
+            For complete product information, please visit individual product pages.
           </p>
         </div>
         

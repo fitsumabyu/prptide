@@ -1,14 +1,17 @@
-
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Link } from "react-router-dom";
 
 type CustomerInfo = {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
+  ageVerified: boolean;
+  refundPolicyAccepted: boolean;
 };
 
 interface Props {
@@ -74,6 +77,47 @@ const CustomerDetailsForm: React.FC<Props> = ({
       />
       {errors.phone && <p className="text-sm text-red-500">{errors.phone}</p>}
     </div>
+    <div className="flex items-start space-x-2 pt-2">
+      <Checkbox 
+        id="ageVerification" 
+        checked={customer.ageVerified}
+        onCheckedChange={(checked) => 
+          setCustomer(c => ({ ...c, ageVerified: checked as boolean }))
+        }
+      />
+      <div className="grid gap-1.5 leading-none">
+        <label
+          htmlFor="ageVerification"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          I confirm that I am 21 years of age or older
+        </label>
+        <p className="text-sm text-red-600">
+          You must be at least 21 years old to purchase from this website.
+        </p>
+      </div>
+    </div>
+    {errors.ageVerified && <p className="text-sm text-red-500">{errors.ageVerified}</p>}
+    
+    <div className="flex items-start space-x-2 pt-2">
+      <Checkbox 
+        id="refundPolicyAccepted" 
+        checked={customer.refundPolicyAccepted}
+        onCheckedChange={(checked) => 
+          setCustomer(c => ({ ...c, refundPolicyAccepted: checked as boolean }))
+        }
+      />
+      <div className="grid gap-1.5 leading-none">
+        <label
+          htmlFor="refundPolicyAccepted"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          I have read and accept the <Link to="/refund-policy" target="_blank" className="text-peptide-purple hover:underline">Refund & Return Policy</Link>
+        </label>
+      </div>
+    </div>
+    {errors.refundPolicyAccepted && <p className="text-sm text-red-500">{errors.refundPolicyAccepted}</p>}
+    
     <div className="pt-4">
       <Button
         className="w-full bg-peptide-purple hover:bg-peptide-dark-purple"

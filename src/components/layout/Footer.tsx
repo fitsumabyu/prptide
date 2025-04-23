@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -72,8 +71,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/shipping" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Shipping & Returns
+                <Link to="/refund-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
+                  Refund & Return Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/shipping-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
+                  Shipping & Delivery
                 </Link>
               </li>
               <li>
@@ -92,6 +96,12 @@ const Footer = () => {
             </p>
             <p className="text-sm text-gray-600 mt-2">
               These products are intended for laboratory research use only. Not for diagnostic, therapeutic, or human use.
+            </p>
+            <p className="text-sm text-gray-600 mt-2">
+              No Medical Claims: The products are not approved by regulatory authorities and not intended to diagnose, treat, cure, or prevent any disease. This clarifies that no health or medical claims are being made.
+            </p>
+            <p className="text-sm text-gray-600 mt-2">
+              Age Restriction: Must be 21+ to purchase/use this website. This website is not intended for minors.
             </p>
             <p className="text-sm text-gray-500 mt-4">
               &copy; {new Date().getFullYear()} Peptide Lab Nexus. All rights reserved.

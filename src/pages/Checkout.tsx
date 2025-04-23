@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Info, ShieldCheck, Lock } from "lucide-react";
 import { toast } from "sonner";
 import CheckoutSteps from "@/components/checkout/CheckoutSteps";
 import CustomerDetailsForm from "@/components/checkout/CustomerDetailsForm";
@@ -20,6 +19,8 @@ type CustomerInfo = {
   lastName: string;
   email: string;
   phone: string;
+  ageVerified: boolean;
+  refundPolicyAccepted: boolean;
 };
 type ShippingInfo = {
   address: string;
@@ -41,6 +42,8 @@ const initialCustomer: CustomerInfo = {
   lastName: "",
   email: "",
   phone: "",
+  ageVerified: false,
+  refundPolicyAccepted: false,
 };
 const initialShipping: ShippingInfo = {
   address: "",
@@ -83,6 +86,8 @@ const Checkout = () => {
     if (!customer.lastName.trim()) errs.lastName = "Last name is required.";
     if (!customer.email.trim() || !/^\S+@\S+\.\S+$/.test(customer.email.trim())) errs.email = "A valid email is required.";
     if (!customer.phone.trim()) errs.phone = "Phone number is required.";
+    if (!customer.ageVerified) errs.ageVerified = "You must confirm that you are 21 years of age or older to proceed.";
+    if (!customer.refundPolicyAccepted) errs.refundPolicyAccepted = "You must accept our refund policy to proceed.";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -137,6 +142,15 @@ const Checkout = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left: Forms & Steps */}
           <div className="lg:col-span-2">
+            {/* Secure Checkout Banner */}
+            <div className="bg-gradient-to-r from-green-50 to-teal-50 p-4 rounded-lg border border-green-100 mb-6 flex items-center">
+              <Lock className="h-5 w-5 text-green-600 mr-3" />
+              <div>
+                <p className="font-medium text-green-800">Secure Checkout</p>
+                <p className="text-xs text-green-700">Your payment information is encrypted and secure</p>
+              </div>
+            </div>
+
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
               <div className="flex justify-between mb-6">
                 <h2 className="text-xl font-bold">Checkout Process</h2>
@@ -220,10 +234,100 @@ const Checkout = () => {
                 />
               )}
             </div>
+
+            {/* Payment Methods Section */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
+              <h3 className="text-lg font-semibold mb-4">Accepted Payment Methods</h3>
+              <div className="flex flex-wrap gap-4 mb-6">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-8 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mastercard.svg" alt="Mastercard" className="h-8 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/americanexpress.svg" alt="American Express" className="h-8 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-8 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/applepay.svg" alt="Apple Pay" className="h-8 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/googlepay.svg" alt="Google Pay" className="h-8 grayscale" />
+              </div>
+            </div>
+
+            {/* Trust Badges Section */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
+              <div className="flex items-start mb-4">
+                <ShieldCheck className="h-5 w-5 text-peptide-purple mr-2 flex-shrink-0 mt-0.5" />
+                <h3 className="text-lg font-semibold">Shop with Confidence</h3>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div className="flex flex-col items-center p-3 border rounded-md">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/verisign.svg" alt="Secure Site" className="h-8 mb-2" />
+                  <span className="text-xs text-center font-medium">Secure Site</span>
+                </div>
+                <div className="flex flex-col items-center p-3 border rounded-md">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/pci.svg" alt="PCI Compliant" className="h-8 mb-2" />
+                  <span className="text-xs text-center font-medium">PCI Compliant</span>
+                </div>
+                <div className="flex flex-col items-center p-3 border rounded-md">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/norton.svg" alt="Norton Secured" className="h-8 mb-2" />
+                  <span className="text-xs text-center font-medium">Norton Secured</span>
+                </div>
+                <div className="flex flex-col items-center p-3 border rounded-md">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mcafee.svg" alt="McAfee Secure" className="h-8 mb-2" />
+                  <span className="text-xs text-center font-medium">McAfee Secure</span>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 text-center">
+                Your data is protected with industry-standard SSL encryption and we adhere to strict PCI compliance standards.
+              </p>
+            </div>
+
+            {/* Payment Terms & Policy Information */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
+              <div className="flex items-start mb-4">
+                <Info className="h-5 w-5 text-peptide-purple mr-2 flex-shrink-0 mt-0.5" />
+                <h3 className="text-lg font-semibold">Payment & Billing Information</h3>
+              </div>
+              <div className="space-y-4 text-sm text-gray-700">
+                <div>
+                  <h4 className="font-medium mb-1">Payment Methods</h4>
+                  <p>We accept Visa, MasterCard, American Express, and Discover. All payments are processed in USD.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">Billing & Pricing</h4>
+                  <p>Your card will be charged immediately upon order confirmation. All prices are shown in USD and include the product cost only. Taxes and shipping are calculated at checkout.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">Shipping Costs</h4>
+                  <p>Domestic (US) shipping: Flat rate of $9.99<br />
+                  International shipping: Flat rate of $19.99</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">Subscription Terms</h4>
+                  <p>If you choose a subscription option, your payment method will be charged automatically according to the schedule you select. You can cancel at any time through your account settings or by contacting customer service.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">Refund Policy</h4>
+                  <p>We offer a 30-day satisfaction guarantee. If you're not satisfied with your purchase, please contact our customer service team for return instructions. Refunds will be processed to the original payment method within 5-7 business days after we receive the returned product.</p>
+                </div>
+              </div>
+            </div>
           </div>
           {/* Right: Order Summary */}
           <div className="lg:col-span-1">
             <OrderSummary totalItems={totalItems} totalPrice={totalPrice} />
+            
+            {/* Additional Trust Elements */}
+            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mt-6">
+              <div className="flex items-center justify-center mb-3">
+                <Lock className="h-4 w-4 text-gray-600 mr-2" />
+                <p className="text-sm font-medium text-gray-700">Secure Checkout</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3 mb-3">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mastercard.svg" alt="Mastercard" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/americanexpress.svg" alt="American Express" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-6 grayscale" />
+              </div>
+              <p className="text-xs text-center text-gray-500">
+                Your transaction is secured with SSL encryption
+              </p>
+            </div>
           </div>
         </div>
       </div>

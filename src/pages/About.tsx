@@ -1,6 +1,6 @@
-
 import Layout from "@/components/layout/Layout";
 import Disclaimer from "@/components/ui/Disclaimer";
+import { Building, MapPin, Mail, Phone } from "lucide-react";
 
 const About = () => {
   return (
@@ -8,6 +8,46 @@ const About = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">About Peptide Lab Nexus</h1>
+          
+          {/* Business Identity Section */}
+          <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
+            <h2 className="text-xl font-semibold mb-4 flex items-center">
+              <Building className="h-5 w-5 mr-2 text-peptide-purple" />
+              Business Information
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm text-gray-500 mb-1">Official Business Name</p>
+                <p className="font-medium mb-4">Peptide Lab Nexus, LLC</p>
+                
+                <p className="text-sm text-gray-500 mb-1">DBA</p>
+                <p className="font-medium mb-4">Peptide Lab Nexus</p>
+                
+                <p className="text-sm text-gray-500 mb-1">Business Registration</p>
+                <p className="font-medium">Company Number: LLC-78291045</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500 mb-1 flex items-start">
+                  <MapPin className="h-4 w-4 mr-1 text-gray-400 mt-0.5 flex-shrink-0" /> Registered Address
+                </p>
+                <p className="font-medium mb-4">
+                  123 Science Drive, Suite 204<br />
+                  Boston, MA 02210<br />
+                  United States
+                </p>
+                
+                <p className="text-sm text-gray-500 mb-1 flex items-center">
+                  <Phone className="h-4 w-4 mr-1 text-gray-400" /> Phone
+                </p>
+                <p className="font-medium mb-4">+1 (617) 555-0123</p>
+                
+                <p className="text-sm text-gray-500 mb-1 flex items-center">
+                  <Mail className="h-4 w-4 mr-1 text-gray-400" /> Email
+                </p>
+                <p className="font-medium">info@peptidelabnexus.com</p>
+              </div>
+            </div>
+          </div>
           
           <div className="prose max-w-none">
             <p className="text-lg text-gray-700 mb-6">

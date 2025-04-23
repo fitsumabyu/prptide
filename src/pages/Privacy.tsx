@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 
 const Privacy = () => {
@@ -82,17 +81,32 @@ const Privacy = () => {
               Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these sites. We encourage you to read the privacy policies of any third-party websites you visit.
             </p>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">8. Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">8. Image Comments</h2>
+            <p className="text-gray-700 mb-6">
+              Our platform allows users to upload images and add comments to them. Please be aware that:
+            </p>
+            <ul className="list-disc pl-6 text-gray-700 mb-6">
+              <li><strong>User-Generated Content:</strong> Image comments are considered user-generated content and may be visible to other users.</li>
+              <li><strong>Ownership:</strong> You retain ownership of your uploaded images and comments, but grant us a license to use, store, and display this content on our platform.</li>
+              <li><strong>Moderation:</strong> We may review image comments to ensure compliance with our community guidelines.</li>
+              <li><strong>Removal:</strong> You can request removal of your image comments by contacting our support team.</li>
+              <li><strong>Third-Party Access:</strong> We do not share image comments with third parties except as outlined in our Information Sharing section.</li>
+            </ul>
+            <p className="text-gray-700 mb-6">
+              Please refrain from including sensitive personal information in image comments as they may be accessible to other users.
+            </p>
+            
+            <h2 className="text-2xl font-semibold mt-8 mb-4">9. Children's Privacy</h2>
             <p className="text-gray-700 mb-6">
               Our website and products are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.
             </p>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">9. Changes to This Privacy Policy</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">10. Changes to This Privacy Policy</h2>
             <p className="text-gray-700 mb-6">
               We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last Updated" date. We encourage you to review this Privacy Policy periodically.
             </p>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">10. Contact Us</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">11. Contact Us</h2>
             <p className="text-gray-700 mb-6">
               If you have any questions or concerns about this Privacy Policy, please contact us at:
             </p>

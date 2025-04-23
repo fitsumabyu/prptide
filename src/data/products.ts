@@ -1,4 +1,3 @@
-
 export interface Product {
   id: string;
   name: string;
@@ -6,6 +5,7 @@ export interface Product {
   purity: string;
   price: string;
   image: string;
+  category: string;
   details: {
     cas: string;
     size: string;
@@ -22,7 +22,8 @@ export const products: Product[] = [
     purity: "≥99% purity",
     price: "$89.99",
     image: "https://m.media-amazon.com/images/I/71DL69TL3VL.jpg",
-      details: {
+    category: "Tissue Healing",
+    details: {
       cas: "137525-51-0",
       size: "5mg",
       storage: "Store at -20°C, away from light",
@@ -36,6 +37,7 @@ export const products: Product[] = [
     purity: "≥98% purity",
     price: "$94.99",
     image: "https://dinespower.com/wp-content/uploads/2023/07/24_TB-1-2000x2000-1.png",
+    category: "Tissue Healing",
     details: {
       cas: "77591-33-4",
       size: "5mg",
@@ -50,6 +52,7 @@ export const products: Product[] = [
     purity: "≥99% purity",
     price: "$79.99",
     image: "https://5.imimg.com/data5/SELLER/Default/2022/2/KQ/QQ/IZ/146558672/ghrp-6-5mg-500x500.jpg",
+    category: "Growth Hormone",
     details: {
       cas: "87616-84-0",
       size: "5mg",
@@ -64,7 +67,8 @@ export const products: Product[] = [
     purity: "≥99% purity",
     price: "$69.99",
     image: "https://m.media-amazon.com/images/I/41cj9xidoEL.jpg",
-        details: {
+    category: "Melanocortin",
+    details: {
       cas: "121062-08-6",
       size: "10mg",
       storage: "Store at -20°C, away from light",
@@ -78,7 +82,8 @@ export const products: Product[] = [
     purity: "≥98% purity",
     price: "$84.99",
     image: "https://synthagenlabs.com/wp-content/uploads/2024/06/12.png",
-        details: {
+    category: "Cosmetic Research",
+    details: {
       cas: "89030-95-5",
       size: "10mg",
       storage: "Store at -20°C, away from light",
@@ -92,6 +97,7 @@ export const products: Product[] = [
     purity: "≥99% purity",
     price: "$99.99",
     image: "https://elive-health.com/wp-content/uploads/2024/09/PT-141.png",
+    category: "Melanocortin",
     details: {
       cas: "189691-06-3",
       size: "10mg",

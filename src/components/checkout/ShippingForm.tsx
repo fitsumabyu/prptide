@@ -1,8 +1,9 @@
-
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { InfoIcon } from "lucide-react";
 
 type ShippingInfo = {
   address: string;
@@ -30,6 +31,17 @@ const ShippingForm: React.FC<Props> = ({
 }) => (
   <div className="space-y-4">
     <h3 className="font-medium text-lg mb-2">Shipping Information</h3>
+    
+    <div className="bg-blue-50 p-3 rounded-md flex items-start mb-4">
+      <InfoIcon className="h-5 w-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
+      <div className="text-sm text-blue-700">
+        <p>Orders are typically processed within 1-2 business days. Standard shipping takes 3-5 business days.</p>
+        <p className="mt-1">
+          View our <Link to="/shipping-policy" target="_blank" className="text-peptide-purple hover:underline font-medium">Shipping & Delivery Policy</Link> for more details on shipping methods, costs, and restrictions.
+        </p>
+      </div>
+    </div>
+
     <div className="space-y-2">
       <Label htmlFor="address">Street Address</Label>
       <Input
