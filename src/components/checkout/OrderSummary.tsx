@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Lock } from "lucide-react";
 interface Props {
   totalItems: number;
   totalPrice: number;
@@ -13,7 +13,9 @@ const OrderSummary: React.FC<Props> = ({ totalItems, totalPrice }) => {
   const orderTotal = totalPrice + shippingCost + taxAmount;
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 sticky top-6">
+    <div className="bg-white p-6 rounded-lg shadow-sm border
+    
+     border-gray-100 sticky top-6">
       <h2 className="text-xl font-bold mb-4">Order Summary</h2>
       <div className="space-y-3 mb-4">
         <div className="flex justify-between">
@@ -50,6 +52,21 @@ const OrderSummary: React.FC<Props> = ({ totalItems, totalPrice }) => {
           intended to diagnose, treat, cure, or prevent any disease.
         </p>
       </div>
+      <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mt-6">
+              <div className="flex items-center justify-center mb-3">
+                <Lock className="h-4 w-4 text-gray-600 mr-2" />
+                <p className="text-sm font-medium text-gray-700">Secure Checkout</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3 mb-3">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mastercard.svg" alt="Mastercard" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/americanexpress.svg" alt="American Express" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-6 grayscale" />
+              </div>
+              <p className="text-xs text-center text-gray-500">
+                Your transaction is secured with SSL encryption
+              </p>
+            </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import PreferredDestinations from "@/components/shipping/PreferredDestinations";
 
 const ShippingPolicy = () => {
   return (
@@ -67,6 +68,8 @@ const ShippingPolicy = () => {
             <p className="text-gray-700 mb-6">
               If your country is not listed above, please contact our customer service team to determine shipping eligibility.
             </p>
+            
+            <PreferredDestinations />
             
             <div className="bg-gray-100 p-4 rounded-md mb-6">
               <h3 className="font-semibold text-gray-800 mb-2">Service Regions Clarification:</h3>

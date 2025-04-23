@@ -4,6 +4,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { InfoIcon } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { preferredCountries } from "@/components/shipping/PreferredDestinations";
 
 type ShippingInfo = {
   address: string;
@@ -96,13 +98,25 @@ const ShippingForm: React.FC<Props> = ({
       </div>
       <div className="space-y-2">
         <Label htmlFor="country">Country</Label>
-        <Input
-          id="country"
-          placeholder="Country"
-          value={shipping.country}
-          onChange={e => setShipping(s => ({ ...s, country: e.target.value }))}
-        />
+        <Select 
+          value={shipping.country} 
+          onValueChange={(value) => setShipping(s => ({ ...s, country: value }))}
+        >
+          <SelectTrigger id="country">
+            <SelectValue placeholder="Select country" />
+          </SelectTrigger>
+          <SelectContent>
+            {preferredCountries.map((country) => (
+              <SelectItem key={country.id} value={country.name}>
+                {country.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         {errors.country && <p className="text-sm text-red-500">{errors.country}</p>}
+        <p className="text-xs text-gray-500 mt-1">
+          We only ship to our preferred destinations that meet research peptide regulations.
+        </p>
       </div>
     </div>
     <div className="pt-4 flex justify-between">

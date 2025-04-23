@@ -1,5 +1,5 @@
-
 import Layout from "@/components/layout/Layout";
+import PreferredDestinations from "@/components/shipping/PreferredDestinations";
 
 const Shipping = () => {
   return (
@@ -13,6 +13,8 @@ const Shipping = () => {
             <p className="text-gray-700 mb-6">
               At Peptide Lab Nexus, we understand the importance of receiving your research materials in a timely manner and in optimal condition. We ship all products in temperature-controlled packaging to ensure their integrity during transit.
             </p>
+            
+            <PreferredDestinations />
             
             <h3 className="text-xl font-semibold mt-6 mb-3">Shipping Methods</h3>
             <p className="text-gray-700 mb-6">

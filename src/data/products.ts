@@ -1,3 +1,5 @@
+import { ShippingDestination } from "@/components/shipping/PreferredDestinations";
+
 export interface Product {
   id: string;
   name: string;
@@ -12,7 +14,30 @@ export interface Product {
     storage: string;
     coaLink: string;
   };
+  shippingDestinations?: ShippingDestination[]; // Product-specific shipping destinations
 }
+
+// Example USA states that could be used for specific products
+const usaStates: ShippingDestination[] = [
+  { 
+    id: 101, 
+    name: "California", 
+    description: "Available for research use only with proper documentation.",
+    productSpecific: true
+  },
+  { 
+    id: 102, 
+    name: "New York", 
+    description: "Research facilities only with state verification.",
+    productSpecific: true
+  },
+  { 
+    id: 103, 
+    name: "Florida", 
+    description: "Limited availability for certified research institutions.",
+    productSpecific: true
+  }
+];
 
 export const products: Product[] = [
   {
@@ -28,7 +53,9 @@ export const products: Product[] = [
       size: "5mg",
       storage: "Store at -20°C, away from light",
       coaLink: "#"
-    }
+    },
+    // Example of product with USA states shipping
+    shippingDestinations: [...usaStates]
   },
   {
     id: "tb-500",
@@ -44,48 +71,49 @@ export const products: Product[] = [
       storage: "Store at -20°C, away from light",
       coaLink: "#"
     }
+    // No specific destinations - uses the default list
   },
   {
-    id: "ghrp-6",
-    name: "GHRP-6",
-    description: "Growth Hormone Releasing Peptide-6 is a synthetic hexapeptide that has been studied for its effects on growth hormone secretion in laboratory research settings.",
-    purity: "≥99% purity",
-    price: "$79.99",
-    image: "https://5.imimg.com/data5/SELLER/Default/2022/2/KQ/QQ/IZ/146558672/ghrp-6-5mg-500x500.jpg",
+    id: "cjc-1295",
+    name: "CJC-1295",
+    description: "CJC-1295 is a synthetic growth hormone releasing hormone (GHRH) analog that has been studied for its potential to increase growth hormone and IGF-1 levels in laboratory settings.",
+    purity: "≥98% purity",
+    price: "$89.99",
+    image: "https://selectspineandsports.com/wp-content/uploads/2024/03/cjc-ipamorelin-new.png",
     category: "Growth Hormone",
     details: {
-      cas: "87616-84-0",
+      cas: "863288-34-0",
       size: "5mg",
       storage: "Store at -20°C, away from light",
       coaLink: "#"
     }
   },
   {
-    id: "melanotan-ii",
-    name: "Melanotan II",
-    description: "Melanotan II is a synthetic analog of alpha-melanocyte stimulating hormone (α-MSH). It has been used in laboratory research involving melanocortin receptors.",
+    id: "ipamorelin",
+    name: "Ipamorelin",
+    description: "Ipamorelin is a synthetic pentapeptide and growth hormone secretagogue that has been studied for its selective stimulation of growth hormone release in laboratory research.",
     purity: "≥99% purity",
-    price: "$69.99",
-    image: "https://m.media-amazon.com/images/I/41cj9xidoEL.jpg",
-    category: "Melanocortin",
+    price: "$84.99",
+    image: "https://peptidesworld.com/wp-content/uploads/2020/12/15.jpg",
+    category: "Growth Hormone",
     details: {
-      cas: "121062-08-6",
+      cas: "170851-70-4",
       size: "10mg",
       storage: "Store at -20°C, away from light",
       coaLink: "#"
     }
   },
   {
-    id: "ghk-cu",
-    name: "GHK-Cu",
-    description: "Glycine-Histidine-Lysine Copper Peptide is a naturally occurring copper complex of the tripeptide GHK found in human plasma. It has been studied for various cellular effects in laboratory settings.",
+    id: "sermorelin",
+    name: "Sermorelin",
+    description: "Sermorelin is a synthetic analog of growth hormone-releasing hormone (GHRH) that has been studied for its potential to stimulate the pituitary gland to produce and release growth hormone.",
     purity: "≥98% purity",
-    price: "$84.99",
-    image: "https://synthagenlabs.com/wp-content/uploads/2024/06/12.png",
-    category: "Cosmetic Research",
+    price: "$79.99",
+    image: "https://www.corepeptides.com/wp-content/uploads/2020/04/Sermorelin-5mg.jpg",
+    category: "Growth Hormone",
     details: {
-      cas: "89030-95-5",
-      size: "10mg",
+      cas: "86168-78-7",
+      size: "5mg",
       storage: "Store at -20°C, away from light",
       coaLink: "#"
     }
@@ -96,11 +124,35 @@ export const products: Product[] = [
     description: "PT-141, also known as Bremelanotide, is a synthetic peptide analog of alpha-melanocyte stimulating hormone (α-MSH). It has been studied in laboratory research on melanocortin receptors.",
     purity: "≥99% purity",
     price: "$99.99",
-    image: "https://elive-health.com/wp-content/uploads/2024/09/PT-141.png",
+    image: "https://innerbody.imgix.net/pt-141-social-image.jpeg",
     category: "Melanocortin",
     details: {
       cas: "189691-06-3",
       size: "10mg",
+      storage: "Store at -20°C, away from light",
+      coaLink: "#"
+    },
+    // Another example with specific destinations
+    shippingDestinations: [
+      { 
+        id: 110, 
+        name: "Australia", 
+        description: "Research facilities only with proper import documentation.",
+        productSpecific: true
+      }
+    ]
+  },
+  {
+    id: "aod-9604",
+    name: "AOD-9604",
+    description: "AOD-9604 is a modified fragment of human growth hormone that has been researched for its potential metabolic effects in laboratory settings without affecting growth or insulin resistance.",
+    purity: "≥98% purity",
+    price: "$89.99",
+    image: "https://elive-health.com/wp-content/uploads/2024/09/AOD-9604.png",
+    category: "Modified Growth Hormone",
+    details: {
+      cas: "221231-10-3",
+      size: "5mg",
       storage: "Store at -20°C, away from light",
       coaLink: "#"
     }

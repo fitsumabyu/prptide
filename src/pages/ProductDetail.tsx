@@ -3,9 +3,11 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import Disclaimer from "@/components/ui/Disclaimer";
 import { products } from "@/data/products";
-import { ArrowLeft, ShoppingCart } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Globe } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
+import PreferredDestinations from "@/components/shipping/PreferredDestinations";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -46,7 +48,7 @@ const ProductDetail = () => {
           </Button>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
           <div>
             <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden shadow-md border border-gray-200">
               <img 
@@ -136,9 +138,72 @@ const ProductDetail = () => {
                 </Button>
               </div>
               
+              {/* Shipping availability indicator */}
+              {product.shippingDestinations && product.shippingDestinations.length > 0 && (
+                <div className="my-4 px-4 py-3 bg-blue-50 rounded-md flex items-start">
+                  <Globe className="h-5 w-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm">
+                    <p className="font-medium text-blue-700">Special Shipping Destinations Available</p>
+                    <p className="text-blue-600">This product has specific shipping eligibility. See the Shipping tab below for details.</p>
+                  </div>
+                </div>
+              )}
+              
               <Disclaimer />
             </div>
           </div>
+        </div>
+        
+        {/* Product tabs with shipping information */}
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-12">
+          <Tabs defaultValue="details">
+            <TabsList className="mb-6">
+              <TabsTrigger value="details">Details</TabsTrigger>
+              <TabsTrigger value="shipping">Shipping</TabsTrigger>
+              <TabsTrigger value="faq">FAQ</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="details">
+              <div className="prose max-w-none">
+                <h3 className="text-xl font-semibold mb-4">Product Information</h3>
+                <p>{product.description}</p>
+                <p>For research use only. Not for human or veterinary use.</p>
+                <h4 className="text-lg font-semibold mt-6 mb-3">Storage and Handling</h4>
+                <p>
+                  {product.details.storage}<br />
+                  Once reconstituted, the product should be used immediately or stored at -20°C in aliquots.
+                </p>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="shipping">
+              <PreferredDestinations 
+                productId={product.id}
+                productName={product.name}
+                additionalDestinations={product.shippingDestinations}
+              />
+            </TabsContent>
+            
+            <TabsContent value="faq">
+              <div className="prose max-w-none">
+                <h3 className="text-xl font-semibold mb-4">Frequently Asked Questions</h3>
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-lg font-semibold">What is the purity level of this product?</h4>
+                    <p>This product has a purity level of {product.purity}. Each batch is tested and comes with a Certificate of Analysis.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold">How should I store this product?</h4>
+                    <p>{product.details.storage}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold">Is this product available for international shipping?</h4>
+                    <p>Yes, we ship to select international destinations. Please see the Shipping tab for specific country availability for this product.</p>
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </Layout>

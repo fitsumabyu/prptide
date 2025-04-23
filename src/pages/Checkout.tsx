@@ -51,7 +51,7 @@ const initialShipping: ShippingInfo = {
   city: "",
   state: "",
   zip: "",
-  country: "United States",
+  country: "United Kingdom",
 };
 const initialPayment: PaymentInfo = {
   cardName: "",
@@ -256,11 +256,11 @@ const Checkout = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 <div className="flex flex-col items-center p-3 border rounded-md">
-                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/verisign.svg" alt="Secure Site" className="h-8 mb-2" />
+                  <img src="https://cdn2.iconfinder.com/data/icons/web-ui-16/33/ui-06-512.png" alt="Secure Site" className="h-8 mb-2" />
                   <span className="text-xs text-center font-medium">Secure Site</span>
                 </div>
                 <div className="flex flex-col items-center p-3 border rounded-md">
-                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/pci.svg" alt="PCI Compliant" className="h-8 mb-2" />
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXWDGocTFM3uZvYetr4v11JozAP8qcDTBEHA&s" alt="PCI Compliant" className="h-8 mb-2" />
                   <span className="text-xs text-center font-medium">PCI Compliant</span>
                 </div>
                 <div className="flex flex-col items-center p-3 border rounded-md">
@@ -313,21 +313,7 @@ const Checkout = () => {
             <OrderSummary totalItems={totalItems} totalPrice={totalPrice} />
             
             {/* Additional Trust Elements */}
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mt-6">
-              <div className="flex items-center justify-center mb-3">
-                <Lock className="h-4 w-4 text-gray-600 mr-2" />
-                <p className="text-sm font-medium text-gray-700">Secure Checkout</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-3 mb-3">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-6 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mastercard.svg" alt="Mastercard" className="h-6 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/americanexpress.svg" alt="American Express" className="h-6 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-6 grayscale" />
-              </div>
-              <p className="text-xs text-center text-gray-500">
-                Your transaction is secured with SSL encryption
-              </p>
-            </div>
+           
           </div>
         </div>
       </div>

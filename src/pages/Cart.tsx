@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ShoppingCart, Trash2 } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Trash2, Lock } from "lucide-react";
 
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice } = useCart();
@@ -149,6 +149,21 @@ const Cart = () => {
                   <p>These products are intended for laboratory research use only. Not for diagnostic, therapeutic, or human use.</p>
                 </div>
               </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mt-6">
+              <div className="flex items-center justify-center mb-3">
+                <Lock className="h-4 w-4 text-gray-600 mr-2" />
+                <p className="text-sm font-medium text-gray-700">Secure Checkout</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3 mb-3">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mastercard.svg" alt="Mastercard" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/americanexpress.svg" alt="American Express" className="h-6 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-6 grayscale" />
+              </div>
+              <p className="text-xs text-center text-gray-500">
+                Your transaction is secured with SSL encryption
+              </p>
+            </div>
             </div>
           </div>
         </div>
