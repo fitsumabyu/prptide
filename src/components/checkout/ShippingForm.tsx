@@ -97,7 +97,7 @@ const ShippingForm: React.FC<Props> = ({
         {errors.zip && <p className="text-sm text-red-500">{errors.zip}</p>}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="country">Country</Label>
+        <Label htmlFor="country">Shipping Country</Label>
         <Select 
           value={shipping.country} 
           onValueChange={(value) => setShipping(s => ({ ...s, country: value }))}
