@@ -1,9 +1,20 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Info, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Info, ArrowRight, AlertTriangle } from "lucide-react";
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
 import "./product-carousel.css";
+import { useShippingCountry } from "@/context/ShippingCountryContext";
+import { useCountry } from "@/components/shipping/CountrySelector";
+
+// Define allowed and restricted countries
+const allowedCountries = [
+  "GB", "CA", "DE", "NL", "SE", "DK", "FI", "NO", "IE", "NZ"
+];
+
+const restrictedCountries = [
+  "AE", "IR", "KP", "SY", "CU"
+];
 
 interface Product {
   id: string;
@@ -42,8 +53,16 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showAll, setShowAll] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
+  const { country } = useShippingCountry();
+  const { showWarning } = useCountry();
 
   const displayedProducts = showAll ? products : products.slice(0, 4);
+
+  // Check if the current country is in the restricted list or not in the allowed list
+  const isCountryShippable = useMemo(() => {
+    if (!country) return true; // If no country selected, show products
+    return !restrictedCountries.includes(country) && allowedCountries.includes(country);
+  }, [country]);
 
   useEffect(() => {
     // Simulate loading completion after component mount
@@ -145,7 +164,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
             variant="outline"
             size="icon"
             onClick={() => scroll("left")}
-            disabled={!canScrollLeft || isLoading || isInitializing}
+            disabled={!canScrollLeft || isLoading || isInitializing || (!isCountryShippable && showWarning)}
             className="rounded-full w-8 h-8 md:w-10 md:h-10 border-peptide-purple text-peptide-purple hover:bg-peptide-purple/10 transition-colors disabled:opacity-30"
           >
             <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
@@ -154,7 +173,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
             variant="outline"
             size="icon"
             onClick={() => scroll("right")}
-            disabled={!canScrollRight || isLoading || isInitializing}
+            disabled={!canScrollRight || isLoading || isInitializing || (!isCountryShippable && showWarning)}
             className="rounded-full w-8 h-8 md:w-10 md:h-10 border-peptide-purple text-peptide-purple hover:bg-peptide-purple/10 transition-colors disabled:opacity-30"
           >
             <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
@@ -171,49 +190,64 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
       </div>
 
       <div className="carousel-container relative">
-        <div
-          ref={carouselRef}
-          className="carousel-scroll flex gap-3 md:gap-6 overflow-x-auto pb-4 md:pb-6 snap-x px-2 justify-center"
-          onScroll={handleScroll}
-        >
-          {isLoading || isInitializing ? (
-            // Skeleton loading state
-            Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={`skeleton-${index}`}
-                className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] snap-start product-card-wrapper"
-                style={{ '--index': index } as React.CSSProperties}
-              >
-                <ProductSkeleton />
-              </div>
-            ))
-          ) : (
-            // Actual product cards
-            displayedProducts.map((product, index) => (
-              <div
-                key={product.id}
-                className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] snap-start product-card-wrapper"
-                style={{ '--index': index } as React.CSSProperties}
-              >
-                <div className="h-full flex flex-col">
-                  <ProductCard
+        {!isCountryShippable && showWarning ? (
+          <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center my-6">
+            <div className="flex flex-col items-center justify-center gap-4">
+              <AlertTriangle className="h-10 w-10 text-red-500" />
+              <h2 className="text-xl font-bold text-red-700">Products Not Available in Your Region</h2>
+              <p className="text-red-600 max-w-md text-sm">
+                We're sorry, but we currently don't ship our research peptides to your selected country. 
+                Please select a different shipping destination to view our products.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div
+              ref={carouselRef}
+              className="carousel-scroll flex gap-3 md:gap-6 overflow-x-auto pb-4 md:pb-6 snap-x px-2 justify-center"
+              onScroll={handleScroll}
+            >
+              {isLoading || isInitializing ? (
+                // Skeleton loading state
+                Array.from({ length: 4 }).map((_, index) => (
+                  <div
+                    key={`skeleton-${index}`}
+                    className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] snap-start product-card-wrapper"
+                    style={{ '--index': index } as React.CSSProperties}
+                  >
+                    <ProductSkeleton />
+                  </div>
+                ))
+              ) : (
+                // Actual product cards
+                displayedProducts.map((product, index) => (
+                  <div
                     key={product.id}
-                    id={product.id}
-                    name={product.name}
-                    purity={product.purity}
-                    price={product.price}
-                    image={product.image}
-                  />
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-        <div className="fade-left"></div>
-        <div className="fade-right"></div>
+                    className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] snap-start product-card-wrapper"
+                    style={{ '--index': index } as React.CSSProperties}
+                  >
+                    <div className="h-full flex flex-col">
+                      <ProductCard
+                        key={product.id}
+                        id={product.id}
+                        name={product.name}
+                        purity={product.purity}
+                        price={product.price}
+                        image={product.image}
+                      />
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+            <div className="fade-left"></div>
+            <div className="fade-right"></div>
+          </>
+        )}
       </div>
 
-      {products.length > 4 && !isLoading && !isInitializing && (
+      {products.length > 4 && !isLoading && !isInitializing && isCountryShippable && (
         <div className="flex justify-center mt-6">
           <Button
             variant="outline"

@@ -9,9 +9,16 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import CountrySelector from "@/components/shipping/CountrySelector";
+import { cn } from "@/lib/utils";
+import { useShippingCountry } from "@/context/ShippingCountryContext";
 
-const Navbar = () => {
+interface NavbarProps {
+  transparent?: boolean;
+}
+
+const Navbar = ({ transparent = false }: NavbarProps) => {
   const { totalItems } = useCart();
+  const { country } = useShippingCountry();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const location = useLocation();
 
@@ -21,11 +28,19 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="w-full border-b border-gray-200 sticky top-0 z-50 bg-white">
+    <header className={cn(
+      "w-full border-b sticky top-0 z-50", 
+      transparent 
+        ? "bg-transparent border-transparent" 
+        : "bg-white border-gray-200"
+    )}>
       <div className="container mx-auto px-4 py-2 flex items-center justify-between min-h-[60px]">
         {/* Logo */}
         <div className="flex items-center">
-          <Link to="/" className="font-bold text-peptide-purple flex-shrink-0 text-sm sm:text-2xl">
+          <Link to="/" className={cn(
+            "font-bold flex-shrink-0 text-sm sm:text-2xl",
+            transparent ? "text-white" : "text-peptide-purple"
+          )}>
             <span className="md:inline">Peptide Lab Nexus</span>
           </Link>
         </div>
@@ -33,13 +48,22 @@ const Navbar = () => {
         {/* Center nav links (desktop) */}
         <div className="flex-1 flex justify-center items-center">
           <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/products" className="text-gray-700 hover:text-peptide-purple transition-colors">
+            <Link to="/products" className={cn(
+              "hover:text-peptide-purple transition-colors",
+              transparent ? "text-gray-100" : "text-gray-700"
+            )}>
               Products
             </Link>
-            <Link to="/about" className="text-gray-700 hover:text-peptide-purple transition-colors">
+            <Link to="/about" className={cn(
+              "hover:text-peptide-purple transition-colors",
+              transparent ? "text-gray-100" : "text-gray-700"
+            )}>
               About
             </Link>
-            <Link to="/contact" className="text-gray-700 hover:text-peptide-purple transition-colors">
+            <Link to="/contact" className={cn(
+              "hover:text-peptide-purple transition-colors",
+              transparent ? "text-gray-100" : "text-gray-700"
+            )}>
               Contact
             </Link>
           </nav>
@@ -49,7 +73,9 @@ const Navbar = () => {
         <div className="flex items-center gap-2 ml-auto">
           {/* Country Selector */}
           <div className="mr-2 order-1 md:order-1">
-            <CountrySelector className="scale-90 sm:scale-100" />
+            <CountrySelector className={cn(
+              "scale-90 sm:scale-100",
+            )} />
           </div>
           
           {/* Cart icon - desktop only */}
@@ -58,7 +84,10 @@ const Navbar = () => {
               asChild
               variant="ghost"
               size="xl"
-              className="relative flex items-center justify-center border-0 shadow-none bg-transparent h-auto w-auto p-0 focus-visible:ring-2 focus-visible:ring-peptide-purple"
+              className={cn(
+                "relative flex items-center justify-center border-0 shadow-none bg-transparent h-auto w-auto p-0 focus-visible:ring-2 focus-visible:ring-peptide-purple",
+                transparent ? "text-white" : "text-peptide-purple"
+              )}
               style={{ minWidth: 0, minHeight: 0 }}
             >
               <Link
@@ -66,7 +95,7 @@ const Navbar = () => {
                 className="flex items-center justify-center h-full w-full"
                 aria-label="Cart"
               >
-                <ShoppingCart className="h-24 w-24 text-peptide-purple" />
+                <ShoppingCart className="h-24 w-24" />
                 {totalItems > 0 && (
                   <span className="absolute -top-4 -right-4 bg-peptide-purple text-white rounded-full h-7 w-7 flex items-center justify-center text-base font-bold">
                     {totalItems}
@@ -83,7 +112,10 @@ const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="xl"
-                  className="text-gray-700 h-10 w-10 p-0 flex items-center justify-center"
+                  className={cn(
+                    "h-10 w-10 p-0 flex items-center justify-center",
+                    transparent ? "text-white" : "text-gray-700"
+                  )}
                   aria-label="Open menu"
                 >
                   <Menu size={32} />

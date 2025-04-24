@@ -9,9 +9,9 @@ import { products } from "@/data/products";
 const Index = () => {
   return (
     <Layout>
-      <HeroSection />
+      <HeroSection fullHeight={true} />
       
-      <div className="py-20 container mx-auto px-4 bg-gradient-to-b from-white to-gray-50">
+      <div className="py-20 container mx-auto px-4 bg-gradient-to-b from-white to-gray-50 -mt-[1px]">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Premium Research Peptides</h2>
           <p className="text-gray-700 mb-4">

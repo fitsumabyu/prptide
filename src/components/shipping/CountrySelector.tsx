@@ -13,6 +13,7 @@ import { preferredCountries } from "./PreferredDestinations";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import allCountriesData from "./countries.json";
+import { useShippingCountry } from "@/context/ShippingCountryContext";
 
 // Use the full countries list from the JSON file
 const allCountries = allCountriesData.map(country => ({
@@ -134,6 +135,7 @@ interface CountrySelectorProps {
 
 const CountrySelector: React.FC<CountrySelectorProps> = ({ className }) => {
   const { selectedCountry, setSelectedCountry } = useCountry();
+  const { country, setCountry } = useShippingCountry();
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -142,11 +144,23 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({ className }) => {
     country.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Custom handler to update both contexts
+  const handleCountryChange = (countryName: string) => {
+    setSelectedCountry(countryName);
+    
+    // Find the country object by name to get its ID
+    const countryObj = allCountries.find(c => c.name === countryName);
+    if (countryObj) {
+      // Update the shipping country context with the country ID
+      setCountry(countryObj.id);
+    }
+  };
+
   // Custom Select component with search
   return (
     <div className={className}>
       <Select 
-        onValueChange={setSelectedCountry} 
+        onValueChange={handleCountryChange} 
         value={selectedCountry}
         onOpenChange={(open) => {
           setIsOpen(open);

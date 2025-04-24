@@ -1,9 +1,11 @@
 import React from "react";
 import { AlertTriangle } from "lucide-react";
 import { useCountry } from "./CountrySelector";
+import { useShippingCountry } from "@/context/ShippingCountryContext";
 
 const ShippingWarningBanner: React.FC = () => {
   const { showWarning, warningMessage } = useCountry();
+  const { country } = useShippingCountry();
 
   if (!showWarning) return null;
 
