@@ -36,7 +36,7 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Title bar with colored background */}
         <div className="relative mb-16 py-3 px-6 overflow-hidden bg-gradient-to-r w-fit mx-auto">
-          <h2 className="text-3xl font-bold text-purple-600 relative z-10">Why Choose Our Peptides</h2>
+          <h2 className="text-3xl font-bold text-purple-600 relative z-10">Why Choose Our Peptides </h2>
         </div>
         
         <p className="text-lg text-gray-600 max-w-2xl mx-auto text-center mb-12">
