@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/context/CartContext";
 import { useState, useEffect } from "react";
 import AgeVerification from "@/components/AgeVerification";
+import { CountryProvider } from "@/components/shipping/CountrySelector";
+import ShippingWarningBanner from "@/components/shipping/ShippingWarningBanner";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
@@ -37,30 +40,34 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <ScrollToTop />
         <CartProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            {!ageVerified && <AgeVerification onVerify={handleAgeVerification} />}
-            <div className={!ageVerified ? "hidden" : ""}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetail />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/shipping" element={<Shipping />} />
-                <Route path="/shipping-policy" element={<ShippingPolicy />} />
-                <Route path="/disclaimer" element={<Disclaimer />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/refund-policy" element={<RefundPolicy />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </div>
-          </TooltipProvider>
+          <CountryProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              {!ageVerified && <AgeVerification onVerify={handleAgeVerification} />}
+              <div className={!ageVerified ? "hidden" : ""}>
+                <ShippingWarningBanner />
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/products/:id" element={<ProductDetail />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/terms" element={<Terms />} />
+                  <Route path="/privacy" element={<Privacy />} />
+                  <Route path="/shipping" element={<Shipping />} />
+                  <Route path="/shipping-policy" element={<ShippingPolicy />} />
+                  <Route path="/disclaimer" element={<Disclaimer />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/refund-policy" element={<RefundPolicy />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </div>
+            </TooltipProvider>
+          </CountryProvider>
         </CartProvider>
       </BrowserRouter>
     </QueryClientProvider>

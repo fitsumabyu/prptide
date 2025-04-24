@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
@@ -12,6 +12,11 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const { totalItems } = useCart();
+  
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
     <div className="flex flex-col min-h-screen font-inter">

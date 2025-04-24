@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Menu } from "lucide-react";
@@ -9,6 +8,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import CountrySelector from "@/components/shipping/CountrySelector";
 
 const Navbar = () => {
   const { totalItems } = useCart();
@@ -24,9 +24,11 @@ const Navbar = () => {
     <header className="w-full border-b border-gray-200 sticky top-0 z-50 bg-white">
       <div className="container mx-auto px-4 py-2 flex items-center justify-between min-h-[60px]">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-peptide-purple flex-shrink-0">
-          Peptide Lab Nexus
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link to="/" className="text-2xl font-bold text-peptide-purple flex-shrink-0">
+            Peptide Lab Nexus
+          </Link>
+        </div>
 
         {/* Center nav links (desktop) */}
         <div className="flex-1 flex justify-center items-center">
@@ -40,36 +42,43 @@ const Navbar = () => {
             <Link to="/contact" className="text-gray-700 hover:text-peptide-purple transition-colors">
               Contact
             </Link>
-            
           </nav>
         </div>
 
-        {/* Cart icon, always present */}
-        <div className="ml-2 flex items-center relative">
-          <Button
-            asChild
-            variant="ghost"
-            size="xl"
-            className="relative flex items-center justify-center border-0 shadow-none bg-transparent h-auto w-auto p-0 focus-visible:ring-2 focus-visible:ring-peptide-purple"
-            style={{ minWidth: 0, minHeight: 0 }}
-          >
-            <Link
-              to="/cart"
-              className="flex items-center justify-center h-full w-full"
-              aria-label="Cart"
+        {/* Right side items: Country selector and Cart (Desktop only) */}
+        <div className="flex items-center gap-2">
+          {/* Country Selector - responsive for both desktop and mobile */}
+          <div className="mr-2">
+            <CountrySelector className="scale-90 sm:scale-100" />
+          </div>
+          
+          {/* Cart icon - desktop only */}
+          <div className="hidden md:flex items-center relative">
+            <Button
+              asChild
+              variant="ghost"
+              size="xl"
+              className="relative flex items-center justify-center border-0 shadow-none bg-transparent h-auto w-auto p-0 focus-visible:ring-2 focus-visible:ring-peptide-purple"
+              style={{ minWidth: 0, minHeight: 0 }}
             >
-              <ShoppingCart className="h-24 w-24 text-peptide-purple" />
-              {totalItems > 0 && (
-                <span className="absolute -top-4 -right-4 bg-peptide-purple text-white rounded-full h-7 w-7 flex items-center justify-center text-base font-bold">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-          </Button>
+              <Link
+                to="/cart"
+                className="flex items-center justify-center h-full w-full"
+                aria-label="Cart"
+              >
+                <ShoppingCart className="h-24 w-24 text-peptide-purple" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-4 -right-4 bg-peptide-purple text-white rounded-full h-7 w-7 flex items-center justify-center text-base font-bold">
+                    {totalItems}
+                  </span>
+                )}
+              </Link>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile hamburger menu */}
-        <div className="md:hidden ml-2">
+        <div className="md:hidden ml-2 relative">
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button
@@ -79,10 +88,26 @@ const Navbar = () => {
                 aria-label="Open menu"
               >
                 <Menu size={32} />
+                {/* Show cart count on hamburger menu when there are items */}
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-peptide-purple text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold">
+                    {totalItems}
+                  </span>
+                )}
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0 flex flex-col">
               <nav className="flex flex-col gap-4 p-6 min-h-[50vh]">
+                {/* Mobile Cart Link */}
+                <Link
+                  to="/cart"
+                  className="flex items-center gap-2 text-lg text-peptide-purple hover:text-peptide-purple/80 transition-colors font-medium border-b border-gray-200 pb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ShoppingCart size={20} />
+                  <span>Cart{totalItems > 0 ? ` (${totalItems})` : ''}</span>
+                </Link>
+                
                 <Link
                   to="/products"
                   className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
