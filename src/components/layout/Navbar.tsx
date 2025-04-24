@@ -24,9 +24,9 @@ const Navbar = () => {
     <header className="w-full border-b border-gray-200 sticky top-0 z-50 bg-white">
       <div className="container mx-auto px-4 py-2 flex items-center justify-between min-h-[60px]">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <Link to="/" className="text-2xl font-bold text-peptide-purple flex-shrink-0">
-            Peptide Lab Nexus
+        <div className="flex items-center">
+          <Link to="/" className="font-bold text-peptide-purple flex-shrink-0 text-sm sm:text-2xl">
+            <span className="md:inline">Peptide Lab Nexus</span>
           </Link>
         </div>
 
@@ -45,15 +45,15 @@ const Navbar = () => {
           </nav>
         </div>
 
-        {/* Right side items: Country selector and Cart (Desktop only) */}
-        <div className="flex items-center gap-2">
-          {/* Country Selector - responsive for both desktop and mobile */}
-          <div className="mr-2">
+        {/* Right side items: Country selector and Cart (Desktop) / Country selector and Hamburger (Mobile) */}
+        <div className="flex items-center gap-2 ml-auto">
+          {/* Country Selector */}
+          <div className="mr-2 order-1 md:order-1">
             <CountrySelector className="scale-90 sm:scale-100" />
           </div>
           
           {/* Cart icon - desktop only */}
-          <div className="hidden md:flex items-center relative">
+          <div className="hidden md:flex items-center relative order-2">
             <Button
               asChild
               variant="ghost"
@@ -75,60 +75,60 @@ const Navbar = () => {
               </Link>
             </Button>
           </div>
-        </div>
-
-        {/* Mobile hamburger menu */}
-        <div className="md:hidden ml-2 relative">
-          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="xl"
-                className="text-gray-700 h-10 w-10 p-0 flex items-center justify-center"
-                aria-label="Open menu"
-              >
-                <Menu size={32} />
-                {/* Show cart count on hamburger menu when there are items */}
-                {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-peptide-purple text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold">
-                    {totalItems}
-                  </span>
-                )}
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="p-0 flex flex-col">
-              <nav className="flex flex-col gap-4 p-6 min-h-[50vh]">
-                {/* Mobile Cart Link */}
-                <Link
-                  to="/cart"
-                  className="flex items-center gap-2 text-lg text-peptide-purple hover:text-peptide-purple/80 transition-colors font-medium border-b border-gray-200 pb-4"
-                  onClick={() => setMobileMenuOpen(false)}
+          
+          {/* Mobile hamburger menu */}
+          <div className="md:hidden relative order-2">
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="xl"
+                  className="text-gray-700 h-10 w-10 p-0 flex items-center justify-center"
+                  aria-label="Open menu"
                 >
-                  <ShoppingCart size={20} />
-                  <span>Cart{totalItems > 0 ? ` (${totalItems})` : ''}</span>
-                </Link>
-                
-                <Link
-                  to="/products"
-                  className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
-                >
-                  Products
-                </Link>
-                <Link
-                  to="/about"
-                  className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  to="/contact"
-                  className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
-                >
-                  Contact
-                </Link>
-              </nav>
-            </SheetContent>
-          </Sheet>
+                  <Menu size={32} />
+                  {/* Show cart count on hamburger menu when there are items */}
+                  {totalItems > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-peptide-purple text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold">
+                      {totalItems}
+                    </span>
+                  )}
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="p-0 flex flex-col">
+                <nav className="flex flex-col gap-4 p-6 min-h-[50vh]">
+                  {/* Mobile Cart Link */}
+                  <Link
+                    to="/cart"
+                    className="flex items-center gap-2 text-lg text-peptide-purple hover:text-peptide-purple/80 transition-colors font-medium border-b border-gray-200 pb-4"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <ShoppingCart size={20} />
+                    <span>Cart{totalItems > 0 ? ` (${totalItems})` : ''}</span>
+                  </Link>
+                  
+                  <Link
+                    to="/products"
+                    className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
+                  >
+                    Products
+                  </Link>
+                  <Link
+                    to="/about"
+                    className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
+                  >
+                    Contact
+                  </Link>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
