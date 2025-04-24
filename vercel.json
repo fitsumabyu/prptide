@@ -3,6 +3,8 @@
       "env": {
         "NODE_VERSION": "20"
       }
-    }
+    },
+    "buildCommand": "npm install --force && npm run build",
+    "outputDirectory": "dist"
   }
   
