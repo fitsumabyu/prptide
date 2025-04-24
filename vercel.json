@@ -1,7 +1,11 @@
 {
     "build": {
       "env": {
-        "NODE_VERSION": "20"
+        "NODE_VERSION": "20",
+        "NEXT_TELEMETRY_DISABLED": "1",
+        "SKIP_INSTALL_DEPS": "1",
+        "SWC_DISABLE_NATIVE": "1",
+        "NODE_OPTIONS": "--no-node-snapshot --max-old-space-size=4096"
       }
     },
     "buildCommand": "npm install --force && npm run build",
