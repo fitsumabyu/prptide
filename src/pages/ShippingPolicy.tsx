@@ -10,7 +10,7 @@ const ShippingPolicy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At Peptide Lab Nexus, we strive to deliver your research products safely, securely, and efficiently. This policy outlines our shipping procedures, estimated delivery times, and other important information related to the delivery of your order.
+              At Nexus Lab, we strive to deliver your research products safely, securely, and efficiently. This policy outlines our shipping procedures, estimated delivery times, and other important information related to the delivery of your order.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Processing Time</h2>
@@ -18,7 +18,7 @@ const ShippingPolicy = () => {
               All orders are processed within 1-2 business days (Monday through Friday, excluding holidays) after receiving your order confirmation. You will receive an email with tracking information once your order has shipped.
             </p>
             <p className="text-gray-700 mb-6">
-              Please note that for custom synthesized peptides, processing time may be extended to 5-10 business days depending on complexity and quantity.
+              Please note that for custom synthesized chemical reference materials, processing time may be extended to 5-10 business days depending on complexity and quantity.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">2. Shipping Methods</h2>
@@ -29,7 +29,6 @@ const ShippingPolicy = () => {
               <li><strong>Standard Shipping:</strong> 3-5 business days (USPS Priority Mail or UPS Ground)</li>
               <li><strong>Expedited Shipping:</strong> 2-3 business days (UPS 2-Day Air)</li>
               <li><strong>Rush Shipping:</strong> 1-2 business days (UPS Next Day Air)</li>
-              <li><strong>International Shipping:</strong> 7-14 business days (varies by destination)</li>
             </ul>
             <p className="text-gray-700 mb-6">
               For products requiring temperature-controlled shipping, we use specialized packaging with cold packs or dry ice to maintain product integrity during transit. These items are shipped exclusively via expedited services.
@@ -37,13 +36,12 @@ const ShippingPolicy = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">3. Shipping Costs</h2>
             <p className="text-gray-700 mb-6">
-              Shipping costs are calculated based on the weight of your order, shipping method, and destination:
+              Shipping costs are calculated based on the weight of your order, shipping method, and destination state:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
               <li><strong>Standard Shipping:</strong> $10-15 (free for orders over $250)</li>
               <li><strong>Expedited Shipping:</strong> $20-30</li>
               <li><strong>Rush Shipping:</strong> $35-50</li>
-              <li><strong>International Shipping:</strong> $40-100 (varies by country)</li>
               <li><strong>Temperature-Controlled Shipping:</strong> Additional $15-25</li>
             </ul>
             <p className="text-gray-700 mb-6">
@@ -52,31 +50,25 @@ const ShippingPolicy = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">4. Geographic Shipping Restrictions</h2>
             <p className="text-gray-700 mb-6">
-              Due to regulatory requirements and shipping constraints, we are unable to ship to certain countries and regions. Currently, we ship to:
+              We currently only ship within the United States. Our domestic shipping network includes:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
-              <li>United States (all 50 states and territories)</li>
-              <li>Canada (except Nunavut)</li>
-              <li>European Union member countries</li>
-              <li>United Kingdom</li>
-              <li>Australia</li>
-              <li>New Zealand</li>
-              <li>Japan</li>
-              <li>South Korea</li>
-              <li>Singapore</li>
+              <li>All 48 contiguous United States</li>
+              <li>Alaska (additional shipping charges may apply)</li>
+              <li>Hawaii (additional shipping charges may apply)</li>
             </ul>
             <p className="text-gray-700 mb-6">
-              If your country is not listed above, please contact our customer service team to determine shipping eligibility.
+              At this time, we do not offer international shipping. This allows us to focus on providing the highest quality service and ensuring product integrity for our domestic customers.
             </p>
             
-            <PreferredDestinations />
-            
             <div className="bg-gray-100 p-4 rounded-md mb-6">
-              <h3 className="font-semibold text-gray-800 mb-2">Service Regions Clarification:</h3>
+              <h3 className="font-semibold text-gray-800 mb-2">Domestic Focus:</h3>
               <p className="text-gray-700">
-                We do not ship to the following regions due to regulatory constraints: North Korea, Iran, Syria, Cuba, and certain regions of Ukraine and Russia. For complete transparency, we explicitly state on our homepage and checkout process: "We do not ship to these restricted regions." This ensures compliance with legal restrictions in certain jurisdictions.
+                We focus exclusively on serving the domestic US market to ensure compliance with all regulatory requirements and to minimize shipping risks. Our laboratory reagents are formulated and packaged specifically for US research facilities.
               </p>
             </div>
+            
+            <PreferredDestinations />
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">5. Order Tracking</h2>
             <p className="text-gray-700 mb-6">
@@ -98,27 +90,20 @@ const ShippingPolicy = () => {
               <li><strong>Incorrect Address:</strong> If you provided an incorrect shipping address, additional shipping charges may apply for redirection or reshipment.</li>
             </ul>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">7. International Orders</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">7. Interstate Shipping Considerations</h2>
             <p className="text-gray-700 mb-6">
-              For international orders, please note:
+              For shipping between states, please note:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
-              <li><strong>Customs Duties and Taxes:</strong> Customers are responsible for any customs duties, taxes, or import fees levied by their country's customs authorities.</li>
-              <li><strong>Customs Delays:</strong> International shipments may be subject to customs inspection, which can delay delivery. These delays are beyond our control.</li>
-              <li><strong>Documentation:</strong> We provide all necessary documentation for customs clearance, but we cannot guarantee that your order will clear customs in your country.</li>
+              <li><strong>State Regulations:</strong> Some states may have specific regulations regarding certain laboratory reagents. We ensure all shipments comply with state-level requirements.</li>
+              <li><strong>Delivery Timelines:</strong> Delivery to certain states may take longer depending on distance from our distribution centers.</li>
+              <li><strong>Documentation:</strong> We provide all necessary documentation for interstate shipping of research materials.</li>
             </ul>
             
             <div className="bg-gray-100 p-4 rounded-md mb-6">
-              <h3 className="font-semibold text-gray-800 mb-2">Import/Export Compliance Notice:</h3>
+              <h3 className="font-semibold text-gray-800 mb-2">State Law Considerations:</h3>
               <p className="text-gray-700">
-                International customers are responsible for complying with all local laws regarding import and use of our products. Customers must ensure the products are legal in their country and are responsible for any import duties or restrictions. By placing an order, you confirm that you will comply with all applicable regulations in your jurisdiction.
-              </p>
-            </div>
-            
-            <div className="bg-gray-100 p-4 rounded-md mb-6">
-              <h3 className="font-semibold text-gray-800 mb-2">Local Law Considerations:</h3>
-              <p className="text-gray-700">
-                Our products are sold with standard disclaimers (research use only, no medical claims, age restrictions) to comply with international regulations. All our product descriptions and packaging avoid using regulated terminology that might be interpreted differently across jurisdictions. These standard disclaimers ensure our compliance with global merchant processing requirements.
+                Our products are sold with standard disclaimers (research use only, no medical claims, age restrictions) to comply with regulations across all US states. All our product descriptions and packaging avoid using regulated terminology that might be interpreted differently across state jurisdictions.
               </p>
             </div>
             
@@ -127,7 +112,7 @@ const ShippingPolicy = () => {
               If you have any questions about our shipping policy or need assistance with a shipment, please contact our customer service team:
             </p>
             <p className="text-gray-700 mb-6">
-              Email: shipping@peptidelabnexus.com<br />
+              Email: shipping@nexuslab.com<br />
               Phone: (800) 123-4567<br />
               Hours: Monday-Friday, 9am-5pm EST
             </p>

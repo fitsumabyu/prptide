@@ -167,11 +167,19 @@ const ProductDetail = () => {
               <div className="prose max-w-none">
                 <h3 className="text-xl font-semibold mb-4">Product Information</h3>
                 <p>{product.description}</p>
-                <p>For research use only. Not for human or veterinary use.</p>
+                <p className="font-medium text-red-600">For research use only. Not for human or veterinary use.</p>
+                
+                <h4 className="text-lg font-semibold mt-6 mb-3">Chemical Information</h4>
+                <p>
+                  This chemical reference material is intended solely for controlled laboratory research. 
+                  Not for use in diagnostic procedures, therapeutic applications, or human consumption.
+                </p>
+                
                 <h4 className="text-lg font-semibold mt-6 mb-3">Storage and Handling</h4>
                 <p>
                   {product.details.storage}<br />
                   Once reconstituted, the product should be used immediately or stored at -20°C in aliquots.
+                  Handle in accordance with good laboratory practices and safety guidelines.
                 </p>
               </div>
             </TabsContent>
@@ -190,15 +198,19 @@ const ProductDetail = () => {
                 <div className="space-y-6">
                   <div>
                     <h4 className="text-lg font-semibold">What is the purity level of this product?</h4>
-                    <p>This product has a purity level of {product.purity}. Each batch is tested and comes with a Certificate of Analysis.</p>
+                    <p>This product has a purity level of {product.purity}. Each batch is tested and comes with a Certificate of Analysis for research verification.</p>
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">How should I store this product?</h4>
                     <p>{product.details.storage}</p>
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold">Is this product available for international shipping?</h4>
-                    <p>Yes, we ship to select international destinations. Please see the Shipping tab for specific country availability for this product.</p>
+                    <h4 className="text-lg font-semibold">What is the intended use of this product?</h4>
+                    <p>This product is intended solely for in vitro laboratory research conducted by qualified professionals. It is not intended for diagnostic use, therapeutic use, human consumption, or any other non-research application.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold">Is this product available for shipping to my location?</h4>
+                    <p>We currently only ship to domestic US addresses. Please see the Shipping tab for specific state availability for this product.</p>
                   </div>
                 </div>
               </div>

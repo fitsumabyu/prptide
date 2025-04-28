@@ -6,7 +6,7 @@ const features = [
   {
     icon: <Check className="h-6 w-6 text-white" />,
     title: "High Purity",
-    description: "All peptides are rigorously tested to ensure ≥99% purity."
+    description: "All chemical reference materials are rigorously tested to ensure ≥99% purity."
   },
   {
     icon: <Shield className="h-6 w-6 text-white" />,
@@ -21,7 +21,7 @@ const features = [
   {
     icon: <TrendingUp className="h-6 w-6 text-white" />,
     title: "Scientific Advancement",
-    description: "Supporting cutting-edge research in peptide science."
+    description: "Supporting cutting-edge research in chemical reference material science."
   }
 ];
 
@@ -36,11 +36,11 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Title bar with colored background */}
         <div className="relative mb-16 py-3 px-6 overflow-hidden bg-gradient-to-r w-fit mx-auto">
-          <h2 className="text-3xl font-bold text-purple-600 relative z-10">Why Choose Our Peptides</h2>
+          <h2 className="text-3xl font-bold text-purple-600 relative z-10">Why Choose Our Laboratory Reagents</h2>
         </div>
         
         <p className="text-lg text-gray-600 max-w-2xl mx-auto text-center mb-12">
-          Our commitment to quality ensures that researchers receive the highest grade peptides for their laboratory studies.
+          Our commitment to quality ensures that researchers receive the highest grade chemical reference materials for their laboratory studies.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -73,7 +73,7 @@ const FeaturesSection = () => {
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 relative">
               <img 
-                src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=800&auto=format&fit=crop&q=80" 
+                src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://storage.googleapis.com/msgsndr/Y44yZjGjpONpnXptj5cE/media/67381e52e3d9716df25f08f9.jpeg" 
                 alt="Laboratory research" 
                 className="w-full h-full object-cover"
               />
@@ -82,7 +82,7 @@ const FeaturesSection = () => {
             <div className="md:w-1/2 bg-gradient-to-br from-peptide-purple/90 to-peptide-dark-purple p-8 flex flex-col justify-center">
               <h3 className="text-white text-2xl font-bold mb-4">Research-Grade Excellence</h3>
               <p className="text-white text-lg mb-6">
-                Our peptides meet the highest standards for laboratory research applications.
+                Our laboratory reagents meet the highest standards for laboratory research applications.
               </p>
               <div className="flex items-center">
                 <span className="inline-block mr-3 p-1 rounded-full bg-red-500">

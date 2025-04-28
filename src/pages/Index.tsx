@@ -13,10 +13,9 @@ const Index = () => {
       
       <div className="py-20 container mx-auto px-4 bg-gradient-to-b from-white to-gray-50 -mt-[1px]">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Premium Research Peptides</h2>
-          <p className="text-gray-700 mb-4">
-            Browse our selection of high-purity peptides specifically formulated for advanced laboratory research.
-            All products undergo rigorous quality control testing.
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Premium Laboratory Reagents</h2>
+          <p className="text-lg text-gray-700 mb-8 max-w-2xl">
+            Browse our selection of high-purity chemical reference materials specifically formulated for advanced laboratory research.
           </p>
           <div className="inline-block bg-red-50 p-2 rounded-md border border-red-100">
             <p className="text-sm text-red-600 font-medium">For Research Use Only - Not for Human Use</p>
@@ -34,7 +33,7 @@ const Index = () => {
         
         <ProductCarousel 
           products={products} 
-          title="Featured Research Peptides" 
+          title="Featured Chemical Reference Materials" 
         />
       </div>
       

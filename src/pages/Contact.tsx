@@ -56,11 +56,11 @@ const Contact = () => {
                 <span>Monday - Friday: 9:00 AM - 5:00 PM EST</span>
               </div>
               <a 
-                href="mailto:info@peptidelabnexus.com" 
+                href="mailto:info@nexuslab.com" 
                 className="text-peptide-purple hover:underline flex items-center"
               >
                 <Mail className="h-4 w-4 mr-2" />
-                info@peptidelabnexus.com
+                info@nexuslab.com
               </a>
             </div>
           </div>
@@ -74,7 +74,7 @@ const Contact = () => {
                   <div>
                     <h2 className="text-lg font-semibold mb-2">Physical Address</h2>
                     <p className="text-gray-700">
-                      Peptide Lab Nexus, LLC<br />
+                      Nexus Lab, LLC<br />
                       123 Science Drive<br />
                       Suite 204<br />
                       Boston, MA 02210<br />
@@ -121,15 +121,15 @@ const Contact = () => {
                     <h2 className="text-lg font-semibold mb-2">Email Contacts</h2>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">General Inquiries:</span>
-                      <a href="mailto:info@peptidelabnexus.com" className="hover:underline">info@peptidelabnexus.com</a>
+                      <a href="mailto:info@nexuslab.com" className="hover:underline">info@nexuslab.com</a>
                     </p>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Sales Department:</span>
-                      <a href="mailto:sales@peptidelabnexus.com" className="hover:underline">sales@peptidelabnexus.com</a>
+                      <a href="mailto:sales@nexuslab.com" className="hover:underline">sales@nexuslab.com</a>
                     </p>
                     <p className="text-gray-700">
                       <span className="font-medium block">Technical Support:</span>
-                      <a href="mailto:support@peptidelabnexus.com" className="hover:underline">support@peptidelabnexus.com</a>
+                      <a href="mailto:support@nexuslab.com" className="hover:underline">support@nexuslab.com</a>
                     </p>
                   </div>
                 </div>

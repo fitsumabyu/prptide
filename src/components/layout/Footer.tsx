@@ -7,10 +7,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link to="/" className="text-xl font-bold text-peptide-purple">
-              Peptide Lab Nexus
+               Nexus Lab
             </Link>
             <p className="mt-3 text-sm text-gray-600">
-              Research-grade peptides for laboratory use only.
+              Research-grade laboratory reagents for laboratory use only.
             </p>
           </div>
           

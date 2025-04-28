@@ -8,27 +8,24 @@ import { toast } from "@/components/ui/use-toast";
 import { useCountry } from "@/components/shipping/CountrySelector";
 import { allCountries } from "@/components/shipping/CountrySelector";
 
-// List of countries we ship to (must match IDs in the CountrySelector component)
-const allowedCountries = [
-  "GB", // United Kingdom
-  "CA", // Canada
-  "DE", // Germany
-  "NL", // Netherlands
-  "SE", // Sweden
-  "DK", // Denmark
-  "FI", // Finland
-  "NO", // Norway
-  "IE", // Ireland
-  "NZ"  // New Zealand
+// List of US states we ship to
+const allowedStates = [
+  "CA", // California
+  "NY", // New York
+  "TX", // Texas
+  "FL", // Florida
+  "IL", // Illinois
+  "WA", // Washington
+  "CO", // Colorado
+  "MA", // Massachusetts
+  "PA", // Pennsylvania
+  "MI"  // Michigan
 ];
 
-// Add specific warning countries
+// All non-US countries are restricted
 const restrictedCountries = [
-  "AE", // U.A.E.
-  "IR", // Iran
-  "KP", // North Korea
-  "SY", // Syria
-  "CU"  // Cuba
+  "GB", "CA", "DE", "NL", "SE", "DK", "FI", "NO", "IE", "NZ", 
+  "AU", "FR", "IT", "ES", "JP", "KR", "SG", "AE", "IR", "KP", "SY", "CU"
 ];
 
 interface HeroSectionProps {
@@ -130,21 +127,17 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
           setSelectedCountry(countryObject.name);
           
           // Check if shipping is available to this country
-          const isShippingAvailable = allowedCountries.includes(countryCode);
-          const isRestricted = restrictedCountries.includes(countryCode);
+          const isUSLocation = countryCode === "US";
+          const isInternational = !isUSLocation;
           
           let toastVariant = "default";
-          let toastTitle = "Shipping Available";
-          let toastDescription = `We can ship to your location (${countryObject.name}).`;
+          let toastTitle = "Domestic Shipping Available";
+          let toastDescription = `We can ship to your location in the United States.`;
           
-          if (isRestricted) {
+          if (isInternational) {
             toastVariant = "destructive";
-            toastTitle = "Shipping Restricted";
-            toastDescription = `Sorry, we do not ship to ${countryObject.name}!`;
-          } else if (!isShippingAvailable) {
-            toastVariant = "destructive";
-            toastTitle = "Shipping Unavailable";
-            toastDescription = `Sorry, we currently don't ship to ${countryObject.name}. Check back soon as we expand our shipping network.`;
+            toastTitle = "International Shipping Unavailable";
+            toastDescription = `Sorry, we currently only ship within the United States.`;
           }
           
           toast({
@@ -217,10 +210,10 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
         <div className="container mx-auto px-4 relative h-full flex items-center justify-center">
           <div className="max-w-3xl text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4 [text-shadow:_0_1px_10px_rgba(0,0,0,0.9)]">
-              Research-Grade Peptides for Laboratory Use Only
+              Research-Grade Laboratory Reagents for Laboratory Use Only
             </h1>
             <p className="text-xl text-gray-100 mb-6 [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
-              Premium quality peptides with high purity for scientific research. 
+              Premium quality chemical reference materials with high purity for scientific research. 
               <span className="font-semibold text-red-400"> Strictly for research purposes. Not for human consumption.</span>
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

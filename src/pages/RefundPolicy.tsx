@@ -9,7 +9,7 @@ const RefundPolicy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At Peptide Lab Nexus, we strive to ensure your satisfaction with every purchase. This policy outlines our procedures for returns, refunds, and order cancellations.
+              At Nexus Lab, we strive to ensure your satisfaction with every purchase. This policy outlines our procedures for returns, refunds, and order cancellations.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Return Conditions</h2>
@@ -30,7 +30,7 @@ const RefundPolicy = () => {
             <ul className="list-disc pl-6 text-gray-700 mb-6">
               <li>Opened or used products</li>
               <li>Products with broken seals or damaged packaging</li>
-              <li>Custom-synthesized peptides</li>
+              <li>Custom-synthesized chemical reference materials</li>
               <li>Products requiring refrigeration or special handling</li>
               <li>Items marked as non-returnable at the time of purchase</li>
             </ul>
@@ -71,7 +71,7 @@ const RefundPolicy = () => {
               To start the return process:
             </p>
             <ol className="list-decimal pl-6 text-gray-700 mb-6">
-              <li>Contact our customer service team at returns@peptidelabnexus.com or call (800) 123-4567.</li>
+              <li>Contact our customer service team at returns@nexuslab.com or call (800) 123-4567.</li>
               <li>Provide your order number, the items you wish to return, and the reason for the return.</li>
               <li>If approved, you will receive a Return Merchandise Authorization (RMA) number and return instructions.</li>
               <li>Package the items securely with the RMA number clearly marked on the outside of the package.</li>

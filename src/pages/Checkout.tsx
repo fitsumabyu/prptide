@@ -239,13 +239,27 @@ const Checkout = () => {
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
               <h3 className="text-lg font-semibold mb-4">Accepted Payment Methods</h3>
               <div className="flex flex-wrap gap-4 mb-6">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-8 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mastercard.svg" alt="Mastercard" className="h-8 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/americanexpress.svg" alt="American Express" className="h-8 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/discover.svg" alt="Discover" className="h-8 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/applepay.svg" alt="Apple Pay" className="h-8 grayscale" />
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/googlepay.svg" alt="Google Pay" className="h-8 grayscale" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/visa.svg" alt="Visa" className="h-8" />
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@develop/icons/mastercard.svg" alt="Mastercard" className="h-8" />
               </div>
+              <p className="text-sm text-gray-600">We only accept Visa and Mastercard for all transactions. We do not accept any other payment methods at this time.</p>
+            </div>
+            
+            {/* Research Use Disclaimer */}
+            <div className="bg-red-50 border border-red-200 p-5 rounded-lg shadow-sm mb-6">
+              <p className="text-red-700 font-medium mb-2 text-lg">
+                IMPORTANT DISCLAIMER
+              </p>
+              <p className="text-red-600 text-sm leading-relaxed">
+                We sell laboratory reagents and chemical reference materials for academic and 
+                industrial research. We do not sell consumer products. All products are labeled for 
+                research use only.
+              </p>
+              <p className="text-red-600 text-sm leading-relaxed mt-2">
+                These products are intended for laboratory research use only. Not for diagnostic, therapeutic, or human use.
+                These statements have not been evaluated by the Food and Drug Administration. 
+                These products are not intended to diagnose, treat, cure, or prevent any disease.
+              </p>
             </div>
 
             {/* Trust Badges Section */}
@@ -286,7 +300,7 @@ const Checkout = () => {
               <div className="space-y-4 text-sm text-gray-700">
                 <div>
                   <h4 className="font-medium mb-1">Payment Methods</h4>
-                  <p>We accept Visa, MasterCard, American Express, and Discover. All payments are processed in USD.</p>
+                  <p>We primarily accept Visa and Mastercard. All payments are processed in USD.</p>
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Billing & Pricing</h4>

@@ -16,7 +16,7 @@ const ResearchSection = () => {
         </div>
         
         <p className="text-lg text-gray-600 max-w-2xl mx-auto text-center mb-12">
-          Our peptides are used in various laboratory research applications. Here are some common research areas.
+          Our laboratory reagents are used in various laboratory research applications. Here are some common research areas.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -33,7 +33,7 @@ const ResearchSection = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Cell Signaling Studies</h3>
               <p className="text-purple-50">
-                Investigate intercellular communication pathways and signal transduction mechanisms using our high-purity peptides.
+                Investigate intercellular communication pathways and signal transduction mechanisms using our high-purity chemical reference materials.
               </p>
             </div>
             
@@ -99,7 +99,7 @@ const ResearchSection = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Structural Biology</h3>
               <p className="text-purple-50">
-                Explore peptide structures and their functional relationships in biological systems.
+                Explore Research Compounds and their functional relationships in biological systems.
               </p>
             </div>
             

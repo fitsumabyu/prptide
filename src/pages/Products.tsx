@@ -21,19 +21,17 @@ const restrictedCountries = [
 // Define category descriptions for filter
 const categoryDescriptions: Record<string, string> = {
   "all": "View all product categories",
-  "Tissue Healing": "Peptides studied for tissue protective properties",
-  "Growth Hormone": "Peptides related to growth hormone function",
-  "Melanocortin": "Peptides that interact with melanocortin receptors",
-  "Modified Growth Hormone": "Modified fragments of growth hormone peptides"
+  "Reference Material": "Standardized chemical compounds for research calibration and controls",
+  "Academic Research Supply": "Materials designed for controlled laboratory experiments",
+  "Laboratory Reagent": "Chemical substances for in vitro scientific applications"
 };
 
 // Define the type for our category filter
 interface CategoryFilterState {
   "all": boolean;
-  "Tissue Healing": boolean;
-  "Growth Hormone": boolean;
-  "Melanocortin": boolean;
-  "Modified Growth Hormone": boolean;
+  "Reference Material": boolean;
+  "Academic Research Supply": boolean;
+  "Laboratory Reagent": boolean;
   [key: string]: boolean; // To allow dynamic keys
 }
 
@@ -45,10 +43,9 @@ const Products = () => {
   // Set up filter state with initial values
   const initialCategoryFilter: CategoryFilterState = {
     "all": true,
-    "Tissue Healing": false,
-    "Growth Hormone": false,
-    "Melanocortin": false,
-    "Modified Growth Hormone": false
+    "Reference Material": false,
+    "Academic Research Supply": false,
+    "Laboratory Reagent": false
   };
   
   const [filter, setFilter] = useState({
@@ -226,9 +223,11 @@ const Products = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12 min-h-[calc(100vh-96px)] flex flex-col">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Research Peptides</h1>
+          <h1 className="text-3xl font-bold mb-4">Laboratory Research Reagents</h1>
           <p className="text-gray-600 mb-6">
-            Browse our selection of high-purity peptides for laboratory research applications.
+            We sell laboratory reagents and chemical reference materials for academic and 
+            industrial research. We do not sell consumer products. All products are labeled for 
+            research use only.
             <span className="text-red-600 font-medium"> For Research Use Only - Not for Human Use.</span>
           </p>
           
@@ -299,7 +298,7 @@ const Products = () => {
               <AlertTriangle className="h-12 w-12 text-red-500" />
               <h2 className="text-2xl font-bold text-red-700">Products Not Available in Your Region</h2>
               <p className="text-red-600 max-w-2xl">
-                We're sorry, but we currently don't ship our research peptides to your selected country. 
+                We're sorry, but we currently don't ship our laboratory reagents to your selected country. 
                 Please select a different shipping destination to view our product catalog.
               </p>
             </div>

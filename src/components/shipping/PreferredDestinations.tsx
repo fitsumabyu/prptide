@@ -8,78 +8,78 @@ export type ShippingDestination = {
   productSpecific?: boolean; // Indicates if this is a product-specific destination
 };
 
-// General destinations available for all products
-const preferredCountries: ShippingDestination[] = [
+// US states for domestic shipping
+const preferredStates: ShippingDestination[] = [
   {
     id: 1,
-    name: "United Kingdom",
-    description: "Permits importation of research chemicals with proper labeling."
+    name: "California",
+    description: "2-3 business days shipping to major cities"
   },
   {
     id: 2,
-    name: "Canada",
-    description: "Allows research-use-only peptides; ensure accurate documentation."
+    name: "New York",
+    description: "2-3 business days shipping to the metro area"
   },
   {
     id: 3,
-    name: "Germany",
-    description: "Accepts research chemicals; compliance with EU regulations is essential."
+    name: "Texas",
+    description: "2-4 business days shipping throughout the state"
   },
   {
     id: 4,
-    name: "Netherlands",
-    description: "Known for a pragmatic approach to research substances."
+    name: "Florida",
+    description: "2-3 business days shipping to major cities"
   },
   {
     id: 5,
-    name: "Sweden",
-    description: "Supports importation of research peptides with correct labeling."
+    name: "Illinois",
+    description: "2-3 business days shipping to Chicago metro area"
   },
   {
     id: 6,
-    name: "Denmark",
-    description: "Permits research chemicals under strict compliance."
+    name: "Washington",
+    description: "2-4 business days shipping to Seattle and surrounding areas"
   },
   {
     id: 7,
-    name: "Finland",
-    description: "Allows importation for research purposes with proper documentation."
+    name: "Colorado",
+    description: "3-5 business days shipping to major research centers"
   },
   {
     id: 8,
-    name: "Norway",
-    description: "Accepts research-use substances; ensure adherence to local regulations."
+    name: "Massachusetts",
+    description: "2-3 business days shipping to research institutions"
   },
   {
     id: 9,
-    name: "Ireland",
-    description: "Permits research chemicals; compliance with EU standards is required."
+    name: "Pennsylvania",
+    description: "2-4 business days shipping throughout the state"
   },
   {
     id: 10,
-    name: "New Zealand",
-    description: "Allows importation of research peptides with appropriate labeling."
+    name: "Michigan",
+    description: "3-5 business days shipping to major cities"
   }
 ];
 
 // Example of product-specific destinations (to be used in the future)
 // This can be merged with the main list when needed for specific products
-export const usaStatesForProduct: ShippingDestination[] = [
+export const additionalStates: ShippingDestination[] = [
   { 
     id: 101, 
-    name: "California", 
+    name: "New Jersey", 
     description: "Available for specific research products only",
     productSpecific: true
   },
   { 
     id: 102, 
-    name: "New York", 
+    name: "Maryland", 
     description: "Available for specific research products only",
     productSpecific: true
   },
   { 
     id: 103, 
-    name: "Florida", 
+    name: "Virginia", 
     description: "Available for specific research products only",
     productSpecific: true
   }
@@ -98,8 +98,8 @@ const PreferredDestinations: React.FC<PreferredDestinationsProps> = ({
 }) => {
   // Combine general destinations with any product-specific ones
   const destinations = productId 
-    ? [...preferredCountries, ...additionalDestinations]
-    : preferredCountries;
+    ? [...preferredStates, ...additionalDestinations]
+    : preferredStates;
   
   return (
     <div className="py-8">
@@ -108,27 +108,33 @@ const PreferredDestinations: React.FC<PreferredDestinationsProps> = ({
         <h2 className="text-2xl font-bold">
           {productName 
             ? `Shipping Destinations for ${productName}` 
-            : "Preferred Shipping Destinations"}
+            : "Domestic US Shipping States"}
         </h2>
       </div>
       
       {productName && (
         <p className="text-gray-600 mb-4">
-          Below are countries that accept shipment of this research product. Different products may have different shipping eligibility based on local regulations.
+          Below are states where we currently ship this research product. Different products may have different shipping eligibility based on local regulations.
         </p>
       )}
       
+      <div className="bg-amber-50 p-4 rounded-md border border-amber-200 mb-6">
+        <p className="text-amber-800 font-medium">
+          Note: We currently only ship within the United States. International shipping is not available at this time.
+        </p>
+      </div>
+      
       <div className="space-y-4">
-        {destinations.map((country) => (
-          <div key={country.id} className="flex items-start">
-            <div className={`text-lg font-semibold mr-2 ${country.productSpecific ? "text-blue-600" : "text-peptide-purple"}`}>
-              {country.id < 100 ? `${country.id}.` : "•"}
+        {destinations.map((state) => (
+          <div key={state.id} className="flex items-start">
+            <div className={`text-lg font-semibold mr-2 ${state.productSpecific ? "text-blue-600" : "text-peptide-purple"}`}>
+              {state.id < 100 ? `${state.id}.` : "•"}
             </div>
             <div>
-              <span className={`font-semibold ${country.productSpecific ? "text-blue-600" : ""}`}>
-                {country.name}:
+              <span className={`font-semibold ${state.productSpecific ? "text-blue-600" : ""}`}>
+                {state.name}:
               </span>{" "}
-              <span className="text-gray-700">{country.description}</span>
+              <span className="text-gray-700">{state.description}</span>
             </div>
           </div>
         ))}
@@ -144,4 +150,4 @@ const PreferredDestinations: React.FC<PreferredDestinationsProps> = ({
 };
 
 export default PreferredDestinations;
-export { preferredCountries }; 
+export { preferredStates }; 

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,8 +31,9 @@ const PaymentForm: React.FC<Props> = ({
     <div className="p-4 border border-gray-200 rounded-md bg-gray-50 mb-4">
       <div className="flex items-center text-gray-800">
         <CreditCard className="mr-2 h-5 w-5" />
-        <span>Credit Card Payment</span>
+        <span>Visa / Mastercard Payment</span>
       </div>
+      <p className="text-xs text-gray-500 mt-2">We primarily accept Visa and Mastercard for all transactions.</p>
     </div>
     <div className="space-y-2">
       <Label htmlFor="cardName">Name on Card</Label>

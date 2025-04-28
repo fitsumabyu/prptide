@@ -7,13 +7,16 @@ import "./product-carousel.css";
 import { useShippingCountry } from "@/context/ShippingCountryContext";
 import { useCountry } from "@/components/shipping/CountrySelector";
 
-// Define allowed and restricted countries
-const allowedCountries = [
-  "GB", "CA", "DE", "NL", "SE", "DK", "FI", "NO", "IE", "NZ"
+// Define US states (allowed) and non-US locations (restricted)
+const allowedLocations = [
+  "US-CA", "US-NY", "US-TX", "US-FL", "US-IL", 
+  "US-WA", "US-CO", "US-MA", "US-PA", "US-MI",
+  "US-NJ", "US-MD", "US-VA", "US-GA", "US-AZ"
 ];
 
 const restrictedCountries = [
-  "AE", "IR", "KP", "SY", "CU"
+  "GB", "CA", "DE", "NL", "SE", "DK", "FI", "NO", "IE", "NZ", "AU", 
+  "FR", "IT", "ES", "JP", "KR", "SG", "AE", "IR", "KP", "SY", "CU"
 ];
 
 interface Product {
@@ -58,10 +61,10 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
 
   const displayedProducts = showAll ? products : products.slice(0, 4);
 
-  // Check if the current country is in the restricted list or not in the allowed list
+  // Check if the current country is in the restricted list (non-US)
   const isCountryShippable = useMemo(() => {
     if (!country) return true; // If no country selected, show products
-    return !restrictedCountries.includes(country) && allowedCountries.includes(country);
+    return !restrictedCountries.includes(country); // Only allow US locations
   }, [country]);
 
   useEffect(() => {
@@ -196,8 +199,8 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
               <AlertTriangle className="h-10 w-10 text-red-500" />
               <h2 className="text-xl font-bold text-red-700">Products Not Available in Your Region</h2>
               <p className="text-red-600 max-w-md text-sm">
-                We're sorry, but we currently don't ship our research peptides to your selected country. 
-                Please select a different shipping destination to view our products.
+                We're sorry, but we currently don't ship outside the United States. 
+                Our products are only available for domestic US customers at this time.
               </p>
             </div>
           </div>

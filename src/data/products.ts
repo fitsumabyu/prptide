@@ -43,11 +43,11 @@ export const products: Product[] = [
   {
     id: "bpc-157",
     name: "BPC-157",
-    description: "Body Protection Compound-157 is a synthetic pentadecapeptide derived from a protective protein found in gastric juice. It has been studied for potential tissue protective properties in laboratory settings.",
+    description: "Research compound for laboratory use only. Synthetic pentadecapeptide compound used as a reference material for in vitro experiments. Not for human or veterinary use.",
     purity: "≥99% purity",
     price: "$89.99",
     image: "https://m.media-amazon.com/images/I/71DL69TL3VL.jpg",
-    category: "Tissue Healing",
+    category: "Reference Material",
     details: {
       cas: "137525-51-0",
       size: "5mg",
@@ -60,11 +60,11 @@ export const products: Product[] = [
   {
     id: "tb-500",
     name: "TB-500",
-    description: "Thymosin Beta-4 is a synthetic peptide segment of the protein thymosin β4, which is found in nearly all mammalian cells. It has been researched for its role in actin regulation in laboratory studies.",
+    description: "Research compound for laboratory use only. Synthetic derivative of thymosin β4 used as chemical reference material for actin regulation studies in controlled laboratory settings.",
     purity: "≥98% purity",
     price: "$94.99",
     image: "https://dinespower.com/wp-content/uploads/2023/07/24_TB-1-2000x2000-1.png",
-    category: "Tissue Healing",
+    category: "Reference Material",
     details: {
       cas: "77591-33-4",
       size: "5mg",
@@ -76,11 +76,11 @@ export const products: Product[] = [
   {
     id: "cjc-1295",
     name: "CJC-1295",
-    description: "CJC-1295 is a synthetic growth hormone releasing hormone (GHRH) analog that has been studied for its potential to increase growth hormone and IGF-1 levels in laboratory settings.",
+    description: "Research compound for laboratory use only. Synthetic growth hormone releasing hormone (GHRH) analog intended for controlled scientific research in biochemistry and cell biology.",
     purity: "≥98% purity",
     price: "$89.99",
     image: "https://selectspineandsports.com/wp-content/uploads/2024/03/cjc-ipamorelin-new.png",
-    category: "Growth Hormone",
+    category: "Academic Research Supply",
     details: {
       cas: "863288-34-0",
       size: "5mg",
@@ -91,11 +91,11 @@ export const products: Product[] = [
   {
     id: "ipamorelin",
     name: "Ipamorelin",
-    description: "Ipamorelin is a synthetic pentapeptide and growth hormone secretagogue that has been studied for its selective stimulation of growth hormone release in laboratory research.",
+    description: "Research compound for laboratory use only. Synthetic pentapeptide used as a chemical reference material in growth hormone secretagogue receptor studies.",
     purity: "≥99% purity",
     price: "$84.99",
     image: "https://peptidesworld.com/wp-content/uploads/2020/12/15.jpg",
-    category: "Growth Hormone",
+    category: "Academic Research Supply",
     details: {
       cas: "170851-70-4",
       size: "10mg",
@@ -106,11 +106,11 @@ export const products: Product[] = [
   {
     id: "sermorelin",
     name: "Sermorelin",
-    description: "Sermorelin is a synthetic analog of growth hormone-releasing hormone (GHRH) that has been studied for its potential to stimulate the pituitary gland to produce and release growth hormone.",
+    description: "Research compound for laboratory use only. Synthetic analog of GHRH intended for in vitro research applications. For use in controlled scientific environments only.",
     purity: "≥98% purity",
     price: "$79.99",
     image: "https://www.corepeptides.com/wp-content/uploads/2020/04/Sermorelin-5mg.jpg",
-    category: "Growth Hormone",
+    category: "Academic Research Supply",
     details: {
       cas: "86168-78-7",
       size: "5mg",
@@ -121,11 +121,11 @@ export const products: Product[] = [
   {
     id: "pt-141",
     name: "PT-141 (Bremelanotide)",
-    description: "PT-141, also known as Bremelanotide, is a synthetic peptide analog of alpha-melanocyte stimulating hormone (α-MSH). It has been studied in laboratory research on melanocortin receptors.",
+    description: "Research compound for laboratory use only. Synthetic analog designed for melanocortin receptor studies in controlled laboratory conditions.",
     purity: "≥99% purity",
     price: "$99.99",
     image: "https://innerbody.imgix.net/pt-141-social-image.jpeg",
-    category: "Melanocortin",
+    category: "Reference Material",
     details: {
       cas: "189691-06-3",
       size: "10mg",
@@ -145,11 +145,11 @@ export const products: Product[] = [
   {
     id: "aod-9604",
     name: "AOD-9604",
-    description: "AOD-9604 is a modified fragment of human growth hormone that has been researched for its potential metabolic effects in laboratory settings without affecting growth or insulin resistance.",
+    description: "Research compound for laboratory use only. Modified fragment of human growth hormone intended as a chemical reference material for academic and industrial research settings.",
     purity: "≥98% purity",
     price: "$89.99",
     image: "https://elive-health.com/wp-content/uploads/2024/09/AOD-9604.png",
-    category: "Modified Growth Hormone",
+    category: "Laboratory Reagent",
     details: {
       cas: "221231-10-3",
       size: "5mg",

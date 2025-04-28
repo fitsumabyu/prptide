@@ -9,7 +9,7 @@ const Privacy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At Peptide Lab Nexus, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or purchase our products.
+              At Nexus Lab, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or purchase our products.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Information We Collect</h2>
@@ -111,10 +111,10 @@ const Privacy = () => {
               If you have any questions or concerns about this Privacy Policy, please contact us at:
             </p>
             <p className="text-gray-700 mb-6">
-              Peptide Lab Nexus<br />
+              Nexus Lab<br />
               123 Research Boulevard, Suite 456<br />
               San Francisco, CA 94107<br />
-              Email: privacy@peptidelabnexus.com<br />
+              Email: privacy@nexuslab.com<br />
               Phone: (800) 123-4567
             </p>
             

@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 
 const Terms = () => {
@@ -10,13 +9,13 @@ const Terms = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              These Terms and Conditions govern your use of the Peptide Lab Nexus website and the purchase of products from our company. 
+              These Terms and Conditions govern your use of the Nexus Lab website and the purchase of products from our company. 
               By accessing our website or purchasing our products, you agree to these Terms and Conditions in full.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Research Use Only</h2>
             <p className="text-gray-700 mb-6">
-              All products sold by Peptide Lab Nexus are strictly for research purposes only. Our products are not for human or veterinary use, diagnostic use, therapeutic use, or any medical purpose. They are to be used by qualified professionals in laboratory settings only.
+              All products sold by Nexus Lab are strictly for research purposes only. Our products are not for human or veterinary use, diagnostic use, therapeutic use, or any medical purpose. They are to be used by qualified professionals in laboratory settings only.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">2. Ordering and Payment</h2>
@@ -36,12 +35,12 @@ const Terms = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">5. Intellectual Property</h2>
             <p className="text-gray-700 mb-6">
-              All content on our website, including text, graphics, logos, images, and software, is the property of Peptide Lab Nexus and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works from this content without our express permission.
+              All content on our website, including text, graphics, logos, images, and software, is the property of Nexus Lab and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works from this content without our express permission.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">6. Limitation of Liability</h2>
             <p className="text-gray-700 mb-6">
-              Peptide Lab Nexus shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages resulting from the use or inability to use our products or website. Our liability is limited to the amount paid for the product in question.
+              Nexus Lab shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages resulting from the use or inability to use our products or website. Our liability is limited to the amount paid for the product in question.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">7. Privacy Policy</h2>
@@ -64,10 +63,10 @@ const Terms = () => {
               If you have any questions about these Terms and Conditions, please contact us at:
             </p>
             <p className="text-gray-700 mb-6">
-              Peptide Lab Nexus<br />
+              Nexus Lab<br />
               123 Research Boulevard, Suite 456<br />
               San Francisco, CA 94107<br />
-              Email: legal@peptidelabnexus.com<br />
+              Email: legal@nexuslab.com<br />
               Phone: (800) 123-4567
             </p>
             
