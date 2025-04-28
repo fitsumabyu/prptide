@@ -139,7 +139,7 @@ const Products = () => {
   // Check if the current country is in the restricted list or not in the allowed list
   const isCountryShippable = useMemo(() => {
     if (!country) return true; // If no country selected, show products
-    return !restrictedCountries.includes(country) && allowedCountries.includes(country);
+    return country === "US"; // Only allow US locations
   }, [country]);
 
   // Render the category filter UI

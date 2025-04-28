@@ -90,6 +90,13 @@ export const CountryProvider: React.FC<CountryProviderProps> = ({ children }) =>
     const countryObj = allCountries.find(c => c.name === countryName);
     
     if (countryObj) {
+      // Special case for US - no warning banner
+      if (countryObj.id === "US") {
+        setShowWarning(false);
+        setWarningMessage("");
+        return;
+      }
+      
       // Check if the country is in the restricted list
       if (restrictedCountries.includes(countryObj.id)) {
         setShowWarning(true);

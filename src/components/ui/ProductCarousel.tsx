@@ -64,7 +64,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
   // Check if the current country is in the restricted list (non-US)
   const isCountryShippable = useMemo(() => {
     if (!country) return true; // If no country selected, show products
-    return !restrictedCountries.includes(country); // Only allow US locations
+    return country === "US"; // Only allow US locations
   }, [country]);
 
   useEffect(() => {
