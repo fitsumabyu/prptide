@@ -18,7 +18,7 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <p className="text-sm text-gray-500 mb-1">Official Business Name</p>
-                <p className="font-medium mb-4">Nexus Lab, LLC</p>
+                <p className="font-medium mb-4">Nexus Lab, LLC (88888888, Inc)</p>
                 
                 <p className="text-sm text-gray-500 mb-1">DBA</p>
                 <p className="font-medium mb-4">Nexus Lab</p>
@@ -31,8 +31,8 @@ const About = () => {
                   <MapPin className="h-4 w-4 mr-1 text-gray-400 mt-0.5 flex-shrink-0" /> Registered Address
                 </p>
                 <p className="font-medium mb-4">
-                  123 Science Drive, Suite 204<br />
-                  Boston, MA 02210<br />
+                  131 Continental, Dr Suite 305<br />
+                  Newark, DE 19713<br />
                   United States
                 </p>
                 
@@ -44,7 +44,7 @@ const About = () => {
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
                   <Mail className="h-4 w-4 mr-1 text-gray-400" /> Email
                 </p>
-                <p className="font-medium">info@nexuslab.com</p>
+                <p className="font-medium">support@protidelab.com</p>
               </div>
             </div>
           </div>

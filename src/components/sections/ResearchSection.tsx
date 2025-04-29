@@ -55,7 +55,7 @@ const ResearchSection = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Biochemical Assays</h3>
               <p className="text-purple-50">
-                Conduct precise biochemical experiments with reliable peptide substrates and inhibitors.
+                Conduct precise biochemical experiments with reliable Lab-Grade substrates and inhibitors.
               </p>
             </div>
             
@@ -121,7 +121,7 @@ const ResearchSection = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Enzyme Kinetics</h3>
               <p className="text-purple-50">
-                Measure enzymatic activity and reaction rates using peptide substrates in controlled experiments.
+                Measure enzymatic activity and reaction rates using Lab-Grade substrates in controlled experiments.
               </p>
             </div>
             

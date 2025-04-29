@@ -56,11 +56,11 @@ const Contact = () => {
                 <span>Monday - Friday: 9:00 AM - 5:00 PM EST</span>
               </div>
               <a 
-                href="mailto:info@nexuslab.com" 
+                href="mailto:support@protidelab.com" 
                 className="text-peptide-purple hover:underline flex items-center"
               >
                 <Mail className="h-4 w-4 mr-2" />
-                info@nexuslab.com
+                support@protidelab.com
               </a>
             </div>
           </div>
@@ -74,10 +74,7 @@ const Contact = () => {
                   <div>
                     <h2 className="text-lg font-semibold mb-2">Physical Address</h2>
                     <p className="text-gray-700">
-                      Nexus Lab, LLC<br />
-                      123 Science Drive<br />
-                      Suite 204<br />
-                      Boston, MA 02210<br />
+                    131 Continental,<br /> Dr Suite 305<br /> Newark, DE 19713<br />
                       United States
                     </p>
                     <a 
@@ -121,15 +118,15 @@ const Contact = () => {
                     <h2 className="text-lg font-semibold mb-2">Email Contacts</h2>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">General Inquiries:</span>
-                      <a href="mailto:info@nexuslab.com" className="hover:underline">info@nexuslab.com</a>
+                      <a href="mailto:support@protidelab.com" className="hover:underline">support@protidelab.com</a>
                     </p>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Sales Department:</span>
-                      <a href="mailto:sales@nexuslab.com" className="hover:underline">sales@nexuslab.com</a>
-                    </p>
+                      <a href="mailto:sales@protidelab.com" className="hover:underline">sales@protidelab.com</a>
+                    </p>    
                     <p className="text-gray-700">
                       <span className="font-medium block">Technical Support:</span>
-                      <a href="mailto:support@nexuslab.com" className="hover:underline">support@nexuslab.com</a>
+                      <a href="mailto:support@protidelab.com" className="hover:underline">support@protidelab.com</a>
                     </p>
                   </div>
                 </div>

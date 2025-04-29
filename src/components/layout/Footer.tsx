@@ -104,7 +104,7 @@ const Footer = () => {
               Age Restriction: Must be 21+ to purchase/use this website. This website is not intended for minors.
             </p>
             <p className="text-sm text-gray-500 mt-4">
-              &copy; {new Date().getFullYear()} Peptide Lab Nexus. All rights reserved.
+              &copy; {new Date().getFullYear()} Nexus Lab. 88888888, Inc. All rights reserved.
             </p>
           </div>
         </div>
