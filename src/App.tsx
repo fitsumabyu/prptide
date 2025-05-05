@@ -24,6 +24,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
 import RefundPolicy from "./pages/RefundPolicy";
+import CertificateOfAnalysis from "./components/certificates/CertificateOfAnalysis";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => {
                     <Route path="/" element={<Index />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
+                    <Route path="/certificates/:id" element={<CertificateOfAnalysis />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/terms" element={<Terms />} />

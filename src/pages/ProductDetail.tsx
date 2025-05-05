@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import Disclaimer from "@/components/ui/Disclaimer";
 import { products } from "@/data/products";
-import { ArrowLeft, ShoppingCart, Globe } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Globe, FileText } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import PreferredDestinations from "@/components/shipping/PreferredDestinations";
@@ -131,10 +131,11 @@ const ProductDetail = () => {
                   Add to Cart
                 </Button>
 
-                <Button asChild variant="outline">
-                  <a href={product.details.coaLink} target="_blank" rel="noopener noreferrer">
+                <Button asChild variant="outline" className="bg-white hover:bg-gray-50">
+                  <Link to={`/certificates/${product.id}`}>
+                    <FileText className="mr-2 h-4 w-4" />
                     View COA
-                  </a>
+                  </Link>
                 </Button>
               </div>
               

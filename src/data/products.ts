@@ -12,7 +12,7 @@ export interface Product {
     cas: string;
     size: string;
     storage: string;
-    coaLink: string;
+    coaLink: string; // Now redirects to the /certificates/:id page (previously linked directly to PDF)
   };
   shippingDestinations?: ShippingDestination[]; // Product-specific shipping destinations
 }
@@ -53,7 +53,7 @@ export const products: Product[] = [
       cas: "129954-34-3",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/selank-coa.pdf"
     }
   },
   {
@@ -68,7 +68,7 @@ export const products: Product[] = [
       cas: "80714-61-0",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/semax-coa.pdf"
     }
   },
   {
@@ -83,7 +83,7 @@ export const products: Product[] = [
       cas: "2023148-47-6",
       size: "5mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/tirzepatide-coa.pdf"
     }
   },
   {
@@ -98,7 +98,7 @@ export const products: Product[] = [
       cas: "910463-68-2",
       size: "5mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/semaglutide-coa.pdf"
     }
   },
   {
@@ -113,7 +113,7 @@ export const products: Product[] = [
       cas: "N/A",
       size: "4mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/retatrutide-coa.pdf"
     },
     shippingDestinations: [...usaStates]
   },
@@ -129,7 +129,7 @@ export const products: Product[] = [
       cas: "121062-08-6",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/melanotan-2-coa.pdf"
     }
   },
   {
@@ -144,7 +144,7 @@ export const products: Product[] = [
       cas: "137525-51-0",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/bpc-157-coa.pdf"
     }
   },
   {
@@ -159,7 +159,7 @@ export const products: Product[] = [
       cas: "49557-75-7",
       size: "50mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/ghk-cu-coa.pdf"
     }
   },
   {
@@ -174,7 +174,7 @@ export const products: Product[] = [
       cas: "33515-09-2",
       size: "2mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/gonadorelin-coa.pdf"
     }
   },
   {
@@ -189,7 +189,7 @@ export const products: Product[] = [
       cas: "N/A",
       size: "10ml",
       storage: "Store at room temperature",
-      coaLink: "#"
+      coaLink: "/certificates/bac-water-coa.pdf"
     }
   },
   {
@@ -204,7 +204,7 @@ export const products: Product[] = [
       cas: "170851-70-4",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/ipamorelin-coa.pdf"
     }
   },
   {
@@ -219,7 +219,7 @@ export const products: Product[] = [
       cas: "341867-30-5",
       size: "5mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/kisspeptin-coa.pdf"
     }
   },
   {
@@ -234,7 +234,7 @@ export const products: Product[] = [
       cas: "N/A",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/mots-c-coa.pdf"
     }
   },
   {
@@ -249,7 +249,7 @@ export const products: Product[] = [
       cas: "189691-06-3",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/pt-141-coa.pdf"
     }
   },
   {
@@ -264,7 +264,7 @@ export const products: Product[] = [
       cas: "1010396-29-8",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/s-23-coa.pdf"
     }
   },
   {
@@ -279,7 +279,7 @@ export const products: Product[] = [
       cas: "77591-33-4",
       size: "10mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/tb-500-coa.pdf"
     }
   },
   {
@@ -294,7 +294,7 @@ export const products: Product[] = [
       cas: "62304-98-7",
       size: "5mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/thymosin-a1-coa.pdf"
     }
   },
   
@@ -311,7 +311,7 @@ export const products: Product[] = [
       cas: "1010396-29-8",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/s-23-cat2-coa.pdf"
     }
   },
   {
@@ -326,7 +326,7 @@ export const products: Product[] = [
       cas: "431579-34-9",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/yk-11-coa.pdf"
     }
   },
   {
@@ -341,7 +341,7 @@ export const products: Product[] = [
       cas: "1182367-47-0",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/rad-140-coa.pdf"
     }
   },
   {
@@ -356,7 +356,7 @@ export const products: Product[] = [
       cas: "1165910-22-4",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/lgd-4033-coa.pdf"
     }
   },
   {
@@ -371,7 +371,7 @@ export const products: Product[] = [
       cas: "317318-70-0",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/gw-501516-coa.pdf"
     }
   },
   {
@@ -386,7 +386,7 @@ export const products: Product[] = [
       cas: "841205-47-8",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/mk-2866-coa.pdf"
     }
   },
   {
@@ -401,7 +401,7 @@ export const products: Product[] = [
       cas: "434-07-1",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/s-4-coa.pdf"
     }
   },
   {
@@ -416,7 +416,7 @@ export const products: Product[] = [
       cas: "159752-10-0",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/mk-677-coa.pdf"
     }
   },
   {
@@ -431,7 +431,7 @@ export const products: Product[] = [
       cas: "N/A",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/otr-ac-coa.pdf"
     }
   },
   
@@ -448,7 +448,7 @@ export const products: Product[] = [
       cas: "195814-47-6",
       size: "500mcg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/tesofensine-coa.pdf"
     }
   },
   {
@@ -463,7 +463,7 @@ export const products: Product[] = [
       cas: "N/A",
       size: "250mcg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/slu-pp-332-coa.pdf"
     }
   },
   {
@@ -478,7 +478,7 @@ export const products: Product[] = [
       cas: "4759-48-2",
       size: "20mg",
       storage: "Store at -20°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/isotretinoin-coa.pdf"
     }
   },
   {
@@ -493,7 +493,7 @@ export const products: Product[] = [
       cas: "171596-29-5",
       size: "30mg",
       storage: "Store at room temperature, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/tadalafil-coa.pdf"
     }
   },
   {
@@ -508,7 +508,7 @@ export const products: Product[] = [
       cas: "171596-29-5",
       size: "2mg",
       storage: "Store at 2-8°C, away from light",
-      coaLink: "#"
+      coaLink: "/certificates/liquid-tadalafil-coa.pdf"
     }
   }
 ];
