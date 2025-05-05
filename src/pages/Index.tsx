@@ -7,6 +7,11 @@ import Disclaimer from "@/components/ui/Disclaimer";
 import { products } from "@/data/products";
 
 const Index = () => {
+  // Filter products to show only the recommended items in the carousel
+  const recommendedProducts = products.filter(product => 
+    ['bpc-157', 'tb-500', 'ghk-cu', 'selank', 'semax', 'mots-c', 'thymosin-a1'].includes(product.id)
+  );
+
   return (
     <Layout>
       <HeroSection fullHeight={true} />
@@ -31,9 +36,9 @@ const Index = () => {
           </p>
         </div>
         
-        <ProductCarousel 
-          products={products} 
-          title="Featured Chemical Reference Materials" 
+        <ProductCarousel
+          products={recommendedProducts} 
+          title="Recommended Research Compounds" 
         />
       </div>
       

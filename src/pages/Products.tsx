@@ -20,18 +20,18 @@ const restrictedCountries = [
 
 // Define category descriptions for filter
 const categoryDescriptions: Record<string, string> = {
-  "all": "View all product categories",
-  "Reference Material": "Standardized chemical compounds for research calibration and controls",
-  "Academic Research Supply": "Materials designed for controlled laboratory experiments",
-  "Laboratory Reagent": "Chemical substances for in vitro scientific applications"
+  "all": "View all research categories - For laboratory use only",
+  "Research Compounds": "Chemical reference materials for controlled laboratory studies only",
+  "Experimental Compounds": "Synthetic compounds for in vitro research applications only",
+  "Pharmaceutical Research": "Materials for biochemical and pharmacological laboratory studies"
 };
 
 // Define the type for our category filter
 interface CategoryFilterState {
   "all": boolean;
-  "Reference Material": boolean;
-  "Academic Research Supply": boolean;
-  "Laboratory Reagent": boolean;
+  "Research Compounds": boolean;
+  "Experimental Compounds": boolean;
+  "Pharmaceutical Research": boolean;
   [key: string]: boolean; // To allow dynamic keys
 }
 
@@ -43,9 +43,9 @@ const Products = () => {
   // Set up filter state with initial values
   const initialCategoryFilter: CategoryFilterState = {
     "all": true,
-    "Reference Material": false,
-    "Academic Research Supply": false,
-    "Laboratory Reagent": false
+    "Research Compounds": false,
+    "Experimental Compounds": false,
+    "Pharmaceutical Research": false
   };
   
   const [filter, setFilter] = useState({
@@ -236,7 +236,7 @@ const Products = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Where would you like your sanctuary to be?"
+                  placeholder="Search research compounds..."
                   className="w-full pl-10 pr-4 py-2 text-sm rounded-full border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-peptide-purple"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}

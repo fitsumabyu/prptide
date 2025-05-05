@@ -209,32 +209,32 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
       <div className="absolute inset-0 z-20">
         <div className="container mx-auto px-4 relative h-full flex items-center justify-center">
           <div className="max-w-3xl text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4 [text-shadow:_0_1px_10px_rgba(0,0,0,0.9)]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-2 sm:mb-4 [text-shadow:_0_1px_10px_rgba(0,0,0,0.9)]">
               Research-Grade Laboratory Reagents for Laboratory Use Only
             </h1>
-            <p className="text-xl text-gray-100 mb-6 [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
+            <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-4 sm:mb-6 [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
               Premium quality chemical reference materials with high purity for scientific research. 
               <span className="font-semibold text-red-400"> Strictly for research purposes. Not for human consumption.</span>
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button asChild size="lg" className="bg-peptide-purple hover:bg-peptide-dark-purple">
+            <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
+              <Button asChild size="lg" className="bg-peptide-purple hover:bg-peptide-dark-purple text-sm sm:text-base">
                 <Link to="/products" className="flex items-center">
-                  <ShoppingCart className="mr-2 h-5 w-5" />
+                  <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   Browse Products
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white hover:bg-white/20">
+              <Button asChild variant="outline" size="lg" className="border-white hover:bg-white/20 text-sm sm:text-base">
                 <Link to="/about">Learn More</Link>
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-white hover:bg-white/20 flex items-center"
+                className="border-white hover:bg-white/20 flex items-center text-sm sm:text-base"
                 onClick={detectUserLocation}
                 disabled={locationLoading}
               >
-                <Globe className="mr-2 h-5 w-5" />
-                {locationLoading ? "Detecting Location..." : "Check Shipping Availability"}
+                <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                {locationLoading ? "Detecting..." : "Check Shipping"}
               </Button>
             </div>
           </div>

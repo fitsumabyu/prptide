@@ -31,6 +31,7 @@ interface ProductCarouselProps {
   products: Product[];
   title: string;
   isLoading?: boolean;
+  maxDisplayCount?: number; // Add optional prop to limit display count
 }
 
 const ProductSkeleton = () => {
@@ -50,16 +51,19 @@ const ProductSkeleton = () => {
   );
 };
 
-const ProductCarousel = ({ products, title, isLoading = false }: ProductCarouselProps) => {
+const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }: ProductCarouselProps) => {
   const navigate = useNavigate();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(true); // Default to showing all products
   const [isInitializing, setIsInitializing] = useState(true);
   const { country } = useShippingCountry();
   const { showWarning } = useCountry();
 
-  const displayedProducts = showAll ? products : products.slice(0, 4);
+  // Display all products by default, or limit if maxDisplayCount is provided
+  const displayedProducts = maxDisplayCount && !showAll 
+    ? products.slice(0, maxDisplayCount) 
+    : products;
 
   // Check if the current country is in the restricted list (non-US)
   const isCountryShippable = useMemo(() => {
@@ -79,7 +83,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
   const scroll = (direction: "left" | "right") => {
     if (!carouselRef.current) return;
 
-    const scrollAmount = 300;
+    const scrollAmount = 280; // Adjusted scroll amount to ensure full card visibility
     const container = carouselRef.current;
 
     if (direction === "left") {
@@ -88,7 +92,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
 
-    // Update scroll position
+    // Update scroll position after animation completes
     setTimeout(() => {
       setScrollPosition(container.scrollLeft);
     }, 300);
@@ -100,18 +104,21 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
     }
   };
 
-  const canScrollLeft = scrollPosition > 0;
+  // Force recalculation of scroll buttons on product change
+  useEffect(() => {
+    if (carouselRef.current) {
+      setScrollPosition(carouselRef.current.scrollLeft);
+    }
+  }, [products, displayedProducts]);
+
+  const canScrollLeft = scrollPosition > 5;
   const canScrollRight = carouselRef.current
     ? scrollPosition <
-      carouselRef.current.scrollWidth - carouselRef.current.clientWidth - 10
+      carouselRef.current.scrollWidth - carouselRef.current.clientWidth - 5
     : true;
 
-  const handleSeeMoreClick = () => {
-    if (showAll) {
-      setShowAll(false);
-    } else {
-      navigate("/products");
-    }
+  const handleSeeAllProductsClick = () => {
+    navigate("/products");
   };
 
   // Fix to ensure consistent card heights
@@ -169,6 +176,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
             onClick={() => scroll("left")}
             disabled={!canScrollLeft || isLoading || isInitializing || (!isCountryShippable && showWarning)}
             className="rounded-full w-8 h-8 md:w-10 md:h-10 border-peptide-purple text-peptide-purple hover:bg-peptide-purple/10 transition-colors disabled:opacity-30"
+            aria-label="Scroll left"
           >
             <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
           </Button>
@@ -178,6 +186,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
             onClick={() => scroll("right")}
             disabled={!canScrollRight || isLoading || isInitializing || (!isCountryShippable && showWarning)}
             className="rounded-full w-8 h-8 md:w-10 md:h-10 border-peptide-purple text-peptide-purple hover:bg-peptide-purple/10 transition-colors disabled:opacity-30"
+            aria-label="Scroll right"
           >
             <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
           </Button>
@@ -208,7 +217,7 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
           <>
             <div
               ref={carouselRef}
-              className="carousel-scroll flex gap-3 md:gap-6 overflow-x-auto pb-4 md:pb-6 snap-x px-2 justify-center"
+              className="carousel-scroll flex gap-3 md:gap-6 overflow-x-auto pb-4 md:pb-6 snap-x px-2 justify-start"
               onScroll={handleScroll}
             >
               {isLoading || isInitializing ? (
@@ -250,20 +259,18 @@ const ProductCarousel = ({ products, title, isLoading = false }: ProductCarousel
         )}
       </div>
 
-      {products.length > 4 && !isLoading && !isInitializing && isCountryShippable && (
+      {!isLoading && !isInitializing && isCountryShippable && (
         <div className="flex justify-center mt-6">
           <Button
             variant="outline"
             size="sm"
-            onClick={handleSeeMoreClick}
+            onClick={handleSeeAllProductsClick}
             className="group border-peptide-purple text-peptide-purple hover:bg-peptide-purple hover:text-white transition-all duration-300 font-medium px-8 py-2 rounded-full shadow-sm hover:shadow"
           >
-            {showAll ? "Show Less" : (
-              <span className="flex items-center">
-                Browse All Products 
-                <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </span>
-            )}
+            <span className="flex items-center">
+              See All Products 
+              <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </span>
           </Button>
         </div>
       )}
