@@ -113,7 +113,7 @@ const ShippingPolicy = () => {
             </p>
             <p className="text-gray-700 mb-6">
               Email: shipping@nexuslab.com<br />
-              Phone: (800) 123-4567<br />
+              Phone: +1 (708) 734-6847<br />
               Hours: Monday-Friday, 9am-5pm EST
             </p>
             

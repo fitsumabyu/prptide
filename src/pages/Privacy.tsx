@@ -115,7 +115,7 @@ const Privacy = () => {
               123 Research Boulevard, Suite 456<br />
               San Francisco, CA 94107<br />
               Email: privacy@nexuslab.com<br />
-              Phone: (800) 123-4567
+              Phone: +1 (708) 734-6847
             </p>
             
             <p className="text-gray-700 mt-12 italic">
