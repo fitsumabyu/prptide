@@ -97,15 +97,16 @@ const Contact = () => {
                     <h2 className="text-lg font-semibold mb-2">Phone Support</h2>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Main Office:</span>
-                      <a href="tel:+16175550123" className="hover:underline">+1 (617) 555-0123</a>
+                      <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847
+                      </a>
                     </p>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Customer Service:</span>
-                      <a href="tel:+18001234567" className="hover:underline">(800) 123-4567</a>
+                      <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847</a>
                     </p>
                     <p className="text-gray-700">
                       <span className="font-medium block">Technical Support:</span>
-                      <a href="tel:+18007654321" className="hover:underline">(800) 765-4321</a>
+                      <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847</a>
                     </p>
                   </div>
                 </div>

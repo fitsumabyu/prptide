@@ -39,7 +39,8 @@ const About = () => {
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
                   <Phone className="h-4 w-4 mr-1 text-gray-400" /> Phone
                 </p>
-                <p className="font-medium mb-4">+1 (617) 555-0123</p>
+                <p className="font-medium mb-4">+1 (708) 734-6847
+                </p>
                 
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
                   <Mail className="h-4 w-4 mr-1 text-gray-400" /> Email
