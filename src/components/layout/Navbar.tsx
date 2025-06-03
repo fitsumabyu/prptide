@@ -41,7 +41,7 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
             "font-bold flex-shrink-0 text-sm sm:text-2xl",
             transparent ? "text-white" : "text-peptide-purple"
           )}>
-            <span className="md:inline">Nexus Lab</span>
+            <span className="md:inline">FormulaX</span>
           </Link>
         </div>
 

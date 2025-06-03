@@ -7,7 +7,7 @@ const About = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">About Nexus Lab</h1>
+          <h1 className="text-3xl font-bold mb-6">About FormulaX</h1>
           
           {/* Business Identity Section */}
           <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
@@ -18,10 +18,10 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <p className="text-sm text-gray-500 mb-1">Official Business Name</p>
-                <p className="font-medium mb-4">Nexus Lab, LLC (88888888, Inc)</p>
+                <p className="font-medium mb-4">FormulaX, LLC (88888888, Inc)</p>
                 
                 <p className="text-sm text-gray-500 mb-1">DBA</p>
-                <p className="font-medium mb-4">Nexus Lab</p>
+                <p className="font-medium mb-4">FormulaX</p>
                 
                 <p className="text-sm text-gray-500 mb-1">Business Registration</p>
                 <p className="font-medium">Company Number: LLC-78291045</p>
@@ -52,13 +52,13 @@ const About = () => {
           
           <div className="prose max-w-none">
             <p className="text-lg text-gray-700 mb-6">
-              Nexus Lab is a leading provider of high-quality laboratory reagents designed exclusively for laboratory use. 
+              FormulaX is a leading provider of high-quality laboratory reagents designed exclusively for laboratory use. 
               Our mission is to support scientific advancement by providing researchers with premium-grade chemical reference materials for their experimental work.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">Our Commitment to Quality</h2>
             <p className="text-gray-700 mb-6">
-              At Nexus Lab, we are committed to delivering the highest quality academic research supplies available. Our rigorous quality control process ensures that every chemical reference material meets strict purity standards before reaching your laboratory.
+              At FormulaX, we are committed to delivering the highest quality academic research supplies available. Our rigorous quality control process ensures that every chemical reference material meets strict purity standards before reaching your laboratory.
             </p>
             <p className="text-gray-700 mb-6">
               Each product undergoes comprehensive testing and is accompanied by a detailed Certificate of Analysis (COA) that verifies its identity, purity, and composition. This commitment to quality helps researchers achieve reliable, reproducible results in their studies.
@@ -79,7 +79,7 @@ const About = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">Our Standards</h2>
             <p className="text-gray-700 mb-6">
-              Nexus Lab adheres to the following standards:
+              FormulaX adheres to the following standards:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
               <li>Minimum 98% purity for all chemical reference materials</li>

@@ -11,7 +11,7 @@ const Shipping = () => {
           <div className="prose max-w-none">
             <h2 className="text-2xl font-semibold mt-8 mb-4">Shipping Information</h2>
             <p className="text-gray-700 mb-6">
-              At Nexus Lab, we understand the importance of receiving your research materials in a timely manner and in optimal condition. We ship all products in temperature-controlled packaging to ensure their integrity during transit.
+              At FormulaX, we understand the importance of receiving your research materials in a timely manner and in optimal condition. We ship all products in temperature-controlled packaging to ensure their integrity during transit.
             </p>
             
             <PreferredDestinations />
@@ -78,7 +78,7 @@ const Shipping = () => {
               To initiate a return:
             </p>
             <ol className="list-decimal pl-6 text-gray-700 mb-6">
-              <li>Contact our customer service department at returns@nexuslab.com or (800) 123-4567</li>
+              <li>Contact our customer service department at returns@formulax.com or (800) 123-4567</li>
               <li>Provide your order number, the item(s) you wish to return, and the reason for the return</li>
               <li>Our team will review your request and provide you with return instructions</li>
               <li>Ship the item(s) back to us using the provided return label</li>
@@ -105,7 +105,7 @@ const Shipping = () => {
               If you have any questions about our shipping and return policies, please contact our customer service team:
             </p>
             <p className="text-gray-700 mb-6">
-              Email: support@nexuslab.com<br />
+                Email: support@formulax.com<br />
               Phone: +1 (708) 734-6847<br />
               Hours: Monday-Friday, 9 AM - 5 PM EST
             </p>

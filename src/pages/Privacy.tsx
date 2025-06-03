@@ -9,7 +9,7 @@ const Privacy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At Nexus Lab, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or purchase our products.
+              At FormulaX, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or purchase our products.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Information We Collect</h2>
@@ -111,10 +111,10 @@ const Privacy = () => {
               If you have any questions or concerns about this Privacy Policy, please contact us at:
             </p>
             <p className="text-gray-700 mb-6">
-              Nexus Lab<br />
+              FormulaX<br />
               123 Research Boulevard, Suite 456<br />
               San Francisco, CA 94107<br />
-              Email: privacy@nexuslab.com<br />
+              Email: privacy@formulax.com<br />
               Phone: +1 (708) 734-6847
             </p>
             

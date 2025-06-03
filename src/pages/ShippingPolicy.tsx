@@ -10,7 +10,7 @@ const ShippingPolicy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At Nexus Lab, we strive to deliver your research products safely, securely, and efficiently. This policy outlines our shipping procedures, estimated delivery times, and other important information related to the delivery of your order.
+              At FormulaX, we strive to deliver your research products safely, securely, and efficiently. This policy outlines our shipping procedures, estimated delivery times, and other important information related to the delivery of your order.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Processing Time</h2>
@@ -112,7 +112,7 @@ const ShippingPolicy = () => {
               If you have any questions about our shipping policy or need assistance with a shipment, please contact our customer service team:
             </p>
             <p className="text-gray-700 mb-6">
-              Email: shipping@nexuslab.com<br />
+              Email: shipping@formulax.com<br />
               Phone: +1 (708) 734-6847<br />
               Hours: Monday-Friday, 9am-5pm EST
             </p>
