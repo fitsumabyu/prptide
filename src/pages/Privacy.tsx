@@ -9,7 +9,13 @@ const Privacy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At FormulaX, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or purchase our products.
+              <strong>Official Business Name:</strong> H&amp;H WORLDWIDE GROUP<br />
+              <strong>Brand:</strong> FormulaX<br />
+              <span className="text-xs text-gray-500">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</span>
+            </p>
+            
+            <p className="text-gray-700 mb-6">
+              At H&amp;H WORLDWIDE GROUP, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or purchase our products.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Information We Collect</h2>
@@ -111,11 +117,9 @@ const Privacy = () => {
               If you have any questions or concerns about this Privacy Policy, please contact us at:
             </p>
             <p className="text-gray-700 mb-6">
-              FormulaX<br />
-              123 Research Boulevard, Suite 456<br />
-              San Francisco, CA 94107<br />
-              Email: privacy@formulax.com<br />
-              Phone: +1 (708) 734-6847
+              H&amp;H WORLDWIDE GROUP<br />
+              732 S 6TH ST, STE R<br />
+              LAS VEGAS NEVADA 89101
             </p>
             
             <p className="text-gray-700 mt-12 italic">

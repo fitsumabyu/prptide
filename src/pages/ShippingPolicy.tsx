@@ -10,7 +10,7 @@ const ShippingPolicy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At FormulaX, we strive to deliver your research products safely, securely, and efficiently. This policy outlines our shipping procedures, estimated delivery times, and other important information related to the delivery of your order.
+              At H&amp;H WORLDWIDE GROUP, we strive to deliver your research products safely, securely, and efficiently. This policy outlines our shipping procedures, estimated delivery times, and other important information related to the delivery of your order.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Processing Time</h2>
@@ -110,6 +110,11 @@ const ShippingPolicy = () => {
             <h2 className="text-2xl font-semibold mt-8 mb-4">8. Contact Information</h2>
             <p className="text-gray-700 mb-6">
               If you have any questions about our shipping policy or need assistance with a shipment, please contact our customer service team:
+            </p>
+            <p className="text-gray-700 mb-6">
+              <strong>Official Business Name:</strong> H&amp;H WORLDWIDE GROUP<br />
+              <strong>Brand:</strong> FormulaX<br />
+              <span className="text-xs text-gray-500">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</span>
             </p>
             <p className="text-gray-700 mb-6">
               Email: shipping@formulax.com<br />

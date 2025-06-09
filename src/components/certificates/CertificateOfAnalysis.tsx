@@ -119,7 +119,7 @@ const CertificateOfAnalysis = () => {
           {/* Certificate Header with Company Logo */}
           <div className="mb-6 pb-6 border-b text-center">
             <h2 className="text-2xl font-bold text-peptide-purple uppercase tracking-wider">
-              FormulaX
+              H&amp;H WORLDWIDE GROUP
             </h2>
             <p className="text-sm text-gray-500">
               Certificate of Analysis | Research Materials

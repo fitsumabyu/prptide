@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link to="/" className="text-xl font-bold text-peptide-purple">
-               FormulaX
+              FormulaX
             </Link>
             <p className="mt-3 text-sm text-gray-600">
               Research-grade laboratory reagents for laboratory use only.
@@ -103,8 +103,13 @@ const Footer = () => {
             <p className="text-sm text-gray-600 mt-2">
               Age Restriction: Must be 21+ to purchase/use this website. This website is not intended for minors.
             </p>
+            <p className="text-sm text-gray-600 mt-2">
+              H&amp;H WORLDWIDE GROUP<br />
+              732 S 6TH ST, STE R<br />
+              LAS VEGAS NEVADA 89101
+            </p>
             <p className="text-sm text-gray-500 mt-4">
-              &copy; {new Date().getFullYear()} FormulaX. 88888888, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} FormulaX. All rights reserved.
             </p>
           </div>
         </div>

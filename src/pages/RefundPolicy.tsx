@@ -9,7 +9,13 @@ const RefundPolicy = () => {
           
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
-              At FormulaX, we strive to ensure your satisfaction with every purchase. This policy outlines our procedures for returns, refunds, and order cancellations.
+              <strong>Official Business Name:</strong> H&amp;H WORLDWIDE GROUP<br />
+              <strong>Brand:</strong> FormulaX<br />
+              <span className="text-xs text-gray-500">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</span>
+            </p>
+            
+            <p className="text-gray-700 mb-6">
+              At H&amp;H WORLDWIDE GROUP, we strive to ensure your satisfaction with every purchase. This policy outlines our procedures for returns, refunds, and order cancellations.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Return Conditions</h2>

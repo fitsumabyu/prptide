@@ -18,10 +18,12 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <p className="text-sm text-gray-500 mb-1">Official Business Name</p>
-                <p className="font-medium mb-4">FormulaX, LLC (88888888, Inc)</p>
+                <p className="font-medium mb-4">H&amp;H WORLDWIDE GROUP</p>
                 
-                <p className="text-sm text-gray-500 mb-1">DBA</p>
+                <p className="text-sm text-gray-500 mb-1">Brand</p>
                 <p className="font-medium mb-4">FormulaX</p>
+                
+                <p className="text-xs text-gray-500 mb-4">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</p>
                 
                 <p className="text-sm text-gray-500 mb-1">Business Registration</p>
                 <p className="font-medium">Company Number: LLC-78291045</p>
@@ -31,9 +33,8 @@ const About = () => {
                   <MapPin className="h-4 w-4 mr-1 text-gray-400 mt-0.5 flex-shrink-0" /> Registered Address
                 </p>
                 <p className="font-medium mb-4">
-                  131 Continental, Dr Suite 305<br />
-                  Newark, DE 19713<br />
-                  United States
+                  732 S 6TH ST, STE R<br />
+                  LAS VEGAS NEVADA 89101<br />
                 </p>
                 
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
