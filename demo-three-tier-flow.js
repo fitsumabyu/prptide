@@ -6,9 +6,9 @@
  */
 
 const BASE_URLS = {
-  woocommerce: 'https://woocommerce-jade.vercel.app',
-  webapp: 'https://www.protidelab.com',
-  processor: 'https://processor-six.vercel.app'
+  woocommerce: 'https://woocommerce-iz05uq9y4-bangkokteam.vercel.app',
+  webapp: 'https://peptide-dapqfuk43-bangkokteam.vercel.app',
+  processor: 'https://processor-ga3448ebb-bangkokteam.vercel.app'
 };
 
 class ThreeTierDemo {
