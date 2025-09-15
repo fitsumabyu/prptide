@@ -2,6 +2,9 @@
 
 ## Quick Start
 
+### Prerequisites
+- Node.js 18.x (required for Vercel deployment)
+
 ### 1. Install Dependencies
 ```bash
 npm install
