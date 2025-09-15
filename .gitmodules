@@ -1,0 +1,6 @@
+[submodule "mocks/processor"]
+	path = mocks/processor
+	url = https://github.com/3obby/formulaxmockprocessor.git
+[submodule "mocks/woocommerce"]
+	path = mocks/woocommerce
+	url = https://github.com/3obby/formulaxmockwooplugin.git
