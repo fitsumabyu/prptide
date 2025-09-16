@@ -40,7 +40,7 @@ Authorizes a payment with optional capture.
     "expiryMonth": "12",
     "expiryYear": "2025",
     "cvc": "123",
-    "holderName": "John Doe"
+    "holderName": "Dawn Doe"
   },
   "capture": false,
   "threeDS": {
@@ -54,7 +54,7 @@ Authorizes a payment with optional capture.
   },
   "customer": {
     "email": "customer@example.com",
-    "firstName": "John",
+    "firstName": "Dawn",
     "lastName": "Doe"
   }
 }

@@ -192,7 +192,7 @@ curl -X POST "https://woocommerce-jade.vercel.app/api/orders/create?x-vercel-set
     "orderId": "WOO_TEST_123",
     "customer": {
       "email": "test@example.com",
-      "firstName": "John",
+      "firstName": "Dawn",
       "lastName": "Doe"
     },
     "items": [{"name": "Selank", "quantity": 1, "price": 84.99}],

@@ -23,8 +23,8 @@ const Contact = () => {
     // In a real app, you would submit the form data to your server
     console.log("Form submitted:", formData);
     toast({
-      title: "Message Sent",
-      description: "Thank you for contacting us. We'll respond shortly.",
+      title: "Meddelande Skickat",
+      description: "Tack för att du kontaktade oss. Vi svarar snart.",
     });
     
     // Reset form
@@ -40,27 +40,27 @@ const Contact = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+          <h1 className="text-3xl font-bold mb-6">Kontakta Oss</h1>
           
           {/* Enhanced Contact Banner */}
           <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-lg border border-purple-100 mb-10">
-            <h2 className="text-xl font-semibold mb-3">Customer Service & Support</h2>
+            <h2 className="text-xl font-semibold mb-3">Kundservice & Support</h2>
             <p className="text-gray-700 mb-4">
-              Our dedicated team is available to assist you with any questions or concerns about our research products.
-              We offer multiple ways to get in touch and aim to respond to all inquiries within 24 business hours.
+              Vårt dedikerade team är tillgängligt för att hjälpa dig med frågor eller funderingar om våra återhämtningsprodukter.
+              Vi erbjuder flera sätt att komma i kontakt och strävar efter att svara på alla förfrågningar inom 24 timmar.
             </p>
             
             <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-8 text-sm">
               <div className="flex items-center">
                 <Clock className="h-4 w-4 text-peptide-purple mr-2" />
-                <span>Monday - Friday: 9:00 AM - 5:00 PM EST</span>
+                <span>Måndag - Fredag: 9:00 - 17:00 CET</span>
               </div>
               <a 
                 href="mailto:support@protidelab.com" 
                 className="text-peptide-purple hover:underline flex items-center"
               >
                 <Mail className="h-4 w-4 mr-2" />
-                support@protidelab.com
+                support@formulax.se
               </a>
             </div>
           </div>
@@ -72,7 +72,7 @@ const Contact = () => {
                 <div className="flex items-start mb-4">
                   <MapPin className="h-5 w-5 text-peptide-purple mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <h2 className="text-lg font-semibold mb-2">Physical Address</h2>
+                    <h2 className="text-lg font-semibold mb-2">Fysisk Adress</h2>
                     <p className="text-gray-700">
                     131 Continental,<br /> Dr Suite 305<br /> Newark, DE 19713<br />
                       United States
@@ -84,7 +84,7 @@ const Contact = () => {
                       className="text-peptide-purple hover:underline text-sm flex items-center mt-3"
                     >
                       <ExternalLink className="h-3 w-3 mr-1" />
-                      View on Google Maps
+                      Visa på Google Maps
                     </a>
                   </div>
                 </div>
@@ -94,18 +94,18 @@ const Contact = () => {
                 <div className="flex items-start mb-4">
                   <Phone className="h-5 w-5 text-peptide-purple mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <h2 className="text-lg font-semibold mb-2">Phone Support</h2>
+                    <h2 className="text-lg font-semibold mb-2">Telefonsupport</h2>
                     <p className="text-gray-700 mb-3">
-                      <span className="font-medium block">Main Office:</span>
+                      <span className="font-medium block">Huvudkontor:</span>
                       <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847
                       </a>
                     </p>
                     <p className="text-gray-700 mb-3">
-                      <span className="font-medium block">Customer Service:</span>
+                      <span className="font-medium block">Kundservice:</span>
                       <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847</a>
                     </p>
                     <p className="text-gray-700">
-                      <span className="font-medium block">Technical Support:</span>
+                      <span className="font-medium block">Teknisk Support:</span>
                       <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847</a>
                     </p>
                   </div>
@@ -116,18 +116,18 @@ const Contact = () => {
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 text-peptide-purple mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <h2 className="text-lg font-semibold mb-2">Email Contacts</h2>
+                    <h2 className="text-lg font-semibold mb-2">E-post Kontakter</h2>
                     <p className="text-gray-700 mb-3">
-                      <span className="font-medium block">General Inquiries:</span>
-                      <a href="mailto:support@protidelab.com" className="hover:underline">support@protidelab.com</a>
+                      <span className="font-medium block">Allmänna Förfrågningar:</span>
+                      <a href="mailto:support@formulax.se" className="hover:underline">support@formulax.se</a>
                     </p>
                     <p className="text-gray-700 mb-3">
-                      <span className="font-medium block">Sales Department:</span>
-                      <a href="mailto:sales@protidelab.com" className="hover:underline">sales@protidelab.com</a>
+                      <span className="font-medium block">Försäljningsavdelning:</span>
+                      <a href="mailto:sales@formulax.se" className="hover:underline">sales@formulax.se</a>
                     </p>    
                     <p className="text-gray-700">
-                      <span className="font-medium block">Technical Support:</span>
-                      <a href="mailto:support@protidelab.com" className="hover:underline">support@protidelab.com</a>
+                      <span className="font-medium block">Teknisk Support:</span>
+                      <a href="mailto:support@formulax.se" className="hover:underline">support@formulax.se</a>
                     </p>
                   </div>
                 </div>
@@ -137,13 +137,13 @@ const Contact = () => {
             {/* Contact Form - 3 columns */}
             <div className="lg:col-span-3">
               <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
+                <h2 className="text-2xl font-semibold mb-6">Skicka oss ett meddelande</h2>
                 
                 <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name
+                        Fullständigt Namn
                       </label>
                       <input
                         type="text"
@@ -158,7 +158,7 @@ const Contact = () => {
                     
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address
+                        E-postadress
                       </label>
                       <input
                         type="email"
@@ -174,7 +174,7 @@ const Contact = () => {
                   
                   <div className="mb-6">
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject
+                      Ämne
                     </label>
                     <select
                       id="subject"
@@ -184,17 +184,17 @@ const Contact = () => {
                       className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-peptide-purple"
                       required
                     >
-                      <option value="">Select a subject</option>
-                      <option value="Product Inquiry">Product Inquiry</option>
-                      <option value="Technical Question">Technical Question</option>
-                      <option value="Order Status">Order Status</option>
-                      <option value="Other">Other</option>
+                      <option value="">Välj ett ämne</option>
+                      <option value="Product Inquiry">Produktförfrågan</option>
+                      <option value="Technical Question">Teknisk Fråga</option>
+                      <option value="Order Status">Orderstatus</option>
+                      <option value="Other">Annat</option>
                     </select>
                   </div>
                   
                   <div className="mb-6">
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
+                      Meddelande
                     </label>
                     <textarea
                       id="message"
@@ -218,13 +218,13 @@ const Contact = () => {
                     </div>
                     <div className="ml-3 text-sm">
                       <label htmlFor="terms" className="text-gray-600">
-                        I acknowledge that all products are for research use only and not for human consumption.
+                        Jag erkänner att alla produkter är för personlig återhämtning och fysisk hälsa.
                       </label>
                     </div>
                   </div>
                   
                   <Button type="submit" className="w-full md:w-auto bg-peptide-purple hover:bg-peptide-dark-purple">
-                    Send Message
+                    Skicka Meddelande
                   </Button>
                 </form>
               </div>

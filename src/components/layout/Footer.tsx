@@ -10,28 +10,28 @@ const Footer = () => {
               FormulaX
             </Link>
             <p className="mt-3 text-sm text-gray-600">
-              Research-grade laboratory reagents for laboratory use only.
+              Högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande.
             </p>
           </div>
           
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider mb-4">
-              Products
+              Produkter
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  All Products
+                  Alla Produkter
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  New Arrivals
+                  Nya Produkter
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Best Sellers
+                  Bästsäljare
                 </Link>
               </li>
             </ul>
@@ -39,17 +39,17 @@ const Footer = () => {
           
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider mb-4">
-              Company
+              Företag
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/about" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  About Us
+                  Om Oss
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Contact
+                  Kontakt
                 </Link>
               </li>
             </ul>
@@ -57,32 +57,32 @@ const Footer = () => {
           
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider mb-4">
-              Legal
+              Juridiskt
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/terms" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Terms & Conditions
+                  Villkor & Bestämmelser
                 </Link>
               </li>
               <li>
                 <Link to="/privacy" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Privacy Policy
+                  Integritetspolicy
                 </Link>
               </li>
               <li>
                 <Link to="/refund-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Refund & Return Policy
+                  Återbetalning & Returpolicy
                 </Link>
               </li>
               <li>
                 <Link to="/shipping-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Shipping & Delivery
+                  Leverans & Frakt
                 </Link>
               </li>
               <li>
                 <Link to="/disclaimer" className="text-sm text-gray-600 hover:text-peptide-purple">
-                  Disclaimer
+                  Ansvarsfriskrivning
                 </Link>
               </li>
             </ul>
@@ -91,17 +91,17 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-gray-200">
           <div className="text-center">
-            <p className="text-base text-red-600 font-semibold mb-2">
-              IMPORTANT: Not for human consumption. For laboratory research only.
+            <p className="text-base text-green-600 font-semibold mb-2">
+              VIKTIGT: Säkra produkter för personlig återhämtning och fysisk hälsa.
             </p>
             <p className="text-sm text-gray-600 mt-2">
-              These products are intended for laboratory research use only. Not for diagnostic, therapeutic, or human use.
+              Dessa produkter är avsedda för personlig återhämtning och fysisk hälsa. Konsultera alltid en läkare vid medicinska frågor.
             </p>
             <p className="text-sm text-gray-600 mt-2">
-              No Medical Claims: The products are not approved by regulatory authorities and not intended to diagnose, treat, cure, or prevent any disease. This clarifies that no health or medical claims are being made.
+              Inga Medicinska Påståenden: Produkterna är inte godkända av tillsynsmyndigheter och är inte avsedda att diagnostisera, behandla, bota eller förhindra någon sjukdom.
             </p>
             <p className="text-sm text-gray-600 mt-2">
-              Age Restriction: Must be 21+ to purchase/use this website. This website is not intended for minors.
+              Åldersbegränsning: Måste vara 18+ för att köpa/använda denna webbplats. Denna webbplats är inte avsedd för minderåriga.
             </p>
             <p className="text-sm text-gray-600 mt-2">
               H&amp;H WORLDWIDE GROUP<br />

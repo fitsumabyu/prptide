@@ -32,7 +32,7 @@ async function testCompleteFlow() {
       orderId: `WOO_${Date.now()}`,
       customer: {
         email: 'test@example.com',
-        firstName: 'John',
+        firstName: 'Dawn',
         lastName: 'Doe',
         address: '123 Test Street',
         city: 'Test City',

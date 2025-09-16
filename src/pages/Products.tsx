@@ -223,12 +223,11 @@ const Products = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12 min-h-[calc(100vh-96px)] flex flex-col">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Laboratory Research Reagents</h1>
+          <h1 className="text-3xl font-bold mb-4">Återhämtningsprodukter</h1>
           <p className="text-gray-600 mb-6">
-            We sell laboratory reagents and chemical reference materials for academic and 
-            industrial research. We do not sell consumer products. All products are labeled for 
-            research use only.
-            <span className="text-red-600 font-medium"> For Research Use Only - Not for Human Use.</span>
+            Vi säljer högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande. 
+            Alla produkter är säkra och naturliga för personlig användning.
+            <span className="text-green-600 font-medium"> Säkra produkter för din återhämtning.</span>
           </p>
           
           <div className="flex flex-col md:flex-row gap-4 mb-8">
@@ -236,7 +235,7 @@ const Products = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search research compounds..."
+                  placeholder="Sök återhämtningsprodukter..."
                   className="w-full pl-10 pr-4 py-2 text-sm rounded-full border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-peptide-purple"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -252,12 +251,12 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="bg-amber-50 p-4 border border-amber-200 rounded-md mb-8">
-            <h2 className="text-lg font-semibold text-amber-800 mb-2">Product Information Notice</h2>
-            <p className="text-sm text-amber-700">
-              All products listed on this page are for research purposes only. Each product displays its accurate name, 
-              description, purity level, and price in USD. For detailed specifications and Certificate of Analysis, 
-              please visit the individual product pages.
+          <div className="bg-blue-50 p-4 border border-blue-200 rounded-md mb-8">
+            <h2 className="text-lg font-semibold text-blue-800 mb-2">Produktinformation</h2>
+            <p className="text-sm text-blue-700">
+              Alla produkter som listas på denna sida är för personlig återhämtning. Varje produkt visar sitt korrekta namn, 
+              beskrivning, kvalitetsnivå och pris i SEK. För detaljerade specifikationer och kvalitetscertifikat, 
+              besök de enskilda produktsidorna.
             </p>
           </div>
 

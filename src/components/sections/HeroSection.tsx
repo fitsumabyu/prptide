@@ -131,13 +131,13 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
           const isInternational = !isUSLocation;
           
           let toastVariant = "default";
-          let toastTitle = "Domestic Shipping Available";
-          let toastDescription = `We can ship to your location in the United States.`;
+          let toastTitle = "Inrikes Leverans Tillgänglig";
+          let toastDescription = `Vi kan leverera till din plats i Sverige.`;
           
           if (isInternational) {
             toastVariant = "destructive";
-            toastTitle = "International Shipping Unavailable";
-            toastDescription = `Sorry, we currently only ship within the United States.`;
+            toastTitle = "Internationell Leverans Ej Tillgänglig";
+            toastDescription = `Tyvärr levererar vi för närvarande endast inom Sverige.`;
           }
           
           toast({
@@ -154,8 +154,8 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
     } catch (error) {
       console.error("Error detecting location:", error);
       toast({
-        title: "Location Detection Failed",
-        description: "We couldn't detect your location. Please select your country manually.",
+        title: "Platsupptäckt Misslyckades",
+        description: "Vi kunde inte upptäcka din plats. Välj ditt land manuellt.",
         variant: "destructive",
       });
     } finally {
@@ -210,21 +210,21 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
         <div className="container mx-auto px-4 relative h-full flex items-center justify-center">
           <div className="max-w-3xl text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-2 sm:mb-4 [text-shadow:_0_1px_10px_rgba(0,0,0,0.9)]">
-              Research-Grade Laboratory Reagents for Laboratory Use Only
+              Premium Återhämtningsprodukter för Fysisk Hälsa
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-4 sm:mb-6 [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
-              Premium quality chemical reference materials with high purity for scientific research. 
-              <span className="font-semibold text-red-400"> Strictly for research purposes. Not for human consumption.</span>
+              Högkvalitativa återhämtningsprodukter för att stödja din fysiska hälsa och välbefinnande. 
+              <span className="font-semibold text-green-400"> Säkra och naturliga produkter för din återhämtning.</span>
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
               <Button asChild size="lg" className="bg-peptide-purple hover:bg-peptide-dark-purple text-sm sm:text-base">
                 <Link to="/products" className="flex items-center">
                   <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  Browse Products
+                  Utforska Produkter
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white hover:bg-white/20 text-sm sm:text-base">
-                <Link to="/about">Learn More</Link>
+                <Link to="/about">Läs Mer</Link>
               </Button>
               <Button 
                 variant="outline" 
@@ -234,7 +234,7 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
                 disabled={locationLoading}
               >
                 <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                {locationLoading ? "Detecting..." : "Check Shipping"}
+                {locationLoading ? "Upptäcker..." : "Kontrollera Leverans"}
               </Button>
             </div>
           </div>

@@ -7,30 +7,30 @@ const About = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">About FormulaX</h1>
+          <h1 className="text-3xl font-bold mb-6">Om FormulaX</h1>
           
           {/* Business Identity Section */}
           <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
             <h2 className="text-xl font-semibold mb-4 flex items-center">
               <Building className="h-5 w-5 mr-2 text-peptide-purple" />
-              Business Information
+              Företagsinformation
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <p className="text-sm text-gray-500 mb-1">Official Business Name</p>
+                <p className="text-sm text-gray-500 mb-1">Officiellt Företagsnamn</p>
                 <p className="font-medium mb-4">H&amp;H WORLDWIDE GROUP</p>
                 
-                <p className="text-sm text-gray-500 mb-1">Brand</p>
+                <p className="text-sm text-gray-500 mb-1">Varumärke</p>
                 <p className="font-medium mb-4">FormulaX</p>
                 
-                <p className="text-xs text-gray-500 mb-4">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</p>
+                <p className="text-xs text-gray-500 mb-4">FormulaX är ett varumärke från H&amp;H WORLDWIDE GROUP.</p>
                 
-                <p className="text-sm text-gray-500 mb-1">Business Registration</p>
-                <p className="font-medium">Company Number: LLC-78291045</p>
+                <p className="text-sm text-gray-500 mb-1">Företagsregistrering</p>
+                <p className="font-medium">Företagsnummer: LLC-78291045</p>
               </div>
               <div>
                 <p className="text-sm text-gray-500 mb-1 flex items-start">
-                  <MapPin className="h-4 w-4 mr-1 text-gray-400 mt-0.5 flex-shrink-0" /> Registered Address
+                  <MapPin className="h-4 w-4 mr-1 text-gray-400 mt-0.5 flex-shrink-0" /> Registrerad Adress
                 </p>
                 <p className="font-medium mb-4">
                   732 S 6TH ST, STE R<br />
@@ -38,63 +38,63 @@ const About = () => {
                 </p>
                 
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
-                  <Phone className="h-4 w-4 mr-1 text-gray-400" /> Phone
+                  <Phone className="h-4 w-4 mr-1 text-gray-400" /> Telefon
                 </p>
                 <p className="font-medium mb-4">+1 (708) 734-6847
                 </p>
                 
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
-                  <Mail className="h-4 w-4 mr-1 text-gray-400" /> Email
+                  <Mail className="h-4 w-4 mr-1 text-gray-400" /> E-post
                 </p>
-                <p className="font-medium">support@protidelab.com</p>
+                <p className="font-medium">support@formulax.se</p>
               </div>
             </div>
           </div>
           
           <div className="prose max-w-none">
             <p className="text-lg text-gray-700 mb-6">
-              FormulaX is a leading provider of high-quality laboratory reagents designed exclusively for laboratory use. 
-              Our mission is to support scientific advancement by providing researchers with premium-grade chemical reference materials for their experimental work.
+              FormulaX är en ledande leverantör av högkvalitativa återhämtningsprodukter designade för fysisk hälsa och välbefinnande. 
+              Vårt uppdrag är att stödja din återhämtning genom att erbjuda premium återhämtningsprodukter för din fysiska hälsa.
             </p>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Our Commitment to Quality</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">Vårt Engagemang för Kvalitet</h2>
             <p className="text-gray-700 mb-6">
-              At FormulaX, we are committed to delivering the highest quality academic research supplies available. Our rigorous quality control process ensures that every chemical reference material meets strict purity standards before reaching your laboratory.
+              På FormulaX är vi engagerade i att leverera de högsta kvalitetsåterhämtningsprodukterna som finns tillgängliga. Vår rigorösa kvalitetskontrollprocess säkerställer att varje återhämtningsprodukt uppfyller strikta säkerhetsstandarder innan den når dig.
             </p>
             <p className="text-gray-700 mb-6">
-              Each product undergoes comprehensive testing and is accompanied by a detailed Certificate of Analysis (COA) that verifies its identity, purity, and composition. This commitment to quality helps researchers achieve reliable, reproducible results in their studies.
+              Varje produkt genomgår omfattande testning och följs av en detaljerad kvalitetscertifiering som verifierar dess säkerhet, renhet och sammansättning. Detta engagemang för kvalitet hjälper dig att uppnå pålitliga och effektiva resultat för din återhämtning.
             </p>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Research Focus</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">Återhämtningsfokus</h2>
             <p className="text-gray-700 mb-6">
-              We specialize in providing laboratory reagents for a wide range of research applications, including:
+              Vi specialiserar oss på att tillhandahålla återhämtningsprodukter för ett brett spektrum av fysiska hälsobehov, inklusive:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
-              <li>Biochemical and cell-based assays</li>
-              <li>Receptor binding studies</li>
-              <li>Signaling pathway investigations</li>
-              <li>Structure-activity relationship analyses</li>
-              <li>Enzyme kinetics research</li>
-              <li>Molecular and cellular biology experiments</li>
+              <li>Muskelåterhämtning och smärtlindring</li>
+              <li>Stressreduktion och avkoppling</li>
+              <li>Sömnoptimering och energiåterställning</li>
+              <li>Immunförstärkning och välbefinnande</li>
+              <li>Aromaterapi och naturliga återhämtningsmetoder</li>
+              <li>Fysisk rehabilitering och återhämtningsguider</li>
             </ul>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Our Standards</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">Våra Standarder</h2>
             <p className="text-gray-700 mb-6">
-              FormulaX adheres to the following standards:
+              FormulaX följer följande standarder:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
-              <li>Minimum 98% purity for all chemical reference materials</li>
-              <li>Rigorous quality testing and verification</li>
-              <li>Secure, temperature-controlled storage and shipping</li>
-              <li>Comprehensive documentation and COAs</li>
-              <li>Strict compliance with all relevant regulations</li>
+              <li>Högsta säkerhetsstandarder för alla återhämtningsprodukter</li>
+              <li>Rigorös kvalitetstestning och verifiering</li>
+              <li>Säker, temperaturkontrollerad lagring och leverans</li>
+              <li>Omfattande dokumentation och kvalitetscertifikat</li>
+              <li>Strikt efterlevnad av alla relevanta regler</li>
             </ul>
             
             <Disclaimer />
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">Kontakta Oss</h2>
             <p className="text-gray-700 mb-6">
-              If you have questions about our products or would like to discuss your research needs, please don't hesitate to <a href="/contact" className="text-peptide-purple hover:underline">contact us</a>. Our team of scientific experts is available to provide technical assistance and support for your laboratory research.
+              Om du har frågor om våra produkter eller vill diskutera dina återhämtningsbehov, tveka inte att <a href="/contact" className="text-peptide-purple hover:underline">kontakta oss</a>. Vårt team av hälsaexperter är tillgängliga för att ge teknisk assistans och stöd för din återhämtning.
             </p>
           </div>
         </div>

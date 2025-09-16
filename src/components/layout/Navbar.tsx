@@ -52,19 +52,19 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
-              Products
+              Produkter
             </Link>
             <Link to="/about" className={cn(
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
-              About
+              Om Oss
             </Link>
             <Link to="/contact" className={cn(
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
-              Contact
+              Kontakt
             </Link>
           </nav>
         </div>
@@ -136,26 +136,26 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <ShoppingCart size={20} />
-                    <span>Cart{totalItems > 0 ? ` (${totalItems})` : ''}</span>
+                    <span>Kundvagn{totalItems > 0 ? ` (${totalItems})` : ''}</span>
                   </Link>
                   
                   <Link
                     to="/products"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
-                    Products
+                    Produkter
                   </Link>
                   <Link
                     to="/about"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
-                    About
+                    Om Oss
                   </Link>
                   <Link
                     to="/contact"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
-                    Contact
+                    Kontakt
                   </Link>
                 </nav>
               </SheetContent>
