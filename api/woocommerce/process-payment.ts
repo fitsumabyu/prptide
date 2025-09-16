@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { PaymentProcessor } from '../lib/payment-processor';
+import { PaymentProcessor } from '../lib/payment-processor.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
