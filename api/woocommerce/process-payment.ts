@@ -31,7 +31,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const processor = new PaymentProcessor();
     
     // For demo purposes, we'll use the mock processor URL
-    const mockProcessorUrl = 'https://processor-ga3448ebb-bangkokteam.vercel.app';
+    const mockProcessorUrl = 'https://processor-six.vercel.app';
     
     // Prepare payment request for processor A
     const paymentRequest = {
@@ -73,8 +73,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (processorResult.success && metadata?.source === 'woocommerce') {
       const wooBypassToken = process.env.WOOCOMMERCE_BYPASS_TOKEN;
       const webhookUrl = wooBypassToken 
-        ? `https://woocommerce-608j7oqdt-bangkokteam.vercel.app/api/webhooks/payment?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass=${wooBypassToken}`
-        : 'https://woocommerce-608j7oqdt-bangkokteam.vercel.app/api/webhooks/payment';
+        ? `https://woocommerce-jade.vercel.app/api/webhooks/payment?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass=${wooBypassToken}`
+        : 'https://woocommerce-jade.vercel.app/api/webhooks/payment';
       
       try {
         await fetch(webhookUrl, {
