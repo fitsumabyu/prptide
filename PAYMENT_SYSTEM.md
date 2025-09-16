@@ -15,10 +15,10 @@ Add these to your `.env` file:
 PROCESSOR_API_KEY=your_processor_api_key_here
 PROCESSOR_MERCHANT_ID=your_merchant_id_here
 PROCESSOR_WEBHOOK_SECRET=your_webhook_secret_here
-PROCESSOR_BASE_URL=https://api.yourprocessor.com/v1
+PROCESSOR_BASE_URL=https://processor-six.vercel.app
 
 # App Configuration
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+VITE_APP_URL=http://localhost:5173
 ```
 
 ## API Endpoints
@@ -144,7 +144,10 @@ Webhook signatures are verified using HMAC-SHA256 to ensure authenticity.
 Run the payment flow tests:
 
 ```bash
-# Start your development server
+# Test the complete three-tier flow (recommended)
+node test-complete-flow.js
+
+# Or start your development server
 npm run dev
 
 # In another terminal, run the tests

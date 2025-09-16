@@ -14,10 +14,14 @@ Create/update your `.env` file with:
 PROCESSOR_API_KEY=your_processor_api_key_here
 PROCESSOR_MERCHANT_ID=your_merchant_id_here
 PROCESSOR_WEBHOOK_SECRET=your_webhook_secret_here
-PROCESSOR_BASE_URL=https://api.yourprocessor.com/v1
+PROCESSOR_BASE_URL=https://processor-six.vercel.app
+
+# Bypass tokens for testing (from test-complete-flow.js)
+PROCESSOR_BYPASS_TOKEN=vPkbCrknO5hsk3Pd1ZeSWQf9yxtZmiYh
+WOOCOMMERCE_BYPASS_TOKEN=QGZ6HfM3ttRzekKwAiqQVBVSlwkx6cCM
 
 # App Configuration
-NEXT_PUBLIC_APP_URL=http://localhost:8080
+VITE_APP_URL=http://localhost:5173
 ```
 
 ### 3. Start Development Environment
@@ -27,8 +31,8 @@ NEXT_PUBLIC_APP_URL=http://localhost:8080
 npm run dev:full
 ```
 This starts both:
-- Frontend: http://localhost:8080
-- API: http://localhost:3000
+- Frontend: http://localhost:5173 (Vite)
+- API: http://localhost:3000 (Vercel dev)
 
 **Option B: Separate Services**
 ```bash
@@ -41,12 +45,17 @@ npm run dev:api
 
 ## 🧪 Testing Payment Flow
 
-### 1. Start the development environment
+### 1. Test the complete three-tier flow (recommended)
+```bash
+node test-complete-flow.js
+```
+
+### 2. Start the development environment
 ```bash
 npm run dev:full
 ```
 
-### 2. Run payment tests
+### 3. Run payment tests
 ```bash
 npm run test:payments
 ```
@@ -85,9 +94,9 @@ formulaxfetsum/
 
 ## 🌐 URLs
 
-- **Local Frontend**: http://localhost:8080
+- **Local Frontend**: http://localhost:5173
 - **Local API**: http://localhost:3000
-- **Production**: https://your-app.vercel.app
+- **Production**: https://www.protidelab.com
 
 ## 🔑 Key Benefits
 
