@@ -31,7 +31,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const processor = new PaymentProcessor();
     
     // For demo purposes, we'll use the mock processor URL
-    const mockProcessorUrl = 'https://processor-six.vercel.app';
+    const mockProcessorUrl = 'https://processor-ga3448ebb-bangkokteam.vercel.app';
     
     // Prepare payment request for processor A
     const paymentRequest = {
@@ -66,7 +66,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Send webhook to WooCommerce plugin C
     if (processorResult.success && metadata?.source === 'woocommerce') {
-      const webhookUrl = 'https://woocommerce-jade.vercel.app/api/webhooks/payment';
+      const webhookUrl = 'https://woocommerce-608j7oqdt-bangkokteam.vercel.app/api/webhooks/payment';
       
       try {
         await fetch(webhookUrl, {
