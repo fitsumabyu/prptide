@@ -2,7 +2,17 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import { PaymentProcessor } from '../lib/payment-processor.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const timestamp = new Date().toISOString();
+  
+  console.log(`\n🚀 [${timestamp}] [${requestId}] WooCommerce Payment Request Received`);
+  console.log(`📋 Request Method: ${req.method}`);
+  console.log(`🌐 User Agent: ${req.headers['user-agent'] || 'Unknown'}`);
+  console.log(`🔗 Referer: ${req.headers.referer || 'Direct'}`);
+  console.log(`📍 IP Address: ${req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'Unknown'}`);
+
   if (req.method !== 'POST') {
+    console.log(`❌ [${requestId}] Invalid method: ${req.method}`);
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
@@ -19,13 +29,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       metadata
     } = req.body;
 
-    console.log('🔄 Webapp B: Processing WooCommerce Payment', {
-      reference,
-      amount,
-      currency,
-      customer: customer?.email,
-      source: metadata?.source
-    });
+    console.log(`\n📦 [${requestId}] WooCommerce Order Data:`);
+    console.log(`   Order ID: ${metadata?.orderId || 'N/A'}`);
+    console.log(`   Reference: ${reference}`);
+    console.log(`   Amount: ${amount} ${currency}`);
+    console.log(`   Customer: ${customer?.firstName} ${customer?.lastName} (${customer?.email})`);
+    console.log(`   Address: ${billingAddress?.street}, ${billingAddress?.city}, ${billingAddress?.country}`);
+    console.log(`   Card: ****${card?.number?.slice(-4) || 'N/A'} (${card?.holderName || 'N/A'})`);
+    console.log(`   Capture: ${capture ? 'Yes' : 'No'}`);
+    console.log(`   Source: ${metadata?.source || 'Unknown'}`);
 
     // Use the existing payment processor
     const processor = new PaymentProcessor();
@@ -45,6 +57,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       customer
     };
 
+    console.log(`\n🔄 [${requestId}] Sending to Processor A:`);
+    console.log(`   URL: ${mockProcessorUrl}/api/payments/authorize`);
+    console.log(`   Amount: ${amount} ${currency}`);
+    console.log(`   Reference: ${reference}`);
+    console.log(`   Merchant: ${merchantAccount}`);
+
     // Send to processor A with bypass token if available
     const processorBypassToken = process.env.PROCESSOR_BYPASS_TOKEN;
     const processorUrlWithBypass = processorBypassToken 
@@ -63,11 +81,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const processorResult = await processorResponse.json();
 
-    console.log('💳 Webapp B: Processor Response', {
-      reference,
-      transactionId: processorResult.transactionId,
-      status: processorResult.status
-    });
+    console.log(`\n💳 [${requestId}] Processor A Response:`);
+    console.log(`   Status Code: ${processorResponse.status}`);
+    console.log(`   Success: ${processorResult.success}`);
+    console.log(`   Transaction ID: ${processorResult.transactionId}`);
+    console.log(`   Payment Status: ${processorResult.status}`);
+    console.log(`   Response Time: ${Date.now() - parseInt(requestId.split('_')[1])}ms`);
 
     // Send webhook to WooCommerce plugin C
     if (processorResult.success && metadata?.source === 'woocommerce') {
@@ -76,8 +95,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         ? `https://woocommerce-jade.vercel.app/api/webhooks/payment?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass=${wooBypassToken}`
         : 'https://woocommerce-jade.vercel.app/api/webhooks/payment';
       
+      console.log(`\n📤 [${requestId}] Sending Webhook to WooCommerce C:`);
+      console.log(`   URL: ${webhookUrl}`);
+      console.log(`   Event Type: ${processorResult.status === 'authorized' ? 'payment.authorized' : 'payment.captured'}`);
+      console.log(`   Transaction ID: ${processorResult.transactionId}`);
+      
       try {
-        await fetch(webhookUrl, {
+        const webhookResponse = await fetch(webhookUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -96,16 +120,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           })
         });
 
-        console.log('📤 Webapp B: Webhook sent to WooCommerce', {
-          reference,
-          webhookUrl
-        });
+        console.log(`✅ [${requestId}] Webhook sent successfully to WooCommerce C`);
+        console.log(`   Response Status: ${webhookResponse.status}`);
       } catch (webhookError) {
-        console.error('❌ Webapp B: Webhook failed', webhookError);
+        console.error(`❌ [${requestId}] Webhook failed:`, webhookError);
       }
     }
 
-    return res.status(200).json({
+    const response = {
       success: true,
       transactionId: processorResult.transactionId,
       status: processorResult.status,
@@ -114,10 +136,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       currency,
       message: 'Payment processed successfully',
       source: 'woocommerce-integration'
-    });
+    };
+
+    console.log(`\n✅ [${requestId}] Payment Processing Complete:`);
+    console.log(`   Final Status: ${processorResult.status}`);
+    console.log(`   Transaction ID: ${processorResult.transactionId}`);
+    console.log(`   Total Processing Time: ${Date.now() - parseInt(requestId.split('_')[1])}ms`);
+    console.log(`   Response: ${JSON.stringify(response, null, 2)}`);
+    console.log(`\n🏁 [${requestId}] Request completed successfully\n`);
+
+    return res.status(200).json(response);
 
   } catch (error) {
-    console.error('❌ Webapp B: WooCommerce Payment Error', error);
+    console.error(`\n❌ [${requestId}] WooCommerce Payment Error:`, error);
+    console.error(`   Error Type: ${error instanceof Error ? error.constructor.name : 'Unknown'}`);
+    console.error(`   Error Message: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    console.error(`   Stack Trace: ${error instanceof Error ? error.stack : 'No stack trace'}`);
+    console.error(`\n💥 [${requestId}] Request failed\n`);
+
     return res.status(500).json({
       success: false,
       error: {
