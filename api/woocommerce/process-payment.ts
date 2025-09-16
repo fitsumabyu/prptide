@@ -45,8 +45,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       customer
     };
 
-    // Send to processor A
-    const processorResponse = await fetch(`${mockProcessorUrl}/api/payments/authorize`, {
+    // Send to processor A with bypass token if available
+    const processorBypassToken = process.env.PROCESSOR_BYPASS_TOKEN;
+    const processorUrlWithBypass = processorBypassToken 
+      ? `${mockProcessorUrl}/api/payments/authorize?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass=${processorBypassToken}`
+      : `${mockProcessorUrl}/api/payments/authorize`;
+
+    const processorResponse = await fetch(processorUrlWithBypass, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +71,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Send webhook to WooCommerce plugin C
     if (processorResult.success && metadata?.source === 'woocommerce') {
-      const webhookUrl = 'https://woocommerce-608j7oqdt-bangkokteam.vercel.app/api/webhooks/payment';
+      const wooBypassToken = process.env.WOOCOMMERCE_BYPASS_TOKEN;
+      const webhookUrl = wooBypassToken 
+        ? `https://woocommerce-608j7oqdt-bangkokteam.vercel.app/api/webhooks/payment?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass=${wooBypassToken}`
+        : 'https://woocommerce-608j7oqdt-bangkokteam.vercel.app/api/webhooks/payment';
       
       try {
         await fetch(webhookUrl, {

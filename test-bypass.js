@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
 
 async function testBypassToken() {
   const bypassToken = 'vPkbCrknO5hsk3Pd1ZeSWQf9yxtZmiYh';
-  const webappUrl = 'https://peptide-dapqfuk43-bangkokteam.vercel.app';
+  const webappUrl = 'https://peptide-onncyw958-bangkokteam.vercel.app';
   
   console.log('🧪 Testing bypass token with main webapp...');
   
