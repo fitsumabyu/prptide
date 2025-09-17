@@ -97,7 +97,7 @@ const ShippingPolicy = () => {
             <ul className="list-disc pl-6 text-gray-700 mb-6">
               <li><strong>State Regulations:</strong> Some states may have specific regulations regarding certain laboratory reagents. We ensure all shipments comply with state-level requirements.</li>
               <li><strong>Delivery Timelines:</strong> Delivery to certain states may take longer depending on distance from our distribution centers.</li>
-              <li><strong>Documentation:</strong> We provide all necessary documentation for interstate shipping of research materials.</li>
+              <li><strong>Documentation:</strong> We provide all necessary documentation for interstate shipping of recovery performances.</li>
             </ul>
             
             <div className="bg-gray-100 p-4 rounded-md mb-6">

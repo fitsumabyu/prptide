@@ -9,7 +9,7 @@ import { products } from "@/data/protidelabproducts";
 const Index = () => {
   // Filter products to show only the recommended items in the carousel
   const recommendedProducts = products.filter(product => 
-    ['88815', '88816', '88817', '88818', '88819'].includes(product.id)
+    ['88815p1', '88816p1', '88817p1', '88818p1', '88819p1'].includes(product.id)
   );
 
   return (

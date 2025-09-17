@@ -122,7 +122,7 @@ const CertificateOfAnalysis = () => {
               H&amp;H WORLDWIDE GROUP
             </h2>
             <p className="text-sm text-gray-500">
-              Certificate of Analysis | Research Materials
+              Certificate of Analysis | recovery performances
             </p>
           </div>
           

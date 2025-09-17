@@ -1,0 +1,72 @@
+# Product Image Generation Prompts
+# Use these prompts with DALL-E 3 or other image generation tools
+
+## Metabolisk Integritetsprotokoll Kits
+
+### 88815p1 - Metabolisk Integritetsprotokoll - Fas I
+A minimalist flat lay on a dark grey slate background. A matte black glass bottle with a dropper, a large matte white canister with a silver scoop, and a frosted glass jar with a black pump. Next to them, a sleek, white handheld electronic device with a metallic tip. Dramatic side lighting, clean, clinical aesthetic.
+
+### 88815p2 - Metabolisk Integritetsprotokoll - Fas II
+Studio product shot on a polished concrete surface. A collection of matte black and frosted white bottles and jars. The centerpiece is a futuristic, handheld pod-shaped device made of white high-gloss plastic, emitting a soft red glow from an array of LEDs. Soft, cinematic lighting with a subtle reflection on the surface.
+
+### 88815p3 - Metabolisk Integritetsprotokoll - Fas III
+An array of premium, minimalist supplement containers in matte black and white on a marble slab. One device, a glowing red LED pod, sits next to a second device: a sleek, dark grey percussive massage gun with interchangeable heads. Soft focus, laboratory background. Professional, high-end product photography.
+
+### 88815p4 - Metabolisk Integritetsprotokoll - Apex
+A wide-angle shot showcasing a luxurious bio-hacking setup. In the background, a large, half-body panel of glowing red and near-infrared LEDs is leaning against a dark wall. In the foreground, on a stainless steel table, are multiple matte black bottles, a percussive massager, and other high-tech wellness devices. The scene is lit by the glow from the panel, creating long shadows. Ultra-premium, futuristic aesthetic.
+
+## Kroppskomposition Stack Kits
+
+### 88816p1 - Kroppskomposition Stack - Grundläggande
+Clean product shot on a pure white background. Three containers: a large white powder tub, a small amber glass bottle with a dropper, and a frosted glass pump bottle. The arrangement is precise and geometric. Clean, bright studio lighting.
+
+### 88816p2 - Kroppskomposition Stack - Accelerator
+A dynamic composition on a light grey textured background. Several minimalist supplement containers are arranged around a small, elegant handheld device with a metallic head covered in tiny, fine points. A thick, premium cardstock document with silver foil line art (no text) is partially visible. Soft, natural light from a window.
+
+### 88816p3 - Kroppskomposition Stack - Avancerad
+A collection of sleek, modern wellness products on a polished wooden surface. The family of white and amber glass containers is joined by a compact, pod-shaped device glowing with red LEDs. The composition feels balanced and scientific. Warm, focused lighting.
+
+### 88816p4 - Kroppskomposition Stack - Apex
+An overhead flat lay of a complete wellness system. A glowing red LED pod, a percussive massage gun, and a derma roller are meticulously arranged amongst a full suite of matching supplement jars and bottles. The background is a dark, textured surface, making the products stand out. A perfect grid layout, highly organized.
+
+## Tri-Faktor Metabolisk Protokoll Kits
+
+### 88817p1 - Tri-Faktor Metabolisk Protokoll - I
+A moody, high-contrast shot. An extensive collection of dark, matte-finish supplement containers with subtle carbon fiber accents on the lids, arranged on a black volcanic rock surface. The lighting is dramatic, catching the edges of the products. Bio-hacker, cutting-edge aesthetic.
+
+### 88817p2 - Tri-Faktor Metabolisk Protokoll - II
+A set of matte black, futuristic supplement containers. Central to the image is a sleek, black handheld device emitting a powerful deep red light. The background is a dark, out-of-focus tech environment with subtle glowing hexagonal patterns. Sharp, focused product photography.
+
+### 88817p3 - Tri-Faktor Metabolisk Protokoll - III
+A pro-level performance kit. A dark grey, metallic percussive massage gun and a glowing red LED therapy pod are the heroes, surrounded by a complete system of matching matte black supplement canisters and bottles. The background is dark and industrial. Strong, directional lighting creates high contrast.
+
+### 88817p4 - Tri-Faktor Metabolisk Protokoll - Apex
+An epic, wide shot of the ultimate performance recovery system. A massive, full-body panel of glowing red LEDs stands vertically, bathing the scene in red light. In front of it, a full collection of advanced supplements in carbon-fiber-accented containers and a high-end percussive massager are arranged on a metal workbench. Hyper-realistic, cinematic, and powerful.
+
+## Dermal Ommodellering Matrix Kits
+
+### 88818p1 - Dermal Ommodellering Matrix - Grundläggande
+Elegant product photography on a white marble surface. A beautiful glass bottle holds a viscous, shimmering blue serum. Next to it is a white canister of powder and a handheld roller device with two distinct metallic heads. Bright, clean, luxury skincare aesthetic.
+
+### 88818p2 - Dermal Ommodellering Matrix - Accelerator
+A chic, minimalist arrangement of cosmetic science products. A bottle of blue serum and several white jars are complemented by a sleek, white electronic wand with a glass tip that has a subtle purple electric fizz inside. The background is a soft, pastel color.
+
+### 88818p3 - Dermal Ommodellering Matrix - Avancerad
+A sophisticated beauty-tech flat lay. A shimmering blue serum bottle, a white high-frequency wand, and a compact white device glowing with red LEDs are arranged artfully on a reflective surface with a few drops of water. Luxury, science, and beauty combined.
+
+### 88818p4 - Dermal Ommodellering Matrix - Apex
+An advanced at-home aesthetician setup. A large, curved panel of glowing red LEDs designed for the face and neck is the centerpiece. Arranged in front are a complete set of luxury serums and creams in glass and ceramic containers, along with several smaller handheld beauty devices. The atmosphere is serene and clinical, like a high-end spa.
+
+## Systemisk Torrhetsprotokoll Kits
+
+### 88819p1 - Systemisk Torrhetsprotokoll - I
+A gentle, soothing composition. A large white tub of rich cream, a premium metallic tube of lip balm, a bottle of clear eye drops, and a glass bottle of golden liquid capsules. The background is a soft, pale green, evoking a sense of calm and relief. Soft, diffused lighting.
+
+### 88819p2 - Systemisk Torrhetsprotokoll - II
+A comprehensive care package. A family of clean, white and blue minimalist containers for creams, capsules, and gels. The textures are a focus: a thick, rich white cream is visible in an open jar, and a clear, thick gel is on a clean surface next to its tube. The feeling is one of intense hydration and relief.
+
+### 88819p3 - Systemisk Torrhetsprotokoll - III
+A clinical yet comforting arrangement of products. A full suite of hydrating topicals and oral supplements is joined by a compact, white, and light-blue handheld percussive massager. The scene is set against a clean, tiled background, suggesting a sterile but comfortable environment.
+
+### 88819p4 - Systemisk Torrhetsprotokoll - Apex
+The ultimate restorative system. A full array of clinical-grade hydrating products sits next to two devices: a powerful percussive massager and a handheld red light therapy pod. The entire collection is arranged on a clean white surface with subtle water droplet accents, emphasizing hydration and advanced scientific care.

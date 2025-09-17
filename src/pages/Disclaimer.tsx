@@ -21,7 +21,7 @@ const Disclaimer = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Research Use Disclaimer</h2>
             <p className="text-gray-700 mb-6">
-              The laboratory reagents and other research materials sold by H&amp;H WORLDWIDE GROUP are intended solely for in vitro laboratory research conducted by qualified professionals. These products are not approved by the U.S. Food and Drug Administration (FDA) or any other regulatory agency for human or veterinary use, diagnostic use, therapeutic use, or any other medical purpose.
+              The laboratory reagents and other recovery performances sold by H&amp;H WORLDWIDE GROUP are intended solely for in vitro laboratory research conducted by qualified professionals. These products are not approved by the U.S. Food and Drug Administration (FDA) or any other regulatory agency for human or veterinary use, diagnostic use, therapeutic use, or any other medical purpose.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">2. No Medical Claims</h2>
@@ -31,7 +31,7 @@ const Disclaimer = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">3. No Warranty</h2>
             <p className="text-gray-700 mb-6">
-              While we strive to provide accurate product information and high-quality research materials, H&amp;H WORLDWIDE GROUP makes no warranties, expressed or implied, regarding the accuracy, completeness, reliability, or suitability of the information provided. We provide our products "as is" without warranty of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement.
+              While we strive to provide accurate product information and high-quality recovery performances, H&amp;H WORLDWIDE GROUP makes no warranties, expressed or implied, regarding the accuracy, completeness, reliability, or suitability of the information provided. We provide our products "as is" without warranty of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">4. User Responsibility</h2>
