@@ -4,12 +4,12 @@ import FeaturesSection from "@/components/sections/FeaturesSection";
 import ResearchSection from "@/components/sections/ResearchSection";
 import ProductCarousel from "@/components/ui/ProductCarousel";
 import Disclaimer from "@/components/ui/Disclaimer";
-import { products } from "@/data/products";
+import { products } from "@/data/protidelabproducts";
 
 const Index = () => {
   // Filter products to show only the recommended items in the carousel
   const recommendedProducts = products.filter(product => 
-    ['bpc-157', 'tb-500', 'ghk-cu', 'selank', 'semax', 'mots-c', 'thymosin-a1'].includes(product.id)
+    ['88815', '88816', '88817', '88818', '88819'].includes(product.id)
   );
 
   return (

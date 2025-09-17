@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Download, FileText, CheckCircle, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { products, Product } from "@/data/products";
+import { products, Product } from "@/data/protidelabproducts";
 import Layout from "@/components/layout/Layout";
 import { useToast } from "@/components/ui/use-toast";
 import html2canvas from 'html2canvas';

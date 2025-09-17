@@ -2,7 +2,7 @@ import { useState, useMemo, Fragment } from "react";
 import Layout from "@/components/layout/Layout";
 import ProductCard from "@/components/ui/ProductCard";
 import Disclaimer from "@/components/ui/Disclaimer";
-import { products } from "@/data/products";
+import { products } from "@/data/protidelabproducts";
 import { useShippingCountry } from "@/context/ShippingCountryContext";
 import { useCountry } from "@/components/shipping/CountrySelector";
 import { AlertTriangle, Search } from "lucide-react";
@@ -307,7 +307,7 @@ const Products = () => {
             Object.entries(productsByCategory).map(([category, categoryProducts]) => (
               <div key={category} className="mb-10">
                 <h2 className="text-2xl font-semibold mb-4 pb-2 border-b border-gray-200">{category}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {categoryProducts.map(product => (
                     <ProductCard
                       key={product.id}

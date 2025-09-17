@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import Disclaimer from "@/components/ui/Disclaimer";
-import { products } from "@/data/products";
+import { products } from "@/data/protidelabproducts";
 import { ArrowLeft, ShoppingCart, Globe, FileText } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
@@ -19,12 +19,12 @@ const ProductDetail = () => {
     return (
       <Layout>
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
-          <p className="mb-6">The product you're looking for does not exist.</p>
+          <h1 className="text-2xl font-bold mb-4">Produkt hittades inte</h1>
+          <p className="mb-6">Produkten du letar efter finns inte.</p>
           <Button asChild variant="outline">
             <Link to="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Products
+              Tillbaka till Produkter
             </Link>
           </Button>
         </div>
@@ -43,7 +43,7 @@ const ProductDetail = () => {
           <Button asChild variant="outline" className="mb-6">
             <Link to="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Products
+              Tillbaka till Produkter
             </Link>
           </Button>
         </div>
@@ -70,35 +70,34 @@ const ProductDetail = () => {
                   {product.price}
                 </div>
                 <div className="mt-1 text-sm text-gray-600">
-                  <span className="block mb-1">Plus applicable taxes</span>
-                  <span className="block">Flat-rate shipping: $9.99 (US) / $19.99 (International)</span>
+                  <span className="block mb-1">Plus tillämpliga skatter</span>
                 </div>
               </div>
               
               <div className="mb-6">
-                <h2 className="text-lg font-semibold mb-2">Description</h2>
+                <h2 className="text-lg font-semibold mb-2">Beskrivning</h2>
                 <p className="text-gray-700">{product.description}</p>
               </div>
               
               <div className="mb-8">
-                <h2 className="text-lg font-semibold mb-3">Product Details</h2>
+                <h2 className="text-lg font-semibold mb-3">Produktdetaljer</h2>
                 <div className="border rounded-md overflow-hidden shadow-sm">
                   <table className="w-full">
                     <tbody>
                       <tr className="border-b">
-                        <td className="px-4 py-3 bg-gray-50 font-medium">CAS Number</td>
-                        <td className="px-4 py-3">{product.details.cas}</td>
+                        <td className="px-4 py-3 bg-gray-50 font-medium">Produkt-ID</td>
+                        <td className="px-4 py-3">{product.details.productId}</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="px-4 py-3 bg-gray-50 font-medium">Purity</td>
+                        <td className="px-4 py-3 bg-gray-50 font-medium">Kvalitetsgrad</td>
                         <td className="px-4 py-3">{product.purity}</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="px-4 py-3 bg-gray-50 font-medium">Size / Volume</td>
+                        <td className="px-4 py-3 bg-gray-50 font-medium">Förpackningsstorlek</td>
                         <td className="px-4 py-3">{product.details.size}</td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-3 bg-gray-50 font-medium">Storage Instructions</td>
+                        <td className="px-4 py-3 bg-gray-50 font-medium">Förvaringsinstruktioner</td>
                         <td className="px-4 py-3">{product.details.storage}</td>
                       </tr>
                     </tbody>
@@ -128,13 +127,13 @@ const ProductDetail = () => {
                   onClick={handleAddToCart}
                 >
                   <ShoppingCart className="mr-2 h-4 w-4" />
-                  Add to Cart
+                  Lägg i varukorg
                 </Button>
 
                 <Button asChild variant="outline" className="bg-white hover:bg-gray-50">
                   <Link to={`/certificates/${product.id}`}>
                     <FileText className="mr-2 h-4 w-4" />
-                    View COA
+                    Visa COA
                   </Link>
                 </Button>
               </div>
@@ -144,8 +143,8 @@ const ProductDetail = () => {
                 <div className="my-4 px-4 py-3 bg-blue-50 rounded-md flex items-start">
                   <Globe className="h-5 w-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
                   <div className="text-sm">
-                    <p className="font-medium text-blue-700">Special Shipping Destinations Available</p>
-                    <p className="text-blue-600">This product has specific shipping eligibility. See the Shipping tab below for details.</p>
+                    <p className="font-medium text-blue-700">Särskilda leveransdestinationer tillgängliga</p>
+                    <p className="text-blue-600">Denna produkt har specifik leveransberättigande. Se fliken Leverans nedan för detaljer.</p>
                   </div>
                 </div>
               )}
@@ -159,28 +158,28 @@ const ProductDetail = () => {
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-12">
           <Tabs defaultValue="details">
             <TabsList className="mb-6">
-              <TabsTrigger value="details">Details</TabsTrigger>
-              <TabsTrigger value="shipping">Shipping</TabsTrigger>
+              <TabsTrigger value="details">Detaljer</TabsTrigger>
+              <TabsTrigger value="shipping">Leverans</TabsTrigger>
               <TabsTrigger value="faq">FAQ</TabsTrigger>
             </TabsList>
             
             <TabsContent value="details">
               <div className="prose max-w-none">
-                <h3 className="text-xl font-semibold mb-4">Product Information</h3>
+                <h3 className="text-xl font-semibold mb-4">Produktinformation</h3>
                 <p>{product.description}</p>
-                <p className="font-medium text-red-600">For research use only. Not for human or veterinary use.</p>
+                <p className="font-medium text-green-600">Premium kvalitetsprodukter för personlig hälsa och återhämtning.</p>
                 
-                <h4 className="text-lg font-semibold mt-6 mb-3">Chemical Information</h4>
+                <h4 className="text-lg font-semibold mt-6 mb-3">Produktspecifikationer</h4>
                 <p>
-                  This chemical reference material is intended solely for controlled laboratory research. 
-                  Not for use in diagnostic procedures, therapeutic applications, or human consumption.
+                  Denna hälsoprodukt är designad för personlig användning och återhämtningsstöd. 
+                  Varje produkt är noggrant formulerad och testad för kvalitet och säkerhet.
                 </p>
                 
-                <h4 className="text-lg font-semibold mt-6 mb-3">Storage and Handling</h4>
+                <h4 className="text-lg font-semibold mt-6 mb-3">Förvaring och skötsel</h4>
                 <p>
                   {product.details.storage}<br />
-                  Once reconstituted, the product should be used immediately or stored at -20°C in aliquots.
-                  Handle in accordance with good laboratory practices and safety guidelines.
+                  Håll produkter i sin ursprungliga förpackning och följ alla inkluderade instruktioner för bästa resultat.
+                  Förvara på en sval, torr plats undvik direkt solljus.
                 </p>
               </div>
             </TabsContent>
@@ -195,23 +194,23 @@ const ProductDetail = () => {
             
             <TabsContent value="faq">
               <div className="prose max-w-none">
-                <h3 className="text-xl font-semibold mb-4">Frequently Asked Questions</h3>
+                <h3 className="text-xl font-semibold mb-4">Vanliga frågor</h3>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-lg font-semibold">What is the purity level of this product?</h4>
-                    <p>This product has a purity level of {product.purity}. Each batch is tested and comes with a Certificate of Analysis for research verification.</p>
+                    <h4 className="text-lg font-semibold">Vad är kvalitetsgraden för denna produkt?</h4>
+                    <p>Denna produkt är {product.purity} kvalitet. Varje produkt är noggrant testad och kommer med kvalitetssäkringsdokumentation.</p>
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold">How should I store this product?</h4>
+                    <h4 className="text-lg font-semibold">Hur ska jag förvara denna produkt?</h4>
                     <p>{product.details.storage}</p>
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold">What is the intended use of this product?</h4>
-                    <p>This product is intended solely for in vitro laboratory research conducted by qualified professionals. It is not intended for diagnostic use, therapeutic use, human consumption, or any other non-research application.</p>
+                    <h4 className="text-lg font-semibold">Vad är den avsedda användningen för denna produkt?</h4>
+                    <p>Denna produkt är designad för personlig hälsa och återhämtningsstöd. Den är avsedd för individuell användning som en del av en omfattande hälsorutin.</p>
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold">Is this product available for shipping to my location?</h4>
-                    <p>We currently only ship to domestic US addresses. Please see the Shipping tab for specific state availability for this product.</p>
+                    <h4 className="text-lg font-semibold">Finns denna produkt tillgänglig för leverans till min plats?</h4>
+                    <p>Vi levererar för närvarande till inhemska US-adresser. Se fliken Leverans för specifik tillgänglighetsinformation för denna produkt.</p>
                   </div>
                 </div>
               </div>

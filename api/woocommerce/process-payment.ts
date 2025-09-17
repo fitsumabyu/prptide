@@ -1,5 +1,11 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { PaymentProcessor } from '../lib/payment-processor.js';
+import { 
+  getCurrentProductIdFromSwedishId, 
+  getSwedishProductById, 
+  getCompoundNameFromAnyId,
+  getMappedSwedishProductId 
+} from '../../src/data/productMapping.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -38,6 +44,46 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.log(`   Card: ****${card?.number?.slice(-4) || 'N/A'} (${card?.holderName || 'N/A'})`);
     console.log(`   Capture: ${capture ? 'Yes' : 'No'}`);
     console.log(`   Source: ${metadata?.source || 'Unknown'}`);
+
+    // Product mapping analysis
+    console.log(`\n🔗 [${requestId}] Product Mapping Analysis:`);
+    if (metadata?.items && metadata.items.length > 0) {
+      metadata.items.forEach((item: any, index: number) => {
+        console.log(`   Item ${index + 1}:`);
+        console.log(`     Swedish Product ID: ${item.id || 'N/A'}`);
+        console.log(`     Product Name: ${item.name || 'N/A'}`);
+        console.log(`     Quantity: ${item.quantity || 'N/A'}`);
+        console.log(`     Price: ${item.price || 'N/A'}`);
+        
+        if (item.id) {
+          // Get Swedish product details
+          const swedishProduct = getSwedishProductById(item.id);
+          if (swedishProduct) {
+            console.log(`     Swedish Product Details:`);
+            console.log(`       Name: ${swedishProduct.name}`);
+            console.log(`       Size: ${swedishProduct.size}`);
+            console.log(`       Price: ${swedishProduct.price} kr`);
+            console.log(`       Compound: ${swedishProduct.compound}`);
+          }
+          
+          // Get current product ID mapping
+          const currentProductId = getCurrentProductIdFromSwedishId(item.id);
+          if (currentProductId) {
+            console.log(`     Mapped to Current Product ID: ${currentProductId}`);
+            
+            // Get compound name for inventory tracking
+            const compoundName = getCompoundNameFromAnyId(currentProductId);
+            if (compoundName) {
+              console.log(`     Inventory Compound: ${compoundName}`);
+            }
+          } else {
+            console.log(`     ⚠️  No mapping found for Swedish product ID: ${item.id}`);
+          }
+        }
+      });
+    } else {
+      console.log(`   ⚠️  No items found in order metadata`);
+    }
 
     // Use the existing payment processor
     const processor = new PaymentProcessor();

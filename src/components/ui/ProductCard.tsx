@@ -56,7 +56,7 @@ const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
       <Link to={`/products/${id}`} className="block">
         {/* Image Gallery Section */}
         <div className="relative w-full">
-          <div className="aspect-w-4 aspect-h-3 relative h-[220px] bg-gradient-to-b from-purple-50 to-white overflow-hidden">
+          <div className="aspect-w-4 aspect-h-3 relative h-[280px] bg-gradient-to-b from-purple-50 to-white overflow-hidden">
             {!imageLoaded && !imageError && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
                 <div className="animate-pulse flex flex-col items-center">

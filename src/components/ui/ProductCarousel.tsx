@@ -83,7 +83,7 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
   const scroll = (direction: "left" | "right") => {
     if (!carouselRef.current) return;
 
-    const scrollAmount = 280; // Adjusted scroll amount to ensure full card visibility
+    const scrollAmount = 320; // Adjusted scroll amount to ensure full card visibility
     const container = carouselRef.current;
 
     if (direction === "left") {
@@ -225,7 +225,7 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
                 Array.from({ length: 4 }).map((_, index) => (
                   <div
                     key={`skeleton-${index}`}
-                    className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] snap-start product-card-wrapper"
+                    className="min-w-[240px] sm:min-w-[280px] md:min-w-[320px] snap-start product-card-wrapper"
                     style={{ '--index': index } as React.CSSProperties}
                   >
                     <ProductSkeleton />
@@ -236,7 +236,7 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
                 displayedProducts.map((product, index) => (
                   <div
                     key={product.id}
-                    className="min-w-[220px] sm:min-w-[250px] md:min-w-[280px] snap-start product-card-wrapper"
+                    className="min-w-[240px] sm:min-w-[280px] md:min-w-[320px] snap-start product-card-wrapper"
                     style={{ '--index': index } as React.CSSProperties}
                   >
                     <div className="h-full flex flex-col">
