@@ -46,7 +46,7 @@ const About = () => {
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
                   <Mail className="h-4 w-4 mr-1 text-gray-400" /> E-post
                 </p>
-                <p className="font-medium">support@formulax.se</p>
+                <p className="font-medium">support@formulax.dev</p>
               </div>
             </div>
           </div>

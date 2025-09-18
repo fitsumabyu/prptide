@@ -306,11 +306,7 @@ const Checkout = () => {
                   <h4 className="font-medium mb-1">Billing & Pricing</h4>
                   <p>Your card will be charged immediately upon order confirmation. All prices are shown in USD and include the product cost only. Taxes and shipping are calculated at checkout.</p>
                 </div>
-                <div>
-                  <h4 className="font-medium mb-1">Shipping Costs</h4>
-                  <p>Domestic (US) shipping: Flat rate of $9.99<br />
-                  International shipping: Flat rate of $19.99</p>
-                </div>
+              
                 <div>
                   <h4 className="font-medium mb-1">Subscription Terms</h4>
                   <p>If you choose a subscription option, your payment method will be charged automatically according to the schedule you select. You can cancel at any time through your account settings or by contacting customer service.</p>

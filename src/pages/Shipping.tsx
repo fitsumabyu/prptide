@@ -106,7 +106,7 @@ const Shipping = () => {
             </p>
             <p className="text-gray-700 mb-6">
                 Email: support@formulax.com<br />
-              Phone: +1 (708) 734-6847<br />
+              Phone: +46 70 123 45 67<br />
               Hours: Monday-Friday, 9 AM - 5 PM EST
             </p>
           </div>

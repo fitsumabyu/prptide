@@ -60,7 +60,7 @@ const Contact = () => {
                 className="text-peptide-purple hover:underline flex items-center"
               >
                 <Mail className="h-4 w-4 mr-2" />
-                support@formulax.se
+                support@formulax.dev
               </a>
             </div>
           </div>
@@ -74,7 +74,8 @@ const Contact = () => {
                   <div>
                     <h2 className="text-lg font-semibold mb-2">Fysisk Adress</h2>
                     <p className="text-gray-700">
-                    131 Continental,<br /> Dr Suite 305<br /> Newark, DE 19713<br />
+                    732 S 6TH ST, STE R<br />
+                    LAS VEGAS NEVADA 89101<br />
                       United States
                     </p>
                     <a 
@@ -97,16 +98,16 @@ const Contact = () => {
                     <h2 className="text-lg font-semibold mb-2">Telefonsupport</h2>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Huvudkontor:</span>
-                      <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847
+                      <a href="tel:+46701234567" className="hover:underline">+46 70 123 45 67
                       </a>
                     </p>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Kundservice:</span>
-                      <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847</a>
+                      <a href="tel:+46701234567" className="hover:underline">+46 70 123 45 67</a>
                     </p>
                     <p className="text-gray-700">
                       <span className="font-medium block">Teknisk Support:</span>
-                      <a href="tel:+17087346847" className="hover:underline">+1 (708) 734-6847</a>
+                      <a href="tel:+46701234567" className="hover:underline">+46 70 123 45 67</a>
                     </p>
                   </div>
                 </div>
@@ -119,7 +120,7 @@ const Contact = () => {
                     <h2 className="text-lg font-semibold mb-2">E-post Kontakter</h2>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Allmänna Förfrågningar:</span>
-                      <a href="mailto:support@formulax.se" className="hover:underline">support@formulax.se</a>
+                      <a href="mailto:support@formulax.dev" className="hover:underline">support@formulax.dev</a>
                     </p>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Försäljningsavdelning:</span>
@@ -127,7 +128,7 @@ const Contact = () => {
                     </p>    
                     <p className="text-gray-700">
                       <span className="font-medium block">Teknisk Support:</span>
-                      <a href="mailto:support@formulax.se" className="hover:underline">support@formulax.se</a>
+                      <a href="mailto:support@formulax.dev" className="hover:underline">support@formulax.dev</a>
                     </p>
                   </div>
                 </div>

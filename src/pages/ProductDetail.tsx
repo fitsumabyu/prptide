@@ -130,12 +130,6 @@ const ProductDetail = () => {
                   Lägg i varukorg
                 </Button>
 
-                <Button asChild variant="outline" className="bg-white hover:bg-gray-50">
-                  <Link to={`/certificates/${product.id}`}>
-                    <FileText className="mr-2 h-4 w-4" />
-                    Visa COA
-                  </Link>
-                </Button>
               </div>
               
               {/* Shipping availability indicator */}
@@ -166,21 +160,48 @@ const ProductDetail = () => {
             <TabsContent value="details">
               <div className="prose max-w-none">
                 <h3 className="text-xl font-semibold mb-4">Produktinformation</h3>
-                <p>{product.description}</p>
-                <p className="font-medium text-green-600">Premium kvalitetsprodukter för personlig hälsa och återhämtning.</p>
+                <p className="text-gray-700 mb-4">{product.description}</p>
+                <p className="font-medium text-green-600 mb-6">Premium kvalitetsprodukter för personlig hälsa och återhämtning.</p>
                 
                 <h4 className="text-lg font-semibold mt-6 mb-3">Produktspecifikationer</h4>
-                <p>
+                <div className="bg-gray-50 p-4 rounded-md mb-4">
+                  <ul className="space-y-2 text-gray-700">
+                    <li><strong>Produkt-ID:</strong> {product.details.productId}</li>
+                    <li><strong>Kvalitetsgrad:</strong> {product.purity}</li>
+                    <li><strong>Förpackningsstorlek:</strong> {product.details.size}</li>
+                    <li><strong>Förvaringsinstruktioner:</strong> {product.details.storage}</li>
+                  </ul>
+                </div>
+                <p className="text-gray-700 mb-4">
                   Denna hälsoprodukt är designad för personlig användning och återhämtningsstöd. 
-                  Varje produkt är noggrant formulerad och testad för kvalitet och säkerhet.
+                  Varje produkt är noggrant formulerad och testad för kvalitet och säkerhet enligt de högsta industristandarderna.
+                </p>
+                
+                <h4 className="text-lg font-semibold mt-6 mb-3">Kvalitetsgaranti</h4>
+                <p className="text-gray-700 mb-4">
+                  Alla våra produkter genomgår rigorös kvalitetskontroll och testning. Vi garanterar att varje produkt 
+                  uppfyller våra strikta kvalitetsstandarder och kommer med fullständig dokumentation.
                 </p>
                 
                 <h4 className="text-lg font-semibold mt-6 mb-3">Förvaring och skötsel</h4>
-                <p>
-                  {product.details.storage}<br />
-                  Håll produkter i sin ursprungliga förpackning och följ alla inkluderade instruktioner för bästa resultat.
-                  Förvara på en sval, torr plats undvik direkt solljus.
-                </p>
+                <div className="bg-blue-50 p-4 rounded-md">
+                  <p className="text-gray-700 mb-2">
+                    <strong>Förvaringsinstruktioner:</strong> {product.details.storage}
+                  </p>
+                  <p className="text-gray-700">
+                    Håll produkter i sin ursprungliga förpackning och följ alla inkluderade instruktioner för bästa resultat.
+                    Förvara på en sval, torr plats och undvik direkt solljus. Kontrollera utgångsdatumet regelbundet.
+                  </p>
+                </div>
+                
+                <h4 className="text-lg font-semibold mt-6 mb-3">Säkerhetsinformation</h4>
+                <div className="bg-amber-50 p-4 rounded-md border border-amber-200">
+                  <p className="text-amber-800 text-sm">
+                    <strong>Viktigt:</strong> Denna produkt är avsedd för personlig användning. Konsultera alltid med en 
+                    kvalificerad sjukvårdspersonal innan användning, särskilt om du har befintliga medicinska tillstånd 
+                    eller tar andra mediciner. Håll produkter utom räckhåll för barn.
+                  </p>
+                </div>
               </div>
             </TabsContent>
             
@@ -198,19 +219,35 @@ const ProductDetail = () => {
                 <div className="space-y-6">
                   <div>
                     <h4 className="text-lg font-semibold">Vad är kvalitetsgraden för denna produkt?</h4>
-                    <p>Denna produkt är {product.purity} kvalitet. Varje produkt är noggrant testad och kommer med kvalitetssäkringsdokumentation.</p>
+                    <p>Denna produkt är {product.purity} kvalitet. Varje produkt är noggrant testad och kommer med kvalitetssäkringsdokumentation. Vi använder endast de högsta kvalitetsstandarderna för alla våra produkter.</p>
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">Hur ska jag förvara denna produkt?</h4>
-                    <p>{product.details.storage}</p>
+                    <p>{product.details.storage} Det är viktigt att följa dessa instruktioner för att säkerställa produktens effektivitet och säkerhet under hela dess hållbarhetsperiod.</p>
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">Vad är den avsedda användningen för denna produkt?</h4>
-                    <p>Denna produkt är designad för personlig hälsa och återhämtningsstöd. Den är avsedd för individuell användning som en del av en omfattande hälsorutin.</p>
+                    <p>Denna produkt är designad för personlig hälsa och återhämtningsstöd. Den är avsedd för individuell användning som en del av en omfattande hälsorutin. Konsultera alltid med en sjukvårdspersonal innan användning.</p>
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">Finns denna produkt tillgänglig för leverans till min plats?</h4>
-                    <p>Vi levererar för närvarande till inhemska US-adresser. Se fliken Leverans för specifik tillgänglighetsinformation för denna produkt.</p>
+                    <p>Vi levererar till Sverige och USA. Svensk leverans tar 1-5 arbetsdagar medan amerikansk leverans tar 5-9 arbetsdagar. Se fliken Leverans för specifik tillgänglighetsinformation för denna produkt.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold">Vilka betalningsmetoder accepterar ni?</h4>
+                    <p>Vi accepterar alla större kreditkort (Visa, MasterCard, American Express), PayPal och banköverföringar. Alla transaktioner är säkra och krypterade för din skydd.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold">Kan jag returnera produkten om jag inte är nöjd?</h4>
+                    <p>Ja, vi erbjuder en 30-dagars returpolicy för oanvända produkter i originalförpackning. Kontakta vår kundtjänst för att initiera en retur.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold">Är produkterna säkra att använda?</h4>
+                    <p>Alla våra produkter genomgår rigorös kvalitetskontroll och testning. Vi följer strikta säkerhetsstandarder och alla produkter kommer med detaljerade användningsanvisningar. Läs alltid etiketten och följ användningsanvisningarna noggrant.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold">Hur kan jag kontakta er för support?</h4>
+                    <p>Du kan kontakta vår kundtjänst via e-post eller telefon. Vi svarar vanligtvis inom 24 timmar på vardagar. Se vår Kontakt-sida för fullständig kontaktinformation.</p>
                   </div>
                 </div>
               </div>

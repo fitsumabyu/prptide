@@ -8,59 +8,116 @@ export type ShippingDestination = {
   productSpecific?: boolean; // Indicates if this is a product-specific destination
 };
 
-// US states for domestic shipping
-const preferredStates: ShippingDestination[] = [
+// Swedish counties for domestic shipping
+const swedishCounties: ShippingDestination[] = [
   {
     id: 1,
-    name: "California",
-    description: "2-3 business days shipping to major cities"
+    name: "Stockholm",
+    description: "1-2 arbetsdagar leverans till huvudstadsområdet"
   },
   {
     id: 2,
-    name: "New York",
-    description: "2-3 business days shipping to the metro area"
+    name: "Göteborg",
+    description: "1-2 arbetsdagar leverans till Göteborgsområdet"
   },
   {
     id: 3,
-    name: "Texas",
-    description: "2-4 business days shipping throughout the state"
+    name: "Malmö",
+    description: "1-2 arbetsdagar leverans till Skåne"
   },
   {
     id: 4,
-    name: "Florida",
-    description: "2-3 business days shipping to major cities"
+    name: "Uppsala",
+    description: "2-3 arbetsdagar leverans till Uppsala län"
   },
   {
     id: 5,
-    name: "Illinois",
-    description: "2-3 business days shipping to Chicago metro area"
+    name: "Västra Götaland",
+    description: "2-3 arbetsdagar leverans till Västra Götalands län"
   },
   {
     id: 6,
-    name: "Washington",
-    description: "2-4 business days shipping to Seattle and surrounding areas"
+    name: "Östergötland",
+    description: "2-3 arbetsdagar leverans till Östergötlands län"
   },
   {
     id: 7,
-    name: "Colorado",
-    description: "3-5 business days shipping to major research centers"
+    name: "Skåne",
+    description: "2-3 arbetsdagar leverans till Skåne län"
   },
   {
     id: 8,
-    name: "Massachusetts",
-    description: "2-3 business days shipping to research institutions"
+    name: "Värmland",
+    description: "3-4 arbetsdagar leverans till Värmlands län"
   },
   {
     id: 9,
-    name: "Pennsylvania",
-    description: "2-4 business days shipping throughout the state"
+    name: "Dalarna",
+    description: "3-4 arbetsdagar leverans till Dalarnas län"
   },
   {
     id: 10,
-    name: "Michigan",
-    description: "3-5 business days shipping to major cities"
+    name: "Norrbotten",
+    description: "4-5 arbetsdagar leverans till Norrbottens län"
   }
 ];
+
+// US states for international shipping
+const usStates: ShippingDestination[] = [
+  {
+    id: 101,
+    name: "California",
+    description: "5-7 business days shipping to major cities"
+  },
+  {
+    id: 102,
+    name: "New York",
+    description: "5-7 business days shipping to the metro area"
+  },
+  {
+    id: 103,
+    name: "Texas",
+    description: "6-8 business days shipping throughout the state"
+  },
+  {
+    id: 104,
+    name: "Florida",
+    description: "5-7 business days shipping to major cities"
+  },
+  {
+    id: 105,
+    name: "Illinois",
+    description: "5-7 business days shipping to Chicago metro area"
+  },
+  {
+    id: 106,
+    name: "Washington",
+    description: "6-8 business days shipping to Seattle and surrounding areas"
+  },
+  {
+    id: 107,
+    name: "Colorado",
+    description: "7-9 business days shipping to major research centers"
+  },
+  {
+    id: 108,
+    name: "Massachusetts",
+    description: "5-7 business days shipping to research institutions"
+  },
+  {
+    id: 109,
+    name: "Pennsylvania",
+    description: "6-8 business days shipping throughout the state"
+  },
+  {
+    id: 110,
+    name: "Michigan",
+    description: "7-9 business days shipping to major cities"
+  }
+];
+
+// Combine Swedish and US destinations
+const preferredStates: ShippingDestination[] = [...swedishCounties, ...usStates];
 
 // Example of product-specific destinations (to be used in the future)
 // This can be merged with the main list when needed for specific products
@@ -107,44 +164,91 @@ const PreferredDestinations: React.FC<PreferredDestinationsProps> = ({
         <Globe className="text-peptide-purple h-6 w-6" />
         <h2 className="text-2xl font-bold">
           {productName 
-            ? `Shipping Destinations for ${productName}` 
-            : "Domestic US Shipping States"}
+            ? `Leveransdestinationer för ${productName}` 
+            : "Leveransdestinationer"}
         </h2>
       </div>
       
       {productName && (
         <p className="text-gray-600 mb-4">
-          Below are states where we currently ship this research product. Different products may have different shipping eligibility based on local regulations.
+          Nedan visas de regioner där vi för närvarande levererar denna produkt. Olika produkter kan ha olika leveransberättigande baserat på lokala bestämmelser.
         </p>
       )}
       
-      <div className="bg-amber-50 p-4 rounded-md border border-amber-200 mb-6">
-        <p className="text-amber-800 font-medium">
-          Note: We currently only ship within the United States. International shipping is not available at this time.
+      <div className="bg-blue-50 p-4 rounded-md border border-blue-200 mb-6">
+        <p className="text-blue-800 font-medium">
+          Vi levererar till Sverige och USA. Svensk leverans är snabbare och mer kostnadseffektiv.
         </p>
       </div>
       
-      <div className="space-y-4">
-        {destinations.map((state) => (
-          <div key={state.id} className="flex items-start">
-            <div className={`text-lg font-semibold mr-2 ${state.productSpecific ? "text-blue-600" : "text-peptide-purple"}`}>
-              {state.id < 100 ? `${state.id}.` : "•"}
-            </div>
-            <div>
-              <span className={`font-semibold ${state.productSpecific ? "text-blue-600" : ""}`}>
-                {state.name}:
-              </span>{" "}
-              <span className="text-gray-700">{state.description}</span>
+      <div className="space-y-6">
+        {/* Swedish Counties Section */}
+        <div>
+          <h3 className="text-lg font-semibold text-peptide-purple mb-3">🇸🇪 Svenska Län (Snabb Leverans)</h3>
+          <div className="space-y-3">
+            {swedishCounties.map((county) => (
+              <div key={county.id} className="flex items-start">
+                <div className="text-lg font-semibold mr-2 text-peptide-purple">
+                  {county.id}.
+                </div>
+                <div>
+                  <span className="font-semibold text-peptide-purple">
+                    {county.name}:
+                  </span>{" "}
+                  <span className="text-gray-700">{county.description}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* US States Section */}
+        <div>
+          <h3 className="text-lg font-semibold text-blue-600 mb-3">🇺🇸 Amerikanska Delstater (Internationell Leverans)</h3>
+          <div className="space-y-3">
+            {usStates.map((state) => (
+              <div key={state.id} className="flex items-start">
+                <div className="text-lg font-semibold mr-2 text-blue-600">
+                  {state.id - 100}.
+                </div>
+                <div>
+                  <span className="font-semibold text-blue-600">
+                    {state.name}:
+                  </span>{" "}
+                  <span className="text-gray-700">{state.description}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Additional Product-Specific Destinations */}
+        {additionalDestinations.length > 0 && (
+          <div>
+            <h3 className="text-lg font-semibold text-green-600 mb-3">Produktspecifika Destinationer</h3>
+            <div className="space-y-3">
+              {additionalDestinations.map((dest) => (
+                <div key={dest.id} className="flex items-start">
+                  <div className="text-lg font-semibold mr-2 text-green-600">
+                    •
+                  </div>
+                  <div>
+                    <span className="font-semibold text-green-600">
+                      {dest.name}:
+                    </span>{" "}
+                    <span className="text-gray-700">{dest.description}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+        )}
       </div>
       
-      {productName && additionalDestinations.length > 0 && (
-        <div className="mt-6 text-sm text-gray-500">
-          <p>• Blue items indicate product-specific shipping destinations.</p>
-        </div>
-      )}
+      <div className="mt-6 text-sm text-gray-500">
+        <p>• Svensk leverans: 1-5 arbetsdagar | Amerikansk leverans: 5-9 arbetsdagar</p>
+        <p>• Alla leveranser inkluderar spårning och försäkring</p>
+      </div>
     </div>
   );
 };
