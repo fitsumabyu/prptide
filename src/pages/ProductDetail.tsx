@@ -76,7 +76,25 @@ const ProductDetail = () => {
               
               <div className="mb-6">
                 <h2 className="text-lg font-semibold mb-2">Beskrivning</h2>
-                <p className="text-gray-700">{product.description}</p>
+                <p className="text-gray-700">{product.swedishdescription}</p>
+              </div>
+              
+              {/* Product Contents Section */}
+              <div className="mb-6">
+                <h2 className="text-lg font-semibold mb-3">Innehåll i Kitet</h2>
+                <div className="space-y-3">
+                  {product.contents.map((item, index) => (
+                    <div key={index} className="bg-gray-50 p-4 rounded-md border border-gray-200">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-medium text-gray-900">{item.swedishname}</h3>
+                        <span className="text-sm font-medium text-peptide-purple bg-white px-2 py-1 rounded">
+                          {item.quantity} {item.swedishunittype}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600">{item.swedishdescription}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
               
               <div className="mb-8">
@@ -160,7 +178,7 @@ const ProductDetail = () => {
             <TabsContent value="details">
               <div className="prose max-w-none">
                 <h3 className="text-xl font-semibold mb-4">Produktinformation</h3>
-                <p className="text-gray-700 mb-4">{product.description}</p>
+                <p className="text-gray-700 mb-4">{product.swedishdescription}</p>
                 <p className="font-medium text-green-600 mb-6">Premium kvalitetsprodukter för personlig hälsa och återhämtning.</p>
                 
                 <h4 className="text-lg font-semibold mt-6 mb-3">Produktspecifikationer</h4>
@@ -171,6 +189,23 @@ const ProductDetail = () => {
                     <li><strong>Förpackningsstorlek:</strong> {product.details.size}</li>
                     <li><strong>Förvaringsinstruktioner:</strong> {product.details.storage}</li>
                   </ul>
+                </div>
+                
+                <h4 className="text-lg font-semibold mt-6 mb-3">Komplett Innehållsförteckning</h4>
+                <div className="bg-white border rounded-md overflow-hidden mb-4">
+                  <div className="grid gap-4 p-4">
+                    {product.contents.map((item, index) => (
+                      <div key={index} className="border-l-4 border-peptide-purple pl-4 py-2">
+                        <div className="flex justify-between items-start mb-1">
+                          <h5 className="font-semibold text-gray-900">{item.swedishname}</h5>
+                          <span className="text-sm font-medium text-peptide-purple">
+                            {item.quantity} {item.swedishunittype}
+                          </span>
+                        </div>
+                        <p className="text-gray-600 text-sm">{item.swedishdescription}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <p className="text-gray-700 mb-4">
                   Denna hälsoprodukt är designad för personlig användning och återhämtningsstöd. 
