@@ -3,10 +3,97 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+// Swedish products (base compounds)
+model SwedishProduct {
+  id        String   @id
+  name      String
+  size      String
+  price     Float    // in SEK
+  compound  String   // base compound name
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  protidelabProducts ProtidelabProduct[]
+}
+
+// Protidelab products (support kits)
+model ProtidelabProduct {
+  id                    String   @id
+  name                  String
+  description           String
+  swedishdescription    String
+  purity                String
+  image                 String
+  category              String
+  correlatesto          String
+  imagedescription      String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  // Foreign key to SwedishProduct
+  swedishProductId      String
+  swedishProduct        SwedishProduct @relation(fields: [swedishProductId], references: [id])
+  
+  // Relations
+  contents              ProductContent[]
+  details               ProductDetails?
+  shippingDestinations  ShippingDestination[]
+  cartItems             CartItem[]
+}
+
+// Product contents (ingredients/components)
+model ProductContent {
+  id                    String   @id @default(uuid())
+  englishname           String
+  swedishname           String
+  englishdescription    String
+  swedishdescription    String
+  quantity              Int?
+  englishunittype       String?
+  swedishunittype       String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  // Foreign key to ProtidelabProduct
+  protidelabProductId   String
+  protidelabProduct     ProtidelabProduct @relation(fields: [protidelabProductId], references: [id], onDelete: Cascade)
+}
+
+// Product details
+model ProductDetails {
+  id                    String   @id @default(uuid())
+  productId             String
+  size                  String
+  storage               String
+  coaLink               String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  // Foreign key to ProtidelabProduct
+  protidelabProductId   String   @unique
+  protidelabProduct     ProtidelabProduct @relation(fields: [protidelabProductId], references: [id], onDelete: Cascade)
+}
+
+// Shipping destinations
+model ShippingDestination {
+  id                    String   @id @default(uuid())
+  name                  String
+  description           String
+  productSpecific       Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  // Foreign key to ProtidelabProduct
+  protidelabProductId   String
+  protidelabProduct     ProtidelabProduct @relation(fields: [protidelabProductId], references: [id], onDelete: Cascade)
+}
+
+// Legacy Product model (keeping for backward compatibility)
 model Product {
   id        String   @id @default(uuid())
   name      String
@@ -27,4 +114,8 @@ model CartItem {
   productId String
   quantity  Int
   createdAt DateTime @default(now())
+  
+  // Optional relation to ProtidelabProduct
+  protidelabProduct   ProtidelabProduct? @relation(fields: [protidelabProductId], references: [id])
+  protidelabProductId String?
 }

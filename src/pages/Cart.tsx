@@ -76,7 +76,7 @@ const Cart = () => {
                             </div>
                           </td>
                           <td className="px-6 py-4">
-                            <div className="text-gray-800">{item.product.price}</div>
+                            <div className="text-gray-800">{item.product.price.replace("$", "SEK ")}</div>
                           </td>
                           <td className="px-6 py-4">
                             <div className="flex items-center border rounded-md inline-flex">
@@ -96,7 +96,7 @@ const Cart = () => {
                             </div>
                           </td>
                           <td className="px-6 py-4">
-                            <div className="font-medium text-gray-800">${itemTotal.toFixed(2)}</div>
+                            <div className="font-medium text-gray-800">SEK {itemTotal.toFixed(2)}</div>
                           </td>
                           <td className="px-6 py-4">
                             <button 
@@ -122,7 +122,7 @@ const Cart = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Items ({totalItems}):</span>
-                  <span className="font-medium">${totalPrice.toFixed(2)}</span>
+                  <span className="font-medium">SEK {totalPrice.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Shipping:</span>
@@ -131,7 +131,7 @@ const Cart = () => {
                 <div className="border-t pt-3 mt-3">
                   <div className="flex justify-between font-bold">
                     <span>Estimated Total:</span>
-                    <span>${totalPrice.toFixed(2)}</span>
+                    <span>SEK {totalPrice.toFixed(2)}</span>
                   </div>
                 </div>
               </div>

@@ -11,7 +11,7 @@ import ShippingWarningBanner from "@/components/shipping/ShippingWarningBanner";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import { ShippingCountryProvider } from "@/context/ShippingCountryContext";
 import Index from "./pages/Index";
-import Products from "./pages/Products";
+import Products from "./pages/ProductsNew";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";

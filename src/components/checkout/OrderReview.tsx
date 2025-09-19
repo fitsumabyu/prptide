@@ -1,6 +1,7 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
 type ItemType = {
   product: {
@@ -50,7 +51,16 @@ const OrderReview: React.FC<Props> = ({
   payment,
   onBack,
   onPlaceOrder,
-}) => (
+}) => {
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handlePlaceOrder = () => {
+    setIsProcessing(true);
+    // For now, we'll keep it processing indefinitely as requested
+    // In a real implementation, you would call onPlaceOrder() after processing
+  };
+
+  return (
   <div className="space-y-6">
     <h3 className="font-medium text-lg">Order Review</h3>
     <div>
@@ -86,7 +96,7 @@ const OrderReview: React.FC<Props> = ({
                     </div>
                   </td>
                   <td className="px-4 py-3 text-right">{item.quantity}</td>
-                  <td className="px-4 py-3 text-right font-medium">${itemTotal.toFixed(2)}</td>
+                  <td className="px-4 py-3 text-right font-medium">SEK {itemTotal.toFixed(2)}</td>
                 </tr>
               );
             })}
@@ -119,17 +129,28 @@ const OrderReview: React.FC<Props> = ({
       </p>
     </div>
     <div className="pt-4 flex justify-between">
-      <Button variant="outline" onClick={onBack}>
+      <Button variant="outline" onClick={onBack} disabled={isProcessing}>
         Back
       </Button>
-      <Button
-        className="bg-peptide-purple hover:bg-peptide-dark-purple"
-        onClick={onPlaceOrder}
-      >
-        Place Order
-      </Button>
+      {isProcessing ? (
+        <Button
+          className="bg-peptide-purple hover:bg-peptide-dark-purple"
+          disabled
+        >
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Processing Payment...
+        </Button>
+      ) : (
+        <Button
+          className="bg-peptide-purple hover:bg-peptide-dark-purple"
+          onClick={handlePlaceOrder}
+        >
+          Place Order
+        </Button>
+      )}
     </div>
   </div>
-);
+  );
+};
 
 export default OrderReview;

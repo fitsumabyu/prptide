@@ -9,100 +9,42 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-// Product data extracted from protidelabproducts.ts
-const products = [
-  // Metabolisk Integritetsprotokoll Kits
-  { id: "88815p1", name: "Metabolisk Integritetsprotokoll - Fas I" },
-  { id: "88815p2", name: "Metabolisk Integritetsprotokoll - Fas II" },
-  { id: "88815p3", name: "Metabolisk Integritetsprotokoll - Fas III" },
-  { id: "88815p4", name: "Metabolisk Integritetsprotokoll - Apex" },
-  
-  // Kroppskomposition Stack Kits
-  { id: "88816p1", name: "Kroppskomposition Stack - Grundläggande" },
-  { id: "88816p2", name: "Kroppskomposition Stack - Accelerator" },
-  { id: "88816p3", name: "Kroppskomposition Stack - Avancerad" },
-  { id: "88816p4", name: "Kroppskomposition Stack - Apex" },
-  
-  // Tri-Faktor Metabolisk Protokoll Kits
-  { id: "88817p1", name: "Tri-Faktor Metabolisk Protokoll - I" },
-  { id: "88817p2", name: "Tri-Faktor Metabolisk Protokoll - II" },
-  { id: "88817p3", name: "Tri-Faktor Metabolisk Protokoll - III" },
-  { id: "88817p4", name: "Tri-Faktor Metabolisk Protokoll - Apex" },
-  
-  // Dermal Ommodellering Matrix Kits
-  { id: "88818p1", name: "Dermal Ommodellering Matrix - Grundläggande" },
-  { id: "88818p2", name: "Dermal Ommodellering Matrix - Accelerator" },
-  { id: "88818p3", name: "Dermal Ommodellering Matrix - Avancerad" },
-  { id: "88818p4", name: "Dermal Ommodellering Matrix - Apex" },
-  
-  // Systemisk Torrhetsprotokoll Kits
-  { id: "88819p1", name: "Systemisk Torrhetsprotokoll - I" },
-  { id: "88819p2", name: "Systemisk Torrhetsprotokoll - II" },
-  { id: "88819p3", name: "Systemisk Torrhetsprotokoll - III" },
-  { id: "88819p4", name: "Systemisk Torrhetsprotokoll - Apex" }
+// Base product data - one image per base product (5 total)
+const baseProducts = [
+  { 
+    baseId: "88815", 
+    name: "Intensive Hydration Sheet Masks",
+    description: "Single-use cosmetic biocellulose masks with ceramides"
+  },
+  { 
+    baseId: "88816", 
+    name: "Ultra-Hydrating Lip Masks",
+    description: "Single-use cosmetic hydrogel lip patches"
+  },
+  { 
+    baseId: "88817", 
+    name: "Medical-grade Lanolin Lip Balm",
+    description: "Anhydrous lanolin lip balm (cosmetic)"
+  },
+  { 
+    baseId: "88818", 
+    name: "Ceramide & Shea Butter Body Cream",
+    description: "Rich, ceramide-containing body cream"
+  },
+  { 
+    baseId: "88819", 
+    name: "Metabolic Hydration Complex",
+    description: "Electrolyte formula with non-stimulant cofactors"
+  }
 ];
 
-// Image descriptions for each product - showing only items specific to that tier
+// Image descriptions for each base product
 const imageDescriptions = {
-  // Metabolisk Integritetsprotokoll Kits - Phase I items only
-  "88815p1": "large matte white plastic canister, amber glass bottle with capsules, clear glass dropper bottle, solid white box containing stick-pack sachet",
-  
-  // Metabolisk Integritetsprotokoll Kits - Phase II additional items only
-  "88815p2": "large matte white canister, amber glass capsule bottle, sleek flat unlabeled box for sheet masks",
-  
-  // Metabolisk Integritetsprotokoll Kits - Phase III additional items only
-  "88815p3": "amber glass capsule bottle, clear glass dropper bottle, dark glass tincture bottle",
-  
-  // Metabolisk Integritetsprotokoll Kits - Apex additional items only
-  "88815p4": "tray holding small single-use glass ampoules, large matte white canister",
-
-  // Kroppskomposition Stack Kits - Foundation items only
-  "88816p1": "large matte white plastic canisters with screw-on lids, medium-sized amber glass bottle with black screw-on cap",
-  
-  // Kroppskomposition Stack Kits - Accelerator additional items only
-  "88816p2": "large matte white canister, white plastic handle with detachable clear-cased microneedling roller head",
-  
-  // Kroppskomposition Stack Kits - Advanced additional items only
-  "88816p3": "amber glass capsule bottle, sleek unlabeled box for sheet masks",
-  
-  // Kroppskomposition Stack Kits - Apex additional items only
-  "88816p4": "dark glass tincture bottle, small unlabeled box for antioxidant sachets",
-
-  // Tri-Faktor Metabolisk Protokoll Kits - Level I items only
-  "88817p1": "large matte white canisters, amber glass capsule bottle, clear glass dropper bottle",
-  
-  // Tri-Faktor Metabolisk Protokoll Kits - Level II additional items only
-  "88817p2": "large matte white canister, amber glass capsule bottle, sleek unlabeled box for sheet masks",
-  
-  // Tri-Faktor Metabolisk Protokoll Kits - Level III additional items only
-  "88817p3": "amber glass capsule bottle, clear dropper bottle, dark glass tincture bottle",
-  
-  // Tri-Faktor Metabolisk Protokoll Kits - Apex additional items only
-  "88817p4": "tray holding small single-use glass ampoules, large matte white canister",
-
-  // Dermal Ommodellering Matrix Kits - Foundation items only
-  "88818p1": "small clear glass bottle with white dropper cap showing blue-tinted liquid, amber glass capsule bottle, white plastic handle with detachable microneedling roller heads",
-  
-  // Dermal Ommodellering Matrix Kits - Accelerator additional items only
-  "88818p2": "low-profile white plastic jar for thin exfoliating pads",
-  
-  // Dermal Ommodellering Matrix Kits - Advanced additional items only
-  "88818p3": "frosted glass bottle, unlabeled box for sheet masks",
-  
-  // Dermal Ommodellering Matrix Kits - Apex additional items only
-  "88818p4": "tray holding small single-use glass ampoules, amber glass capsule bottle",
-
-  // Systemisk Torrhetsprotokoll Kits - Protocol I items only
-  "88819p1": "amber glass capsule bottles, heavy double-walled white plastic jar, white squeeze tube, small white eye-dropper bottle",
-  
-  // Systemisk Torrhetsprotokoll Kits - Protocol II additional items only
-  "88819p2": "amber glass capsule bottle, large resealable bag for bath salts",
-  
-  // Systemisk Torrhetsprotokoll Kits - Protocol III additional items only
-  "88819p3": "amber glass capsule bottle, small unlabeled box for lip masks",
-  
-  // Systemisk Torrhetsprotokoll Kits - Apex additional items only
-  "88819p4": "small unlabeled box for hydration sachets, white jar"
+  "88815": "Clean, minimalist product shot of single-use cosmetic biocellulose sheet mask. White background, professional lighting.",
+  "88816": "Clean, minimalist product shot of single-use cosmetic hydrogel lip patch. White background, professional lighting",
+  "88817": "Clean, lip balm and tube. White background, professional lighting.",
+  "88818": "Clean, minimalist blob of shea butter body cream. White background, professional lighting, showing the jar packaging.",
+  "88819": "Clean electrolyte powder. White background, professional lighting."
 };
 
 // Ensure the labimages directory exists
@@ -111,26 +53,26 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-console.log(`Starting image generation for ${products.length} products...`);
+console.log(`Starting image generation for ${baseProducts.length} base products...`);
 
-for (let i = 0; i < products.length; i++) {
-  const product = products[i];
-  const outputPath = path.join(outputDir, `${product.id}.png`);
+for (let i = 0; i < baseProducts.length; i++) {
+  const product = baseProducts[i];
+  const outputPath = path.join(outputDir, `${product.baseId}.png`);
   
   // Skip if image already exists
   if (fs.existsSync(outputPath)) {
-    console.log(`⏭️  Skipping ${product.id} - image already exists`);
+    console.log(`⏭️  Skipping ${product.baseId} - image already exists`);
     continue;
   }
   
-  // Get the image description for this product
-  const imageDescription = imageDescriptions[product.id];
+  // Get the image description for this base product
+  const imageDescription = imageDescriptions[product.baseId];
   if (!imageDescription) {
-    console.log(`⚠️  No image description found for ${product.id}, skipping...`);
+    console.log(`⚠️  No image description found for ${product.baseId}, skipping...`);
     continue;
   }
   
-  console.log(`🎨 Generating image ${i + 1}/${products.length}: ${product.name} (${product.id})`);
+  console.log(`🎨 Generating image ${i + 1}/${baseProducts.length}: ${product.name} (${product.baseId})`);
   
   const fullPrompt = "Minimal, basic, white-label product photo: " + imageDescription;
   console.log(`📝 Prompt: ${fullPrompt}`);
@@ -151,13 +93,13 @@ for (let i = 0; i < products.length; i++) {
     
     // Save the image
     fs.writeFileSync(outputPath, Buffer.from(imageBuffer));
-    console.log(`✅ Generated: ${product.id}.png`);
+    console.log(`✅ Generated: ${product.baseId}.png`);
     
     // Add a small delay to avoid rate limiting
     await new Promise(resolve => setTimeout(resolve, 1000));
     
   } catch (error) {
-    console.error(`❌ Error generating image for ${product.id}:`, error.message);
+    console.error(`❌ Error generating image for ${product.baseId}:`, error.message);
     
     // If it's a rate limit error, wait longer
     if (error.message.includes('rate limit') || error.message.includes('quota')) {

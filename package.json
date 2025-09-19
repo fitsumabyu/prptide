@@ -14,7 +14,12 @@
     "test:payments": "node run-payment-tests.js",
     "deploy": "vercel --prod",
     "generate-images": "node generate-product-images.js",
-    "generate-image": "node generate-single-image.js"
+    "generate-image": "node generate-single-image.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
@@ -94,6 +99,7 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.11",
+    "tsx": "^4.19.2",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"

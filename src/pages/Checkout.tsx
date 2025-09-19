@@ -300,11 +300,11 @@ const Checkout = () => {
               <div className="space-y-4 text-sm text-gray-700">
                 <div>
                   <h4 className="font-medium mb-1">Payment Methods</h4>
-                  <p>We primarily accept Visa and Mastercard. All payments are processed in USD.</p>
+                  <p>We primarily accept Visa and Mastercard. All payments are processed in SEK.</p>
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Billing & Pricing</h4>
-                  <p>Your card will be charged immediately upon order confirmation. All prices are shown in USD and include the product cost only. Taxes and shipping are calculated at checkout.</p>
+                  <p>Your card will be charged immediately upon order confirmation. All prices are shown in SEK and include the product cost only. Taxes and shipping are calculated at checkout.</p>
                 </div>
               
                 <div>

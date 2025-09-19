@@ -20,26 +20,26 @@ const OrderSummary: React.FC<Props> = ({ totalItems, totalPrice }) => {
       <div className="space-y-3 mb-4">
         <div className="flex justify-between">
           <span className="text-gray-600">Items ({totalItems}):</span>
-          <span className="font-medium">${totalPrice.toFixed(2)}</span>
+          <span className="font-medium">SEK {totalPrice.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-600">Shipping:</span>
-          <span className="font-medium">${shippingCost.toFixed(2)}</span>
+          <span className="font-medium">SEK {shippingCost.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-600">Tax (7%):</span>
-          <span className="font-medium">${taxAmount.toFixed(2)}</span>
+          <span className="font-medium">SEK {taxAmount.toFixed(2)}</span>
         </div>
         <div className="border-t pt-3 mt-3">
           <div className="flex justify-between font-bold">
             <span>Total:</span>
-            <span>${orderTotal.toFixed(2)}</span>
+            <span>SEK {orderTotal.toFixed(2)}</span>
           </div>
         </div>
       </div>
       <div className="text-xs text-gray-500 mt-2 mb-4">
         <p>Payment is processed securely. Your card will be charged immediately upon order placement.</p>
-        <p className="mt-1">All prices in USD. International shipping costs may vary.</p>
+        <p className="mt-1">All prices in SEK. International shipping costs may vary.</p>
       </div>
       <div className="mt-6 bg-red-50 p-4 rounded-md border border-red-100">
         <p className="text-sm text-red-700 font-medium mb-2">
