@@ -3,16 +3,17 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Info, ShieldCheck, Lock } from "lucide-react";
+import { ArrowLeft, Info, Shield, Lock } from "lucide-react";
 import { toast } from "sonner";
 import CheckoutSteps from "@/components/checkout/CheckoutSteps";
 import CustomerDetailsForm from "@/components/checkout/CustomerDetailsForm";
 import ShippingForm from "@/components/checkout/ShippingForm";
 import PaymentForm from "@/components/checkout/PaymentForm";
+import CryptoPaymentForm from "@/components/checkout/CryptoPaymentForm";
 import OrderReview from "@/components/checkout/OrderReview";
 import OrderSummary from "@/components/checkout/OrderSummary";
 
-type CheckoutStep = "details" | "shipping" | "payment" | "review";
+type CheckoutStep = "details" | "shipping" | "payment" | "crypto-payment" | "review";
 
 type CustomerInfo = {
   firstName: string;
@@ -21,6 +22,7 @@ type CustomerInfo = {
   phone: string;
   ageVerified: boolean;
   refundPolicyAccepted: boolean;
+  paymentMethod: string;
 };
 type ShippingInfo = {
   address: string;
@@ -44,6 +46,7 @@ const initialCustomer: CustomerInfo = {
   phone: "",
   ageVerified: false,
   refundPolicyAccepted: false,
+  paymentMethod: "",
 };
 const initialShipping: ShippingInfo = {
   address: "",
@@ -74,7 +77,7 @@ const Checkout = () => {
   const [errors, setErrors] = useState<{ [k: string]: string }>({});
 
   const handlePlaceOrder = () => {
-    toast.success("Order placed successfully! Thank you for your purchase.");
+    toast.success("Beställning lagd framgångsrikt! Tack för ditt köp.");
     clearCart();
     navigate("/");
   };
@@ -82,12 +85,12 @@ const Checkout = () => {
   // Step validations
   const validateDetails = () => {
     const errs: { [k: string]: string } = {};
-    if (!customer.firstName.trim()) errs.firstName = "First name is required.";
-    if (!customer.lastName.trim()) errs.lastName = "Last name is required.";
-    if (!customer.email.trim() || !/^\S+@\S+\.\S+$/.test(customer.email.trim())) errs.email = "A valid email is required.";
-    if (!customer.phone.trim()) errs.phone = "Phone number is required.";
-    if (!customer.ageVerified) errs.ageVerified = "You must confirm that you are 21 years of age or older to proceed.";
-    if (!customer.refundPolicyAccepted) errs.refundPolicyAccepted = "You must accept our refund policy to proceed.";
+    if (!customer.firstName.trim()) errs.firstName = "Förnamn krävs.";
+    if (!customer.lastName.trim()) errs.lastName = "Efternamn krävs.";
+    if (!customer.email.trim() || !/^\S+@\S+\.\S+$/.test(customer.email.trim())) errs.email = "En giltig e-postadress krävs.";
+    if (!customer.paymentMethod) errs.paymentMethod = "Välj en betalningsmetod.";
+    if (!customer.ageVerified) errs.ageVerified = "Du måste bekräfta att du är 21 år eller äldre för att fortsätta.";
+    if (!customer.refundPolicyAccepted) errs.refundPolicyAccepted = "Du måste acceptera vår återbetalningspolicy för att fortsätta.";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -162,6 +165,8 @@ const Checkout = () => {
                     ? "2"
                     : currentStep === "payment"
                     ? "3"
+                    : currentStep === "crypto-payment"
+                    ? "3"
                     : "4"}{" "}
                   of 4
                 </div>
@@ -175,9 +180,14 @@ const Checkout = () => {
                   onContinue={() => {
                     if (validateDetails()) {
                       setErrors({});
-                      setCurrentStep("shipping");
+                      // Route to crypto payment if crypto method selected, otherwise to shipping
+                      if (['bitcoin', 'ethereum', 'polygon'].includes(customer.paymentMethod)) {
+                        setCurrentStep("crypto-payment");
+                      } else {
+                        setCurrentStep("shipping");
+                      }
                     } else {
-                      toast.error("Please fill out all required customer information.");
+                      toast.error("Vänligen fyll i all nödvändig kundinformation.");
                     }
                   }}
                 />
@@ -220,6 +230,20 @@ const Checkout = () => {
                   }}
                 />
               )}
+              {currentStep === "crypto-payment" && (
+                <CryptoPaymentForm
+                  paymentMethod={customer.paymentMethod}
+                  totalAmount={totalPrice}
+                  onPaymentComplete={() => {
+                    toast.success("Beställning lagd framgångsrikt! Tack för ditt köp.");
+                    clearCart();
+                    navigate("/");
+                  }}
+                  onBack={() => {
+                    setCurrentStep("details");
+                  }}
+                />
+              )}
               {currentStep === "review" && (
                 <OrderReview
                   items={items}
@@ -245,18 +269,17 @@ const Checkout = () => {
               <p className="text-sm text-gray-600">We only accept Visa and Mastercard for all transactions. We do not accept any other payment methods at this time.</p>
             </div>
             
-            {/* Research Use Disclaimer */}
-            <div className="bg-red-50 border border-red-200 p-5 rounded-lg shadow-sm mb-6">
-              <p className="text-red-700 font-medium mb-2 text-lg">
-                IMPORTANT DISCLAIMER
+            {/* Product Safety Disclaimer */}
+            <div className="bg-green-50 border border-green-200 p-5 rounded-lg shadow-sm mb-6">
+              <p className="text-green-700 font-medium mb-2 text-lg">
+                IMPORTANT INFORMATION
               </p>
-              <p className="text-red-600 text-sm leading-relaxed">
-                We sell laboratory reagents and chemical reference materials for academic and 
-                industrial research. We do not sell consumer products. All products are labeled for 
-                research use only.
+              <p className="text-green-600 text-sm leading-relaxed">
+                We sell high-quality recovery products for physical health and wellness. 
+                All products are safe, ethically-sourced, and designed for personal use.
               </p>
-              <p className="text-red-600 text-sm leading-relaxed mt-2">
-                These products are intended for laboratory research use only. Not for diagnostic, therapeutic, or human use.
+              <p className="text-green-600 text-sm leading-relaxed mt-2">
+                These products are intended for personal recovery and physical health. 
                 These statements have not been evaluated by the Food and Drug Administration. 
                 These products are not intended to diagnose, treat, cure, or prevent any disease.
               </p>
@@ -265,7 +288,7 @@ const Checkout = () => {
             {/* Trust Badges Section */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
               <div className="flex items-start mb-4">
-                <ShieldCheck className="h-5 w-5 text-peptide-purple mr-2 flex-shrink-0 mt-0.5" />
+                <Shield className="h-5 w-5 text-peptide-purple mr-2 flex-shrink-0 mt-0.5" />
                 <h3 className="text-lg font-semibold">Shop with Confidence</h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Mail, Clock, ExternalLink } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -93,39 +93,17 @@ const Contact = () => {
               
               <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                 <div className="flex items-start mb-4">
-                  <Phone className="h-5 w-5 text-peptide-purple mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h2 className="text-lg font-semibold mb-2">Telefonsupport</h2>
-                    <p className="text-gray-700 mb-3">
-                      <span className="font-medium block">Huvudkontor:</span>
-                      <a href="tel:+46701234567" className="hover:underline">+46 70 123 45 67
-                      </a>
-                    </p>
-                    <p className="text-gray-700 mb-3">
-                      <span className="font-medium block">Kundservice:</span>
-                      <a href="tel:+46701234567" className="hover:underline">+46 70 123 45 67</a>
-                    </p>
-                    <p className="text-gray-700">
-                      <span className="font-medium block">Teknisk Support:</span>
-                      <a href="tel:+46701234567" className="hover:underline">+46 70 123 45 67</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                <div className="flex items-start">
                   <Mail className="h-5 w-5 text-peptide-purple mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <h2 className="text-lg font-semibold mb-2">E-post Kontakter</h2>
+                    <h2 className="text-lg font-semibold mb-2">Kundservice</h2>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Allmänna Förfrågningar:</span>
                       <a href="mailto:support@formulax.dev" className="hover:underline">support@formulax.dev</a>
                     </p>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Försäljningsavdelning:</span>
-                      <a href="mailto:sales@formulax.se" className="hover:underline">sales@formulax.se</a>
-                    </p>    
+                      <a href="mailto:sales@formulax.dev" className="hover:underline">sales@formulax.dev</a>
+                    </p>
                     <p className="text-gray-700">
                       <span className="font-medium block">Teknisk Support:</span>
                       <a href="mailto:support@formulax.dev" className="hover:underline">support@formulax.dev</a>
@@ -133,6 +111,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
+              
             </div>
             
             {/* Contact Form - 3 columns */}

@@ -23,8 +23,8 @@ const Privacy = () => {
               We may collect the following types of information:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
-              <li><strong>Personal Information:</strong> Name, email address, phone number, billing address, shipping address, and payment information.</li>
-              <li><strong>Professional Information:</strong> Company/institution name, job title, and research interests.</li>
+              <li><strong>Personal Information:</strong> Name, email address, billing address, shipping address, and payment information.</li>
+              <li><strong>Professional Information:</strong> Company name, job title, and product interests.</li>
               <li><strong>Website Usage Data:</strong> IP address, browser type, referring/exit pages, operating system, date/time stamps, and clickstream data.</li>
               <li><strong>Communications:</strong> Customer service interactions, feedback, and survey responses.</li>
             </ul>

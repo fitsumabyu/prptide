@@ -64,7 +64,7 @@ const ShippingPolicy = () => {
             <div className="bg-gray-100 p-4 rounded-md mb-6">
               <h3 className="font-semibold text-gray-800 mb-2">Domestic Focus:</h3>
               <p className="text-gray-700">
-                We focus exclusively on serving the domestic US market to ensure compliance with all regulatory requirements and to minimize shipping risks. Our laboratory reagents are formulated and packaged specifically for US research facilities.
+                We focus exclusively on serving the domestic US market to ensure compliance with all regulatory requirements and to minimize shipping risks. Our recovery products are formulated and packaged specifically for US customers.
               </p>
             </div>
             
@@ -117,8 +117,7 @@ const ShippingPolicy = () => {
               <span className="text-xs text-gray-500">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</span>
             </p>
             <p className="text-gray-700 mb-6">
-              Email: shipping@formulax.com<br />
-              Phone: +1 (708) 734-6847<br />
+              Email: support@formulax.dev<br />
               Hours: Monday-Friday, 9am-5pm EST
             </p>
             

@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import Disclaimer from "@/components/ui/Disclaimer";
-import { Building, MapPin, Mail, Phone } from "lucide-react";
+import { Building, MapPin, Mail } from "lucide-react";
 
 const About = () => {
   return (
@@ -25,8 +25,7 @@ const About = () => {
                 
                 <p className="text-xs text-gray-500 mb-4">FormulaX är ett varumärke från H&amp;H WORLDWIDE GROUP.</p>
                 
-                <p className="text-sm text-gray-500 mb-1">Företagsregistrering</p>
-                <p className="font-medium">Företagsnummer: LLC-78291045</p>
+               
               </div>
               <div>
                 <p className="text-sm text-gray-500 mb-1 flex items-start">
@@ -37,11 +36,6 @@ const About = () => {
                   LAS VEGAS NEVADA 89101<br />
                 </p>
                 
-                <p className="text-sm text-gray-500 mb-1 flex items-center">
-                  <Phone className="h-4 w-4 mr-1 text-gray-400" /> Telefon
-                </p>
-                <p className="font-medium mb-4">+1 (708) 734-6847
-                </p>
                 
                 <p className="text-sm text-gray-500 mb-1 flex items-center">
                   <Mail className="h-4 w-4 mr-1 text-gray-400" /> E-post

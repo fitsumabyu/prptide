@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Link } from "react-router-dom";
 
 type CustomerInfo = {
@@ -12,6 +13,7 @@ type CustomerInfo = {
   phone: string;
   ageVerified: boolean;
   refundPolicyAccepted: boolean;
+  paymentMethod: string;
 };
 
 interface Props {
@@ -27,14 +29,14 @@ const CustomerDetailsForm: React.FC<Props> = ({
   errors,
   onContinue,
 }) => (
-  <div className="space-y-4">
-    <h3 className="font-medium text-lg mb-2">Customer Information</h3>
+  <div className="space-y-6">
+    <h3 className="font-medium text-lg mb-2">Faktureringsdetaljer</h3>
     <div className="grid grid-cols-2 gap-4">
       <div className="space-y-2">
-        <Label htmlFor="firstName">First Name</Label>
+        <Label htmlFor="firstName">Förnamn *</Label>
         <Input
           id="firstName"
-          placeholder="Enter your first name"
+          placeholder="Ange ditt förnamn"
           value={customer.firstName}
           onChange={e =>
             setCustomer(c => ({ ...c, firstName: e.target.value }))
@@ -44,10 +46,10 @@ const CustomerDetailsForm: React.FC<Props> = ({
         {errors.firstName && <p className="text-sm text-red-500">{errors.firstName}</p>}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="lastName">Last Name</Label>
+        <Label htmlFor="lastName">Efternamn *</Label>
         <Input
           id="lastName"
-          placeholder="Enter your last name"
+          placeholder="Ange ditt efternamn"
           value={customer.lastName}
           onChange={e =>
             setCustomer(c => ({ ...c, lastName: e.target.value }))
@@ -57,25 +59,74 @@ const CustomerDetailsForm: React.FC<Props> = ({
       </div>
     </div>
     <div className="space-y-2">
-      <Label htmlFor="email">Email Address</Label>
+      <Label htmlFor="email">E-postadress *</Label>
       <Input
         id="email"
         type="email"
-        placeholder="Enter your email"
+        placeholder="Ange din e-postadress"
         value={customer.email}
         onChange={e => setCustomer(c => ({ ...c, email: e.target.value }))}
       />
       {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
     </div>
     <div className="space-y-2">
-      <Label htmlFor="phone">Phone Number</Label>
+      <Label htmlFor="phone">Telefon (valfritt)</Label>
       <Input
         id="phone"
-        placeholder="Enter your phone number"
+        placeholder="Ange ditt telefonnummer"
         value={customer.phone}
         onChange={e => setCustomer(c => ({ ...c, phone: e.target.value }))}
       />
       {errors.phone && <p className="text-sm text-red-500">{errors.phone}</p>}
+    </div>
+
+    {/* Payment Method Selection */}
+    <div className="space-y-4">
+      <h4 className="font-medium text-lg">Betalningsmetod</h4>
+      <RadioGroup
+        value={customer.paymentMethod}
+        onValueChange={(value) => setCustomer(c => ({ ...c, paymentMethod: value }))}
+        className="space-y-3"
+      >
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="revolut" id="revolut" disabled />
+          <Label htmlFor="revolut" className="flex-1 text-gray-400">
+            <div>
+              <div className="font-medium">Kortbetalning (Revolut.com)</div>
+              <div className="text-sm text-gray-400">Betala tryggt, säkert och helt anonymt via 3:e part (Revolut.com)</div>
+              <div className="text-sm text-gray-400">Rekommenderas varmt till de som redan är kund hos Revolut.</div>
+            </div>
+          </Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="mercuryo" id="mercuryo" disabled />
+          <Label htmlFor="mercuryo" className="flex-1 text-gray-400">
+            <div>
+              <div className="font-medium">Kortbetalning (Mercuryo.io)</div>
+              <div className="text-sm text-gray-400">(disabled/grey)</div>
+            </div>
+          </Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="bitcoin" id="bitcoin" disabled />
+          <Label htmlFor="bitcoin" className="flex-1 text-gray-400">
+            <div className="font-medium">Bitcoin (BTC)</div>
+          </Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="ethereum" id="ethereum" />
+          <Label htmlFor="ethereum" className="flex-1">
+            <div className="font-medium">Ethereum (ERC20)</div>
+          </Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="polygon" id="polygon" />
+          <Label htmlFor="polygon" className="flex-1">
+            <div className="font-medium">Polygon Matic (ERC20)</div>
+          </Label>
+        </div>
+      </RadioGroup>
+      {errors.paymentMethod && <p className="text-sm text-red-500">{errors.paymentMethod}</p>}
     </div>
     <div className="flex items-start space-x-2 pt-2">
       <Checkbox 
@@ -90,10 +141,10 @@ const CustomerDetailsForm: React.FC<Props> = ({
           htmlFor="ageVerification"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          I confirm that I am 21 years of age or older
+          Jag bekräftar att jag är 21 år eller äldre
         </label>
         <p className="text-sm text-red-600">
-          You must be at least 21 years old to purchase from this website.
+          Du måste vara minst 21 år gammal för att köpa från denna webbplats.
         </p>
       </div>
     </div>
@@ -112,7 +163,7 @@ const CustomerDetailsForm: React.FC<Props> = ({
           htmlFor="refundPolicyAccepted"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          I have read and accept the <Link to="/refund-policy" target="_blank" className="text-peptide-purple hover:underline">Refund & Return Policy</Link>
+          Jag har läst och accepterar <Link to="/refund-policy" target="_blank" className="text-peptide-purple hover:underline">Återbetalnings- och returpolicy</Link>
         </label>
       </div>
     </div>
@@ -123,7 +174,7 @@ const CustomerDetailsForm: React.FC<Props> = ({
         className="w-full bg-peptide-purple hover:bg-peptide-dark-purple"
         onClick={onContinue}
       >
-        Continue to Shipping
+        Fortsätt till leverans
       </Button>
     </div>
   </div>

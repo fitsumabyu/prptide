@@ -105,8 +105,7 @@ const Shipping = () => {
               If you have any questions about our shipping and return policies, please contact our customer service team:
             </p>
             <p className="text-gray-700 mb-6">
-                Email: support@formulax.com<br />
-              Phone: +46 70 123 45 67<br />
+                Email: support@formulax.dev<br />
               Hours: Monday-Friday, 9 AM - 5 PM EST
             </p>
           </div>

@@ -93,7 +93,7 @@ const ProductsNew = () => {
               <AlertTriangle className="h-12 w-12 text-red-500" />
               <h2 className="text-2xl font-bold text-red-700">Products Not Available in Your Region</h2>
               <p className="text-red-600 max-w-2xl">
-                We're sorry, but we currently don't ship our laboratory reagents to your selected country. 
+                We're sorry, but we currently don't ship our recovery products to your selected country. 
                 Please select a different shipping destination to view our product catalog.
               </p>
             </div>
