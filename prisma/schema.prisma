@@ -7,76 +7,63 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Swedish products (base compounds)
-model SwedishProduct {
-  id        String   @id
-  name      String
-  size      String
-  price     Float    // in SEK
-  compound  String   // base compound name
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+// Individual products (the actual items that exist)
+model IndividualProduct {
+  id                    String   @id
+  name                  String
+  description           String
+  swedishdescription    String
+  category              String   // "Cosmetic", "Food supplement", "Tea", "Supplement"
+  unitType              String   // "masks", "tubes", "servings", "packs"
+  swedishUnitType       String   // "masker", "tubar", "portioner", "paket"
+  image                 String?
+  storage               String
+  coaLink               String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
   
   // Relations
-  protidelabProducts ProtidelabProduct[]
+  bundleItems           BundleItem[]
+  shippingDestinations  ShippingDestination[]
 }
 
-// Protidelab products (support kits)
-model ProtidelabProduct {
+// Product bundles (what customers actually purchase)
+model ProductBundle {
   id                    String   @id
   name                  String
   description           String
   swedishdescription    String
   purity                String
+  price                 Float    // Total price in SEK
   image                 String
   category              String
-  correlatesto          String
+  correlatesto          String   // What Swedish compound this correlates to
   imagedescription      String
+  tier                  Int      // 1, 2, 3, or 4
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
-  
-  // Foreign key to SwedishProduct
-  swedishProductId      String
-  swedishProduct        SwedishProduct @relation(fields: [swedishProductId], references: [id])
   
   // Relations
-  contents              ProductContent[]
-  details               ProductDetails?
-  shippingDestinations  ShippingDestination[]
+  bundleItems           BundleItem[]
   cartItems             CartItem[]
+  shippingDestinations  ShippingDestination[]
 }
 
-// Product contents (ingredients/components)
-model ProductContent {
+// Junction table for bundle contents
+model BundleItem {
   id                    String   @id @default(uuid())
-  englishname           String
-  swedishname           String
-  englishdescription    String
-  swedishdescription    String
-  quantity              Int?
-  englishunittype       String?
-  swedishunittype       String?
+  quantity              Int
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
   
-  // Foreign key to ProtidelabProduct
-  protidelabProductId   String
-  protidelabProduct     ProtidelabProduct @relation(fields: [protidelabProductId], references: [id], onDelete: Cascade)
-}
-
-// Product details
-model ProductDetails {
-  id                    String   @id @default(uuid())
-  productId             String
-  size                  String
-  storage               String
-  coaLink               String
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
+  // Foreign keys
+  bundleId              String
+  bundle                ProductBundle @relation(fields: [bundleId], references: [id], onDelete: Cascade)
   
-  // Foreign key to ProtidelabProduct
-  protidelabProductId   String   @unique
-  protidelabProduct     ProtidelabProduct @relation(fields: [protidelabProductId], references: [id], onDelete: Cascade)
+  individualProductId   String
+  individualProduct     IndividualProduct @relation(fields: [individualProductId], references: [id], onDelete: Cascade)
+  
+  @@unique([bundleId, individualProductId])
 }
 
 // Shipping destinations
@@ -88,9 +75,23 @@ model ShippingDestination {
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
   
-  // Foreign key to ProtidelabProduct
-  protidelabProductId   String
-  protidelabProduct     ProtidelabProduct @relation(fields: [protidelabProductId], references: [id], onDelete: Cascade)
+  // Relations (can be associated with either bundles or individual products)
+  bundleId              String?
+  bundle                ProductBundle? @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  
+  individualProductId   String?
+  individualProduct     IndividualProduct? @relation(fields: [individualProductId], references: [id], onDelete: Cascade)
+}
+
+// Swedish products (base compounds) - kept for correlation
+model SwedishProduct {
+  id        String   @id
+  name      String
+  size      String
+  price     Float    // in SEK
+  compound  String   // base compound name
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // Legacy Product model (keeping for backward compatibility)
@@ -110,12 +111,13 @@ model Product {
 
 model CartItem {
   id        String   @id @default(uuid())
-  product   Product  @relation(fields: [productId], references: [id])
-  productId String
   quantity  Int
   createdAt DateTime @default(now())
   
-  // Optional relation to ProtidelabProduct
-  protidelabProduct   ProtidelabProduct? @relation(fields: [protidelabProductId], references: [id])
-  protidelabProductId String?
+  // Relations (can be either legacy product or new bundle)
+  product   Product?  @relation(fields: [productId], references: [id])
+  productId String?
+  
+  bundle    ProductBundle? @relation(fields: [bundleId], references: [id])
+  bundleId  String?
 }

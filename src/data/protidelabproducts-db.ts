@@ -59,48 +59,45 @@ const usaStates: ShippingDestination[] = [
 // Function to fetch products from database
 export async function getProducts(): Promise<Product[]> {
   try {
-    const protidelabProducts = await prisma.protidelabProduct.findMany({
+    const productBundles = await prisma.productBundle.findMany({
       include: {
-        swedishProduct: true,
-        contents: true,
-        details: true,
+        bundleItems: {
+          include: {
+            individualProduct: true
+          }
+        },
         shippingDestinations: true
       }
     });
 
-    return protidelabProducts.map(product => ({
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      swedishdescription: product.swedishdescription,
-      purity: product.purity,
-      price: `${product.swedishProduct.price} kr`, // Use price from Swedish product
-      image: product.image,
-      category: product.category,
-      correlatesto: product.correlatesto,
-      imagedescription: product.imagedescription,
-      contents: product.contents.map(content => ({
-        englishname: content.englishname,
-        swedishname: content.swedishname,
-        englishdescription: content.englishdescription,
-        swedishdescription: content.swedishdescription,
-        quantity: content.quantity || undefined,
-        englishunittype: content.englishunittype || undefined,
-        swedishunittype: content.swedishunittype || undefined
+    return productBundles.map(bundle => ({
+      id: bundle.id,
+      name: bundle.name,
+      description: bundle.description,
+      swedishdescription: bundle.swedishdescription,
+      purity: bundle.purity,
+      price: `${bundle.price} kr`,
+      image: bundle.image,
+      category: bundle.category,
+      correlatesto: bundle.correlatesto,
+      imagedescription: bundle.imagedescription,
+      contents: bundle.bundleItems.map(item => ({
+        englishname: item.individualProduct.name,
+        swedishname: item.individualProduct.name, // Could be enhanced with Swedish names
+        englishdescription: item.individualProduct.description,
+        swedishdescription: item.individualProduct.swedishdescription,
+        quantity: item.quantity,
+        englishunittype: item.individualProduct.unitType,
+        swedishunittype: item.individualProduct.swedishUnitType
       })),
-      details: product.details ? {
-        productId: product.details.productId,
-        size: product.details.size,
-        storage: product.details.storage,
-        coaLink: product.details.coaLink
-      } : {
-        productId: product.id,
-        size: "Standard",
-        storage: "Förvara vid rumstemperatur",
-        coaLink: "/certificates/default-coa.pdf"
+      details: {
+        productId: bundle.id,
+        size: bundle.bundleItems.map(item => `${item.quantity} ${item.individualProduct.unitType}`).join(', '),
+        storage: bundle.bundleItems[0]?.individualProduct.storage || "Förvara vid rumstemperatur",
+        coaLink: bundle.bundleItems[0]?.individualProduct.coaLink || `/certificates/${bundle.id}-coa.pdf`
       },
-      shippingDestinations: product.shippingDestinations.length > 0 
-        ? product.shippingDestinations.map(dest => ({
+      shippingDestinations: bundle.shippingDestinations.length > 0 
+        ? bundle.shippingDestinations.map(dest => ({
             id: parseInt(dest.id),
             name: dest.name,
             description: dest.description,
@@ -118,51 +115,48 @@ export async function getProducts(): Promise<Product[]> {
 // Function to get a single product by ID
 export async function getProductById(id: string): Promise<Product | null> {
   try {
-    const product = await prisma.protidelabProduct.findUnique({
+    const bundle = await prisma.productBundle.findUnique({
       where: { id },
       include: {
-        swedishProduct: true,
-        contents: true,
-        details: true,
+        bundleItems: {
+          include: {
+            individualProduct: true
+          }
+        },
         shippingDestinations: true
       }
     });
 
-    if (!product) return null;
+    if (!bundle) return null;
 
     return {
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      swedishdescription: product.swedishdescription,
-      purity: product.purity,
-      price: `${product.swedishProduct.price} kr`,
-      image: product.image,
-      category: product.category,
-      correlatesto: product.correlatesto,
-      imagedescription: product.imagedescription,
-      contents: product.contents.map(content => ({
-        englishname: content.englishname,
-        swedishname: content.swedishname,
-        englishdescription: content.englishdescription,
-        swedishdescription: content.swedishdescription,
-        quantity: content.quantity || undefined,
-        englishunittype: content.englishunittype || undefined,
-        swedishunittype: content.swedishunittype || undefined
+      id: bundle.id,
+      name: bundle.name,
+      description: bundle.description,
+      swedishdescription: bundle.swedishdescription,
+      purity: bundle.purity,
+      price: `${bundle.price} kr`,
+      image: bundle.image,
+      category: bundle.category,
+      correlatesto: bundle.correlatesto,
+      imagedescription: bundle.imagedescription,
+      contents: bundle.bundleItems.map(item => ({
+        englishname: item.individualProduct.name,
+        swedishname: item.individualProduct.name,
+        englishdescription: item.individualProduct.description,
+        swedishdescription: item.individualProduct.swedishdescription,
+        quantity: item.quantity,
+        englishunittype: item.individualProduct.unitType,
+        swedishunittype: item.individualProduct.swedishUnitType
       })),
-      details: product.details ? {
-        productId: product.details.productId,
-        size: product.details.size,
-        storage: product.details.storage,
-        coaLink: product.details.coaLink
-      } : {
-        productId: product.id,
-        size: "Standard",
-        storage: "Förvara vid rumstemperatur",
-        coaLink: "/certificates/default-coa.pdf"
+      details: {
+        productId: bundle.id,
+        size: bundle.bundleItems.map(item => `${item.quantity} ${item.individualProduct.unitType}`).join(', '),
+        storage: bundle.bundleItems[0]?.individualProduct.storage || "Förvara vid rumstemperatur",
+        coaLink: bundle.bundleItems[0]?.individualProduct.coaLink || `/certificates/${bundle.id}-coa.pdf`
       },
-      shippingDestinations: product.shippingDestinations.length > 0 
-        ? product.shippingDestinations.map(dest => ({
+      shippingDestinations: bundle.shippingDestinations.length > 0 
+        ? bundle.shippingDestinations.map(dest => ({
             id: parseInt(dest.id),
             name: dest.name,
             description: dest.description,
@@ -179,49 +173,46 @@ export async function getProductById(id: string): Promise<Product | null> {
 // Function to get products by category
 export async function getProductsByCategory(category: string): Promise<Product[]> {
   try {
-    const protidelabProducts = await prisma.protidelabProduct.findMany({
+    const productBundles = await prisma.productBundle.findMany({
       where: { category },
       include: {
-        swedishProduct: true,
-        contents: true,
-        details: true,
+        bundleItems: {
+          include: {
+            individualProduct: true
+          }
+        },
         shippingDestinations: true
       }
     });
 
-    return protidelabProducts.map(product => ({
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      swedishdescription: product.swedishdescription,
-      purity: product.purity,
-      price: `${product.swedishProduct.price} kr`,
-      image: product.image,
-      category: product.category,
-      correlatesto: product.correlatesto,
-      imagedescription: product.imagedescription,
-      contents: product.contents.map(content => ({
-        englishname: content.englishname,
-        swedishname: content.swedishname,
-        englishdescription: content.englishdescription,
-        swedishdescription: content.swedishdescription,
-        quantity: content.quantity || undefined,
-        englishunittype: content.englishunittype || undefined,
-        swedishunittype: content.swedishunittype || undefined
+    return productBundles.map(bundle => ({
+      id: bundle.id,
+      name: bundle.name,
+      description: bundle.description,
+      swedishdescription: bundle.swedishdescription,
+      purity: bundle.purity,
+      price: `${bundle.price} kr`,
+      image: bundle.image,
+      category: bundle.category,
+      correlatesto: bundle.correlatesto,
+      imagedescription: bundle.imagedescription,
+      contents: bundle.bundleItems.map(item => ({
+        englishname: item.individualProduct.name,
+        swedishname: item.individualProduct.name,
+        englishdescription: item.individualProduct.description,
+        swedishdescription: item.individualProduct.swedishdescription,
+        quantity: item.quantity,
+        englishunittype: item.individualProduct.unitType,
+        swedishunittype: item.individualProduct.swedishUnitType
       })),
-      details: product.details ? {
-        productId: product.details.productId,
-        size: product.details.size,
-        storage: product.details.storage,
-        coaLink: product.details.coaLink
-      } : {
-        productId: product.id,
-        size: "Standard",
-        storage: "Förvara vid rumstemperatur",
-        coaLink: "/certificates/default-coa.pdf"
+      details: {
+        productId: bundle.id,
+        size: bundle.bundleItems.map(item => `${item.quantity} ${item.individualProduct.unitType}`).join(', '),
+        storage: bundle.bundleItems[0]?.individualProduct.storage || "Förvara vid rumstemperatur",
+        coaLink: bundle.bundleItems[0]?.individualProduct.coaLink || `/certificates/${bundle.id}-coa.pdf`
       },
-      shippingDestinations: product.shippingDestinations.length > 0 
-        ? product.shippingDestinations.map(dest => ({
+      shippingDestinations: bundle.shippingDestinations.length > 0 
+        ? bundle.shippingDestinations.map(dest => ({
             id: parseInt(dest.id),
             name: dest.name,
             description: dest.description,
