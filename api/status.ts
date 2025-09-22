@@ -48,7 +48,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.log(`   Status: ${status.status}`);
     console.log(`   Environment: ${status.environment}`);
     console.log(`   Uptime: ${Math.floor(status.uptime)}s`);
-    console.log(`   Memory Usage: ${Math.round(status.memory.used / 1024 / 1024)}MB`);
+    console.log(`   Memory Usage: ${Math.round(status.memory.heapUsed / 1024 / 1024)}MB`);
     console.log(`🏁 [${requestId}] Status request completed\n`);
 
     return res.status(200).json(status);

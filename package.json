@@ -7,6 +7,7 @@
     "dev:full": "node dev-server.js",
     "dev:api": "vercel dev --listen 3000",
     "build": "prisma generate && next build",
+    "postinstall": "prisma generate",
     "build:dev": "next build",
     "lint": "next lint",
     "start": "next start",
