@@ -21,13 +21,15 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(138, 75, 175, 0.3) rgba(138, 75, 175, 0.1);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start !important;
   width: 100%;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }
 
-/* When few items, center them properly */
+/* When few items, still align to start for proper first item visibility */
 .carousel-scroll:not(:has(.product-card-wrapper:nth-child(4))) {
-  justify-content: center;
+  justify-content: flex-start !important;
 }
 
 .carousel-scroll::-webkit-scrollbar {
@@ -76,6 +78,13 @@
   height: 100%; /* Ensure all cards have the same height */
   display: flex;
   justify-content: center;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+/* Ensure first card is fully visible */
+.product-card-wrapper:first-child {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 .product-card-wrapper > div {
@@ -235,20 +244,11 @@
   background-color: rgba(246, 242, 250, 0.5);
 }
 
-/* Center content on smaller screens */
+/* Ensure proper alignment on all screen sizes */
 @media (max-width: 768px) {
   .carousel-scroll {
     justify-content: flex-start;
-    padding-left: 50%;
-    margin-left: -125px;
-  }
-  
-  /* When screen is small, reset margin and padding */
-  @media (max-width: 640px) {
-    .carousel-scroll {
-      padding-left: 0;
-      margin-left: 0;
-      justify-content: flex-start;
-    }
+    padding-left: 0;
+    margin-left: 0;
   }
 } 

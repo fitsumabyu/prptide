@@ -22,6 +22,7 @@ const restrictedCountries = [
 interface Product {
   id: string;
   name: string;
+  swedishname?: string;
   purity: string;
   price: string;
   image: string;
@@ -87,7 +88,12 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
     const container = carouselRef.current;
 
     if (direction === "left") {
-      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      // Check if we're close to the beginning, if so scroll to absolute start
+      if (container.scrollLeft <= scrollAmount) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      }
     } else {
       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
@@ -100,7 +106,8 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
 
   const handleScroll = () => {
     if (carouselRef.current) {
-      setScrollPosition(carouselRef.current.scrollLeft);
+      const scrollLeft = carouselRef.current.scrollLeft;
+      setScrollPosition(scrollLeft);
     }
   };
 
@@ -111,7 +118,18 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
     }
   }, [products, displayedProducts]);
 
-  const canScrollLeft = scrollPosition > 5;
+  // Initialize scroll position when component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (carouselRef.current) {
+        setScrollPosition(carouselRef.current.scrollLeft);
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  const canScrollLeft = scrollPosition > 1;
   const canScrollRight = carouselRef.current
     ? scrollPosition <
       carouselRef.current.scrollWidth - carouselRef.current.clientWidth - 5
@@ -160,8 +178,8 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
   }, [displayedProducts, isLoading, isInitializing]);
 
   return (
-    <div className="product-carousel relative bg-gradient-to-b from-purple-50/50 to-white p-6 rounded-2xl mx-auto max-w-7xl">
-      <div className="flex justify-between items-center mb-4 md:mb-6">
+    <div className="product-carousel relative bg-gradient-to-b from-purple-50/50 to-white py-6 rounded-2xl mx-auto max-w-7xl">
+      <div className="flex justify-between items-center mb-4 md:mb-6 px-6">
         <div className="flex items-center">
           <h2 className="text-xl md:text-2xl font-bold text-peptide-purple">{title}</h2>
           <div className="ml-2 inline-flex items-center bg-red-100 px-2 py-1 rounded-full text-xs text-red-600 font-medium">
@@ -173,7 +191,18 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
           <Button
             variant="outline"
             size="icon"
-            onClick={() => scroll("left")}
+            onClick={() => {
+              if (carouselRef.current && carouselRef.current.scrollLeft <= 50) {
+                carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+                setTimeout(() => {
+                  if (carouselRef.current) {
+                    setScrollPosition(carouselRef.current.scrollLeft);
+                  }
+                }, 300);
+              } else {
+                scroll("left");
+              }
+            }}
             disabled={!canScrollLeft || isLoading || isInitializing || (!isCountryShippable && showWarning)}
             className="rounded-full w-8 h-8 md:w-10 md:h-10 border-peptide-purple text-peptide-purple hover:bg-peptide-purple/10 transition-colors disabled:opacity-30"
             aria-label="Scroll left"
@@ -193,10 +222,10 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
         </div>
       </div>
 
-      <div className="text-xs text-gray-600 mb-4 flex items-start bg-white/70 p-2 rounded-lg border border-purple-100">
+      <div className="text-xs text-gray-600 mb-4 flex items-start bg-white/70 p-2 rounded-lg border border-purple-100 mx-6">
         <Info className="h-4 w-4 text-peptide-purple mr-2 flex-shrink-0 mt-0.5" />
         <span className="block">
-          All products display accurate name, purity level, and price in USD.
+          All products display accurate name, purity level, and price in SEK.
           For full details, view individual product pages.
         </span>
       </div>
@@ -217,7 +246,8 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
           <>
             <div
               ref={carouselRef}
-              className="carousel-scroll flex gap-3 md:gap-6 overflow-x-auto pb-4 md:pb-6 snap-x px-2 justify-start"
+              className="carousel-scroll flex gap-3 md:gap-6 overflow-x-auto pb-4 md:pb-6 snap-x justify-start"
+              style={{ paddingLeft: '0px', paddingRight: '8px' }}
               onScroll={handleScroll}
             >
               {isLoading || isInitializing ? (
@@ -244,6 +274,7 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
                         key={product.id}
                         id={product.id}
                         name={product.name}
+                        swedishname={product.swedishname}
                         purity={product.purity}
                         price={product.price}
                         image={product.image}
@@ -253,7 +284,7 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
                 ))
               )}
             </div>
-            <div className="fade-left"></div>
+            {scrollPosition > 1 && <div className="fade-left"></div>}
             <div className="fade-right"></div>
           </>
         )}

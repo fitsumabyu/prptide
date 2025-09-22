@@ -16,6 +16,7 @@ export interface ProductContent {
 export interface Product {
   id: string;
   name: string;
+  swedishname: string;
   description: string;
   swedishdescription: string;
   purity: string;
@@ -56,10 +57,38 @@ const usaStates: ShippingDestination[] = [
   }
 ];
 
+// Function to generate Swedish name from English name
+function generateSwedishName(englishName: string): string {
+  const nameMap: { [key: string]: string } = {
+    'Anti-Swell Facial Remedy 1': 'Anti-Svullnad Ansiktsbehandling 1',
+    'Anti-Swell Facial Remedy 2': 'Anti-Svullnad Ansiktsbehandling 2', 
+    'Anti-Swell Facial Remedy 3': 'Anti-Svullnad Ansiktsbehandling 3',
+    'Anti-Swell Facial Remedy 4': 'Anti-Svullnad Ansiktsbehandling 4',
+    'Facial Hydro Focus 1': 'Ansikts Hydro Fokus 1',
+    'Facial Hydro Focus 2': 'Ansikts Hydro Fokus 2',
+    'Facial Hydro Focus 3': 'Ansikts Hydro Fokus 3', 
+    'Facial Hydro Focus 4': 'Ansikts Hydro Fokus 4',
+    'Destressing Recovery 1': 'Avstressa Återhämtning 1',
+    'Destressing Recovery 2': 'Avstressa Återhämtning 2',
+    'Destressing Recovery 3': 'Avstressa Återhämtning 3',
+    'Destressing Recovery 4': 'Avstressa Återhämtning 4',
+    'Skin Revival Recovery 1': 'Hud Återupplivning 1',
+    'Skin Revival Recovery 2': 'Hud Återupplivning 2',
+    'Skin Revival Recovery 3': 'Hud Återupplivning 3',
+    'Skin Revival Recovery 4': 'Hud Återupplivning 4',
+    'Electrolyte Salt GI Biome Complex 1': 'Elektrolyt Salt GI Biom Komplex 1',
+    'Electrolyte Salt GI Biome Complex 2': 'Elektrolyt Salt GI Biom Komplex 2',
+    'Electrolyte Salt GI Biome Complex 3': 'Elektrolyt Salt GI Biom Komplex 3',
+    'Electrolyte Salt GI Biome Complex 4': 'Elektrolyt Salt GI Biom Komplex 4'
+  };
+  
+  return nameMap[englishName] || englishName;
+}
+
 // Function to fetch products from database
 export async function getProducts(): Promise<Product[]> {
   try {
-    const productBundles = await prisma.productBundle.findMany({
+    const orderableProductBundles = await prisma.orderableProductBundle.findMany({
       include: {
         bundleItems: {
           include: {
@@ -70,9 +99,10 @@ export async function getProducts(): Promise<Product[]> {
       }
     });
 
-    return productBundles.map(bundle => ({
+    return orderableProductBundles.map(bundle => ({
       id: bundle.id,
       name: bundle.name,
+      swedishname: bundle.swedishname,
       description: bundle.description,
       swedishdescription: bundle.swedishdescription,
       purity: bundle.purity,
@@ -83,7 +113,7 @@ export async function getProducts(): Promise<Product[]> {
       imagedescription: bundle.imagedescription,
       contents: bundle.bundleItems.map(item => ({
         englishname: item.individualProduct.name,
-        swedishname: item.individualProduct.name, // Could be enhanced with Swedish names
+        swedishname: item.individualProduct.swedishname,
         englishdescription: item.individualProduct.description,
         swedishdescription: item.individualProduct.swedishdescription,
         quantity: item.quantity,
@@ -115,7 +145,7 @@ export async function getProducts(): Promise<Product[]> {
 // Function to get a single product by ID
 export async function getProductById(id: string): Promise<Product | null> {
   try {
-    const bundle = await prisma.productBundle.findUnique({
+    const bundle = await prisma.orderableProductBundle.findUnique({
       where: { id },
       include: {
         bundleItems: {
@@ -132,6 +162,7 @@ export async function getProductById(id: string): Promise<Product | null> {
     return {
       id: bundle.id,
       name: bundle.name,
+      swedishname: bundle.swedishname,
       description: bundle.description,
       swedishdescription: bundle.swedishdescription,
       purity: bundle.purity,
@@ -142,7 +173,7 @@ export async function getProductById(id: string): Promise<Product | null> {
       imagedescription: bundle.imagedescription,
       contents: bundle.bundleItems.map(item => ({
         englishname: item.individualProduct.name,
-        swedishname: item.individualProduct.name,
+        swedishname: item.individualProduct.swedishname,
         englishdescription: item.individualProduct.description,
         swedishdescription: item.individualProduct.swedishdescription,
         quantity: item.quantity,
@@ -173,7 +204,7 @@ export async function getProductById(id: string): Promise<Product | null> {
 // Function to get products by category
 export async function getProductsByCategory(category: string): Promise<Product[]> {
   try {
-    const productBundles = await prisma.productBundle.findMany({
+    const orderableProductBundles = await prisma.orderableProductBundle.findMany({
       where: { category },
       include: {
         bundleItems: {
@@ -185,9 +216,10 @@ export async function getProductsByCategory(category: string): Promise<Product[]
       }
     });
 
-    return productBundles.map(bundle => ({
+    return orderableProductBundles.map(bundle => ({
       id: bundle.id,
       name: bundle.name,
+      swedishname: bundle.swedishname,
       description: bundle.description,
       swedishdescription: bundle.swedishdescription,
       purity: bundle.purity,
@@ -198,7 +230,7 @@ export async function getProductsByCategory(category: string): Promise<Product[]
       imagedescription: bundle.imagedescription,
       contents: bundle.bundleItems.map(item => ({
         englishname: item.individualProduct.name,
-        swedishname: item.individualProduct.name,
+        swedishname: item.individualProduct.swedishname,
         englishdescription: item.individualProduct.description,
         swedishdescription: item.individualProduct.swedishdescription,
         quantity: item.quantity,

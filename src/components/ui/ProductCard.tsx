@@ -8,12 +8,13 @@ import { useState } from "react";
 interface ProductCardProps {
   id: string;
   name: string;
+  swedishname?: string;
   purity: string;
   price: string;
   image: string;
 }
 
-const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
+const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCardProps) => {
   const { addToCart } = useCart();
   const [adding, setAdding] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -117,9 +118,9 @@ const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
               x · {purity}
             </span>
             <div className="flex items-center space-x-2">
-              <h2 className="font-semibold text-base text-neutral-900 dark:text-white line-clamp-1">
-                {name}
-              </h2>
+            <h2 className="font-semibold text-base text-neutral-900 dark:text-white line-clamp-1">
+              {swedishname || name}
+            </h2>
             </div>
           </div>
           

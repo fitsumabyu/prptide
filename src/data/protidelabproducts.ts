@@ -20,8 +20,8 @@ export interface BundleItem {
   quantity: number;
 }
 
-// Product bundle that customers actually purchase
-export interface ProductBundle {
+// Orderable product bundle that customers actually purchase
+export interface OrderableProductBundle {
   id: string;
   name: string;
   description: string;
@@ -177,137 +177,173 @@ export const individualProducts: IndividualProduct[] = [
     image: "/labimages/ginger-sticks.png",
     storage: "Förvara vid rumstemperatur, undvik fukt",
     coaLink: "/certificates/electrolyte-ginger-sticks-coa.pdf"
+  },
+  {
+    id: "serum-ampoules",
+    name: "Single-Use Serum Ampoules",
+    description: "HA 1% + niacinamide 5% + ceramide complex in premium glass vials (2 mL). Daily AM use, travel-safe.",
+    swedishdescription: "HA 1% + niacinamid 5% + ceramidkomplex i premium glasflaskor (2 mL). Daglig AM-användning, resekompatibel.",
+    category: "Cosmetic",
+    unitType: "vials",
+    swedishUnitType: "flaskor",
+    image: "/labimages/serum-ampoules.png",
+    storage: "Förvara vid rumstemperatur, undvik direkt solljus",
+    coaLink: "/certificates/serum-ampoules-coa.pdf"
+  },
+  {
+    id: "night-repair-balm-pods",
+    name: "Night Repair Balm Pods",
+    description: "Occlusive ceramide balm, fragrance-free in convenient pods (3-4g). Nightly seal over actives.",
+    swedishdescription: "Ocklusiv ceramidbalsam, parfymfri i bekväma kapslar (3-4g). Nattlig försegling över aktiva ämnen.",
+    category: "Cosmetic",
+    unitType: "pods",
+    swedishUnitType: "kapslar",
+    image: "/labimages/night-balm-pods.png",
+    storage: "Förvara vid rumstemperatur, undvik direkt solljus",
+    coaLink: "/certificates/night-repair-balm-pods-coa.pdf"
+  },
+  {
+    id: "under-eye-patches",
+    name: "Under-Eye Hydrogel Patches",
+    description: "Caffeine + peptide-free botanicals for under-eye care. Targeted hydration patches.",
+    swedishdescription: "Koffein + peptidfria botanicals för ögonvård. Riktade hydreringslappar.",
+    category: "Cosmetic",
+    unitType: "pairs",
+    swedishUnitType: "par",
+    image: "/labimages/under-eye-patches.png",
+    storage: "Förvara vid rumstemperatur, undvik direkt solljus",
+    coaLink: "/certificates/under-eye-patches-coa.pdf"
   }
 ];
 
-// Product bundles that customers can purchase
-export const productBundles: ProductBundle[] = [
-  // Intensive Hydration Sheet Masks - 4 tiers (WITH complementary products)
+// Orderable product bundles that customers can purchase
+export const orderableProductBundles: OrderableProductBundle[] = [
+  // Anti-Swell Facial Remedy - 4 tiers
   {
     id: "88815p1",
-    name: "Intensive Hydration Sheet Masks - Tier 1",
-    description: "Single-use cosmetic biocellulose masks with ceramides and complementary wellness support.",
-    swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider och kompletterande välmåendestöd.",
+    name: "Anti-Swell Facial Remedy 1",
+    description: "Advanced facial treatment system with hydration masks, under-eye care, and serum enhancement.",
+    swedishdescription: "Avancerat ansiktsbehandlingssystem med hydrateringsmasker, ögonvård och serumförstärkning.",
     purity: "Premium Kvalitet",
     price: 1500,
     image: "/labimages/88815.png",
     category: "Cosmetic",
     correlatesto: "Semaglutide 5mg",
-    imagedescription: "Product image for Intensive Hydration Sheet Masks - Tier 1",
+    imagedescription: "Product image for Anti-Swell Facial Remedy 1",
     tier: 1,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-sheet-masks")!,
-        quantity: 12
+        quantity: 10
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 12
+        individualProduct: individualProducts.find(p => p.id === "under-eye-patches")!,
+        quantity: 10
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 12
+        individualProduct: individualProducts.find(p => p.id === "serum-ampoules")!,
+        quantity: 10
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88815p2",
-    name: "Intensive Hydration Sheet Masks - Tier 2",
-    description: "Single-use cosmetic biocellulose masks with ceramides and complementary wellness support.",
-    swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider och kompletterande välmåendestöd.",
+    name: "Anti-Swell Facial Remedy 2",
+    description: "Advanced facial treatment system with hydration masks, under-eye care, and serum enhancement.",
+    swedishdescription: "Avancerat ansiktsbehandlingssystem med hydrateringsmasker, ögonvård och serumförstärkning.",
     purity: "Premium Kvalitet",
     price: 2500,
     image: "/labimages/88815.png",
     category: "Cosmetic",
     correlatesto: "Semaglutide 10mg",
-    imagedescription: "Product image for Intensive Hydration Sheet Masks - Tier 2",
+    imagedescription: "Product image for Anti-Swell Facial Remedy 2",
     tier: 2,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-sheet-masks")!,
-        quantity: 24
+        quantity: 20
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 24
+        individualProduct: individualProducts.find(p => p.id === "under-eye-patches")!,
+        quantity: 20
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 24
+        individualProduct: individualProducts.find(p => p.id === "serum-ampoules")!,
+        quantity: 20
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88815p3",
-    name: "Intensive Hydration Sheet Masks - Tier 3",
-    description: "Single-use cosmetic biocellulose masks with ceramides and complementary wellness support.",
-    swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider och kompletterande välmåendestöd.",
+    name: "Anti-Swell Facial Remedy 3",
+    description: "Advanced facial treatment system with hydration masks, under-eye care, and serum enhancement.",
+    swedishdescription: "Avancerat ansiktsbehandlingssystem med hydrateringsmasker, ögonvård och serumförstärkning.",
     purity: "Premium Kvalitet",
     price: 4500,
     image: "/labimages/88815.png",
     category: "Cosmetic",
     correlatesto: "Semaglutide 20mg",
-    imagedescription: "Product image for Intensive Hydration Sheet Masks - Tier 3",
+    imagedescription: "Product image for Anti-Swell Facial Remedy 3",
     tier: 3,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-sheet-masks")!,
-        quantity: 36
+        quantity: 40
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 36
+        individualProduct: individualProducts.find(p => p.id === "under-eye-patches")!,
+        quantity: 40
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 36
+        individualProduct: individualProducts.find(p => p.id === "serum-ampoules")!,
+        quantity: 40
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88815p4",
-    name: "Intensive Hydration Sheet Masks - Tier 4",
-    description: "Single-use cosmetic biocellulose masks with ceramides and complementary wellness support.",
-    swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider och kompletterande välmåendestöd.",
+    name: "Anti-Swell Facial Remedy 4",
+    description: "Advanced facial treatment system with hydration masks, under-eye care, and serum enhancement.",
+    swedishdescription: "Avancerat ansiktsbehandlingssystem med hydrateringsmasker, ögonvård och serumförstärkning.",
     purity: "Premium Kvalitet",
     price: 8500,
     image: "/labimages/88815.png",
     category: "Cosmetic",
     correlatesto: "Semaglutide 40mg",
-    imagedescription: "Product image for Intensive Hydration Sheet Masks - Tier 4",
+    imagedescription: "Product image for Anti-Swell Facial Remedy 4",
     tier: 4,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-sheet-masks")!,
-        quantity: 60
+        quantity: 80
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 60
+        individualProduct: individualProducts.find(p => p.id === "under-eye-patches")!,
+        quantity: 80
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 60
+        individualProduct: individualProducts.find(p => p.id === "serum-ampoules")!,
+        quantity: 80
       }
     ],
     shippingDestinations: usaStates
   },
 
-  // Ultra-Hydrating Lip Masks - 4 tiers (WITH complementary products)
+  // Facial Hydro Focus - 4 tiers
   {
     id: "88816p1",
-    name: "Ultra-Hydrating Lip Masks - Tier 1",
-    description: "Single-use cosmetic hydrogel lip patches with complementary digestive support.",
-    swedishdescription: "Engångs kosmetiska hydrogel läpplappar med kompletterande matsmältningsstöd.",
+    name: "Facial Hydro Focus 1",
+    description: "Intensive lip hydration system with masks and overnight repair treatment.",
+    swedishdescription: "Intensivt läpphydreringssystem med masker och nattlig reparationsbehandling.",
     purity: "Premium Kvalitet",
     price: 699,
     image: "/labimages/88816.png",
     category: "Cosmetic",
     correlatesto: "Tirzepatide 5mg",
-    imagedescription: "Product image for Ultra-Hydrating Lip Masks - Tier 1",
+    imagedescription: "Product image for Facial Hydro Focus 1",
     tier: 1,
     bundleItems: [
       {
@@ -315,11 +351,7 @@ export const productBundles: ProductBundle[] = [
         quantity: 10
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 10
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
+        individualProduct: individualProducts.find(p => p.id === "night-repair-balm-pods")!,
         quantity: 10
       }
     ],
@@ -327,15 +359,15 @@ export const productBundles: ProductBundle[] = [
   },
   {
     id: "88816p2",
-    name: "Ultra-Hydrating Lip Masks - Tier 2",
-    description: "Single-use cosmetic hydrogel lip patches with complementary digestive support.",
-    swedishdescription: "Engångs kosmetiska hydrogel läpplappar med kompletterande matsmältningsstöd.",
+    name: "Facial Hydro Focus 2",
+    description: "Intensive lip hydration system with masks and overnight repair treatment.",
+    swedishdescription: "Intensivt läpphydreringssystem med masker och nattlig reparationsbehandling.",
     purity: "Premium Kvalitet",
     price: 1398,
     image: "/labimages/88816.png",
     category: "Cosmetic",
     correlatesto: "Tirzepatide 10mg",
-    imagedescription: "Product image for Ultra-Hydrating Lip Masks - Tier 2",
+    imagedescription: "Product image for Facial Hydro Focus 2",
     tier: 2,
     bundleItems: [
       {
@@ -343,11 +375,7 @@ export const productBundles: ProductBundle[] = [
         quantity: 20
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 20
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
+        individualProduct: individualProducts.find(p => p.id === "night-repair-balm-pods")!,
         quantity: 20
       }
     ],
@@ -355,216 +383,180 @@ export const productBundles: ProductBundle[] = [
   },
   {
     id: "88816p3",
-    name: "Ultra-Hydrating Lip Masks - Tier 3",
-    description: "Single-use cosmetic hydrogel lip patches with complementary digestive support.",
-    swedishdescription: "Engångs kosmetiska hydrogel läpplappar med kompletterande matsmältningsstöd.",
+    name: "Facial Hydro Focus 3",
+    description: "Intensive lip hydration system with masks and overnight repair treatment.",
+    swedishdescription: "Intensivt läpphydreringssystem med masker och nattlig reparationsbehandling.",
     purity: "Premium Kvalitet",
     price: 2796,
     image: "/labimages/88816.png",
     category: "Cosmetic",
     correlatesto: "Tirzepatide 20mg",
-    imagedescription: "Product image for Ultra-Hydrating Lip Masks - Tier 3",
+    imagedescription: "Product image for Facial Hydro Focus 3",
     tier: 3,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "lip-masks")!,
-        quantity: 30
+        quantity: 40
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 30
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 30
+        individualProduct: individualProducts.find(p => p.id === "night-repair-balm-pods")!,
+        quantity: 40
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88816p4",
-    name: "Ultra-Hydrating Lip Masks - Tier 4",
-    description: "Single-use cosmetic hydrogel lip patches with complementary digestive support.",
-    swedishdescription: "Engångs kosmetiska hydrogel läpplappar med kompletterande matsmältningsstöd.",
+    name: "Facial Hydro Focus 4",
+    description: "Intensive lip hydration system with masks and overnight repair treatment.",
+    swedishdescription: "Intensivt läpphydreringssystem med masker och nattlig reparationsbehandling.",
     purity: "Premium Kvalitet",
     price: 5592,
     image: "/labimages/88816.png",
     category: "Cosmetic",
     correlatesto: "Tirzepatide 40mg",
-    imagedescription: "Product image for Ultra-Hydrating Lip Masks - Tier 4",
+    imagedescription: "Product image for Facial Hydro Focus 4",
     tier: 4,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "lip-masks")!,
-        quantity: 40
+        quantity: 80
       },
       {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 40
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 40
+        individualProduct: individualProducts.find(p => p.id === "night-repair-balm-pods")!,
+        quantity: 80
       }
     ],
     shippingDestinations: usaStates
   },
 
-  // Medical-grade Lanolin Lip Balm - 4 tiers (WITH complementary products)
+  // Destressing Recovery - 4 tiers
   {
     id: "88817p1",
-    name: "Medical-grade Lanolin Lip Balm - Tier 1",
-    description: "Anhydrous lanolin lip balm (cosmetic) with soothing wellness support.",
-    swedishdescription: "Vattenfri lanolin läppbalsam (kosmetisk) med lugnande välmåendestöd.",
+    name: "Destressing Recovery 1",
+    description: "Complete wellness recovery system with lip care, soothing tea, and digestive support.",
+    swedishdescription: "Komplett välmående återhämtningssystem med läppvård, lugnande te och matsmältningsstöd.",
     purity: "Premium Kvalitet",
     price: 1000,
     image: "/labimages/88817.png",
     category: "Cosmetic",
     correlatesto: "Retatrutide 4mg",
-    imagedescription: "Product image for Medical-grade Lanolin Lip Balm - Tier 1",
+    imagedescription: "Product image for Destressing Recovery 1",
     tier: 1,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "lanolin-lip-balm")!,
-        quantity: 1
+        quantity: 4
       },
       {
         individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 5
+        quantity: 8
       },
       {
         individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 5
+        quantity: 8
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88817p2",
-    name: "Medical-grade Lanolin Lip Balm - Tier 2",
-    description: "Anhydrous lanolin lip balm (cosmetic) with soothing wellness support.",
-    swedishdescription: "Vattenfri lanolin läppbalsam (kosmetisk) med lugnande välmåendestöd.",
+    name: "Destressing Recovery 2",
+    description: "Complete wellness recovery system with lip care, soothing tea, and digestive support.",
+    swedishdescription: "Komplett välmående återhämtningssystem med läppvård, lugnande te och matsmältningsstöd.",
     purity: "Premium Kvalitet",
     price: 1800,
     image: "/labimages/88817.png",
     category: "Cosmetic",
     correlatesto: "Retatrutide 8mg",
-    imagedescription: "Product image for Medical-grade Lanolin Lip Balm - Tier 2",
+    imagedescription: "Product image for Destressing Recovery 2",
     tier: 2,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "lanolin-lip-balm")!,
-        quantity: 2
+        quantity: 8
       },
       {
         individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 10
+        quantity: 16
       },
       {
         individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 10
+        quantity: 16
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88817p3",
-    name: "Medical-grade Lanolin Lip Balm - Tier 3",
-    description: "Anhydrous lanolin lip balm (cosmetic) with soothing wellness support.",
-    swedishdescription: "Vattenfri lanolin läppbalsam (kosmetisk) med lugnande välmåendestöd.",
+    name: "Destressing Recovery 3",
+    description: "Complete wellness recovery system with lip care, soothing tea, and digestive support.",
+    swedishdescription: "Komplett välmående återhämtningssystem med läppvård, lugnande te och matsmältningsstöd.",
     purity: "Premium Kvalitet",
     price: 5000,
     image: "/labimages/88817.png",
     category: "Cosmetic",
     correlatesto: "Retatrutide 20mg",
-    imagedescription: "Product image for Medical-grade Lanolin Lip Balm - Tier 3",
+    imagedescription: "Product image for Destressing Recovery 3",
     tier: 3,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "lanolin-lip-balm")!,
-        quantity: 3
+        quantity: 16
       },
       {
         individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 15
+        quantity: 32
       },
       {
         individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 15
+        quantity: 32
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88817p4",
-    name: "Medical-grade Lanolin Lip Balm - Tier 4",
-    description: "Anhydrous lanolin lip balm (cosmetic) with soothing wellness support.",
-    swedishdescription: "Vattenfri lanolin läppbalsam (kosmetisk) med lugnande välmåendestöd.",
+    name: "Destressing Recovery 4",
+    description: "Complete wellness recovery system with lip care, soothing tea, and digestive support.",
+    swedishdescription: "Komplett välmående återhämtningssystem med läppvård, lugnande te och matsmältningsstöd.",
     purity: "Premium Kvalitet",
     price: 9000,
     image: "/labimages/88817.png",
     category: "Cosmetic",
     correlatesto: "Retatrutide 40mg",
-    imagedescription: "Product image for Medical-grade Lanolin Lip Balm - Tier 4",
+    imagedescription: "Product image for Destressing Recovery 4",
     tier: 4,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "lanolin-lip-balm")!,
-        quantity: 4
+        quantity: 32
       },
       {
         individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 20
+        quantity: 64
       },
       {
         individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 20
+        quantity: 64
       }
     ],
     shippingDestinations: usaStates
   },
 
-  // Ceramide & Shea Butter Body Cream - 4 tiers (WITH complementary products)
+  // Skin Revival Recovery - 4 tiers
   {
     id: "88818p1",
-    name: "Ceramide & Shea Butter Body Cream - Tier 1",
-    description: "Rich, ceramide-containing body cream with wellness enhancement.",
-    swedishdescription: "Rik, ceramid-innehållande kroppskräm med välmåendeförstärkning.",
+    name: "Skin Revival Recovery 1",
+    description: "Premium body cream for comprehensive skin restoration and nourishment.",
+    swedishdescription: "Premium kroppskräm för omfattande hudåterställning och näring.",
     purity: "Premium Kvalitet",
     price: 600,
     image: "/labimages/88818.png",
     category: "Cosmetic",
     correlatesto: "GHK-Cu 50mg",
-    imagedescription: "Product image for Ceramide & Shea Butter Body Cream - Tier 1",
+    imagedescription: "Product image for Skin Revival Recovery 1",
     tier: 1,
-    bundleItems: [
-      {
-        individualProduct: individualProducts.find(p => p.id === "body-cream")!,
-        quantity: 1
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 7
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 7
-      }
-    ],
-    shippingDestinations: usaStates
-  },
-  {
-    id: "88818p2",
-    name: "Ceramide & Shea Butter Body Cream - Tier 2",
-    description: "Rich, ceramide-containing body cream.",
-    swedishdescription: "Rik, ceramid-innehållande kroppskräm.",
-    purity: "Premium Kvalitet",
-    price: 1000,
-    image: "/labimages/88818.png",
-    category: "Cosmetic",
-    correlatesto: "GHK-Cu 100mg",
-    imagedescription: "Product image for Ceramide & Shea Butter Body Cream - Tier 2",
-    tier: 2,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "body-cream")!,
@@ -574,37 +566,17 @@ export const productBundles: ProductBundle[] = [
     shippingDestinations: usaStates
   },
   {
-    id: "88818p3",
-    name: "Ceramide & Shea Butter Body Cream - Tier 3",
-    description: "Rich, ceramide-containing body cream.",
-    swedishdescription: "Rik, ceramid-innehållande kroppskräm.",
+    id: "88818p2",
+    name: "Skin Revival Recovery 2",
+    description: "Premium body cream for comprehensive skin restoration and nourishment.",
+    swedishdescription: "Premium kroppskräm för omfattande hudåterställning och näring.",
     purity: "Premium Kvalitet",
-    price: 1900,
+    price: 1000,
     image: "/labimages/88818.png",
     category: "Cosmetic",
-    correlatesto: "GHK-Cu 200mg",
-    imagedescription: "Product image for Ceramide & Shea Butter Body Cream - Tier 3",
-    tier: 3,
-    bundleItems: [
-      {
-        individualProduct: individualProducts.find(p => p.id === "body-cream")!,
-        quantity: 3
-      }
-    ],
-    shippingDestinations: usaStates
-  },
-  {
-    id: "88818p4",
-    name: "Ceramide & Shea Butter Body Cream - Tier 4",
-    description: "Rich, ceramide-containing body cream.",
-    swedishdescription: "Rik, ceramid-innehållande kroppskräm.",
-    purity: "Premium Kvalitet",
-    price: 3600,
-    image: "/labimages/88818.png",
-    category: "Cosmetic",
-    correlatesto: "GHK-Cu 400mg",
-    imagedescription: "Product image for Ceramide & Shea Butter Body Cream - Tier 4",
-    tier: 4,
+    correlatesto: "GHK-Cu 100mg",
+    imagedescription: "Product image for Skin Revival Recovery 2",
+    tier: 2,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "body-cream")!,
@@ -613,92 +585,124 @@ export const productBundles: ProductBundle[] = [
     ],
     shippingDestinations: usaStates
   },
+  {
+    id: "88818p3",
+    name: "Skin Revival Recovery 3",
+    description: "Premium body cream for comprehensive skin restoration and nourishment.",
+    swedishdescription: "Premium kroppskräm för omfattande hudåterställning och näring.",
+    purity: "Premium Kvalitet",
+    price: 1900,
+    image: "/labimages/88818.png",
+    category: "Cosmetic",
+    correlatesto: "GHK-Cu 200mg",
+    imagedescription: "Product image for Skin Revival Recovery 3",
+    tier: 3,
+    bundleItems: [
+      {
+        individualProduct: individualProducts.find(p => p.id === "body-cream")!,
+        quantity: 8
+      }
+    ],
+    shippingDestinations: usaStates
+  },
+  {
+    id: "88818p4",
+    name: "Skin Revival Recovery 4",
+    description: "Premium body cream for comprehensive skin restoration and nourishment.",
+    swedishdescription: "Premium kroppskräm för omfattande hudåterställning och näring.",
+    purity: "Premium Kvalitet",
+    price: 3600,
+    image: "/labimages/88818.png",
+    category: "Cosmetic",
+    correlatesto: "GHK-Cu 400mg",
+    imagedescription: "Product image for Skin Revival Recovery 4",
+    tier: 4,
+    bundleItems: [
+      {
+        individualProduct: individualProducts.find(p => p.id === "body-cream")!,
+        quantity: 16
+      }
+    ],
+    shippingDestinations: usaStates
+  },
 
-  // Metabolic Hydration Complex - 4 tiers (WITH complementary products)
+  // Electrolyte Salt GI Biome Complex - 4 tiers
   {
     id: "88819p1",
-    name: "Metabolic Hydration Complex - Tier 1",
-    description: "Electrolyte formula with non-stimulant cofactors and additional digestive support. No performance claims.",
-    swedishdescription: "Elektrolytformel med icke-stimulerande kofaktorer och ytterligare matsmältningsstöd. Inga prestationspåståenden.",
+    name: "Electrolyte Salt GI Biome Complex 1",
+    description: "Advanced electrolyte and digestive support formula for optimal hydration and gut health.",
+    swedishdescription: "Avancerad elektrolyt- och matsmältningsstödformel för optimal hydrering och tarmhälsa.",
     purity: "Premium Kvalitet",
     price: 700,
     image: "/labimages/88819.png",
     category: "Food supplement",
     correlatesto: "Roaccutan 1000mg",
-    imagedescription: "Product image for Metabolic Hydration Complex - Tier 1",
+    imagedescription: "Product image for Electrolyte Salt GI Biome Complex 1",
     tier: 1,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-complex")!,
-        quantity: 30
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "herbal-gi-tea")!,
-        quantity: 30
-      },
-      {
-        individualProduct: individualProducts.find(p => p.id === "electrolyte-ginger-sticks")!,
-        quantity: 30
+        quantity: 3
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88819p2",
-    name: "Metabolic Hydration Complex - Tier 2",
-    description: "Electrolyte formula with non-stimulant cofactors. No performance claims.",
-    swedishdescription: "Elektrolytformel med icke-stimulerande kofaktorer. Inga prestationspåståenden.",
+    name: "Electrolyte Salt GI Biome Complex 2",
+    description: "Advanced electrolyte and digestive support formula for optimal hydration and gut health.",
+    swedishdescription: "Avancerad elektrolyt- och matsmältningsstödformel för optimal hydrering och tarmhälsa.",
     purity: "Premium Kvalitet",
     price: 1200,
     image: "/labimages/88819.png",
     category: "Food supplement",
     correlatesto: "Roaccutan 2000mg",
-    imagedescription: "Product image for Metabolic Hydration Complex - Tier 2",
+    imagedescription: "Product image for Electrolyte Salt GI Biome Complex 2",
     tier: 2,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-complex")!,
-        quantity: 60
+        quantity: 6
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88819p3",
-    name: "Metabolic Hydration Complex - Tier 3",
-    description: "Electrolyte formula with non-stimulant cofactors. No performance claims.",
-    swedishdescription: "Elektrolytformel med icke-stimulerande kofaktorer. Inga prestationspåståenden.",
+    name: "Electrolyte Salt GI Biome Complex 3",
+    description: "Advanced electrolyte and digestive support formula for optimal hydration and gut health.",
+    swedishdescription: "Avancerad elektrolyt- och matsmältningsstödformel för optimal hydrering och tarmhälsa.",
     purity: "Premium Kvalitet",
     price: 2000,
     image: "/labimages/88819.png",
     category: "Food supplement",
     correlatesto: "Roaccutan 4000mg",
-    imagedescription: "Product image for Metabolic Hydration Complex - Tier 3",
+    imagedescription: "Product image for Electrolyte Salt GI Biome Complex 3",
     tier: 3,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-complex")!,
-        quantity: 90
+        quantity: 12
       }
     ],
     shippingDestinations: usaStates
   },
   {
     id: "88819p4",
-    name: "Metabolic Hydration Complex - Tier 4",
-    description: "Electrolyte formula with non-stimulant cofactors. No performance claims.",
-    swedishdescription: "Elektrolytformel med icke-stimulerande kofaktorer. Inga prestationspåståenden.",
+    name: "Electrolyte Salt GI Biome Complex 4",
+    description: "Advanced electrolyte and digestive support formula for optimal hydration and gut health.",
+    swedishdescription: "Avancerad elektrolyt- och matsmältningsstödformel för optimal hydrering och tarmhälsa.",
     purity: "Premium Kvalitet",
     price: 3700,
     image: "/labimages/88819.png",
     category: "Food supplement",
     correlatesto: "Roaccutan 8000mg",
-    imagedescription: "Product image for Metabolic Hydration Complex - Tier 4",
+    imagedescription: "Product image for Electrolyte Salt GI Biome Complex 4",
     tier: 4,
     bundleItems: [
       {
         individualProduct: individualProducts.find(p => p.id === "hydration-complex")!,
-        quantity: 120
+        quantity: 24
       }
     ],
     shippingDestinations: usaStates
@@ -706,7 +710,7 @@ export const productBundles: ProductBundle[] = [
 ];
 
 // Legacy export for backward compatibility
-export const products: Product[] = productBundles.map(bundle => ({
+export const products: Product[] = orderableProductBundles.map(bundle => ({
   id: bundle.id,
   name: bundle.name,
   description: bundle.description,

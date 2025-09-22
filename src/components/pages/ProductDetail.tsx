@@ -78,6 +78,7 @@ const ProductDetail = () => {
           <div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
               <div className="mb-6">
+                <h2 className="text-2xl font-semibold text-gray-700 mb-1">{product.swedishname}</h2>
                 <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
                 <div className="inline-block bg-peptide-purple text-white text-sm font-medium px-3 py-1 rounded-md">
                   {product.purity}
@@ -102,7 +103,10 @@ const ProductDetail = () => {
                   {product.contents.map((item, index) => (
                     <div key={index} className="bg-gray-50 p-4 rounded-md border border-gray-200">
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-medium text-gray-900">{item.swedishname}</h3>
+                        <div>
+                          <h4 className="font-medium text-gray-700 text-sm">{item.swedishname}</h4>
+                          <h3 className="font-medium text-gray-900">{item.englishname}</h3>
+                        </div>
                         <span className="text-sm font-medium text-peptide-purple bg-white px-2 py-1 rounded">
                           {item.quantity} {item.swedishunittype}
                         </span>
@@ -213,7 +217,10 @@ const ProductDetail = () => {
                     {product.contents.map((item, index) => (
                       <div key={index} className="border-l-4 border-peptide-purple pl-4 py-2">
                         <div className="flex justify-between items-start mb-1">
-                          <h5 className="font-semibold text-gray-900">{item.swedishname}</h5>
+                          <div>
+                            <h6 className="font-medium text-gray-700 text-sm">{item.swedishname}</h6>
+                            <h5 className="font-semibold text-gray-900">{item.englishname}</h5>
+                          </div>
                           <span className="text-sm font-medium text-peptide-purple">
                             {item.quantity} {item.swedishunittype}
                           </span>

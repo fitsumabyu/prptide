@@ -8,7 +8,7 @@ async function main() {
   // Clear existing data
   console.log('Clearing existing data...')
   await prisma.bundleItem.deleteMany()
-  await prisma.productBundle.deleteMany()
+  await prisma.orderableProductBundle.deleteMany()
   await prisma.individualProduct.deleteMany()
   await prisma.shippingDestination.deleteMany()
 
@@ -59,6 +59,7 @@ async function main() {
     {
       id: "hydration-sheet-masks",
       name: "Intensive Hydration Sheet Masks",
+      swedishname: "Intensiva Hydreringsark Masker",
       description: "Single-use cosmetic biocellulose masks with ceramides.",
       swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider.",
       category: "Cosmetic",
@@ -72,6 +73,7 @@ async function main() {
     {
       id: "lip-masks",
       name: "Ultra-Hydrating Lip Masks",
+      swedishname: "Ultra-Hydrerande Läppmasker",
       description: "Single-use cosmetic hydrogel lip patches.",
       swedishdescription: "Engångs kosmetiska hydrogel läpplappar.",
       category: "Cosmetic",
@@ -84,6 +86,7 @@ async function main() {
     {
       id: "lanolin-lip-balm",
       name: "Medical-grade Lanolin Lip Balm",
+      swedishname: "Medicinsk-kvalitet Lanolin Läppbalsam",
       description: "Anhydrous lanolin lip balm (cosmetic).",
       swedishdescription: "Vattenfri lanolin läppbalsam (kosmetisk).",
       category: "Cosmetic",
@@ -96,6 +99,7 @@ async function main() {
     {
       id: "body-cream",
       name: "Ceramide & Shea Butter Body Cream",
+      swedishname: "Ceramid & Sheasmör Kroppskräm",
       description: "Rich, ceramide-containing body cream.",
       swedishdescription: "Rik, ceramid-innehållande kroppskräm.",
       category: "Cosmetic",
@@ -108,6 +112,7 @@ async function main() {
     {
       id: "hydration-complex",
       name: "Metabolic Hydration Complex",
+      swedishname: "Metabolisk Hydrerings Komplex",
       description: "Electrolyte formula with non-stimulant cofactors. No performance claims.",
       swedishdescription: "Elektrolytformel med icke-stimulerande kofaktorer. Inga prestationspåståenden.",
       category: "Food supplement",
@@ -121,6 +126,7 @@ async function main() {
     {
       id: "herbal-gi-tea",
       name: "Herbal GI Soothing Tea Packs",
+      swedishname: "Örtbaserad GI Lugnande Te Paket",
       description: "Soothing herbal tea blend with ginger, fennel, and chamomile.",
       swedishdescription: "Lugnande örttesblandning med ingefära, fänkål och kamomill.",
       category: "Tea",
@@ -134,6 +140,7 @@ async function main() {
     {
       id: "electrolyte-ginger-sticks",
       name: "Electrolyte + Ginger Stick Packs",
+      swedishname: "Elektrolyt + Ingefära Stick Paket",
       description: "Enhanced electrolyte formula with ginger for digestive support.",
       swedishdescription: "Förbättrad elektrolytformel med ingefära för matsmältningsstöd.",
       category: "Food supplement",
@@ -148,6 +155,7 @@ async function main() {
     {
       id: "serum-ampoules",
       name: "Single-Use Serum Ampoules",
+      swedishname: "Engångs Serumampuller",
       description: "HA 1% + niacinamide 5% + ceramide complex in premium glass vials (2 mL). Daily AM use, travel-safe.",
       swedishdescription: "HA 1% + niacinamid 5% + ceramidkomplex i premium glasflaskor (2 mL). Daglig AM-användning, resekompatibel.",
       category: "Cosmetic",
@@ -161,6 +169,7 @@ async function main() {
     {
       id: "night-repair-balm-pods",
       name: "Night Repair Balm Pods",
+      swedishname: "Natt Reparation Balsam Kapslar",
       description: "Occlusive ceramide balm, fragrance-free in convenient pods (3-4g). Nightly seal over actives.",
       swedishdescription: "Ocklusiv ceramidbalsam, parfymfri i bekväma kapslar (3-4g). Nattlig försegling över aktiva ämnen.",
       category: "Cosmetic",
@@ -174,6 +183,7 @@ async function main() {
     {
       id: "under-eye-patches",
       name: "Under-Eye Hydrogel Patches",
+      swedishname: "Ögonområde Hydrogellappar",
       description: "Caffeine + peptide-free botanicals for under-eye care. Targeted hydration patches.",
       swedishdescription: "Koffein + peptidfria botanicals för ögonvård. Riktade hydreringslappar.",
       category: "Cosmetic",
@@ -206,84 +216,76 @@ async function main() {
   const bundleDefinitions = [
     {
       baseId: "88815",
-      name: "Intensive Hydration Sheet Masks",
-      description: "Single-use cosmetic biocellulose masks with ceramides and premium skincare enhancement.",
-      swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider och premium hudvårdsförstärkning.",
+      name: "Anti-Swell Facial Remedy",
+      swedishname: "Anti-Svullnad Ansiktsbehandling",
+      description: "Advanced facial treatment system with hydration masks, under-eye care, and serum enhancement.",
+      swedishdescription: "Avancerat ansiktsbehandlingssystem med hydrateringsmasker, ögonvård och serumförstärkning.",
       category: "Cosmetic",
       correlatesto: "Semaglutide",
       prices: [1500, 2500, 4500, 8500],
       mainProductId: "hydration-sheet-masks",
-      mainQuantities: [12, 24, 36, 60], // Tier 4 bonus: 60 instead of 48 (5x Tier 1)
-      // Add enhanced sub-products - scaled to match main product
+      mainQuantities: [10, 20, 40, 80],
       bundleItems: [
-        { productId: "serum-ampoules", quantities: [12, 24, 36, 60] },
-        { productId: "night-repair-balm-pods", quantities: [12, 24, 36, 60] },
-        { productId: "under-eye-patches", quantities: [6, 12, 18, 30] } // Pairs, so fewer needed
+        { productId: "under-eye-patches", quantities: [10, 20, 40, 80] },
+        { productId: "serum-ampoules", quantities: [10, 20, 40, 80] }
       ]
     },
     {
       baseId: "88816",
-      name: "Ultra-Hydrating Lip Masks",
-      description: "Single-use cosmetic hydrogel lip patches with complementary digestive support.",
-      swedishdescription: "Engångs kosmetiska hydrogel läpplappar med kompletterande matsmältningsstöd.",
+      name: "Facial Hydro Focus",
+      swedishname: "Ansikts Hydro Fokus",
+      description: "Intensive lip hydration system with masks and overnight repair treatment.",
+      swedishdescription: "Intensivt läpphydreringssystem med masker och nattlig reparationsbehandling.",
       category: "Cosmetic",
       correlatesto: "Tirzepatide",
       prices: [699, 1398, 2796, 5592],
       mainProductId: "lip-masks",
-      mainQuantities: [10, 20, 30, 50], // Tier 4 bonus: 50 instead of 40 (5x Tier 1)
-      // Add complementary products - scaled to match main product
+      mainQuantities: [10, 20, 40, 80],
       bundleItems: [
-        { productId: "herbal-gi-tea", quantities: [10, 20, 30, 50] },
-        { productId: "electrolyte-ginger-sticks", quantities: [10, 20, 30, 50] }
+        { productId: "night-repair-balm-pods", quantities: [10, 20, 40, 80] }
       ]
     },
     {
       baseId: "88817",
-      name: "Medical-grade Lanolin Lip Balm",
-      description: "Anhydrous lanolin lip balm (cosmetic) with soothing wellness support.",
-      swedishdescription: "Vattenfri lanolin läppbalsam (kosmetisk) med lugnande välmåendestöd.",
+      name: "Destressing Recovery",
+      swedishname: "Avstressa Återhämtning",
+      description: "Complete wellness recovery system with lip care, soothing tea, and digestive support.",
+      swedishdescription: "Komplett välmående återhämtningssystem med läppvård, lugnande te och matsmältningsstöd.",
       category: "Cosmetic",
       correlatesto: "Retatrutide",
       prices: [1000, 1800, 5000, 9000],
       mainProductId: "lanolin-lip-balm",
-      mainQuantities: [1, 2, 3, 5], // Tier 4 bonus: 5 instead of 4 (5x Tier 1)
-      // Add complementary products - proportional scaling
+      mainQuantities: [4, 8, 16, 32],
       bundleItems: [
-        { productId: "herbal-gi-tea", quantities: [5, 10, 15, 25] }, // 5x scaling
-        { productId: "electrolyte-ginger-sticks", quantities: [5, 10, 15, 25] } // 5x scaling
+        { productId: "herbal-gi-tea", quantities: [8, 16, 32, 64] },
+        { productId: "electrolyte-ginger-sticks", quantities: [8, 16, 32, 64] }
       ]
     },
     {
       baseId: "88818",
-      name: "Ceramide & Shea Butter Body Cream",
-      description: "Rich, ceramide-containing body cream with wellness enhancement.",
-      swedishdescription: "Rik, ceramid-innehållande kroppskräm med välmåendeförstärkning.",
+      name: "Skin Revival Recovery",
+      swedishname: "Hudförnyelse Återhämtning",
+      description: "Premium body cream for comprehensive skin restoration and nourishment.",
+      swedishdescription: "Premium kroppskräm för omfattande hudåterställning och näring.",
       category: "Cosmetic",
       correlatesto: "GHK-Cu",
       prices: [600, 1000, 1900, 3600],
       mainProductId: "body-cream",
-      mainQuantities: [1, 2, 3, 5], // Tier 4 bonus: 5 instead of 4 (5x Tier 1)
-      // Add complementary products - proportional scaling
-      bundleItems: [
-        { productId: "herbal-gi-tea", quantities: [7, 14, 21, 35] }, // 5x scaling
-        { productId: "electrolyte-ginger-sticks", quantities: [7, 14, 21, 35] } // 5x scaling
-      ]
+      mainQuantities: [2, 4, 8, 16],
+      bundleItems: []
     },
     {
       baseId: "88819",
-      name: "Metabolic Hydration Complex",
-      description: "Electrolyte formula with non-stimulant cofactors and additional digestive support. No performance claims.",
-      swedishdescription: "Elektrolytformel med icke-stimulerande kofaktorer och ytterligare matsmältningsstöd. Inga prestationspåståenden.",
+      name: "Electrolyte Salt GI Biome Complex",
+      swedishname: "Elektrolyt Salt GI Biom Komplex",
+      description: "Advanced electrolyte and digestive support formula for optimal hydration and gut health.",
+      swedishdescription: "Avancerad elektrolyt- och matsmältningsstödformel för optimal hydrering och tarmhälsa.",
       category: "Food supplement",
       correlatesto: "Roaccutan",
       prices: [700, 1200, 2000, 3700],
       mainProductId: "hydration-complex",
-      mainQuantities: [30, 60, 90, 150], // Tier 4 bonus: 150 instead of 120 (5x Tier 1)
-      // Add complementary products - matching the serving quantities
-      bundleItems: [
-        { productId: "herbal-gi-tea", quantities: [30, 60, 90, 150] },
-        { productId: "electrolyte-ginger-sticks", quantities: [30, 60, 90, 150] }
-      ]
+      mainQuantities: [3, 6, 12, 24],
+      bundleItems: []
     }
   ]
 
@@ -295,10 +297,11 @@ async function main() {
       const tierIndex = tier - 1
       
       // Create the bundle
-      const bundle = await prisma.productBundle.create({
+      const bundle = await prisma.orderableProductBundle.create({
         data: {
           id: bundleId,
-          name: `${bundleDef.name} - Tier ${tier}`,
+          name: `${bundleDef.name} ${tier}`,
+          swedishname: `${bundleDef.swedishname} ${tier}`,
           description: bundleDef.description,
           swedishdescription: bundleDef.swedishdescription,
           purity: "Premium Kvalitet",

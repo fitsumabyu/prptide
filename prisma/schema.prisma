@@ -11,6 +11,7 @@ datasource db {
 model IndividualProduct {
   id                    String   @id
   name                  String
+  swedishname           String
   description           String
   swedishdescription    String
   category              String   // "Cosmetic", "Food supplement", "Tea", "Supplement"
@@ -28,10 +29,11 @@ model IndividualProduct {
   shippingDestinations  ShippingDestination[]
 }
 
-// Product bundles (what customers actually purchase)
-model ProductBundle {
+// Orderable product bundles (what customers actually purchase)
+model OrderableProductBundle {
   id                    String   @id
   name                  String
+  swedishname           String
   description           String
   swedishdescription    String
   purity                String
@@ -60,7 +62,7 @@ model BundleItem {
   
   // Foreign keys
   bundleId              String
-  bundle                ProductBundle @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  bundle                OrderableProductBundle @relation(fields: [bundleId], references: [id], onDelete: Cascade)
   
   individualProductId   String
   individualProduct     IndividualProduct @relation(fields: [individualProductId], references: [id], onDelete: Cascade)
@@ -79,7 +81,7 @@ model ShippingDestination {
   
   // Relations (can be associated with either bundles or individual products)
   bundleId              String?
-  bundle                ProductBundle? @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  bundle                OrderableProductBundle? @relation(fields: [bundleId], references: [id], onDelete: Cascade)
   
   individualProductId   String?
   individualProduct     IndividualProduct? @relation(fields: [individualProductId], references: [id], onDelete: Cascade)
@@ -120,6 +122,6 @@ model CartItem {
   product   Product?  @relation(fields: [productId], references: [id])
   productId String?
   
-  bundle    ProductBundle? @relation(fields: [bundleId], references: [id])
+  bundle    OrderableProductBundle? @relation(fields: [bundleId], references: [id])
   bundleId  String?
 }
