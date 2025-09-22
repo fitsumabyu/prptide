@@ -1,7 +1,15 @@
 'use client';
 
-import Products from '../../src/pages/ProductsNew';
+import ClientOnly from '../../src/components/ClientOnly';
+import Products from '../../src/components/pages/ProductsNew';
+
+// Disable static generation for this page since it uses client-side context
+export const dynamic = 'force-dynamic';
 
 export default function ProductsPage() {
-  return <Products />;
+  return (
+    <ClientOnly fallback={<div>Loading products...</div>}>
+      <Products />
+    </ClientOnly>
+  );
 }

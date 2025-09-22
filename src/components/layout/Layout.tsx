@@ -3,8 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCart } from "@/context/CartContext";
-import { Button } from "@/components/ui/button";
+import ClientOnly from "@/components/ClientOnly";
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,7 +11,6 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, fullWidthContent = false }: LayoutProps) => {
-  const { totalItems } = useCart();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const isHomePage = pathname === '/';
@@ -47,7 +45,9 @@ const Layout = ({ children, fullWidthContent = false }: LayoutProps) => {
   
   return (
     <div className="flex flex-col min-h-screen font-inter">
-      <Navbar transparent={useTransparentNavbar} />
+      <ClientOnly fallback={<div className="h-16 bg-white border-b border-gray-200"></div>}>
+        <Navbar transparent={useTransparentNavbar} />
+      </ClientOnly>
       <main className={`flex-grow flex flex-col ${fullWidthContent ? 'w-full' : ''}`}>
         {children}
       </main>

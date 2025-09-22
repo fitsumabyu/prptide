@@ -1,7 +1,14 @@
 'use client';
 
-import Privacy from '../../src/pages/Privacy';
+import Privacy from '../../src/components/pages/Privacy';
+import { Suspense } from 'react';
+
+export const dynamic = 'force-dynamic';
 
 export default function PrivacyPage() {
-  return <Privacy />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Privacy />
+    </Suspense>
+  );
 }

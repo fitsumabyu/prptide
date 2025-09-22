@@ -1,7 +1,14 @@
 'use client';
 
-import Terms from '../../src/pages/Terms';
+import Terms from '../../src/components/pages/Terms';
+import { Suspense } from 'react';
+
+export const dynamic = 'force-dynamic';
 
 export default function TermsPage() {
-  return <Terms />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Terms />
+    </Suspense>
+  );
 }
