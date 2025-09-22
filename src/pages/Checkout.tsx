@@ -2,7 +2,8 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, Info, Shield, Lock } from "lucide-react";
 import { toast } from "sonner";
 import CheckoutSteps from "@/components/checkout/CheckoutSteps";
@@ -66,7 +67,7 @@ const initialPayment: PaymentInfo = {
 const Checkout = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
   const [currentStep, setCurrentStep] = useState<CheckoutStep>("details");
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Form data states
   const [customer, setCustomer] = useState<CustomerInfo>(initialCustomer);
@@ -79,7 +80,7 @@ const Checkout = () => {
   const handlePlaceOrder = () => {
     toast.success("Beställning lagd framgångsrikt! Tack för ditt köp.");
     clearCart();
-    navigate("/");
+    router.push("/");
   };
 
   // Step validations
@@ -122,7 +123,7 @@ const Checkout = () => {
             <h1 className="text-2xl font-bold mb-4">Your Cart is Empty</h1>
             <p className="text-gray-600 mb-6">You need to add items to your cart before checking out.</p>
             <Button asChild>
-              <Link to="/products">Browse Products</Link>
+              <Link href="/products">Browse Products</Link>
             </Button>
           </div>
         </div>
@@ -135,7 +136,7 @@ const Checkout = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="mb-8 flex items-center">
           <Button asChild variant="outline" className="mr-4">
-            <Link to="/cart">
+            <Link href="/cart">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Cart
             </Link>
@@ -237,7 +238,7 @@ const Checkout = () => {
                   onPaymentComplete={() => {
                     toast.success("Beställning lagd framgångsrikt! Tack för ditt köp.");
                     clearCart();
-                    navigate("/");
+                    router.push("/");
                   }}
                   onBack={() => {
                     setCurrentStep("details");

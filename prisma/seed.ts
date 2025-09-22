@@ -66,7 +66,8 @@ async function main() {
       swedishUnitType: "masker",
       image: "/labimages/88815.png",
       storage: "Förvara vid rumstemperatur, undvik direkt solljus",
-      coaLink: "/certificates/hydration-sheet-masks-coa.pdf"
+      coaLink: "/certificates/hydration-sheet-masks-coa.pdf",
+      productType: "subinventoryitem"
     },
     {
       id: "lip-masks",
@@ -116,7 +117,7 @@ async function main() {
       storage: "Förvara vid rumstemperatur, undvik direkt solljus",
       coaLink: "/certificates/hydration-complex-coa.pdf"
     },
-    // Additional products for bundles
+    // General complementary products for most bundles
     {
       id: "herbal-gi-tea",
       name: "Herbal GI Soothing Tea Packs",
@@ -127,7 +128,8 @@ async function main() {
       swedishUnitType: "paket",
       image: "/labimages/herbal-tea.png",
       storage: "Förvara torrt och svalt",
-      coaLink: "/certificates/herbal-gi-tea-coa.pdf"
+      coaLink: "/certificates/herbal-gi-tea-coa.pdf",
+      productType: "subinventoryitem"
     },
     {
       id: "electrolyte-ginger-sticks",
@@ -139,7 +141,48 @@ async function main() {
       swedishUnitType: "paket",
       image: "/labimages/ginger-sticks.png",
       storage: "Förvara vid rumstemperatur, undvik fukt",
-      coaLink: "/certificates/electrolyte-ginger-sticks-coa.pdf"
+      coaLink: "/certificates/electrolyte-ginger-sticks-coa.pdf",
+      productType: "subinventoryitem"
+    },
+    // New enhanced sub-products specifically for Intensive Hydration Sheet Masks
+    {
+      id: "serum-ampoules",
+      name: "Single-Use Serum Ampoules",
+      description: "HA 1% + niacinamide 5% + ceramide complex in premium glass vials (2 mL). Daily AM use, travel-safe.",
+      swedishdescription: "HA 1% + niacinamid 5% + ceramidkomplex i premium glasflaskor (2 mL). Daglig AM-användning, resekompatibel.",
+      category: "Cosmetic",
+      unitType: "vials",
+      swedishUnitType: "flaskor",
+      image: "/labimages/serum-ampoules.png",
+      storage: "Förvara vid rumstemperatur, undvik direkt solljus",
+      coaLink: "/certificates/serum-ampoules-coa.pdf",
+      productType: "subinventoryitem"
+    },
+    {
+      id: "night-repair-balm-pods",
+      name: "Night Repair Balm Pods",
+      description: "Occlusive ceramide balm, fragrance-free in convenient pods (3-4g). Nightly seal over actives.",
+      swedishdescription: "Ocklusiv ceramidbalsam, parfymfri i bekväma kapslar (3-4g). Nattlig försegling över aktiva ämnen.",
+      category: "Cosmetic",
+      unitType: "pods",
+      swedishUnitType: "kapslar",
+      image: "/labimages/night-balm-pods.png",
+      storage: "Förvara vid rumstemperatur, undvik direkt solljus",
+      coaLink: "/certificates/night-repair-balm-pods-coa.pdf",
+      productType: "subinventoryitem"
+    },
+    {
+      id: "under-eye-patches",
+      name: "Under-Eye Hydrogel Patches",
+      description: "Caffeine + peptide-free botanicals for under-eye care. Targeted hydration patches.",
+      swedishdescription: "Koffein + peptidfria botanicals för ögonvård. Riktade hydreringslappar.",
+      category: "Cosmetic",
+      unitType: "pairs",
+      swedishUnitType: "par",
+      image: "/labimages/under-eye-patches.png",
+      storage: "Förvara vid rumstemperatur, undvik direkt solljus",
+      coaLink: "/certificates/under-eye-patches-coa.pdf",
+      productType: "subinventoryitem"
     }
   ]
 
@@ -164,17 +207,18 @@ async function main() {
     {
       baseId: "88815",
       name: "Intensive Hydration Sheet Masks",
-      description: "Single-use cosmetic biocellulose masks with ceramides and complementary wellness support.",
-      swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider och kompletterande välmåendestöd.",
+      description: "Single-use cosmetic biocellulose masks with ceramides and premium skincare enhancement.",
+      swedishdescription: "Engångs kosmetiska biocellulosa masker med ceramider och premium hudvårdsförstärkning.",
       category: "Cosmetic",
       correlatesto: "Semaglutide",
       prices: [1500, 2500, 4500, 8500],
       mainProductId: "hydration-sheet-masks",
       mainQuantities: [12, 24, 36, 60], // Tier 4 bonus: 60 instead of 48 (5x Tier 1)
-      // Add complementary products - scaled to match main product
+      // Add enhanced sub-products - scaled to match main product
       bundleItems: [
-        { productId: "herbal-gi-tea", quantities: [12, 24, 36, 60] },
-        { productId: "electrolyte-ginger-sticks", quantities: [12, 24, 36, 60] }
+        { productId: "serum-ampoules", quantities: [12, 24, 36, 60] },
+        { productId: "night-repair-balm-pods", quantities: [12, 24, 36, 60] },
+        { productId: "under-eye-patches", quantities: [6, 12, 18, 30] } // Pairs, so fewer needed
       ]
     },
     {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            <Link to="/" className="text-xl font-bold text-peptide-purple">
+            <Link href="/" className="text-xl font-bold text-peptide-purple">
               FormulaX
             </Link>
             <p className="mt-3 text-sm text-gray-600">
@@ -20,17 +20,17 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Alla Produkter
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Nya Produkter
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/products" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Bästsäljare
                 </Link>
               </li>
@@ -43,12 +43,12 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/about" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Om Oss
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/contact" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Kontakt
                 </Link>
               </li>
@@ -61,27 +61,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/terms" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/terms" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Villkor & Bestämmelser
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/privacy" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Integritetspolicy
                 </Link>
               </li>
               <li>
-                <Link to="/refund-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/refund-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Återbetalning & Returpolicy
                 </Link>
               </li>
               <li>
-                <Link to="/shipping-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/shipping-policy" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Leverans & Frakt
                 </Link>
               </li>
               <li>
-                <Link to="/disclaimer" className="text-sm text-gray-600 hover:text-peptide-purple">
+                <Link href="/disclaimer" className="text-sm text-gray-600 hover:text-peptide-purple">
                   Ansvarsfriskrivning
                 </Link>
               </li>

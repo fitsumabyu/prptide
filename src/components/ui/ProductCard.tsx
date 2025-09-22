@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, ImageIcon, MapPin } from "lucide-react";
@@ -53,8 +53,8 @@ const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
 
   return (
     <Card className="nc-ProductCard group relative overflow-hidden rounded-2xl hover:shadow-xl transition-all duration-300 border border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-900">
-      <Link to={`/products/${id}`} className="block">
-        {/* Image Gallery Section */}
+      {/* Image Gallery Section */}
+      <Link href={`/products/${id}`} className="block">
         <div className="relative w-full">
           <div className="aspect-w-4 aspect-h-3 relative h-[280px] bg-gradient-to-b from-purple-50 to-white overflow-hidden">
             {!imageLoaded && !imageError && (
@@ -108,9 +108,10 @@ const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
             </div> */}
           </div>
         </div>
+      </Link>
         
-        {/* Content Section */}
-        <CardContent className="p-4 space-y-4">
+      {/* Content Section */}
+      <CardContent className="p-4 space-y-4">
           <div className="space-y-2">
             <span className="text-sm text-neutral-500 dark:text-neutral-400">
               recovery performance · {purity}
@@ -140,7 +141,7 @@ const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
               size="sm"
               className="border-peptide-purple text-peptide-purple hover:bg-peptide-purple/10 transition text-xs sm:text-sm py-1"
             >
-              <Link to={`/products/${id}`}>View Details</Link>
+              <Link href={`/products/${id}`}>View Details</Link>
             </Button>
             <Button
               size="sm"
@@ -153,7 +154,6 @@ const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
             </Button>
           </div>
         </CardContent>
-      </Link>
     </Card>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { InfoIcon } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { preferredStates } from "@/components/shipping/PreferredDestinations";
@@ -94,7 +94,7 @@ const ShippingForm: React.FC<Props> = ({
       <div className="text-sm text-blue-700">
         <p>Orders are typically processed within 1-2 business days. Standard shipping takes 3-5 business days.</p>
         <p className="mt-1">
-          View our <Link to="/shipping-policy" target="_blank" className="text-peptide-purple hover:underline font-medium">Shipping & Delivery Policy</Link> for more details on shipping methods, costs, and restrictions.
+          View our <Link href="/shipping-policy" target="_blank" className="text-peptide-purple hover:underline font-medium">Shipping & Delivery Policy</Link> for more details on shipping methods, costs, and restrictions.
         </p>
       </div>
     </div>

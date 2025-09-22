@@ -14,11 +14,12 @@ model IndividualProduct {
   description           String
   swedishdescription    String
   category              String   // "Cosmetic", "Food supplement", "Tea", "Supplement"
-  unitType              String   // "masks", "tubes", "servings", "packs"
-  swedishUnitType       String   // "masker", "tubar", "portioner", "paket"
+  unitType              String   // "masks", "tubes", "servings", "packs", "vials", "pods", "pairs"
+  swedishUnitType       String   // "masker", "tubar", "portioner", "paket", "flaskor", "kapslar", "par"
   image                 String?
   storage               String
   coaLink               String?
+  productType           String   @default("subinventoryitem") // "productlisting" or "subinventoryitem"
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
   
@@ -40,6 +41,7 @@ model ProductBundle {
   correlatesto          String   // What Swedish compound this correlates to
   imagedescription      String
   tier                  Int      // 1, 2, 3, or 4
+  productType           String   @default("productlisting") // "productlisting" for top-tier orderable groups
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
   

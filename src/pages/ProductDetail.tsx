@@ -1,9 +1,10 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import Disclaimer from "@/components/ui/Disclaimer";
-import { products } from "@/data/protidelabproducts";
-import { ArrowLeft, ShoppingCart, Globe, FileText } from "lucide-react";
+import { useProduct } from "@/hooks/useProducts";
+import { ArrowLeft, FileText } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import PreferredDestinations from "@/components/shipping/PreferredDestinations";
@@ -11,18 +12,33 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const product = products.find(p => p.id === id);
+  const { product, loading, error } = useProduct(id || '');
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   
-  if (!product) {
+  if (loading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Laddar produkt...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error || !product) {
     return (
       <Layout>
         <div className="container mx-auto px-4 py-16">
           <h1 className="text-2xl font-bold mb-4">Produkt hittades inte</h1>
-          <p className="mb-6">Produkten du letar efter finns inte.</p>
+          <p className="mb-6">
+            {error ? `Fel vid laddning av produkt: ${error}` : 'Produkten du letar efter finns inte.'}
+          </p>
           <Button asChild variant="outline">
-            <Link to="/products">
+            <Link href="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Tillbaka till Produkter
             </Link>
@@ -32,8 +48,8 @@ const ProductDetail = () => {
     );
   }
   
-  const handleAddToCart = () => {
-    addToCart(product.id, quantity);
+  const handleAddToCart = async () => {
+    await addToCart(product.id, quantity);
   };
 
   return (
@@ -41,7 +57,7 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="mb-6">
           <Button asChild variant="outline" className="mb-6">
-            <Link to="/products">
+            <Link href="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Tillbaka till Produkter
             </Link>
@@ -144,7 +160,7 @@ const ProductDetail = () => {
                   className="flex-1 bg-peptide-purple hover:bg-peptide-dark-purple"
                   onClick={handleAddToCart}
                 >
-                  <ShoppingCart className="mr-2 h-4 w-4" />
+                  🛒
                   Lägg i varukorg
                 </Button>
 
@@ -153,7 +169,7 @@ const ProductDetail = () => {
               {/* Shipping availability indicator */}
               {product.shippingDestinations && product.shippingDestinations.length > 0 && (
                 <div className="my-4 px-4 py-3 bg-blue-50 rounded-md flex items-start">
-                  <Globe className="h-5 w-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-blue-500 mr-2 mt-0.5 flex-shrink-0">🌍</span>
                   <div className="text-sm">
                     <p className="font-medium text-blue-700">Särskilda leveransdestinationer tillgängliga</p>
                     <p className="text-blue-600">Denna produkt har specifik leveransberättigande. Se fliken Leverans nedan för detaljer.</p>

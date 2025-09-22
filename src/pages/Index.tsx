@@ -4,13 +4,46 @@ import FeaturesSection from "@/components/sections/FeaturesSection";
 import ResearchSection from "@/components/sections/ResearchSection";
 import ProductCarousel from "@/components/ui/ProductCarousel";
 import Disclaimer from "@/components/ui/Disclaimer";
-import { products } from "@/data/protidelabproducts";
+import { useProducts } from "@/hooks/useProducts";
 
 const Index = () => {
+  const { products, loading, error } = useProducts();
+  
   // Filter products to show only the recommended items in the carousel
   const recommendedProducts = products.filter(product => 
     ['88815p1', '88816p1', '88817p1', '88818p1', '88819p1'].includes(product.id)
   );
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Laddar produkter...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-red-600 mb-4">Fel vid laddning av produkter: {error}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Försök igen
+            </button>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>

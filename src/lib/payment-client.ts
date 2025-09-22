@@ -41,7 +41,7 @@ export interface PaymentResponse {
   threeDSAction?: {
     type: string;
     url: string;
-    data: any;
+    data: Record<string, unknown>;
   };
   error?: {
     code: string;
@@ -56,7 +56,7 @@ export class PaymentClient {
     this.baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   }
 
-  private async makeRequest(endpoint: string, data: any): Promise<PaymentResponse> {
+  private async makeRequest(endpoint: string, data: Record<string, unknown>): Promise<PaymentResponse> {
     try {
       const response = await fetch(`${this.baseUrl}/api${endpoint}`, {
         method: 'POST',

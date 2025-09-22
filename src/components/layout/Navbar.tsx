@@ -1,4 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Menu } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -20,12 +21,12 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
   const { totalItems } = useCart();
   const { country } = useShippingCountry();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   // Close sidebar when route changes
   React.useEffect(() => {
     setMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <header className={cn(
@@ -37,7 +38,7 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
       <div className="container mx-auto px-4 py-2 flex items-center justify-between min-h-[60px]">
         {/* Logo */}
         <div className="flex items-center">
-          <Link to="/" className={cn(
+          <Link href="/" className={cn(
             "font-bold flex-shrink-0 text-sm sm:text-2xl",
             transparent ? "text-white" : "text-peptide-purple"
           )}>
@@ -48,19 +49,19 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
         {/* Center nav links (desktop) */}
         <div className="flex-1 flex justify-center items-center">
           <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/products" className={cn(
+            <Link href="/products" className={cn(
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
               Produkter
             </Link>
-            <Link to="/about" className={cn(
+            <Link href="/about" className={cn(
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
               Om Oss
             </Link>
-            <Link to="/contact" className={cn(
+            <Link href="/contact" className={cn(
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
@@ -91,7 +92,7 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
               style={{ minWidth: 0, minHeight: 0 }}
             >
               <Link
-                to="/cart"
+                href="/cart"
                 className="flex items-center justify-center h-full w-full"
                 aria-label="Cart"
               >
@@ -131,7 +132,7 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
                 <nav className="flex flex-col gap-4 p-6 min-h-[50vh]">
                   {/* Mobile Cart Link */}
                   <Link
-                    to="/cart"
+                    href="/cart"
                     className="flex items-center gap-2 text-lg text-peptide-purple hover:text-peptide-purple/80 transition-colors font-medium border-b border-gray-200 pb-4"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -140,19 +141,19 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
                   </Link>
                   
                   <Link
-                    to="/products"
+                    href="/products"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
                     Produkter
                   </Link>
                   <Link
-                    to="/about"
+                    href="/about"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
                     Om Oss
                   </Link>
                   <Link
-                    to="/contact"
+                    href="/contact"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
                     Kontakt

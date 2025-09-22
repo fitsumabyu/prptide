@@ -1,8 +1,8 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { Link, useLocation } from "react-router-dom";
-import { ShoppingCart } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 
@@ -13,9 +13,9 @@ interface LayoutProps {
 
 const Layout = ({ children, fullWidthContent = false }: LayoutProps) => {
   const { totalItems } = useCart();
-  const location = useLocation();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const isHomePage = location.pathname === '/';
+  const isHomePage = pathname === '/';
   
   // Handle scroll events
   useEffect(() => {

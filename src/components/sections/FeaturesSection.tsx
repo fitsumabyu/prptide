@@ -1,5 +1,5 @@
 import { Check, Shield, FileCheck, TrendingUp, ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const features = [
@@ -93,7 +93,7 @@ const FeaturesSection = () => {
                 <span className="font-semibold text-green-200">Säkra och naturliga produkter för din återhämtning.</span>
               </div>
               <Button asChild size="lg" className="mt-6 bg-white text-peptide-purple hover:bg-gray-100">
-                <Link to="/products" className="inline-flex items-center">
+                <Link href="/products" className="inline-flex items-center">
                   <ShoppingCart className="mr-2 h-4 w-4" />
                   Utforska Återhämtningsprodukter
                 </Link>

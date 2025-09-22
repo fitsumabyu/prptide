@@ -1,19 +1,20 @@
 
-import { useLocation, Link } from "react-router-dom";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
-      location.pathname
+      pathname
     );
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <Layout>
@@ -25,7 +26,7 @@ const NotFound = () => {
             The page you're looking for doesn't exist or has been moved.
           </p>
           <Button asChild className="bg-peptide-purple hover:bg-peptide-dark-purple">
-            <Link to="/">
+            <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Return to Home
             </Link>

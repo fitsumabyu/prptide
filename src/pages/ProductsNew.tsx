@@ -2,18 +2,50 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import ProductCard from "@/components/ui/ProductCard";
 import Disclaimer from "@/components/ui/Disclaimer";
-import { products } from "@/data/protidelabproducts";
+import { useProducts } from "@/hooks/useProducts";
 import { useShippingCountry } from "@/context/ShippingCountryContext";
 import { useCountry } from "@/components/shipping/CountrySelector";
-import { AlertTriangle, Search } from "lucide-react";
+// Using text/emoji icons instead of lucide-react to avoid import issues
 
 const ProductsNew = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { country } = useShippingCountry();
   const { showWarning } = useCountry();
+  const { products, loading, error } = useProducts();
 
   // Check if the current country is in the restricted list or not in the allowed list
   const isCountryShippable = country === "US"; // Only allow US locations
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Laddar produkter...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-red-600 mb-4">Fel vid laddning av produkter: {error}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Försök igen
+            </button>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 
   // Group products by base product (first 5 characters of ID)
   const productGroups = products.reduce((acc, product) => {
@@ -67,7 +99,7 @@ const ProductsNew = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search className="h-4 w-4 text-gray-400" />
+                  <span className="text-gray-400">🔍</span>
                 </div>
               </div>
             </div>
@@ -90,7 +122,7 @@ const ProductsNew = () => {
         {!isCountryShippable && showWarning ? (
           <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center my-12">
             <div className="flex flex-col items-center justify-center gap-4">
-              <AlertTriangle className="h-12 w-12 text-red-500" />
+              <div className="text-6xl">⚠️</div>
               <h2 className="text-2xl font-bold text-red-700">Products Not Available in Your Region</h2>
               <p className="text-red-600 max-w-2xl">
                 We're sorry, but we currently don't ship our recovery products to your selected country. 

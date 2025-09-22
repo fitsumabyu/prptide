@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 import { ArrowLeft, Download, FileText, CheckCircle, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { products, Product } from "@/data/protidelabproducts";
@@ -21,7 +22,7 @@ const CertificateOfAnalysis = () => {
           <h1 className="text-2xl font-bold mb-4">Certificate Not Found</h1>
           <p className="mb-6">The product certificate you're looking for does not exist.</p>
           <Button asChild variant="outline">
-            <Link to="/products">
+            <Link href="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Products
             </Link>
@@ -94,7 +95,7 @@ const CertificateOfAnalysis = () => {
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="mb-8">
           <Button asChild variant="outline" className="mb-6">
-            <Link to={`/products/${product.id}`}>
+            <Link href={`/products/${product.id}`}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Product
             </Link>

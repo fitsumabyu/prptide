@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ShoppingCart, Globe } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -143,7 +143,7 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
           toast({
             title: toastTitle,
             description: toastDescription,
-            variant: toastVariant as any,
+            variant: toastVariant as "default" | "destructive",
           });
         } else {
           throw new Error(`Country code ${countryCode} not found in our database`);
@@ -218,13 +218,13 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
               <Button asChild size="lg" className="bg-peptide-purple hover:bg-peptide-dark-purple text-sm sm:text-base">
-                <Link to="/products" className="flex items-center">
+                <Link href="/products" className="flex items-center">
                   <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   Utforska Produkter
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white hover:bg-white/20 text-sm sm:text-base">
-                <Link to="/about">Läs Mer</Link>
+                <Link href="/about">Läs Mer</Link>
               </Button>
               <Button 
                 variant="outline" 

@@ -1,8 +1,8 @@
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
-import { Link } from "react-router-dom";
-import { ArrowLeft, ShoppingCart, Trash2, Lock } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice } = useCart();
@@ -13,12 +13,14 @@ const Cart = () => {
         <div className="container mx-auto px-4 py-16 text-center">
           <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 max-w-lg mx-auto">
             <div className="text-gray-400 mb-4">
-              <ShoppingCart size={64} className="mx-auto" />
+              <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto flex items-center justify-center">
+                🛒
+              </div>
             </div>
             <h1 className="text-2xl font-bold mb-4">Your Cart is Empty</h1>
             <p className="text-gray-600 mb-6">Looks like you haven't added any products to your cart yet.</p>
             <Button asChild>
-              <Link to="/products">Browse Products</Link>
+              <Link href="/products">Browse Products</Link>
             </Button>
           </div>
         </div>
@@ -31,7 +33,7 @@ const Cart = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="mb-6 flex items-center">
           <Button asChild variant="outline" className="mr-4">
-            <Link to="/products">
+            <Link href="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Continue Shopping
             </Link>
@@ -103,7 +105,7 @@ const Cart = () => {
                               className="text-red-500 hover:text-red-700"
                               onClick={() => removeFromCart(item.product.id)}
                             >
-                              <Trash2 size={18} />
+                              🗑️
                             </button>
                           </td>
                         </tr>
@@ -137,7 +139,7 @@ const Cart = () => {
               </div>
               
               <Button asChild className="w-full bg-peptide-purple hover:bg-peptide-dark-purple">
-                <Link to="/checkout">
+                <Link href="/checkout">
                   Proceed to Checkout
                 </Link>
               </Button>
@@ -151,7 +153,7 @@ const Cart = () => {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mt-6">
               <div className="flex items-center justify-center mb-3">
-                <Lock className="h-4 w-4 text-gray-600 mr-2" />
+                🔒
                 <p className="text-sm font-medium text-gray-700">Secure Checkout</p>
               </div>
               <div className="flex flex-wrap justify-center gap-3 mb-3">

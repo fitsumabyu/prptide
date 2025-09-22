@@ -2,8 +2,8 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Info, ArrowRight, AlertTriangle } from "lucide-react";
 import ProductCard from "./ProductCard";
-import { useNavigate } from "react-router-dom";
-import "./product-carousel.css";
+import { useRouter } from "next/navigation";
+// CSS is now imported globally in layout.tsx
 import { useShippingCountry } from "@/context/ShippingCountryContext";
 import { useCountry } from "@/components/shipping/CountrySelector";
 
@@ -52,7 +52,7 @@ const ProductSkeleton = () => {
 };
 
 const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }: ProductCarouselProps) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showAll, setShowAll] = useState(true); // Default to showing all products
@@ -118,7 +118,7 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
     : true;
 
   const handleSeeAllProductsClick = () => {
-    navigate("/products");
+    router.push("/products");
   };
 
   // Fix to ensure consistent card heights

@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 type CustomerInfo = {
   firstName: string;
@@ -163,7 +163,7 @@ const CustomerDetailsForm: React.FC<Props> = ({
           htmlFor="refundPolicyAccepted"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          Jag har läst och accepterar <Link to="/refund-policy" target="_blank" className="text-peptide-purple hover:underline">Återbetalnings- och returpolicy</Link>
+          Jag har läst och accepterar <Link href="/refund-policy" target="_blank" className="text-peptide-purple hover:underline">Återbetalnings- och returpolicy</Link>
         </label>
       </div>
     </div>
