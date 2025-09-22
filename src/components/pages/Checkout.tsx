@@ -69,6 +69,12 @@ const Checkout = () => {
   const [currentStep, setCurrentStep] = useState<CheckoutStep>("details");
   const router = useRouter();
 
+  // Calculate total with shipping and tax (same as OrderSummary)
+  const shippingCost = 9.99;
+  const taxRate = 0.07;
+  const taxAmount = totalPrice * taxRate;
+  const orderTotal = totalPrice + shippingCost + taxAmount;
+
   // Form data states
   const [customer, setCustomer] = useState<CustomerInfo>(initialCustomer);
   const [shipping, setShipping] = useState<ShippingInfo>(initialShipping);
@@ -234,7 +240,7 @@ const Checkout = () => {
               {currentStep === "crypto-payment" && (
                 <CryptoPaymentForm
                   paymentMethod={customer.paymentMethod}
-                  totalAmount={totalPrice}
+                  totalAmount={orderTotal}
                   onPaymentComplete={() => {
                     toast.success("Beställning lagd framgångsrikt! Tack för ditt köp.");
                     clearCart();
