@@ -26,7 +26,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const addToCart = async (productId: string, quantity = 1) => {
     try {
       // Fetch product from database
-      const response = await fetch(`/api/products?id=${productId}`);
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+      const response = await fetch(`${baseUrl}/api/products?id=${productId}`);
       if (!response.ok) {
         toast.error("Failed to add product to cart");
         return;

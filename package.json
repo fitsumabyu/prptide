@@ -6,7 +6,7 @@
     "dev": "next dev -p 8080",
     "dev:full": "node dev-server.js",
     "dev:api": "vercel dev --listen 3000",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "build:dev": "next build",
     "lint": "next lint",
     "start": "next start",

@@ -10,7 +10,8 @@ export function useProducts() {
     async function fetchProducts() {
       try {
         setLoading(true);
-        const response = await fetch('/api/products');
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        const response = await fetch(`${baseUrl}/api/products`);
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -40,7 +41,8 @@ export function useProduct(id: string) {
     async function fetchProduct() {
       try {
         setLoading(true);
-        const response = await fetch(`/api/products?id=${id}`);
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        const response = await fetch(`${baseUrl}/api/products?id=${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch product');
         }
@@ -72,7 +74,8 @@ export function useProductsByCategory(category: string) {
     async function fetchProducts() {
       try {
         setLoading(true);
-        const response = await fetch(`/api/products?category=${encodeURIComponent(category)}`);
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        const response = await fetch(`${baseUrl}/api/products?category=${encodeURIComponent(category)}`);
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
