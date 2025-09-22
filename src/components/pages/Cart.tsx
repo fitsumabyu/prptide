@@ -147,7 +147,7 @@ const Cart = () => {
               <div className="mt-6">
                 <div className="text-sm text-gray-500 mb-4">
                   <p className="font-medium text-red-600 mb-2">IMPORTANT DISCLAIMER</p>
-                  <p className="text-red-600 mb-2">We sell laboratory reagents and chemical reference materials for academic and industrial research. We do not sell consumer products. All products are labeled for research use only.</p>
+                  <p className="text-red-600 mb-2">All products are labeled for research use only. Talk to your doctor before using any product, and if you notice any adverse effects, stop using the product immediately.</p>
                  
                 </div>
               </div>

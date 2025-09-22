@@ -114,7 +114,7 @@ const ProductCard = ({ id, name, purity, price, image }: ProductCardProps) => {
       <CardContent className="p-4 space-y-4">
           <div className="space-y-2">
             <span className="text-sm text-neutral-500 dark:text-neutral-400">
-              recovery performance · {purity}
+              x · {purity}
             </span>
             <div className="flex items-center space-x-2">
               <h2 className="font-semibold text-base text-neutral-900 dark:text-white line-clamp-1">

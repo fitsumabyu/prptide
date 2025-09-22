@@ -36,7 +36,7 @@ const RefundPolicy = () => {
             <ul className="list-disc pl-6 text-gray-700 mb-6">
               <li>Opened or used products</li>
               <li>Products with broken seals or damaged packaging</li>
-              <li>Custom-synthesized chemical reference materials</li>
+              <li>Custom-synthesized materials</li>
               <li>Products requiring refrigeration or special handling</li>
               <li>Items marked as non-returnable at the time of purchase</li>
             </ul>
