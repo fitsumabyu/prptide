@@ -5,7 +5,6 @@
     }
   },
   "framework": "nextjs",
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next"
+  "buildCommand": "npm run build"
 }
   
