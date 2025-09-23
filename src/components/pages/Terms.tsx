@@ -61,8 +61,8 @@ const Terms = () => {
             <h2 className="text-2xl font-semibold mt-8 mb-4">10. Contact Information</h2>
             <p className="text-gray-700 mb-6">
               <strong>Official Business Name:</strong> H&amp;H WORLDWIDE GROUP<br />
-              <strong>Brand:</strong> FormulaX<br />
-              <span className="text-xs text-gray-500">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</span>
+              <strong>Brand:</strong> Protidelab<br />
+              <span className="text-xs text-gray-500">Protidelab is a brand of H&amp;H WORLDWIDE GROUP.</span>
             </p>
             
             <p className="text-gray-700 mb-6">

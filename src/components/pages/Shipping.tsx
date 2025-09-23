@@ -11,7 +11,7 @@ const Shipping = () => {
           <div className="prose max-w-none">
             <h2 className="text-2xl font-semibold mt-8 mb-4">Shipping Information</h2>
             <p className="text-gray-700 mb-6">
-              At FormulaX, we understand the importance of receiving your recovery performances in a timely manner and in optimal condition. We ship all products in temperature-controlled packaging to ensure their integrity during transit.
+              At Protidelab, we understand the importance of receiving your recovery performances in a timely manner and in optimal condition. We ship all products in temperature-controlled packaging to ensure their integrity during transit.
             </p>
             
             <PreferredDestinations />

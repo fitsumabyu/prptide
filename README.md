@@ -1,4 +1,4 @@
-# FormulaX - Ecommerce Payment System
+# Protidelab - Ecommerce Payment System
 
 ## Quick Start
 

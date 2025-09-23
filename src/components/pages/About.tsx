@@ -7,7 +7,7 @@ const About = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">Om FormulaX</h1>
+          <h1 className="text-3xl font-bold mb-6">Om Protidelab</h1>
           
           {/* Business Identity Section */}
           <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
@@ -21,9 +21,9 @@ const About = () => {
                 <p className="font-medium mb-4">H&amp;H WORLDWIDE GROUP</p>
                 
                 <p className="text-sm text-gray-500 mb-1">Varumärke</p>
-                <p className="font-medium mb-4">FormulaX</p>
+                <p className="font-medium mb-4">Protidelab</p>
                 
-                <p className="text-xs text-gray-500 mb-4">FormulaX är ett varumärke från H&amp;H WORLDWIDE GROUP.</p>
+                <p className="text-xs text-gray-500 mb-4">Protidelab är ett varumärke från H&amp;H WORLDWIDE GROUP.</p>
                 
                
               </div>
@@ -47,13 +47,13 @@ const About = () => {
           
           <div className="prose max-w-none">
             <p className="text-lg text-gray-700 mb-6">
-              FormulaX är en ledande leverantör av högkvalitativa återhämtningsprodukter designade för fysisk hälsa och välbefinnande. 
+              Protidelab är en ledande leverantör av högkvalitativa återhämtningsprodukter designade för fysisk hälsa och välbefinnande. 
               Vårt uppdrag är att stödja din återhämtning genom att erbjuda premium återhämtningsprodukter för din fysiska hälsa.
             </p>
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">Vårt Engagemang för Kvalitet</h2>
             <p className="text-gray-700 mb-6">
-              På FormulaX är vi engagerade i att leverera de högsta kvalitetsåterhämtningsprodukterna som finns tillgängliga. Vår rigorösa kvalitetskontrollprocess säkerställer att varje återhämtningsprodukt uppfyller strikta säkerhetsstandarder innan den når dig.
+              På Protidelab är vi engagerade i att leverera de högsta kvalitetsåterhämtningsprodukterna som finns tillgängliga. Vår rigorösa kvalitetskontrollprocess säkerställer att varje återhämtningsprodukt uppfyller strikta säkerhetsstandarder innan den når dig.
             </p>
             <p className="text-gray-700 mb-6">
               Varje produkt genomgår omfattande testning och följs av en detaljerad kvalitetscertifiering som verifierar dess säkerhet, renhet och sammansättning. Detta engagemang för kvalitet hjälper dig att uppnå pålitliga och effektiva resultat för din återhämtning.
@@ -74,7 +74,7 @@ const About = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">Våra Standarder</h2>
             <p className="text-gray-700 mb-6">
-              FormulaX följer följande standarder:
+              Protidelab följer följande standarder:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-6">
               <li>Högsta säkerhetsstandarder för alla återhämtningsprodukter</li>
