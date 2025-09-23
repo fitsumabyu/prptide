@@ -117,7 +117,7 @@ const ShippingPolicy = () => {
               <span className="text-xs text-gray-500">FormulaX is a brand of H&amp;H WORLDWIDE GROUP.</span>
             </p>
             <p className="text-gray-700 mb-6">
-              Email: support@formulax.dev<br />
+              Email: support@protidelab.com<br />
               Hours: Monday-Friday, 9am-5pm EST
             </p>
             

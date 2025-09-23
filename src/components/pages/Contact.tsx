@@ -60,7 +60,7 @@ const Contact = () => {
                 className="text-peptide-purple hover:underline flex items-center"
               >
                 <Mail className="h-4 w-4 mr-2" />
-                support@formulax.dev
+                support@protidelab.com
               </a>
             </div>
           </div>
@@ -98,15 +98,15 @@ const Contact = () => {
                     <h2 className="text-lg font-semibold mb-2">Kundservice</h2>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Allmänna Förfrågningar:</span>
-                      <a href="mailto:support@formulax.dev" className="hover:underline">support@formulax.dev</a>
+                      <a href="mailto:support@protidelab.com" className="hover:underline">support@protidelab.com</a>
                     </p>
                     <p className="text-gray-700 mb-3">
                       <span className="font-medium block">Försäljningsavdelning:</span>
-                      <a href="mailto:sales@formulax.dev" className="hover:underline">sales@formulax.dev</a>
+                      <a href="mailto:sales@protidelab.com" className="hover:underline">sales@protidelab.com</a>
                     </p>
                     <p className="text-gray-700">
                       <span className="font-medium block">Teknisk Support:</span>
-                      <a href="mailto:support@formulax.dev" className="hover:underline">support@formulax.dev</a>
+                      <a href="mailto:support@protidelab.com" className="hover:underline">support@protidelab.com</a>
                     </p>
                   </div>
                 </div>

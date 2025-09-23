@@ -3,7 +3,7 @@ import '../src/index.css';
 import '../src/styles/product-carousel.css';
 
 export const metadata = {
-  title: 'FormulaX - Leading Recovery Research',
+  title: 'PTL - Leading Peptide Recovery Research',
   description: 'Premium recovery products for physical health and well-being',
 }
 

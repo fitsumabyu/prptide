@@ -105,7 +105,7 @@ const Shipping = () => {
               If you have any questions about our shipping and return policies, please contact our customer service team:
             </p>
             <p className="text-gray-700 mb-6">
-                Email: support@formulax.dev<br />
+                Email: support@protidelab.com<br />
               Hours: Monday-Friday, 9 AM - 5 PM EST
             </p>
           </div>
