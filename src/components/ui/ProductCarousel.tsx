@@ -184,7 +184,7 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
           <h2 className="text-xl md:text-2xl font-bold text-peptide-purple">{title}</h2>
           <div className="ml-2 inline-flex items-center bg-red-100 px-2 py-1 rounded-full text-xs text-red-600 font-medium">
             <Info className="h-3 w-3 mr-1" />
-            Research Use Only
+            återhämtning
           </div>
         </div>
         <div className="flex gap-1 md:gap-2">

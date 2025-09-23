@@ -46,9 +46,7 @@ const OrderSummary: React.FC<Props> = ({ totalItems, totalPrice }) => {
           IMPORTANT DISCLAIMER
         </p>
         <p className="text-xs text-red-600">
-          These products are intended for laboratory research use only. Not for
-          diagnostic, therapeutic, or human use. These statements have not been
-          evaluated by the Food and Drug Administration. These products are not
+          These products are not
           intended to diagnose, treat, cure, or prevent any disease.
         </p>
       </div>
