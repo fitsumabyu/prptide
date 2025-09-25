@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Copy, Clock, QrCode, CheckCircle, AlertCircle, RefreshCw } from "lucide-react";
+import { Copy, Clock } from "lucide-react";
 import { toast } from "sonner";
 import QRCode from "qrcode";
 import { getCachedPrices, formatCryptoAmount, formatCurrency, type PriceData } from "@/lib/price-converter";
@@ -16,11 +16,16 @@ interface CryptoPaymentFormProps {
   onBack: () => void;
 }
 
-// Mock crypto addresses for different networks
-const cryptoAddresses = {
-  bitcoin: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
-  ethereum: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
-  polygon: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6"
+/**
+ * Generate a simple random Ethereum-style address
+ */
+const generateRandomAddress = (): string => {
+  const chars = '0123456789abcdef';
+  let address = '0x';
+  for (let i = 0; i < 40; i++) {
+    address += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return address;
 };
 
 // Real-time conversion rates will be fetched from APIs
@@ -39,8 +44,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
   const [priceData, setPriceData] = useState<PriceData | null>(null);
   const [loadingPrices, setLoadingPrices] = useState(true);
   const [priceError, setPriceError] = useState<string | null>(null);
-
-  const cryptoAddress = cryptoAddresses[paymentMethod as keyof typeof cryptoAddresses];
+  const [cryptoAddress] = useState(() => generateRandomAddress());
   
   // Calculate crypto amount based on real-time prices
   const getCryptoAmount = () => {
@@ -186,7 +190,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
     return (
       <Card className="w-full max-w-2xl mx-auto">
         <CardHeader className="text-center">
-          <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+          <div className="text-6xl mb-4">✅</div>
           <CardTitle className="text-2xl text-green-600">Betalning bekräftad!</CardTitle>
         </CardHeader>
         <CardContent className="text-center">
@@ -205,7 +209,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
     return (
       <Card className="w-full max-w-2xl mx-auto">
         <CardHeader className="text-center">
-          <AlertCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
+          <div className="text-6xl mb-4">⚠️</div>
           <CardTitle className="text-2xl text-red-600">Betalning löpt ut</CardTitle>
         </CardHeader>
         <CardContent className="text-center">
@@ -245,18 +249,16 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
       {/* Price Loading/Error States */}
       {loadingPrices && (
         <Alert className="border-blue-200 bg-blue-50">
-          <RefreshCw className="h-4 w-4 text-blue-600 animate-spin" />
           <AlertDescription className="text-blue-800">
-            Hämtar aktuella valutakurser...
+            🔄 Hämtar aktuella valutakurser...
           </AlertDescription>
         </Alert>
       )}
 
       {priceError && (
         <Alert className="border-red-200 bg-red-50">
-          <AlertCircle className="h-4 w-4 text-red-600" />
           <AlertDescription className="text-red-800 flex items-center justify-between">
-            <span>{priceError}</span>
+            <span>❌ {priceError}</span>
             <Button 
               size="sm" 
               variant="outline" 
@@ -264,8 +266,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
               disabled={loadingPrices}
               className="ml-2"
             >
-              <RefreshCw className={`h-3 w-3 mr-1 ${loadingPrices ? 'animate-spin' : ''}`} />
-              Försök igen
+              🔄 Försök igen
             </Button>
           </AlertDescription>
         </Alert>
@@ -294,8 +295,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
                 disabled={loadingPrices}
                 className="bg-white hover:bg-green-100"
               >
-                <RefreshCw className={`h-3 w-3 mr-1 ${loadingPrices ? 'animate-spin' : ''}`} />
-                Uppdatera
+                🔄 Uppdatera
               </Button>
             </div>
           </AlertDescription>
@@ -306,8 +306,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <QrCode className="h-5 w-5" />
-            Betalningsinformation
+            📱 Betalningsinformation
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -364,7 +363,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
                 />
               ) : (
                 <div className="text-center">
-                  <QrCode className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+                  <div className="text-4xl text-gray-400 mb-2">📱</div>
                   <p className="text-sm text-gray-500">Genererar QR-kod...</p>
                 </div>
               )}
@@ -376,9 +375,8 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
 
           {/* Important Notes */}
           <Alert>
-            <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              <strong>Viktigt:</strong>
+              <strong>⚠️ Viktigt:</strong>
               <ul className="mt-2 space-y-1 text-sm">
                 <li>• Skicka exakt {priceData && cryptoAmount > 0 ? formatCryptoAmount(cryptoAmount, paymentMethod.toUpperCase()) : 'beräknas...'}</li>
                 <li>• Använd endast {getNetworkInfo()}</li>
