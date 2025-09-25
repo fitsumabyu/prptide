@@ -9,11 +9,10 @@ interface CheckoutStepsProps {
 }
 
 const steps: { key: CheckoutStep; label: string }[] = [
-  { key: "details", label: "Customer Details" },
-  { key: "shipping", label: "Shipping" },
-  { key: "payment", label: "Payment" },
-  { key: "crypto-payment", label: "Crypto Payment" },
-  { key: "review", label: "Review" },
+  { key: "details", label: "Kunddetaljer" },
+  { key: "shipping", label: "Leverans" },
+  { key: "crypto-payment", label: "Betalning" },
+  { key: "review", label: "Granska" },
 ];
 
 export default function CheckoutSteps({ currentStep }: CheckoutStepsProps) {
@@ -21,9 +20,9 @@ export default function CheckoutSteps({ currentStep }: CheckoutStepsProps) {
   const getVisibleSteps = () => {
     if (currentStep === "crypto-payment") {
       return [
-        { key: "details", label: "Customer Details" },
-        { key: "crypto-payment", label: "Crypto Payment" },
-        { key: "review", label: "Review" },
+        { key: "details", label: "Kunddetaljer" },
+        { key: "crypto-payment", label: "Betalning" },
+        { key: "review", label: "Granska" },
       ];
     }
     return steps;

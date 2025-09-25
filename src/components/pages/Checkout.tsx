@@ -55,7 +55,7 @@ const initialShipping: ShippingInfo = {
   city: "",
   state: "",
   zip: "",
-  country: "United Kingdom",
+  country: "Sverige",
 };
 const initialPayment: PaymentInfo = {
   cardName: "",
@@ -103,11 +103,11 @@ const Checkout = () => {
   };
   const validateShipping = () => {
     const errs: { [k: string]: string } = {};
-    if (!shipping.address.trim()) errs.address = "Street address is required.";
-    if (!shipping.city.trim()) errs.city = "City is required.";
-    if (!shipping.state.trim()) errs.state = "State is required.";
-    if (!shipping.zip.trim()) errs.zip = "ZIP/Postal code is required.";
-    if (!shipping.country.trim()) errs.country = "Country is required.";
+    if (!shipping.address.trim()) errs.address = "Gatuadress krävs.";
+    if (!shipping.city.trim()) errs.city = "Stad krävs.";
+    if (!shipping.state.trim()) errs.state = "Stat/Provins krävs.";
+    if (!shipping.zip.trim()) errs.zip = "Postnummer krävs.";
+    if (!shipping.country.trim()) errs.country = "Land krävs.";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -163,9 +163,9 @@ const Checkout = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
               <div className="flex justify-between mb-6">
-                <h2 className="text-xl font-bold">Checkout Process</h2>
+                <h2 className="text-xl font-bold">Beställningsprocess</h2>
                 <div className="text-sm text-gray-500">
-                  Step{" "}
+                  Steg{" "}
                   {currentStep === "details"
                     ? "1"
                     : currentStep === "shipping"
@@ -175,7 +175,7 @@ const Checkout = () => {
                     : currentStep === "crypto-payment"
                     ? "3"
                     : "4"}{" "}
-                  of 4
+                  av 4
                 </div>
               </div>
               <CheckoutSteps currentStep={currentStep} setCurrentStep={setCurrentStep} />
@@ -187,12 +187,8 @@ const Checkout = () => {
                   onContinue={() => {
                     if (validateDetails()) {
                       setErrors({});
-                      // Route to crypto payment if crypto method selected, otherwise to shipping
-                      if (['bitcoin', 'ethereum', 'polygon'].includes(customer.paymentMethod)) {
-                        setCurrentStep("crypto-payment");
-                      } else {
-                        setCurrentStep("shipping");
-                      }
+                      // Always go to shipping step first to collect address
+                      setCurrentStep("shipping");
                     } else {
                       toast.error("Vänligen fyll i all nödvändig kundinformation.");
                     }
@@ -211,9 +207,14 @@ const Checkout = () => {
                   onContinue={() => {
                     if (validateShipping()) {
                       setErrors({});
-                      setCurrentStep("payment");
+                      // Route to crypto payment if crypto method selected, otherwise to regular payment
+                      if (['bitcoin', 'ethereum', 'polygon'].includes(customer.paymentMethod)) {
+                        setCurrentStep("crypto-payment");
+                      } else {
+                        setCurrentStep("payment");
+                      }
                     } else {
-                      toast.error("Please fill out all required shipping information.");
+                      toast.error("Vänligen fyll i all nödvändig leveransinformation.");
                     }
                   }}
                 />
@@ -247,7 +248,7 @@ const Checkout = () => {
                     router.push("/");
                   }}
                   onBack={() => {
-                    setCurrentStep("details");
+                    setCurrentStep("shipping");
                   }}
                 />
               )}

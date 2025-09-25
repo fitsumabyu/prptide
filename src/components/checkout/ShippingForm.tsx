@@ -4,63 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { InfoIcon } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { preferredStates } from "@/components/shipping/PreferredDestinations";
 
-// US states for dropdown
-const usStates = [
-  { value: "AL", label: "Alabama" },
-  { value: "AK", label: "Alaska" },
-  { value: "AZ", label: "Arizona" },
-  { value: "AR", label: "Arkansas" },
-  { value: "CA", label: "California" },
-  { value: "CO", label: "Colorado" },
-  { value: "CT", label: "Connecticut" },
-  { value: "DE", label: "Delaware" },
-  { value: "FL", label: "Florida" },
-  { value: "GA", label: "Georgia" },
-  { value: "HI", label: "Hawaii" },
-  { value: "ID", label: "Idaho" },
-  { value: "IL", label: "Illinois" },
-  { value: "IN", label: "Indiana" },
-  { value: "IA", label: "Iowa" },
-  { value: "KS", label: "Kansas" },
-  { value: "KY", label: "Kentucky" },
-  { value: "LA", label: "Louisiana" },
-  { value: "ME", label: "Maine" },
-  { value: "MD", label: "Maryland" },
-  { value: "MA", label: "Massachusetts" },
-  { value: "MI", label: "Michigan" },
-  { value: "MN", label: "Minnesota" },
-  { value: "MS", label: "Mississippi" },
-  { value: "MO", label: "Missouri" },
-  { value: "MT", label: "Montana" },
-  { value: "NE", label: "Nebraska" },
-  { value: "NV", label: "Nevada" },
-  { value: "NH", label: "New Hampshire" },
-  { value: "NJ", label: "New Jersey" },
-  { value: "NM", label: "New Mexico" },
-  { value: "NY", label: "New York" },
-  { value: "NC", label: "North Carolina" },
-  { value: "ND", label: "North Dakota" },
-  { value: "OH", label: "Ohio" },
-  { value: "OK", label: "Oklahoma" },
-  { value: "OR", label: "Oregon" },
-  { value: "PA", label: "Pennsylvania" },
-  { value: "RI", label: "Rhode Island" },
-  { value: "SC", label: "South Carolina" },
-  { value: "SD", label: "South Dakota" },
-  { value: "TN", label: "Tennessee" },
-  { value: "TX", label: "Texas" },
-  { value: "UT", label: "Utah" },
-  { value: "VT", label: "Vermont" },
-  { value: "VA", label: "Virginia" },
-  { value: "WA", label: "Washington" },
-  { value: "WV", label: "West Virginia" },
-  { value: "WI", label: "Wisconsin" },
-  { value: "WY", label: "Wyoming" },
-  { value: "DC", label: "District of Columbia" }
-];
 
 type ShippingInfo = {
   address: string;
@@ -87,105 +31,87 @@ const ShippingForm: React.FC<Props> = ({
   onContinue,
 }) => (
   <div className="space-y-4">
-    <h3 className="font-medium text-lg mb-2">Shipping Information</h3>
+    <h3 className="font-medium text-lg mb-2">Leveransinformation</h3>
     
     <div className="bg-blue-50 p-3 rounded-md flex items-start mb-4">
       <InfoIcon className="h-5 w-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
       <div className="text-sm text-blue-700">
-        <p>Orders are typically processed within 1-2 business days. Standard shipping takes 3-5 business days.</p>
+        <p>Beställningar behandlas vanligtvis inom 1-2 arbetsdagar. Standardfrakt tar 3-5 arbetsdagar.</p>
         <p className="mt-1">
-          View our <Link href="/shipping-policy" target="_blank" className="text-peptide-purple hover:underline font-medium">Shipping & Delivery Policy</Link> for more details on shipping methods, costs, and restrictions.
+          Se vår <Link href="/shipping-policy" target="_blank" className="text-peptide-purple hover:underline font-medium">Frakt- och leveranspolicy</Link> för mer information om fraktmetoder, kostnader och begränsningar.
         </p>
       </div>
     </div>
 
     <div className="space-y-2">
-      <Label htmlFor="address">Street Address</Label>
+      <Label htmlFor="address">Gatuadress</Label>
       <Input
         id="address"
-        placeholder="Enter your street address"
+        placeholder="Ange din gatuadress"
         value={shipping.address}
         onChange={e => setShipping(s => ({ ...s, address: e.target.value }))}
       />
       {errors.address && <p className="text-sm text-red-500">{errors.address}</p>}
     </div>
     <div className="space-y-2">
-      <Label htmlFor="address2">Apartment, suite, etc. (optional)</Label>
+      <Label htmlFor="address2">Lägenhet, svit, etc. (valfritt)</Label>
       <Input
         id="address2"
-        placeholder="Apartment, suite, unit, etc."
+        placeholder="Lägenhet, svit, enhet, etc."
         value={shipping.address2}
         onChange={e => setShipping(s => ({ ...s, address2: e.target.value }))}
       />
     </div>
     <div className="grid grid-cols-2 gap-4">
       <div className="space-y-2">
-        <Label htmlFor="city">City</Label>
+        <Label htmlFor="city">Stad</Label>
         <Input
           id="city"
-          placeholder="City"
+          placeholder="Stad"
           value={shipping.city}
           onChange={e => setShipping(s => ({ ...s, city: e.target.value }))}
         />
         {errors.city && <p className="text-sm text-red-500">{errors.city}</p>}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="state">State</Label>
-        <Select 
-          value={shipping.state} 
-          onValueChange={(value) => setShipping(s => ({ ...s, state: value }))}
-        >
-          <SelectTrigger id="state">
-            <SelectValue placeholder="Select state" />
-          </SelectTrigger>
-          <SelectContent>
-            {usStates.map((state) => (
-              <SelectItem key={state.value} value={state.value}>
-                {state.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <Label htmlFor="state">Stat/Provins</Label>
+        <Input
+          id="state"
+          placeholder="Ange stat/provins"
+          value={shipping.state}
+          onChange={e => setShipping(s => ({ ...s, state: e.target.value }))}
+        />
         {errors.state && <p className="text-sm text-red-500">{errors.state}</p>}
       </div>
     </div>
     <div className="grid grid-cols-2 gap-4">
       <div className="space-y-2">
-        <Label htmlFor="zip">ZIP Code</Label>
+        <Label htmlFor="zip">Postnummer</Label>
         <Input
           id="zip"
-          placeholder="ZIP code"
+          placeholder="Postnummer"
           value={shipping.zip}
           onChange={e => setShipping(s => ({ ...s, zip: e.target.value }))}
         />
         {errors.zip && <p className="text-sm text-red-500">{errors.zip}</p>}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="country">Country</Label>
-        <Select 
+        <Label htmlFor="country">Land</Label>
+        <Input
+          id="country"
+          placeholder="Ange land"
           value={shipping.country}
-          onValueChange={(value) => setShipping(s => ({ ...s, country: value }))}
-          disabled
-        >
-          <SelectTrigger id="country">
-            <SelectValue placeholder="United States" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="United States">United States</SelectItem>
-          </SelectContent>
-        </Select>
+          onChange={e => setShipping(s => ({ ...s, country: e.target.value }))}
+        />
         {errors.country && <p className="text-sm text-red-500">{errors.country}</p>}
-        <p className="text-xs text-gray-500 mt-1">
-          We currently only ship to addresses within the United States.
-        </p>
       </div>
     </div>
     <div className="pt-4 flex justify-between">
       <Button variant="outline" onClick={onBack}>
-        Back
+        Tillbaka
       </Button>
       <Button className="bg-peptide-purple hover:bg-peptide-dark-purple" onClick={onContinue}>
-        Continue to Payment
+        Fortsätt till betalning
       </Button>
     </div>
   </div>
