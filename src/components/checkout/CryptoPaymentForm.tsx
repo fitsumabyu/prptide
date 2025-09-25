@@ -4,9 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Copy, Clock, QrCode, CheckCircle, AlertCircle } from "lucide-react";
+import { Copy, Clock, QrCode, CheckCircle, AlertCircle, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import QRCode from "qrcode";
+import { getCachedPrices, formatCryptoAmount, formatCurrency, type PriceData } from "@/lib/price-converter";
 
 interface CryptoPaymentFormProps {
   paymentMethod: string;
@@ -22,12 +23,7 @@ const cryptoAddresses = {
   polygon: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6"
 };
 
-// Mock conversion rates (in reality, these would come from an API)
-const conversionRates = {
-  bitcoin: 0.000023, // BTC per SEK
-  ethereum: 0.00037, // ETH per SEK
-  polygon: 0.37 // MATIC per SEK
-};
+// Real-time conversion rates will be fetched from APIs
 
 const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
   paymentMethod,
@@ -40,9 +36,52 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [copiedAddress, setCopiedAddress] = useState(false);
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>("");
+  const [priceData, setPriceData] = useState<PriceData | null>(null);
+  const [loadingPrices, setLoadingPrices] = useState(true);
+  const [priceError, setPriceError] = useState<string | null>(null);
 
-  const cryptoAmount = totalAmount * conversionRates[paymentMethod as keyof typeof conversionRates];
   const cryptoAddress = cryptoAddresses[paymentMethod as keyof typeof cryptoAddresses];
+  
+  // Calculate crypto amount based on real-time prices
+  const getCryptoAmount = () => {
+    if (!priceData) return 0;
+    
+    const usdAmount = totalAmount * priceData.sekToUsd;
+    
+    switch (paymentMethod) {
+      case 'ethereum':
+        return usdAmount / priceData.ethUsd;
+      case 'polygon':
+        return usdAmount / priceData.maticUsd;
+      case 'bitcoin':
+        // For now, we'll use ETH price as placeholder since we don't have BTC in our API
+        return usdAmount / priceData.ethUsd;
+      default:
+        return 0;
+    }
+  };
+  
+  const cryptoAmount = getCryptoAmount();
+
+  // Fetch price data when component mounts
+  useEffect(() => {
+    const fetchPrices = async () => {
+      try {
+        setLoadingPrices(true);
+        setPriceError(null);
+        const prices = await getCachedPrices();
+        setPriceData(prices);
+      } catch (error) {
+        console.error('Failed to fetch crypto prices:', error);
+        setPriceError('Kunde inte hämta valutakurser. Försök igen senare.');
+        toast.error('Kunde inte hämta aktuella valutakurser');
+      } finally {
+        setLoadingPrices(false);
+      }
+    };
+
+    fetchPrices();
+  }, []);
 
   // Generate QR code when component mounts
   useEffect(() => {
@@ -70,8 +109,10 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
       }
     };
 
-    generateQRCode();
-  }, [cryptoAddress, cryptoAmount, paymentMethod]);
+    if (priceData && cryptoAmount > 0) {
+      generateQRCode();
+    }
+  }, [cryptoAddress, cryptoAmount, paymentMethod, priceData]);
 
   useEffect(() => {
     if (timeLeft > 0 && !paymentConfirmed) {
@@ -105,6 +146,22 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
     setTimeout(() => {
       onPaymentComplete();
     }, 2000);
+  };
+
+  const refreshPrices = async () => {
+    try {
+      setLoadingPrices(true);
+      setPriceError(null);
+      const prices = await getCachedPrices();
+      setPriceData(prices);
+      toast.success("Valutakurser uppdaterade!");
+    } catch (error) {
+      console.error('Failed to refresh prices:', error);
+      setPriceError('Kunde inte uppdatera valutakurser.');
+      toast.error('Kunde inte uppdatera valutakurser');
+    } finally {
+      setLoadingPrices(false);
+    }
   };
 
   const getCryptoName = () => {
@@ -185,6 +242,66 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
         </AlertDescription>
       </Alert>
 
+      {/* Price Loading/Error States */}
+      {loadingPrices && (
+        <Alert className="border-blue-200 bg-blue-50">
+          <RefreshCw className="h-4 w-4 text-blue-600 animate-spin" />
+          <AlertDescription className="text-blue-800">
+            Hämtar aktuella valutakurser...
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {priceError && (
+        <Alert className="border-red-200 bg-red-50">
+          <AlertCircle className="h-4 w-4 text-red-600" />
+          <AlertDescription className="text-red-800 flex items-center justify-between">
+            <span>{priceError}</span>
+            <Button 
+              size="sm" 
+              variant="outline" 
+              onClick={refreshPrices}
+              disabled={loadingPrices}
+              className="ml-2"
+            >
+              <RefreshCw className={`h-3 w-3 mr-1 ${loadingPrices ? 'animate-spin' : ''}`} />
+              Försök igen
+            </Button>
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {/* Exchange Rates Display */}
+      {priceData && !loadingPrices && (
+        <Alert className="border-green-200 bg-green-50">
+          <AlertDescription className="text-green-800">
+            <div className="flex items-center justify-between">
+              <div>
+                <strong>Aktuella valutakurser:</strong>
+                <div className="text-sm mt-1">
+                  1 SEK = {formatCurrency(priceData.sekToUsd, 'USD')} • 
+                  1 ETH = {formatCurrency(priceData.ethUsd, 'USD')} • 
+                  1 MATIC = {formatCurrency(priceData.maticUsd, 'USD')}
+                </div>
+                <div className="text-xs text-green-600 mt-1">
+                  Uppdaterad: {new Date(priceData.timestamp).toLocaleString('sv-SE')}
+                </div>
+              </div>
+              <Button 
+                size="sm" 
+                variant="outline" 
+                onClick={refreshPrices}
+                disabled={loadingPrices}
+                className="bg-white hover:bg-green-100"
+              >
+                <RefreshCw className={`h-3 w-3 mr-1 ${loadingPrices ? 'animate-spin' : ''}`} />
+                Uppdatera
+              </Button>
+            </div>
+          </AlertDescription>
+        </Alert>
+      )}
+
       {/* Payment Details */}
       <Card>
         <CardHeader>
@@ -198,11 +315,16 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
             <div>
               <Label className="text-sm font-medium text-gray-500">Belopp att betala</Label>
               <div className="text-2xl font-bold text-green-600">
-                {cryptoAmount.toFixed(8)} {paymentMethod.toUpperCase()}
+                {priceData && cryptoAmount > 0 ? formatCryptoAmount(cryptoAmount, paymentMethod.toUpperCase()) : 'Laddar...'}
               </div>
               <div className="text-sm text-gray-500">
-                ≈ {totalAmount.toFixed(2)} SEK
+                ≈ {formatCurrency(totalAmount, 'SEK')}
               </div>
+              {priceData && (
+                <div className="text-xs text-gray-400 mt-1">
+                  ≈ {formatCurrency(totalAmount * priceData.sekToUsd, 'USD')}
+                </div>
+              )}
             </div>
             <div>
               <Label className="text-sm font-medium text-gray-500">Nätverk</Label>
@@ -258,7 +380,7 @@ const CryptoPaymentForm: React.FC<CryptoPaymentFormProps> = ({
             <AlertDescription>
               <strong>Viktigt:</strong>
               <ul className="mt-2 space-y-1 text-sm">
-                <li>• Skicka exakt {cryptoAmount.toFixed(8)} {paymentMethod.toUpperCase()}</li>
+                <li>• Skicka exakt {priceData && cryptoAmount > 0 ? formatCryptoAmount(cryptoAmount, paymentMethod.toUpperCase()) : 'beräknas...'}</li>
                 <li>• Använd endast {getNetworkInfo()}</li>
                 <li>• Skicka inte från en börsplånbok</li>
                 <li>• Betalningen bekräftas automatiskt</li>
