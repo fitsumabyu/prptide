@@ -2,8 +2,10 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Link from "next/link";
 import { InfoIcon } from "lucide-react";
+import { countries, getCountriesByRegion } from "@/data/countries";
 
 
 type ShippingInfo = {
@@ -97,12 +99,33 @@ const ShippingForm: React.FC<Props> = ({
       </div>
       <div className="space-y-2">
         <Label htmlFor="country">Land</Label>
-        <Input
-          id="country"
-          placeholder="Ange land"
+        <Select 
           value={shipping.country}
-          onChange={e => setShipping(s => ({ ...s, country: e.target.value }))}
-        />
+          onValueChange={(value) => setShipping(s => ({ ...s, country: value }))}
+        >
+          <SelectTrigger id="country">
+            <SelectValue placeholder="Välj land" />
+          </SelectTrigger>
+          <SelectContent>
+            {Object.entries(getCountriesByRegion()).map(([region, regionCountries]) => (
+              <div key={region}>
+                <div className="px-2 py-1.5 text-sm font-semibold text-gray-500 bg-gray-50">
+                  {region}
+                </div>
+                {regionCountries.map((country) => (
+                  <SelectItem key={country.code} value={country.code}>
+                    <div className="flex justify-between items-center w-full">
+                      <span>{country.name}</span>
+                      <span className="text-xs text-gray-500 ml-2">
+                        Frakt: {country.shippingCost} SEK
+                      </span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </div>
+            ))}
+          </SelectContent>
+        </Select>
         {errors.country && <p className="text-sm text-red-500">{errors.country}</p>}
       </div>
     </div>

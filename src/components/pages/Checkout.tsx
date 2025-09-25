@@ -13,6 +13,7 @@ import PaymentForm from "@/components/checkout/PaymentForm";
 import CryptoPaymentForm from "@/components/checkout/CryptoPaymentForm";
 import OrderReview from "@/components/checkout/OrderReview";
 import OrderSummary from "@/components/checkout/OrderSummary";
+import { calculateTotalCost } from "@/data/countries";
 
 type CheckoutStep = "details" | "shipping" | "payment" | "crypto-payment" | "review";
 
@@ -55,7 +56,7 @@ const initialShipping: ShippingInfo = {
   city: "",
   state: "",
   zip: "",
-  country: "Sverige",
+  country: "SE", // Sweden country code
 };
 const initialPayment: PaymentInfo = {
   cardName: "",
@@ -69,16 +70,14 @@ const Checkout = () => {
   const [currentStep, setCurrentStep] = useState<CheckoutStep>("details");
   const router = useRouter();
 
-  // Calculate total with shipping and tax (same as OrderSummary)
-  const shippingCost = 9.99;
-  const taxRate = 0.07;
-  const taxAmount = totalPrice * taxRate;
-  const orderTotal = totalPrice + shippingCost + taxAmount;
-
   // Form data states
   const [customer, setCustomer] = useState<CustomerInfo>(initialCustomer);
   const [shipping, setShipping] = useState<ShippingInfo>(initialShipping);
   const [payment, setPayment] = useState<PaymentInfo>(initialPayment);
+
+  // Calculate total with country-specific shipping and tax
+  const costCalculation = calculateTotalCost(totalPrice, shipping.country);
+  const orderTotal = costCalculation.total;
 
   // Simple error state for showing missing info
   const [errors, setErrors] = useState<{ [k: string]: string }>({});
@@ -351,7 +350,7 @@ const Checkout = () => {
           </div>
           {/* Right: Order Summary */}
           <div className="lg:col-span-1">
-            <OrderSummary totalItems={totalItems} totalPrice={totalPrice} />
+            <OrderSummary totalItems={totalItems} totalPrice={totalPrice} countryCode={shipping.country} />
             
             {/* Additional Trust Elements */}
            
