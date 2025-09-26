@@ -31,6 +31,7 @@ interface Product {
 interface ProductCarouselProps {
   products: Product[];
   title: string;
+  subtitle?: string;
   isLoading?: boolean;
   maxDisplayCount?: number; // Add optional prop to limit display count
 }
@@ -52,7 +53,7 @@ const ProductSkeleton = () => {
   );
 };
 
-const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }: ProductCarouselProps) => {
+const ProductCarousel = ({ products, title, subtitle, isLoading = false, maxDisplayCount }: ProductCarouselProps) => {
   const router = useRouter();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -181,7 +182,12 @@ const ProductCarousel = ({ products, title, isLoading = false, maxDisplayCount }
     <div className="product-carousel relative bg-gradient-to-b from-purple-50/50 to-white py-6 rounded-2xl mx-auto max-w-7xl">
       <div className="flex justify-between items-center mb-4 md:mb-6 px-6">
         <div className="flex items-center">
-          <h2 className="text-xl md:text-2xl font-bold text-peptide-purple">{title}</h2>
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold text-peptide-purple">{title}</h2>
+            {subtitle && (
+              <p className="text-sm text-gray-600 italic">{subtitle}</p>
+            )}
+          </div>
           <div className="ml-2 inline-flex items-center bg-red-100 px-2 py-1 rounded-full text-xs text-red-600 font-medium">
             <Info className="h-3 w-3 mr-1" />
             återhämtning

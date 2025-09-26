@@ -6,6 +6,7 @@ import ResearchSection from "@/components/sections/ResearchSection";
 import ProductCarousel from "@/components/ui/ProductCarousel";
 import Disclaimer from "@/components/ui/Disclaimer";
 import { useProducts } from "@/hooks/useProducts";
+import BilingualText from "@/components/ui/BilingualText";
 
 const Index = () => {
   const { products, loading, error } = useProducts();
@@ -21,7 +22,9 @@ const Index = () => {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Laddar produkter...</p>
+            <p className="text-gray-600">
+              <BilingualText english="Loading products..." swedish="Laddar produkter..." showBoth={false} inline={true} />
+            </p>
           </div>
         </div>
       </Layout>
@@ -33,12 +36,19 @@ const Index = () => {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <p className="text-red-600 mb-4">Fel vid laddning av produkter: {error}</p>
+            <p className="text-red-600 mb-4">
+              <BilingualText 
+                english={`Error loading products: ${error}`}
+                swedish={`Fel vid laddning av produkter: ${error}`}
+                showBoth={false}
+                inline={true}
+              />
+            </p>
             <button 
               onClick={() => window.location.reload()} 
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
-              Försök igen
+              <BilingualText english="Try Again" swedish="Försök igen" showBoth={false} />
             </button>
           </div>
         </div>
@@ -54,28 +64,43 @@ const Index = () => {
       
       <div className="py-20 container mx-auto px-4 bg-gradient-to-b from-white to-gray-50 -mt-[1px]">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Premium Återhämtningsprodukter</h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-2xl">
-            Utforska vårt urval av högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande.
-          </p>
+          <BilingualText 
+            english="Premium Recovery Products"
+            swedish="Premium Återhämtningsprodukter"
+            className="text-3xl font-bold text-gray-900 mb-4"
+          />
+          <BilingualText 
+            english="Explore our selection of high-quality recovery products for physical health and well-being."
+            swedish="Utforska vårt urval av högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande."
+            className="text-lg text-gray-700 mb-8 max-w-2xl"
+          />
           <div className="inline-block bg-green-50 p-2 rounded-md border border-green-100">
-            <p className="text-sm text-green-600 font-medium">Säkra produkter för din återhämtning</p>
+            <BilingualText 
+              english="Safe products for your recovery"
+              swedish="Säkra produkter för din återhämtning"
+              className="text-sm text-green-600 font-medium"
+            />
           </div>
         </div>
         
         <div className="mb-8 max-w-4xl mx-auto bg-blue-50 p-4 border border-blue-200 rounded-md">
-          <h3 className="text-lg font-semibold text-blue-800 mb-2">Produktinformation</h3>
-          <p className="text-sm text-blue-700">
-            Alla produkter är korrekt listade med sina fullständiga namn, tydliga beskrivningar och aktuella priser i SEK.
-            Varje produktsida innehåller detaljerade specifikationer och användningsanvisningar.
-            För komplett produktinformation, besök enskilda produktsidor.
-          </p>
+          <BilingualText 
+            english="Product Information"
+            swedish="Produktinformation"
+            className="text-lg font-semibold text-blue-800 mb-2"
+          />
+          <BilingualText 
+            english="All products are correctly listed with their complete names, clear descriptions, and current prices in SEK and USD. Each product page contains detailed specifications and usage instructions. For complete product information, visit individual product pages."
+            swedish="Alla produkter är korrekt listade med sina fullständiga namn, tydliga beskrivningar och aktuella priser i SEK. Varje produktsida innehåller detaljerade specifikationer och användningsanvisningar. För komplett produktinformation, besök enskilda produktsidor."
+            className="text-sm text-blue-700"
+          />
         </div>
         
         <ClientOnly fallback={<div className="h-64 bg-gray-50 rounded-lg animate-pulse"></div>}>
           <ProductCarousel
             products={recommendedProducts} 
-            title="Rekommenderade Återhämtningsprodukter" 
+            title="Rekommenderade Återhämtningsprodukter"
+            subtitle="Recommended Recovery Products"
           />
         </ClientOnly>
       </div>

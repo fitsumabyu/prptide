@@ -7,6 +7,7 @@ import { useShippingCountry } from "@/context/ShippingCountryContext";
 import { toast } from "@/components/ui/use-toast";
 import { useCountry } from "@/components/shipping/CountrySelector";
 import { allCountries } from "@/components/shipping/CountrySelector";
+import BilingualText from "@/components/ui/BilingualText";
 
 // List of US states we ship to
 const allowedStates = [
@@ -210,21 +211,37 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
         <div className="container mx-auto px-4 relative h-full flex items-center justify-center">
           <div className="max-w-3xl text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-2 sm:mb-4 [text-shadow:_0_1px_10px_rgba(0,0,0,0.9)]">
-              Premium Återhämtningsprodukter för Fysisk Hälsa
+              <BilingualText 
+                english="Premium Recovery Products for Physical Health"
+                swedish="Premium Återhämtningsprodukter för Fysisk Hälsa"
+              />
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-4 sm:mb-6 [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
-              Högkvalitativa återhämtningsprodukter för att stödja din fysiska hälsa och välbefinnande. 
-              <span className="font-semibold text-green-400"> Säkra och naturliga produkter för din återhämtning.</span>
+              <BilingualText 
+                english="High-quality recovery products to support your physical health and well-being."
+                swedish="Högkvalitativa återhämtningsprodukter för att stödja din fysiska hälsa och välbefinnande."
+                inline={true}
+              />
+              <span className="font-semibold text-green-400">
+                {' '}
+                <BilingualText 
+                  english="Safe and natural products for your recovery."
+                  swedish="Säkra och naturliga produkter för din återhämtning."
+                  inline={true}
+                />
+              </span>
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
               <Button asChild size="lg" className="bg-peptide-purple hover:bg-peptide-dark-purple text-sm sm:text-base">
                 <Link href="/products" className="flex items-center">
                   <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  Utforska Produkter
+                  <BilingualText english="Explore Products" swedish="Utforska Produkter" showBoth={false} />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white hover:bg-white/20 text-sm sm:text-base">
-                <Link href="/about">Läs Mer</Link>
+                <Link href="/about">
+                  <BilingualText english="Learn More" swedish="Läs Mer" showBoth={false} />
+                </Link>
               </Button>
               <Button 
                 variant="outline" 
@@ -234,7 +251,11 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
                 disabled={locationLoading}
               >
                 <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                {locationLoading ? "Upptäcker..." : "Kontrollera Leverans"}
+                <BilingualText 
+                  english={locationLoading ? "Detecting..." : "Check Shipping"}
+                  swedish={locationLoading ? "Upptäcker..." : "Kontrollera Leverans"}
+                  showBoth={false}
+                />
               </Button>
             </div>
           </div>

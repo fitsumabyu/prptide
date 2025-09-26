@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, ImageIcon, MapPin } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
+import PriceDisplay from "@/components/ui/PriceDisplay";
+import BilingualText from "@/components/ui/BilingualText";
 
 interface ProductCardProps {
   id: string;
@@ -119,7 +121,11 @@ const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCar
             </span>
             <div className="flex items-center space-x-2">
             <h2 className="font-semibold text-base text-neutral-900 dark:text-white line-clamp-1">
-              {swedishname || name}
+              <BilingualText 
+                english={name} 
+                swedish={swedishname || name}
+                showBoth={true}
+              />
             </h2>
             </div>
           </div>
@@ -127,12 +133,21 @@ const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCar
           <div className="w-14 border-b border-neutral-100 dark:border-neutral-800"></div>
           
           <div className="flex justify-between items-center">
-            <span className="text-base font-semibold text-peptide-purple">
-              {price}
-              <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal ml-1">
-                + tax & shipping
+            <div className="flex-1">
+              <PriceDisplay 
+                sekPrice={price} 
+                size="sm"
+                className="space-y-1"
+              />
+              <span className="text-xs text-neutral-500 dark:text-neutral-400 font-normal">
+                <BilingualText 
+                  english="+ tax & shipping" 
+                  swedish="+ moms & frakt"
+                  showBoth={true}
+                  inline={true}
+                />
               </span>
-            </span>
+            </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-2 mt-2 justify-between">
@@ -142,7 +157,13 @@ const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCar
               size="sm"
               className="border-peptide-purple text-peptide-purple hover:bg-peptide-purple/10 transition text-xs sm:text-sm py-1"
             >
-              <Link href={`/products/${id}`}>View Details</Link>
+              <Link href={`/products/${id}`}>
+                <BilingualText 
+                  english="View Details" 
+                  swedish="Visa Detaljer"
+                  showBoth={false}
+                />
+              </Link>
             </Button>
             <Button
               size="sm"
@@ -151,7 +172,11 @@ const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCar
               disabled={adding}
             >
               <ShoppingCart className="h-3 w-3 mr-1" />
-              {adding ? "Added!" : "Add to Cart"}
+              <BilingualText 
+                english={adding ? "Added!" : "Add to Cart"}
+                swedish={adding ? "Tillagd!" : "Lägg i Kundvagn"}
+                showBoth={false}
+              />
             </Button>
           </div>
         </CardContent>

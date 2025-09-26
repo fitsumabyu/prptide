@@ -12,6 +12,9 @@ import {
 import CountrySelector from "@/components/shipping/CountrySelector";
 import { cn } from "@/lib/utils";
 import { useShippingCountry } from "@/context/ShippingCountryContext";
+import ExchangeRateDisplay from "@/components/ui/ExchangeRateDisplay";
+import { LanguageToggle } from "@/components/ui/BilingualText";
+import BilingualText from "@/components/ui/BilingualText";
 
 interface NavbarProps {
   transparent?: boolean;
@@ -29,13 +32,24 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
   }, [pathname]);
 
   return (
-    <header className={cn(
-      "w-full border-b sticky top-0 z-50", 
-      transparent 
-        ? "bg-transparent border-transparent" 
-        : "bg-white border-gray-200"
-    )}>
-      <div className="container mx-auto px-4 py-2 flex items-center justify-between min-h-[60px]">
+    <>
+      {/* Exchange Rate Banner */}
+      {!transparent && (
+        <div className="bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-200">
+          <div className="container mx-auto px-4 py-2 flex items-center justify-between">
+            <ExchangeRateDisplay className="flex-1" />
+            <LanguageToggle className="ml-4" />
+          </div>
+        </div>
+      )}
+      
+      <header className={cn(
+        "w-full border-b sticky top-0 z-50", 
+        transparent 
+          ? "bg-transparent border-transparent" 
+          : "bg-white border-gray-200"
+      )}>
+        <div className="container mx-auto px-4 py-2 flex items-center justify-between min-h-[60px]">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className={cn(
@@ -53,19 +67,19 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
-              Produkter
+              <BilingualText english="Products" swedish="Produkter" showBoth={false} />
             </Link>
             <Link href="/about" className={cn(
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
-              Om Oss
+              <BilingualText english="About Us" swedish="Om Oss" showBoth={false} />
             </Link>
             <Link href="/contact" className={cn(
               "hover:text-peptide-purple transition-colors",
               transparent ? "text-gray-100" : "text-gray-700"
             )}>
-              Kontakt
+              <BilingualText english="Contact" swedish="Kontakt" showBoth={false} />
             </Link>
           </nav>
         </div>
@@ -137,26 +151,26 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <ShoppingCart size={20} />
-                    <span>Kundvagn{totalItems > 0 ? ` (${totalItems})` : ''}</span>
+                    <span><BilingualText english={`Cart${totalItems > 0 ? ` (${totalItems})` : ''}`} swedish={`Kundvagn${totalItems > 0 ? ` (${totalItems})` : ''}`} showBoth={false} /></span>
                   </Link>
                   
                   <Link
                     href="/products"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
-                    Produkter
+                    <BilingualText english="Products" swedish="Produkter" showBoth={false} />
                   </Link>
                   <Link
                     href="/about"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
-                    Om Oss
+                    <BilingualText english="About Us" swedish="Om Oss" showBoth={false} />
                   </Link>
                   <Link
                     href="/contact"
                     className="text-lg text-gray-700 hover:text-peptide-purple transition-colors"
                   >
-                    Kontakt
+                    <BilingualText english="Contact" swedish="Kontakt" showBoth={false} />
                   </Link>
                 </nav>
               </SheetContent>
@@ -165,6 +179,7 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
         </div>
       </div>
     </header>
+    </>
   );
 };
 

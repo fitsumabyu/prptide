@@ -10,6 +10,7 @@ import AgeVerification from "@/components/AgeVerification";
 import { CountryProvider } from "@/components/shipping/CountrySelector";
 import ShippingWarningBanner from "@/components/shipping/ShippingWarningBanner";
 import { ShippingCountryProvider } from "@/context/ShippingCountryContext";
+import { LanguageProvider } from "@/components/ui/BilingualText";
 
 const queryClient = new QueryClient();
 
@@ -31,10 +32,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CartProvider>
-        <ShippingCountryProvider>
-          <CountryProvider>
-            <TooltipProvider>
+      <LanguageProvider>
+        <CartProvider>
+          <ShippingCountryProvider>
+            <CountryProvider>
+              <TooltipProvider>
               <Toaster />
               <Sonner />
               {isClient && !ageVerified && <AgeVerification onVerify={handleAgeVerification} />}
@@ -42,10 +44,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                 <ShippingWarningBanner />
                 {children}
               </div>
-            </TooltipProvider>
-          </CountryProvider>
-        </ShippingCountryProvider>
-      </CartProvider>
+              </TooltipProvider>
+            </CountryProvider>
+          </ShippingCountryProvider>
+        </CartProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
