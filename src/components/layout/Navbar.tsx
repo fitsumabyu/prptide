@@ -13,7 +13,6 @@ import CountrySelector from "@/components/shipping/CountrySelector";
 import { cn } from "@/lib/utils";
 import { useShippingCountry } from "@/context/ShippingCountryContext";
 import ExchangeRateDisplay from "@/components/ui/ExchangeRateDisplay";
-import { LanguageToggle } from "@/components/ui/BilingualText";
 import BilingualText from "@/components/ui/BilingualText";
 
 interface NavbarProps {
@@ -36,9 +35,8 @@ const Navbar = ({ transparent = false }: NavbarProps) => {
       {/* Exchange Rate Banner */}
       {!transparent && (
         <div className="bg-gradient-to-r from-blue-50 to-green-50 border-b border-blue-200">
-          <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-            <ExchangeRateDisplay className="flex-1" />
-            <LanguageToggle className="ml-4" />
+          <div className="container mx-auto px-4 py-2">
+            <ExchangeRateDisplay />
           </div>
         </div>
       )}

@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading... | Laddar...</div>}>
       <Index />
     </Suspense>
   );

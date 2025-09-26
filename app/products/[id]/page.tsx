@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export default function ProductDetailPage() {
   return (
-    <Suspense fallback={<div>Loading product...</div>}>
+    <Suspense fallback={<div>Loading product... | Laddar produkt...</div>}>
       <ProductDetail />
     </Suspense>
   );

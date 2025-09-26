@@ -22,9 +22,7 @@ const Index = () => {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">
-              <BilingualText english="Loading products..." swedish="Laddar produkter..." showBoth={false} inline={true} />
-            </p>
+            <BilingualText english="Loading products..." swedish="Laddar produkter..." className="text-gray-600" />
           </div>
         </div>
       </Layout>
@@ -36,19 +34,16 @@ const Index = () => {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <p className="text-red-600 mb-4">
-              <BilingualText 
-                english={`Error loading products: ${error}`}
-                swedish={`Fel vid laddning av produkter: ${error}`}
-                showBoth={false}
-                inline={true}
-              />
-            </p>
+            <BilingualText 
+              english={`Error loading products: ${error}`}
+              swedish={`Fel vid laddning av produkter: ${error}`}
+              className="text-red-600 mb-4"
+            />
             <button 
               onClick={() => window.location.reload()} 
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
-              <BilingualText english="Try Again" swedish="Försök igen" showBoth={false} />
+              <BilingualText english="Try Again" swedish="Försök igen" showBoth={true} inline />
             </button>
           </div>
         </div>
@@ -74,11 +69,11 @@ const Index = () => {
             swedish="Utforska vårt urval av högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande."
             className="text-lg text-gray-700 mb-8 max-w-2xl"
           />
-          <div className="inline-block bg-green-50 p-2 rounded-md border border-green-100">
+          <div className="inline-block bg-yellow-50 p-2 rounded-md border border-yellow-100">
             <BilingualText 
               english="Safe products for your recovery"
               swedish="Säkra produkter för din återhämtning"
-              className="text-sm text-green-600 font-medium"
+              className="text-sm text-yellow-600 font-medium"
             />
           </div>
         </div>

@@ -46,6 +46,7 @@ const BilingualText: React.FC<BilingualTextProps> = ({
 }) => {
   const { language } = useLanguage();
 
+  // Always show both languages unless explicitly set to false
   if (showBoth) {
     if (inline) {
       // Use spans for inline content (when inside p tags)
@@ -84,6 +85,7 @@ const BilingualText: React.FC<BilingualTextProps> = ({
     }
   }
 
+  // Fallback to single language display (when showBoth is explicitly false)
   return (
     <span className={className}>
       {language === 'en' ? english : swedish}

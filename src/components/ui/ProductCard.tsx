@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, ImageIcon, MapPin } from "lucide-react";
+// Using text/emoji icons to avoid import issues with lucide-react
+// import { ShoppingCart, Image as ImageIcon, MapPin } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import PriceDisplay from "@/components/ui/PriceDisplay";
@@ -63,7 +64,7 @@ const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCar
             {!imageLoaded && !imageError && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
                 <div className="animate-pulse flex flex-col items-center">
-                  <ImageIcon className="h-12 w-12 text-gray-300" />
+                  <span className="text-gray-300 text-6xl">🖼️</span>
                   <span className="text-xs text-gray-400 mt-2">Loading image...</span>
                 </div>
               </div>
@@ -161,7 +162,8 @@ const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCar
                 <BilingualText 
                   english="View Details" 
                   swedish="Visa Detaljer"
-                  showBoth={false}
+                  showBoth={true}
+                  inline={true}
                 />
               </Link>
             </Button>
@@ -171,11 +173,12 @@ const ProductCard = ({ id, name, swedishname, purity, price, image }: ProductCar
               onClick={handleAddToCart}
               disabled={adding}
             >
-              <ShoppingCart className="h-3 w-3 mr-1" />
+              <span className="mr-1">🛒</span>
               <BilingualText 
                 english={adding ? "Added!" : "Add to Cart"}
                 swedish={adding ? "Tillagd!" : "Lägg i Kundvagn"}
-                showBoth={false}
+                showBoth={true}
+                inline={true}
               />
             </Button>
           </div>

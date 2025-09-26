@@ -259,7 +259,7 @@ const Products = () => {
           <p className="text-gray-600 mb-6">
             Vi säljer högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande. 
             Alla produkter är säkra och naturliga för personlig användning.
-            <span className="text-green-600 font-medium"> Säkra produkter för din återhämtning.</span>
+            <span className="text-yellow-600 font-medium"> Säkra produkter för din återhämtning.</span>
           </p>
           
           <div className="flex flex-col md:flex-row gap-4 mb-8">

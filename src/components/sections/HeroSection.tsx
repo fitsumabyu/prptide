@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ShoppingCart, Globe } from "lucide-react";
+// Using text/emoji icons to avoid import issues with lucide-react
+// import { ShoppingCart, Globe2 as Globe } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { useShippingCountry } from "@/context/ShippingCountryContext";
@@ -132,13 +133,13 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
           const isInternational = !isUSLocation;
           
           let toastVariant = "default";
-          let toastTitle = "Inrikes Leverans Tillgänglig";
-          let toastDescription = `Vi kan leverera till din plats i Sverige.`;
+          let toastTitle = "Domestic Delivery Available | Inrikes Leverans Tillgänglig";
+          let toastDescription = `We can deliver to your location in Sweden. | Vi kan leverera till din plats i Sverige.`;
           
           if (isInternational) {
             toastVariant = "destructive";
-            toastTitle = "Internationell Leverans Ej Tillgänglig";
-            toastDescription = `Tyvärr levererar vi för närvarande endast inom Sverige.`;
+            toastTitle = "International Delivery Not Available | Internationell Leverans Ej Tillgänglig";
+            toastDescription = `Unfortunately, we currently only deliver within Sweden. | Tyvärr levererar vi för närvarande endast inom Sverige.`;
           }
           
           toast({
@@ -155,8 +156,8 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
     } catch (error) {
       console.error("Error detecting location:", error);
       toast({
-        title: "Platsupptäckt Misslyckades",
-        description: "Vi kunde inte upptäcka din plats. Välj ditt land manuellt.",
+        title: "Location Detection Failed | Platsupptäckt Misslyckades",
+        description: "We could not detect your location. Please select your country manually. | Vi kunde inte upptäcka din plats. Välj ditt land manuellt.",
         variant: "destructive",
       });
     } finally {
@@ -222,7 +223,7 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
                 swedish="Högkvalitativa återhämtningsprodukter för att stödja din fysiska hälsa och välbefinnande."
                 inline={true}
               />
-              <span className="font-semibold text-green-400">
+              <span className="font-semibold text-yellow-300">
                 {' '}
                 <BilingualText 
                   english="Safe and natural products for your recovery."
@@ -234,13 +235,13 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
             <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
               <Button asChild size="lg" className="bg-peptide-purple hover:bg-peptide-dark-purple text-sm sm:text-base">
                 <Link href="/products" className="flex items-center">
-                  <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  <BilingualText english="Explore Products" swedish="Utforska Produkter" showBoth={false} />
+                  <span className="mr-2">🛒</span>
+                  <BilingualText english="Explore Products" swedish="Utforska Produkter" showBoth={true} inline={true} />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white hover:bg-white/20 text-sm sm:text-base">
                 <Link href="/about">
-                  <BilingualText english="Learn More" swedish="Läs Mer" showBoth={false} />
+                  <BilingualText english="Learn More" swedish="Läs Mer" showBoth={true} inline={true} />
                 </Link>
               </Button>
               <Button 
@@ -250,11 +251,12 @@ const HeroSection = ({ fullHeight = false }: HeroSectionProps) => {
                 onClick={detectUserLocation}
                 disabled={locationLoading}
               >
-                <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                <span className="mr-2">🌍</span>
                 <BilingualText 
                   english={locationLoading ? "Detecting..." : "Check Shipping"}
                   swedish={locationLoading ? "Upptäcker..." : "Kontrollera Leverans"}
-                  showBoth={false}
+                  showBoth={true}
+                  inline={true}
                 />
               </Button>
             </div>

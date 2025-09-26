@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import ProductCard from "@/components/ui/ProductCard";
 import Disclaimer from "@/components/ui/Disclaimer";
+import BilingualText from "@/components/ui/BilingualText";
 import { useProducts } from "@/hooks/useProducts";
 import { useShippingCountry } from "@/context/ShippingCountryContext";
 import { useCountry } from "@/components/shipping/CountrySelector";
@@ -22,7 +23,7 @@ const ProductsNew = () => {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Laddar produkter...</p>
+            <BilingualText english="Loading products..." swedish="Laddar produkter..." className="text-gray-600" />
           </div>
         </div>
       </Layout>
@@ -34,12 +35,16 @@ const ProductsNew = () => {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <p className="text-red-600 mb-4">Fel vid laddning av produkter: {error}</p>
+            <BilingualText 
+              english={`Error loading products: ${error}`}
+              swedish={`Fel vid laddning av produkter: ${error}`}
+              className="text-red-600 mb-4"
+            />
             <button 
               onClick={() => window.location.reload()} 
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
-              Försök igen
+              <BilingualText english="Try again" swedish="Försök igen" inline />
             </button>
           </div>
         </div>
@@ -81,12 +86,20 @@ const ProductsNew = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12 min-h-[calc(100vh-96px)] flex flex-col">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Återhämtningsprodukter</h1>
-          <p className="text-gray-600 mb-6">
-            Vi säljer högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande. 
-            Alla produkter är säkra och naturliga för personlig användning.
-            <span className="text-green-600 font-medium"> Säkra produkter för din återhämtning.</span>
-          </p>
+          <BilingualText 
+            english="Recovery Products" 
+            swedish="Återhämtningsprodukter" 
+            className="text-3xl font-bold mb-4"
+          />
+          <div className="text-gray-600 mb-6">
+            <BilingualText 
+              english="We sell high-quality recovery products for physical health and well-being. All products are safe and natural for personal use."
+              swedish="Vi säljer högkvalitativa återhämtningsprodukter för fysisk hälsa och välbefinnande. Alla produkter är säkra och naturliga för personlig användning."
+            />
+            <div className="text-yellow-600 font-medium mt-2">
+              <BilingualText english="Safe products for your recovery." swedish="Säkra produkter för din återhämtning." inline />
+            </div>
+          </div>
           
           <div className="flex flex-col md:flex-row gap-4 mb-8">
             <div className="w-full md:w-1/3">
@@ -106,12 +119,16 @@ const ProductsNew = () => {
           </div>
 
           <div className="bg-blue-50 p-4 border border-blue-200 rounded-md mb-8">
-            <h2 className="text-lg font-semibold text-blue-800 mb-2">Produktinformation</h2>
-            <p className="text-sm text-blue-700">
-              Alla produkter som listas på denna sida är för personlig återhämtning. Varje produkt visar sitt korrekta namn, 
-              beskrivning, kvalitetsnivå och pris i SEK. För detaljerade specifikationer och kvalitetscertifikat, 
-              besök de enskilda produktsidorna.
-            </p>
+            <BilingualText 
+              english="Product Information" 
+              swedish="Produktinformation" 
+              className="text-lg font-semibold text-blue-800 mb-2"
+            />
+            <BilingualText 
+              english="All products listed on this page are for personal recovery. Each product shows its correct name, description, quality level and price in SEK. For detailed specifications and quality certificates, visit the individual product pages."
+              swedish="Alla produkter som listas på denna sida är för personlig återhämtning. Varje produkt visar sitt korrekta namn, beskrivning, kvalitetsnivå och pris i SEK. För detaljerade specifikationer och kvalitetscertifikat, besök de enskilda produktsidorna."
+              className="text-sm text-blue-700"
+            />
           </div>
 
           <div className="mb-8">
@@ -123,11 +140,16 @@ const ProductsNew = () => {
           <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center my-12">
             <div className="flex flex-col items-center justify-center gap-4">
               <div className="text-6xl">⚠️</div>
-              <h2 className="text-2xl font-bold text-red-700">Products Not Available in Your Region</h2>
-              <p className="text-red-600 max-w-2xl">
-                We're sorry, but we currently don't ship our recovery products to your selected country. 
-                Please select a different shipping destination to view our product catalog.
-              </p>
+              <BilingualText 
+                english="Products Not Available in Your Region" 
+                swedish="Produkter inte tillgängliga i din region" 
+                className="text-2xl font-bold text-red-700"
+              />
+              <BilingualText 
+                english="We're sorry, but we currently don't ship our recovery products to your selected country. Please select a different shipping destination to view our product catalog."
+                swedish="Vi ber om ursäkt, men vi skickar för närvarande inte våra återhämtningsprodukter till ditt valda land. Vänligen välj en annan fraktdestination för att se vår produktkatalog."
+                className="text-red-600 max-w-2xl"
+              />
             </div>
           </div>
         ) : (
@@ -168,13 +190,13 @@ const ProductsNew = () => {
                 <div className="mt-4 p-4 bg-gray-50 rounded-lg">
                   <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                     <div>
-                      <span className="font-medium">Available Sizes:</span>
+                      <BilingualText english="Available Sizes:" swedish="Tillgängliga storlekar:" className="font-medium" inline />
                       <span className="ml-2">
                         {group.products.map(p => p.contents[0]?.quantity + ' ' + p.contents[0]?.englishunittype).join(', ')}
                       </span>
                     </div>
                     <div>
-                      <span className="font-medium">Price Range:</span>
+                      <BilingualText english="Price Range:" swedish="Prisintervall:" className="font-medium" inline />
                       <span className="ml-2">
                         {Math.min(...group.products.map(p => parseInt(p.price.replace(' kr', ''))))} kr - {Math.max(...group.products.map(p => parseInt(p.price.replace(' kr', ''))))} kr
                       </span>
@@ -185,7 +207,11 @@ const ProductsNew = () => {
             ))
           ) : (
             <div className="col-span-full text-center py-12">
-              <p className="text-gray-500 text-lg">No products found matching "{searchTerm}"</p>
+              <BilingualText 
+                english={`No products found matching "${searchTerm}"`}
+                swedish={`Inga produkter hittades som matchar "${searchTerm}"`}
+                className="text-gray-500 text-lg"
+              />
             </div>
           )
         )}
