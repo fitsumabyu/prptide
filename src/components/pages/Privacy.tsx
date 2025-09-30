@@ -117,9 +117,10 @@ const Privacy = () => {
               If you have any questions or concerns about this Privacy Policy, please contact us at:
             </p>
             <p className="text-gray-700 mb-6">
-              H&amp;H WORLDWIDE GROUP<br />
-              732 S 6TH ST, STE R<br />
-              LAS VEGAS NEVADA 89101
+              H&amp;H Worldwide Group<br />
+              31120 Riverside Dr 31500 Grape Street<br />
+              Ste 3-347<br />
+              Lake Elsinore CA 92532
             </p>
             
             <p className="text-gray-700 mt-12 italic">

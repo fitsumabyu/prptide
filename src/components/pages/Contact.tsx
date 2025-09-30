@@ -92,12 +92,13 @@ const Contact = () => {
                       className="text-lg font-semibold mb-2"
                     />
                     <p className="text-gray-700">
-                    732 S 6TH ST, STE R<br />
-                    LAS VEGAS NEVADA 89101<br />
+                      31120 Riverside Dr 31500 Grape Street<br />
+                      Ste 3-347<br />
+                      Lake Elsinore CA 92532<br />
                       United States
                     </p>
                     <a 
-                      href="https://maps.google.com/?q=123+Science+Drive+Boston+MA+02210" 
+                      href="https://maps.google.com/?q=31120+Riverside+Dr+31500+Grape+Street+Ste+3-347+Lake+Elsinore+CA+92532" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-peptide-purple hover:underline text-sm flex items-center mt-3"

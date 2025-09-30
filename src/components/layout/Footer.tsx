@@ -104,9 +104,10 @@ const Footer = () => {
               Åldersbegränsning: Måste vara 18+ för att köpa/använda denna webbplats. Denna webbplats är inte avsedd för minderåriga.
             </p>
             <p className="text-sm text-gray-600 mt-2">
-              H&amp;H WORLDWIDE GROUP<br />
-              732 S 6TH ST, STE R<br />
-              LAS VEGAS NEVADA 89101
+              H&amp;H Worldwide Group<br />
+              31120 Riverside Dr 31500 Grape Street<br />
+              Ste 3-347<br />
+              Lake Elsinore CA 92532
             </p>
             <p className="text-sm text-gray-500 mt-4">
               &copy; {new Date().getFullYear()} Protidelab. All rights reserved.

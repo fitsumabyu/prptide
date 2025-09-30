@@ -50,8 +50,9 @@ const About = () => {
                   <BilingualText english="Registered Address" swedish="Registrerad Adress" inline />
                 </p>
                 <p className="font-medium mb-4">
-                  732 S 6TH ST, STE R<br />
-                  LAS VEGAS NEVADA 89101<br />
+                  31120 Riverside Dr 31500 Grape Street<br />
+                  Ste 3-347<br />
+                  Lake Elsinore CA 92532<br />
                 </p>
                 
                 
